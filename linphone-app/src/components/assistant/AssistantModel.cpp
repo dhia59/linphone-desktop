@@ -40,7 +40,7 @@
 #include <QTimer>
 #include <QDesktopServices>
 #include <QJsonDocument>
-
+#include <QUrl>
 // =============================================================================
 
 using namespace std;

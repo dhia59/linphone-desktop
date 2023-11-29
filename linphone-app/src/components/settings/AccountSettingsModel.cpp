@@ -297,7 +297,7 @@ void AccountSettingsModel::removeAccount (const shared_ptr<linphone::Account> &a
 	}
 // "message-expires" is used to keep contact for messages. Setting to 0 will remove the contact for messages too.
 // Check if a "message-expires" exists and set it to 0
-	QStringList parameters = Utils::coreStringToAppString(account->getParams()->getContactParameters()).split(";", Qt::SkipEmptyParts);
+	QStringList parameters = Utils::coreStringToAppString(account->getParams()->getContactParameters()).split(";");
 	for(int i = 0 ; i < parameters.size() ; ++i){
 		QStringList fields = parameters[i].split("=");
 		if( fields.size() > 1 && fields[0].simplified() == "message-expires"){
@@ -321,7 +321,7 @@ void AccountSettingsModel::removeAccount (const shared_ptr<linphone::Account> &a
 
 void AccountSettingsModel::enableRegister(std::shared_ptr<linphone::AccountParams> params, bool registerEnabled, QString contactParameters){
 	bool findMessageExpires = false;
-	QStringList parameters = contactParameters.split(";", Qt::SkipEmptyParts);
+	QStringList parameters = contactParameters.split(";");
 	for(int i = 0 ; i < parameters.size() ; ++i){
 		QStringList fields = parameters[i].split("=");
 		if( fields.size() > 1 && fields[0].simplified() == "message-expires"){

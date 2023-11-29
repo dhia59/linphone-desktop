@@ -36,7 +36,7 @@
 #include "utils/Utils.hpp"
 
 #include "HistoryModel.hpp"
-
+#include <QDebug>
 // =============================================================================
 
 using namespace std;

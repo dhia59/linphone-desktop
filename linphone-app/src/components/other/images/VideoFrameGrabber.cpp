@@ -138,7 +138,7 @@ void VideoFrameGrabber::stop() {
 
 bool VideoFrameGrabber::present(const QVideoFrame &frame){
 	if (frame.isValid()) {
-		emit frameAvailable(frame.image());
+		//emit frameAvailable(frame.image());
 		return true;
 	}else
 		return false;

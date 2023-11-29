@@ -1601,7 +1601,7 @@ Server URL ist nicht konfiguriert.</translation>
     <message>
         <source>incallPauseWarning</source>
         <extracomment>&apos;You are currently out of the conference.&apos; : Pause message in video conference.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sie haben den Anruf unterbrochen.</translation>
     </message>
     <message>
         <source>incallPauseHint</source>
