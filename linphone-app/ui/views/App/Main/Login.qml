@@ -12,6 +12,7 @@ import Common.Styles 1.0
 // =============================================================================
 
 Item {
+    property bool isErrorLabel: false
     ColumnLayout {
         anchors.horizontalCenter:  parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
@@ -33,7 +34,7 @@ Item {
 
             FormLine {
                 FormGroup {
-                    label: qsTr('usernameLabel')+  "  "+ AccountSettingsModel.registrationState
+                    label: qsTr('usernameLabel')
 
                     TextField {
                         id: username
@@ -68,22 +69,23 @@ Item {
 
         Row {
             id: errorBlock
-
+            anchors.horizontalCenter: parent.horizontalCenter
             Text {
-                visible: false
+                visible: isErrorLabel
                 id: errorLabel
                 text: "Non valide !!!"
+                color: "red"
             }
 
         }
         Row {
             id: buttons
 
-
+          //  loading: assistantModel.isProcessing
 
             spacing: AssistantAbstractViewStyle.buttons.spacing
 
-
+            anchors.horizontalCenter: parent.horizontalCenter
 
             TextButtonB {
                 id: mainActionButton
@@ -130,7 +132,7 @@ Item {
 
         onFailedRegistration: {
             console.log("Fail register test");
-            errorLabel.visible= true
+           isErrorLabel= true
 
         }
     }

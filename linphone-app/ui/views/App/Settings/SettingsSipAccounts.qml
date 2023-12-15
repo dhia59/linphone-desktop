@@ -85,10 +85,10 @@ TabContainer {
 			FormTable {
 				legendLineWidth: SettingsWindowStyle.sipAccounts.legendLineWidth
 				
-				titles: ['',
-					qsTr('editHeader'),
-					qsTr('deleteHeader')
-				]
+//				titles: ['',
+//					qsTr('editHeader'),
+//					qsTr('deleteHeader')
+//				]
 				
 				Repeater {
 					model: SettingsModel.showLocalSipAccount ? AccountSettingsModel.accounts.slice(1) : AccountSettingsModel.accounts
@@ -122,23 +122,23 @@ TabContainer {
 			FormEmptyLine {}
 		}
 		
-		Row {
-			anchors.right: parent.right
+//		Row {
+//			anchors.right: parent.right
 			
-			spacing: SettingsWindowStyle.sipAccounts.buttonsSpacing
+//			spacing: SettingsWindowStyle.sipAccounts.buttonsSpacing
 			
-			TextButtonB {
-				text: qsTr('eraseAllPasswords')
+//			TextButtonB {
+//				text: qsTr('eraseAllPasswords')
 				
-				onClicked: Logic.eraseAllPasswords()
-			}
+//				onClicked: Logic.eraseAllPasswords()
+//			}
 			
-			TextButtonB {
-				text: qsTr('addAccount')
+//			TextButtonB {
+//				text: qsTr('addAccount')
 				
-				onClicked: Logic.editAccount(null)
-			}
-		}
+//				onClicked: Logic.editAccount(null)
+//			}
+//		}
 		
 		// -------------------------------------------------------------------------
 		// Assistant.

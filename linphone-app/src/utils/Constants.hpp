@@ -49,13 +49,13 @@ public:
 #endif // ifdef ENABLE_UPDATE_CHECK
 	
 	static constexpr char DefaultXmlrpcUri[] = "https://subscribe.linphone.org:444/wizard.php";
-	static constexpr char DefaultUploadLogsServer[] = "https://www.linphone.org:444/lft.php";
+	static constexpr char DefaultUploadLogsServer[] = "";
 	static constexpr char DefaultContactParameters[] = "message-expires=2419200";
 	static constexpr char DefaultContactParametersOnRemove[] = "message-expires=0";
 	static constexpr int DefaultExpires = 600;
 	static constexpr int DefaultPublishExpires = 120;
 	static constexpr char DownloadUrl[] = "https://www.linphone.org/technical-corner/linphone";
-	static constexpr char VersionCheckReleaseUrl[] = "https://linphone.org/releases";
+	static constexpr char VersionCheckReleaseUrl[] = "";
 	static constexpr char VersionCheckNightlyUrl[] = "https://linphone.org/snapshots";
 	static constexpr char PasswordRecoveryUrl[] = "https://subscribe.linphone.org/login/email";
 	static constexpr char CguUrl[] = "https://www.linphone.org/general-terms";
@@ -67,7 +67,7 @@ public:
 	
 	static constexpr char LinphoneBZip2_exe[] = "https://www.linphone.org/releases/windows/tools/bzip2/bzip2.exe";
 	static constexpr char LinphoneBZip2_dll[] = "https://www.linphone.org/releases/windows/tools/bzip2/bzip2.dll";
-	static constexpr char DefaultRlsUri[] = "sips:rls@sip.linphone.org";
+	static constexpr char DefaultRlsUri[] = "";
 	static constexpr char DefaultLogsEmail[] = "linphone-desktop@belledonne-communications.com";
 	
 	static constexpr char DefaultFlexiAPIURL[] = "https://subscribe.linphone.org/api/";// Need "/" at the end

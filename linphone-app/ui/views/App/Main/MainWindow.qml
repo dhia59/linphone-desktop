@@ -101,11 +101,10 @@ ApplicationWindow {
             ToolBar {
                 id: toolBar
                 property alias mainSearchBar : smartSearchBar
-                visible: AccountSettingsModel.registrationState===0
+                visible: AccountSettingsModel.registrationState === AccountSettingsModel.RegistrationStateRegistered
                 Layout.fillWidth: true
                 Layout.preferredHeight: MainWindowStyle.toolBar.height
                 hoverEnabled : true
-
                 background: MainWindowStyle.toolBar.background
 
                 RowLayout {
@@ -215,54 +214,54 @@ ApplicationWindow {
                         onClicked: telKeypad.visible = !telKeypad.visible
                         toggled: telKeypad.visible
                     }
-                    ActionButton {
-                        Layout.leftMargin: 30
-                        isCustom: true
-                        backgroundRadius: 4
-                        colorSet: MainWindowStyle.buttons.newChatGroup
+//                    ActionButton {
+//                        Layout.leftMargin: 30
+//                        isCustom: true
+//                        backgroundRadius: 4
+//                        colorSet: MainWindowStyle.buttons.newChatGroup
 
-                        //: 'Start a chat room' : Tooltip to illustrate a button
-                        tooltipText : qsTr('newChatRoom')
-                        visible: (SettingsModel.standardChatEnabled || SettingsModel.secureChatEnabled)
-                        enabled: SettingsModel.groupChatEnabled
-                        onClicked: {
-                            window.detachVirtualWindow()
-                            window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
-                                                       ,{})
-                        }
-                        TooltipArea{
-                            visible: !SettingsModel.groupChatEnabled
-                            maxWidth: smartSearchBar.width
-                            delay:0
-                            //: 'Conference URI is not set. You have to change it in your account settings in order to create new group chats.' : Tooltip to warn the user to change a setting to activate an action.
-                            text: qsTr('newChatRoomUriMissing')
-                        }
-                    }
+//                        //: 'Start a chat room' : Tooltip to illustrate a button
+//                        tooltipText : qsTr('newChatRoom')
+//                        visible: (SettingsModel.standardChatEnabled || SettingsModel.secureChatEnabled)
+//                        enabled: SettingsModel.groupChatEnabled
+//                        onClicked: {
+//                            window.detachVirtualWindow()
+//                            window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
+//                                                       ,{})
+//                        }
+//                        TooltipArea{
+//                            visible: !SettingsModel.groupChatEnabled
+//                            maxWidth: smartSearchBar.width
+//                            delay:0
+//                            //: 'Conference URI is not set. You have to change it in your account settings in order to create new group chats.' : Tooltip to warn the user to change a setting to activate an action.
+//                            text: qsTr('newChatRoomUriMissing')
+//                        }
+//                    }
 
-                    ActionButton {
-                        isCustom: true
-                        backgroundRadius: 4
-                        colorSet: MainWindowStyle.buttons.newConference
-                        visible: SettingsModel.conferenceEnabled
-                        enabled: SettingsModel.videoConferenceEnabled
-                        tooltipText:qsTr('newConferenceButton')
-                        onClicked: {
-                            window.detachVirtualWindow()
-                            window.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
-                                                       ,{}, function (status) {
-                                                        if( status){
-                                                            setView('Conferences')
-                                                        }
-                                                       })
-                        }
-                        TooltipArea{
-                            visible: !SettingsModel.videoConferenceEnabled
-                            maxWidth: smartSearchBar.width
-                            delay:0
-                            //: 'Video conference URI is not set. You have to change it in your account settings in order to create new meetings.' : Tooltip to warn the user to change a setting to activate an action.
-                            text: qsTr('newConferenceUriMissing')
-                        }
-                    }
+//                    ActionButton {
+//                        isCustom: true
+//                        backgroundRadius: 4
+//                        colorSet: MainWindowStyle.buttons.newConference
+//                        visible: SettingsModel.conferenceEnabled
+//                        enabled: SettingsModel.videoConferenceEnabled
+//                        tooltipText:qsTr('newConferenceButton')
+//                        onClicked: {
+//                            window.detachVirtualWindow()
+//                            window.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
+//                                                       ,{}, function (status) {
+//                                                        if( status){
+//                                                            setView('Conferences')
+//                                                        }
+//                                                       })
+//                        }
+//                        TooltipArea{
+//                            visible: !SettingsModel.videoConferenceEnabled
+//                            maxWidth: smartSearchBar.width
+//                            delay:0
+//                            //: 'Video conference URI is not set. You have to change it in your account settings in order to create new meetings.' : Tooltip to warn the user to change a setting to activate an action.
+//                            text: qsTr('newConferenceUriMissing')
+//                        }
+//                    }
 
                     ActionButton {
                         isCustom: true
@@ -296,7 +295,7 @@ ApplicationWindow {
                 // Main menu.
                 ColumnLayout {
                     id:leftPanel
-                    visible: AccountSettingsModel.registrationState===0
+                    visible: AccountSettingsModel.registrationState === AccountSettingsModel.RegistrationStateRegistered
                     Layout.maximumWidth: MainWindowStyle.menu.width
                     Layout.preferredWidth: MainWindowStyle.menu.width
 
@@ -429,22 +428,24 @@ ApplicationWindow {
 
                         onRegistrationStateChanged: {
                             if(AccountSettingsModel.registrationState!==0)
-                                contentLoader.setSource("Login.qml")
+                            {
+                                 contentLoader.setSource("Login.qml")
                             }
-
-
+                         }
                         }
+                    Connections {
+                        target: AccountSettingsModel
+                        onFailedRegistration: {
+                            console.log("Fail register main");
+                            contentLoader.setSource("Login.qml",{"isErrorLabel": "true"})
+                        }
+                    }
                     }
 
                 }
 
         }
 
-//       BusyIndicator {
-//                       anchors.fill:parent
-//                       running:true
-//                       color: AccountStatusStyle.busyColor.color
-//                   }
     }
 	Loader{
 		id: customMenuBar

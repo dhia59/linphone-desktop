@@ -448,6 +448,7 @@ set(HEADERS
 	src/components/tunnel/TunnelConfigProxyModel.hpp
 	src/components/url-handlers/UrlHandlers.hpp
 	src/utils/Constants.hpp
+	src/utils/SipConstant.hpp
 	src/utils/LinphoneEnums.hpp
 	src/utils/MediastreamerUtils.hpp
 	src/utils/QExifImageHeader.hpp

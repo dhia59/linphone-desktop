@@ -25,7 +25,7 @@
 #include "components/sip-addresses/SipAddressesModel.hpp"
 #include "utils/Utils.hpp"
 #include "utils/Constants.hpp"
-
+#include "utils//SipConstant.hpp"
 #include "AssistantModel.hpp"
 
 #ifdef ENABLE_OAUTH2
@@ -335,18 +335,19 @@ bool AssistantModel::addOtherSipAccount (const QVariantMap &map) {
 		accountParams = core->createAccountParams();
 	
 	
-	const QString domain = "cprx1p1";
-	const QString server = "cprx1.my-iptalk.com";
+	QString domainValue = SipConstant::domain;
+	QString serverValue = SipConstant::server;
+	//const QString server = "cprx1.my-iptalk.com";
 	QString sipAddress = QStringLiteral("sip:%1@%2")
-			.arg(map["username"].toString()).arg(domain);
+			.arg(map["username"].toString()).arg(domainValue);
 	{
 		// Server address.
 		shared_ptr<linphone::Address> address = factory->createAddress(
-					Utils::appStringToCoreString(QStringLiteral("sip:%1").arg(server))
+					Utils::appStringToCoreString(QStringLiteral("sip:%1").arg(serverValue))
 					);
 		if(!address) {
 			qWarning() << QStringLiteral("Unable to create address from domain `%1`.")
-						  .arg(domain);
+						  .arg(domainValue);
 			return false;
 		}
 		const QString &transport(map["transport"].toString());

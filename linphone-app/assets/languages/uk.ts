@@ -1867,25 +1867,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>newChatRoom</source>
-        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>newChatRoomUriMissing</source>
-        <extracomment>&apos;Conference URI is not set. You have to change it in your account settings in order to create new group chats.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>newConferenceButton</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>newConferenceUriMissing</source>
-        <extracomment>&apos;Video conference URI is not set. You have to change it in your account settings in order to create new meetings.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>localContactsEntry</source>
         <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
         <translation type="unfinished"></translation>
@@ -3214,22 +3195,6 @@
     <message>
         <source>proxyAccountsTitle</source>
         <translation>Проксі обліківки</translation>
-    </message>
-    <message>
-        <source>eraseAllPasswords</source>
-        <translation>ВИЛУЧИТИ ПАРОЛІ</translation>
-    </message>
-    <message>
-        <source>addAccount</source>
-        <translation>ДОДАТИ ОБЛІКІВКУ</translation>
-    </message>
-    <message>
-        <source>editHeader</source>
-        <translation>Змінити</translation>
-    </message>
-    <message>
-        <source>deleteHeader</source>
-        <translation>Вилучити</translation>
     </message>
     <message>
         <source>deleteAccountDescription</source>

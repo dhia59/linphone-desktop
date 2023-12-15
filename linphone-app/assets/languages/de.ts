@@ -1857,25 +1857,6 @@ Klicken Sie hier: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>newChatRoom</source>
-        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>newChatRoomUriMissing</source>
-        <extracomment>&apos;Conference URI is not set. You have to change it in your account settings in order to create new group chats.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>newConferenceButton</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>newConferenceUriMissing</source>
-        <extracomment>&apos;Video conference URI is not set. You have to change it in your account settings in order to create new meetings.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>localContactsEntry</source>
         <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
         <translation type="unfinished"></translation>
@@ -3201,22 +3182,6 @@ Klicken Sie hier: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     <message>
         <source>proxyAccountsTitle</source>
         <translation>Proxy Zugänge</translation>
-    </message>
-    <message>
-        <source>eraseAllPasswords</source>
-        <translation>PASSWÖRTER LÖSCHEN</translation>
-    </message>
-    <message>
-        <source>addAccount</source>
-        <translation>KONTO HINZUFÜGEN</translation>
-    </message>
-    <message>
-        <source>editHeader</source>
-        <translation>Bearbeiten</translation>
-    </message>
-    <message>
-        <source>deleteHeader</source>
-        <translation>Löschen</translation>
     </message>
     <message>
         <source>deleteAccountDescription</source>

@@ -284,6 +284,7 @@ void AccountSettingsModel::logout() {
 	CoreManager *coreManager = CoreManager::getInstance();
 	AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
 	std::list<std::shared_ptr<linphone::Account>> allAccounts = coreManager->getAccountList();
+	qWarning() << "Logout from" << allAccounts.size();
 	for (auto nextAccount : allAccounts) {
 		accountSettingsModel->removeAccount(nextAccount);
 	}
@@ -649,7 +650,7 @@ void AccountSettingsModel::handleRegistrationStateChanged (
 		QTimer::singleShot(100, [account, this](){// removeAccount cannot be called from callback
 				CoreManager::getInstance()->getCore()->removeAccount(account);
 				emit accountsChanged();
-		});
+	    });
 	}
 	if (defaultAccount == account) {
 		emit defaultRegistrationChanged();

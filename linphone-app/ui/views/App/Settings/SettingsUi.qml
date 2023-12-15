@@ -336,7 +336,7 @@ TabContainer {
 						}
 						TextField {
 							Layout.fillWidth: true
-							text: SettingsModel.versionCheckUrl
+                            //text: SettingsModel.versionCheckUrl
 							
 							onEditingFinished: SettingsModel.versionCheckUrl = text
 						}
