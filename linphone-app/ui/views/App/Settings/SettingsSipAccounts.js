@@ -37,7 +37,8 @@ function deleteAccount (account) {
   window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: qsTr('deleteAccountDescription'),
   }, function (status) {
-    if (status) {
+      if (status) {
+          console.log("statussssss   " + status)
       Linphone.AccountSettingsModel.removeAccount(account.account)
     }
   })

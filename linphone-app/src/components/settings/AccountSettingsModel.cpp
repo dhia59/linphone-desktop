@@ -120,7 +120,7 @@ QString AccountSettingsModel::getUsedSipAddressAsString () const {
 }
 // -----------------------------------------------------------------------------
 
-bool AccountSettingsModel::addOrUpdateAccount (std::shared_ptr<linphone::Account> account, const std::shared_ptr<linphone::AccountParams>& accountParams) {
+std::shared_ptr<linphone::Account> AccountSettingsModel::addOrUpdateAccount (std::shared_ptr<linphone::Account> account, const std::shared_ptr<linphone::AccountParams>& accountParams) {
 	
 	CoreManager *coreManager = CoreManager::getInstance();
 	shared_ptr<linphone::Core> core = coreManager->getCore();
@@ -130,13 +130,13 @@ bool AccountSettingsModel::addOrUpdateAccount (std::shared_ptr<linphone::Account
 	if (account->setParams(accountParams) == -1) {
 		qWarning() << QStringLiteral("Unable to update account: `%1`.")
 					  .arg(QString::fromStdString(account->getParams()->getIdentityAddress()->asString()));
-		return false;
+		return nullptr;
 	}
 	if (find(accounts.cbegin(), accounts.cend(), account) == accounts.cend()) {
 		if (core->addAccount(account) == -1) {
 			qWarning() << QStringLiteral("Unable to add account: `%1`.")
 						  .arg(QString::fromStdString(account->getParams()->getIdentityAddress()->asString()));
-			return false;
+			return nullptr;
 		}
 		
 		coreManager->addingAccount(account->getParams());
@@ -144,7 +144,7 @@ bool AccountSettingsModel::addOrUpdateAccount (std::shared_ptr<linphone::Account
 	
 	emit accountSettingsUpdated();
 	
-	return true;
+	return account;
 }
 
 QVariantMap AccountSettingsModel::getAccountDescription (const shared_ptr<linphone::Account> &account) {
@@ -280,7 +280,15 @@ void AccountSettingsModel::enableRegister (std::shared_ptr<linphone::Account> ac
 	enableRegister(params, enable, Utils::coreStringToAppString(params->getContactParameters()));
 	account->setParams(params);
 }
-
+void AccountSettingsModel::logout() {
+	CoreManager *coreManager = CoreManager::getInstance();
+	AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
+	std::list<std::shared_ptr<linphone::Account>> allAccounts = coreManager->getAccountList();
+	for (auto nextAccount : allAccounts) {
+		accountSettingsModel->removeAccount(nextAccount);
+	}
+	emit accountLogout();
+}
 void AccountSettingsModel::removeAccount (const shared_ptr<linphone::Account> &account) {
 	
 	CoreManager *coreManager = CoreManager::getInstance();
@@ -318,6 +326,7 @@ void AccountSettingsModel::removeAccount (const shared_ptr<linphone::Account> &a
 	
 	emit accountSettingsUpdated();
 }
+
 
 void AccountSettingsModel::enableRegister(std::shared_ptr<linphone::AccountParams> params, bool registerEnabled, QString contactParameters){
 	bool findMessageExpires = false;
@@ -465,7 +474,7 @@ bool AccountSettingsModel::addOrUpdateAccount(
 	}
 	if( newPublishPresence)
 		emit publishPresenceChanged();
-	return addOrUpdateAccount(account, accountParams);
+	return addOrUpdateAccount(account, accountParams)!= nullptr;
 }
 
 bool AccountSettingsModel::addOrUpdateAccount (
@@ -642,7 +651,14 @@ void AccountSettingsModel::handleRegistrationStateChanged (
 				emit accountsChanged();
 		});
 	}
-	if(defaultAccount == account)
+	if (defaultAccount == account) {
 		emit defaultRegistrationChanged();
+		if (state == linphone::RegistrationState::Failed) {
+			qWarning() << QStringLiteral("Registration failed");
+			logout();
+			emit failedRegistration();
+		}
+	}		
 	emit registrationStateChanged();
 }
+

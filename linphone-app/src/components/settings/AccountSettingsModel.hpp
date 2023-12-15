@@ -32,7 +32,7 @@
 
 class AccountSettingsModel : public QObject {
 	Q_OBJECT
-	
+
 	// Selected account.
 	Q_PROPERTY(QString username READ getUsername WRITE setUsername NOTIFY usernameChanged)
 	Q_PROPERTY(QString sipAddress READ getUsedSipAddressAsStringUriOnly NOTIFY sipAddressChanged)
@@ -51,8 +51,10 @@ class AccountSettingsModel : public QObject {
 	Q_PROPERTY(QString defaultAccountDomain READ getDefaultAccountDomain NOTIFY defaultAccountChanged)
 	
 	Q_PROPERTY(QVariantList accounts READ getAccounts NOTIFY accountsChanged)
-	
+public slots:
+	void logout();
 public:
+
 	enum RegistrationState {
 		RegistrationStateRegistered,
 		RegistrationStateNotRegistered,
@@ -72,7 +74,7 @@ public:
 	QString getUsedSipAddressAsString () const;
 	
 	// Update account with parameters or add a new one in core.
-	bool addOrUpdateAccount (std::shared_ptr<linphone::Account> account, const std::shared_ptr<linphone::AccountParams>& accountParams);
+	std::shared_ptr<linphone::Account> addOrUpdateAccount (std::shared_ptr<linphone::Account> account, const std::shared_ptr<linphone::AccountParams>& accountParams);
 	
 	Q_INVOKABLE QVariantMap getAccountDescription (const std::shared_ptr<linphone::Account> &account);
 	QString getConferenceUri() const;
@@ -88,7 +90,6 @@ public:
 	Q_INVOKABLE bool addOrUpdateAccount (const std::shared_ptr<linphone::Account> &account, const QVariantMap &data);
 	Q_INVOKABLE bool addOrUpdateAccount (const QVariantMap &data);// Create default account and apply data
 	Q_INVOKABLE void removeAccount (const std::shared_ptr<linphone::Account> &account);
-	
 	Q_INVOKABLE std::shared_ptr<linphone::Account> createAccount (const QString& assistantFile);
 	
 	Q_INVOKABLE void addAuthInfo (
@@ -119,7 +120,9 @@ signals:
 	void defaultAccountChanged();
 	void publishPresenceChanged();
 	void defaultRegistrationChanged();
-	
+	void failedRegistration();
+	void accountLogout();
+
 private:
 	QString getUsername () const;
 	void setUsername (const QString &username);

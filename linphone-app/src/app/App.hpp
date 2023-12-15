@@ -127,7 +127,7 @@ public:
   
 public slots:
   void stateChanged(Qt::ApplicationState);
-
+  void handleLogout();
 signals:
   void configLocaleChanged (const QString &locale);
 

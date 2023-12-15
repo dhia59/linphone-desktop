@@ -129,6 +129,10 @@
         <source>commandLineOptionQtLogsOnly</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>logout</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AssistantAbstractView</name>
@@ -1508,32 +1512,8 @@
         <translation>ЯК КОРИСТУВАТИСЯ %1</translation>
     </message>
     <message>
-        <source>inviteDescription</source>
-        <translation>Запросіть друзів використовувати %1.</translation>
-    </message>
-    <message>
-        <source>inviteTitle</source>
-        <translation>ЗАПРОСІТЬ ДРУЗІВ</translation>
-    </message>
-    <message>
-        <source>accountAssistantDescription</source>
-        <translation>Створення і керування обліківкою %1.</translation>
-    </message>
-    <message>
-        <source>accountAssistantTitle</source>
-        <translation>АСИСТЕНТ ОБЛІКІВКИ</translation>
-    </message>
-    <message>
-        <source>assistantButton</source>
-        <translation>АСИСТЕНТ</translation>
-    </message>
-    <message>
         <source>showTooltips</source>
         <translation>Показувати підказки</translation>
-    </message>
-    <message>
-        <source>inviteButton</source>
-        <translation>ЗАПРОСИТИ</translation>
     </message>
 </context>
 <context>
@@ -1812,6 +1792,21 @@
     </message>
 </context>
 <context>
+    <name>Login</name>
+    <message>
+        <source>usernameLabel</source>
+        <translation type="unfinished">Ім&apos;я користувача</translation>
+    </message>
+    <message>
+        <source>passwordLabel</source>
+        <translation type="unfinished">Пароль</translation>
+    </message>
+    <message>
+        <source>transportLabel</source>
+        <translation type="unfinished">Транспорт</translation>
+    </message>
+</context>
+<context>
     <name>MAC_APPLICATION_MENU</name>
     <message>
         <source>About %1</source>
@@ -1845,32 +1840,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <source>mainSearchBarPlaceholder</source>
-        <translation>Знайти контакт, почати дзвінок або чат…</translation>
-    </message>
-    <message>
-        <source>contactsEntry</source>
-        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation>КОНТАКТИ</translation>
-    </message>
-    <message>
-        <source>autoAnswerStatus</source>
-        <translation>авто</translation>
-    </message>
-    <message>
-        <source>smartSearchBarTooltip</source>
-        <translation>Використовуйте розумний пошуковий рядок, щоб одразу почати звуковий або відео виклик відіслати повідомлення чи додати новий контакт. Просто уведіть SIP адресу чи ім&apos;я користувача вашого контакту.</translation>
-    </message>
-    <message>
-        <source>newConferenceButton</source>
-        <translation>Почати конференц-дзвінок</translation>
-    </message>
-    <message>
-        <source>newChatRoom</source>
-        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>hideTimeline</source>
         <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
         <translation type="unfinished"></translation>
@@ -1886,8 +1855,20 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainSearchBarPlaceholder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>smartSearchBarTooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newChatRoom</source>
+        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1896,18 +1877,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>newConferenceButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>newConferenceUriMissing</source>
         <extracomment>&apos;Video conference URI is not set. You have to change it in your account settings in order to create new meetings.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>confirmFetchUri</source>
-        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
+        <source>localContactsEntry</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>localContactsEntry</source>
-        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
+        <source>contactsEntry</source>
+        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainWindowConferencesTitle</source>
+        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

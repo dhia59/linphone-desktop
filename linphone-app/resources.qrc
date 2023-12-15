@@ -562,5 +562,6 @@
 		<file>assets/images/linphone_logo.svg</file>
 		<file>ui/dev-modules/Units/Units.qml</file>
 		<file>assets/icon.ico</file>
+		<file>ui/views/App/Main/Login.qml</file>
 	</qresource>
 </RCC>

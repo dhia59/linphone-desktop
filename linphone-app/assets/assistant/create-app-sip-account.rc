@@ -22,20 +22,20 @@
     <entry name="audio_video_conference_factory_uri" overwrite="true">sip:videoconference-factory@sip.linphone.org</entry>
     <entry name="cpim_in_basic_chat_rooms_enabled" overwrite="true">1</entry>
     <entry name="rtp_bundle" overwrite="true">1</entry>
-    <entry name="lime_server_url" overwrite="true">https://lime.linphone.org/lime-server/lime-server.php</entry>
+    <entry name="lime_server_url" overwrite="true"></entry>
   </section>
   <section name="default_nat_policy_values">
     <entry name="stun_server" overwrite="true">stun.linphone.org</entry>
     <entry name="protocols" overwrite="true">stun,ice</entry>
   </section>
   <section name="misc">
-    <entry name="file_transfer_server_url" overwrite="true">https://www.linphone.org:444/lft.php</entry>
+    <entry name="file_transfer_server_url" overwrite="true"></entry>
   </section>
   <section name="sip">
-    <entry name="rls_uri" overwrite="true">sips:rls@sip.linphone.org</entry>
+    <entry name="rls_uri" overwrite="true">sips:rls@cprx1p1</entry>
   </section>
   <section name="assistant">
-    <entry name="domain" overwrite="true">sip.linphone.org</entry>
+    <entry name="domain" overwrite="true">cprx1p1</entry>
     <entry name="algorithm" overwrite="true">SHA-256</entry>
     <entry name="password_max_length" overwrite="true">-1</entry>
     <entry name="password_min_length" overwrite="true">1</entry>
@@ -43,7 +43,7 @@
     <entry name="username_max_length" overwrite="true">64</entry>
     <entry name="username_min_length" overwrite="true">1</entry>
     <entry name="username_regex" overwrite="true">^[a-z0-9+_.\-]*$</entry>
-    <entry name="xmlrpc_url" overwrite="true">https://subscribe.linphone.org:444/wizard.php</entry>
+    <entry name="xmlrpc_url" overwrite="true"></entry>
   </section>
   <section name="account_creator">
     <entry name="backend" overwrite="true">1</entry>

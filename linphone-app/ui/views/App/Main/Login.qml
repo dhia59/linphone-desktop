@@ -1,0 +1,138 @@
+import QtQuick 2.7
+import QtQuick.Controls 2.5
+import QtQuick.Layouts 1.3
+
+import Common 1.0
+import Linphone 1.0
+import ConstantsCpp 1.0
+
+import App.Styles 1.0
+import Common.Styles 1.0
+
+// =============================================================================
+
+Item {
+    ColumnLayout {
+        anchors.horizontalCenter:  parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        id: formComponent
+        property bool isValid: username.text.length &&
+                               password.text.length
+
+        width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
+        property alias usernameText: username.text
+        property alias passwordText: password.text
+        function getTransport(){
+            return transport.model[transport.currentIndex]
+        }
+
+        Form {
+            orientation: Qt.Vertical
+            width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
+           // anchors.horizontalCenter: parent.horizontalCenter
+
+            FormLine {
+                FormGroup {
+                    label: qsTr('usernameLabel')+  "  "+ AccountSettingsModel.registrationState
+
+                    TextField {
+                        id: username
+                    }
+                }
+
+
+            }
+
+
+            FormLine {
+                FormGroup {
+                    label: qsTr('passwordLabel')
+
+                    PasswordField {
+                        id: password
+                    }
+                }
+            }
+
+            FormLine {
+                FormGroup {
+                    label: qsTr('transportLabel')
+
+                    ComboBox {
+                        id: transport
+                        model: [ 'UDP', 'TCP', 'TLS']
+                    }
+                }
+            }
+        }
+
+        Row {
+            id: errorBlock
+
+            Text {
+                visible: false
+                id: errorLabel
+                text: "Non valide !!!"
+            }
+
+        }
+        Row {
+            id: buttons
+
+
+
+            spacing: AssistantAbstractViewStyle.buttons.spacing
+
+
+
+            TextButtonB {
+                id: mainActionButton
+              text:"Login"
+                onClicked:{
+                    if (!assistantModel.addOtherSipAccount({
+                        username:formComponent.usernameText,
+                        password: formComponent.passwordText,
+                        transport:formComponent.getTransport()
+                    })) {
+                     //   setText(qsTr('addOtherSipAccountError'))
+                    } else {
+                      //  setText('')
+                        window.setView('Home')
+                    }
+                }
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
+
+
+
+
+
+    }
+
+    AssistantModel {
+        id: assistantModel
+        configFilename: 'use-other-sip-account.rc'
+    }
+    Connections {
+        target: AccountSettingsModel
+
+        onAccountSettingsUpdated: {
+            console.log("stateeeee   "+ AccountSettingsModel.registrationState)
+            if(AccountSettingsModel.registrationState===0){
+                window.setView('Home')
+            }
+        }
+    }
+
+    Connections {
+        target: AccountSettingsModel
+
+        onFailedRegistration: {
+            console.log("Fail register test");
+            errorLabel.visible= true
+
+        }
+    }
+}
+

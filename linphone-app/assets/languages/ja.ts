@@ -129,6 +129,10 @@
         <source>commandLineOptionQtLogsOnly</source>
         <translation>アプリケーションからのログのみを表示</translation>
     </message>
+    <message>
+        <source>logout</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AssistantAbstractView</name>
@@ -1488,32 +1492,8 @@
         <translation>%1 の使用方法</translation>
     </message>
     <message>
-        <source>inviteDescription</source>
-        <translation>あなたの友達に%1を紹介.</translation>
-    </message>
-    <message>
-        <source>inviteTitle</source>
-        <translation>あなたの友人を招待する</translation>
-    </message>
-    <message>
-        <source>accountAssistantDescription</source>
-        <translation>%1アカウントを作成/管理する.</translation>
-    </message>
-    <message>
-        <source>accountAssistantTitle</source>
-        <translation>アカウントアシスタント</translation>
-    </message>
-    <message>
-        <source>assistantButton</source>
-        <translation>アシスタント</translation>
-    </message>
-    <message>
         <source>showTooltips</source>
         <translation>ツールチップを表示</translation>
-    </message>
-    <message>
-        <source>inviteButton</source>
-        <translation>招待</translation>
     </message>
 </context>
 <context>
@@ -1792,6 +1772,21 @@
     </message>
 </context>
 <context>
+    <name>Login</name>
+    <message>
+        <source>usernameLabel</source>
+        <translation type="unfinished">ユーザー名</translation>
+    </message>
+    <message>
+        <source>passwordLabel</source>
+        <translation type="unfinished">パスワード</translation>
+    </message>
+    <message>
+        <source>transportLabel</source>
+        <translation type="unfinished">トランスポート</translation>
+    </message>
+</context>
+<context>
     <name>MAC_APPLICATION_MENU</name>
     <message>
         <source>About %1</source>
@@ -1825,70 +1820,70 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <source>mainSearchBarPlaceholder</source>
-        <translation>連絡先を検索するか、通話もしくはチャットを始める…</translation>
-    </message>
-    <message>
-        <source>contactsEntry</source>
-        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation>連絡先</translation>
-    </message>
-    <message>
-        <source>autoAnswerStatus</source>
-        <translation>自動</translation>
-    </message>
-    <message>
-        <source>smartSearchBarTooltip</source>
-        <translation>インテリジェントな検索バーを使用して、音声通話やビデオ通話、メッセージの送信や新しい連絡先の追加を直接操作できます。あなたの友人のSIPアドレスやユーザー名を入力するだけです。</translation>
-    </message>
-    <message>
-        <source>newConferenceButton</source>
-        <translation>電話会議の開始</translation>
-    </message>
-    <message>
-        <source>newChatRoom</source>
-        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
-        <translation type="unfinished">チャットルームを開始</translation>
-    </message>
-    <message>
         <source>hideTimeline</source>
         <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation>タイムラインを非表示にする</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openTimeline</source>
         <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation>タイムラインを開く</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openHome</source>
         <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation>ホームを開く</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
-        <translation>ミーティング</translation>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainSearchBarPlaceholder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>smartSearchBarTooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newChatRoom</source>
+        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>newChatRoomUriMissing</source>
         <extracomment>&apos;Conference URI is not set. You have to change it in your account settings in order to create new group chats.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
-        <translation>会議URIが設定されていません。新しくグループチャットを作成するためには、アカウント設定で変更する必要があります。</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newConferenceButton</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>newConferenceUriMissing</source>
         <extracomment>&apos;Video conference URI is not set. You have to change it in your account settings in order to create new meetings.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
-        <translation>ビデオ会議のURIが設定されていません。新しく会議を作成するためには、アカウント設定で変更する必要があります。</translation>
-    </message>
-    <message>
-        <source>confirmFetchUri</source>
-        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
-        <translation>このURLから設定をダウンロードして適用しますか？</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>localContactsEntry</source>
         <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
-        <translation>ローカルの連絡先</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>contactsEntry</source>
+        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainWindowConferencesTitle</source>
+        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

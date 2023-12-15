@@ -129,6 +129,10 @@
         <source>commandLineOptionQtLogsOnly</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>logout</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AssistantAbstractView</name>
@@ -1488,32 +1492,8 @@
         <translation>如何使用 %1</translation>
     </message>
     <message>
-        <source>inviteDescription</source>
-        <translation>在 %1 上邀请您的朋友.</translation>
-    </message>
-    <message>
-        <source>inviteTitle</source>
-        <translation>邀请您的朋友</translation>
-    </message>
-    <message>
-        <source>accountAssistantDescription</source>
-        <translation>创建或管理您的 %1 账户.</translation>
-    </message>
-    <message>
-        <source>accountAssistantTitle</source>
-        <translation>账户助手</translation>
-    </message>
-    <message>
-        <source>assistantButton</source>
-        <translation>助手</translation>
-    </message>
-    <message>
         <source>showTooltips</source>
         <translation>显示工具提示</translation>
-    </message>
-    <message>
-        <source>inviteButton</source>
-        <translation>邀请</translation>
     </message>
 </context>
 <context>
@@ -1792,6 +1772,21 @@
     </message>
 </context>
 <context>
+    <name>Login</name>
+    <message>
+        <source>usernameLabel</source>
+        <translation type="unfinished">用户名</translation>
+    </message>
+    <message>
+        <source>passwordLabel</source>
+        <translation type="unfinished">密码</translation>
+    </message>
+    <message>
+        <source>transportLabel</source>
+        <translation type="unfinished">交通工具</translation>
+    </message>
+</context>
+<context>
     <name>MAC_APPLICATION_MENU</name>
     <message>
         <source>About %1</source>
@@ -1825,49 +1820,35 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <source>mainSearchBarPlaceholder</source>
-        <translation>搜索联系人，并开始通话或聊天…</translation>
-    </message>
-    <message>
-        <source>contactsEntry</source>
-        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation>联系人</translation>
-    </message>
-    <message>
-        <source>autoAnswerStatus</source>
-        <translation>自动</translation>
-    </message>
-    <message>
-        <source>smartSearchBarTooltip</source>
-        <translation>使用智能搜索栏直接开始语音或视频通话 、发送消息或添加新联系人。只需键入 您朋友的 SIP 地址或用户名即可。</translation>
-    </message>
-    <message>
-        <source>newConferenceButton</source>
-        <translation>开始电话会议</translation>
-    </message>
-    <message>
-        <source>newChatRoom</source>
-        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
-        <translation>创建聊天室</translation>
-    </message>
-    <message>
         <source>hideTimeline</source>
         <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation>隐藏时间线</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openTimeline</source>
         <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation>公开时间线</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openHome</source>
         <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation>开放主页</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainSearchBarPlaceholder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>smartSearchBarTooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newChatRoom</source>
+        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1876,18 +1857,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>newConferenceButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>newConferenceUriMissing</source>
         <extracomment>&apos;Video conference URI is not set. You have to change it in your account settings in order to create new meetings.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>confirmFetchUri</source>
-        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
+        <source>localContactsEntry</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>localContactsEntry</source>
-        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
+        <source>contactsEntry</source>
+        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainWindowConferencesTitle</source>
+        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

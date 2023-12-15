@@ -55,7 +55,9 @@ ApplicationWindow {
 	
 	Connections {
 		target: CoreManager
-		onCoreManagerInitialized: mainLoader.active = true
+        onCoreManagerInitialized: {
+                mainLoader.active = true
+        }
 	}
 	
 	Shortcut {
@@ -69,359 +71,381 @@ ApplicationWindow {
 		
 		active: false
 		anchors.fill: parent
-		
-		sourceComponent: ColumnLayout {
-			// Workaround to get these properties in `MainWindow.js`.
-			readonly property alias contactsEntry: contactsEntry
-			readonly property alias conferencesEntry: conferencesEntry
-			
-			readonly property alias contentLoader: contentLoader
-			readonly property alias menu: menu
-			
-			readonly property alias timeline: timeline
-			readonly property alias mainSearchBar: toolBar.mainSearchBar
-			
-			spacing: 0
-			
-			// -----------------------------------------------------------------------
-			
-			AuthenticationNotifier {
-				onAuthenticationRequested: Logic.handleAuthenticationRequested(authInfo, realm, sipAddress, userId)
-			}
-			
-			// -----------------------------------------------------------------------
-			// Toolbar properties.
-			// -----------------------------------------------------------------------
-			
-			ToolBar {
-				id: toolBar
-				property alias mainSearchBar : smartSearchBar
-				Layout.fillWidth: true
-				Layout.preferredHeight: MainWindowStyle.toolBar.height
-				hoverEnabled : true
-				
-				background: MainWindowStyle.toolBar.background
-				
-				RowLayout {
-					anchors {
-						fill: parent
-						leftMargin: MainWindowStyle.toolBar.leftMargin
-						rightMargin: MainWindowStyle.toolBar.rightMargin
-					}
-					spacing: MainWindowStyle.toolBar.spacing
-					
-					ActionButton {
-						icon: (leftPanel.visible?'panel_shown':'panel_hidden')
-						
-						//: 'Hide Timeline' : Tooltip for a button that hide the timeline
-						tooltipText : (leftPanel.visible?qsTr('hideTimeline')
-														  //: 'Open Timeline' : Tooltip for a button that open the timeline
-														:qsTr('openTimeline'))
-						iconSize: MainWindowStyle.panelButtonSize
-						//autoIcon: true
-						onClicked: leftPanel.visible = !leftPanel.visible
-					}
-					ActionButton {
-						id: home
-						isCustom: true
-						backgroundRadius: 4
-						colorSet: MainWindowStyle.buttons.home
-						//: 'Open Home' : Tooltip for a button that open the home view
-						tooltipText : qsTr('openHome')
-						//autoIcon: true
-						onClicked: setView('Home')
-					}
-					
-					AccountStatus {
-						id: accountStatus
-						betterIcon:true
-						Layout.preferredHeight: parent.height
-						Layout.preferredWidth: MainWindowStyle.accountStatus.width
-						Layout.fillWidth: false
-						
-						TooltipArea {
-							text: UtilsCpp.toDisplayString(AccountSettingsModel.sipAddress, SettingsModel.sipDisplayMode)
-							hoveringCursor: Qt.PointingHandCursor
-						}
-						
-						onClicked:  {
-							CoreManager.forceRefreshRegisters()
-							Logic.manageAccounts()
-						}
-					}
-					
-					ColumnLayout {
-						Layout.preferredWidth: MainWindowStyle.autoAnswerStatus.width
-						visible: SettingsModel.autoAnswerStatus
-						
-						Icon {
-							icon: SettingsModel.autoAnswerStatus
-								  ? 'auto_answer_custom'
-								  : ''
-							iconSize: MainWindowStyle.autoAnswerStatus.iconSize
-							overwriteColor: MainWindowStyle.autoAnswerStatus.text.colorModel.color
-						}
-						
-						Text {
-							clip: true
-							color: MainWindowStyle.autoAnswerStatus.text.colorModel.color
-							font {
-								bold: true
-								pointSize: MainWindowStyle.autoAnswerStatus.text.pointSize
-							}
-							text: qsTr('autoAnswerStatus')
-							visible: SettingsModel.autoAnswerStatus
-							width: parent.width
-						}
-					}
-					
-					SmartSearchBar {
-						id: smartSearchBar
-						
-						Layout.fillWidth: true
-						
-						maxMenuHeight: MainWindowStyle.searchBox.maxHeight
-						placeholderText: qsTr('mainSearchBarPlaceholder')
-						tooltipText: qsTr('smartSearchBarTooltip')
-						closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
-						
-						onAddContact: window.setView('ContactEdit', {
-														 sipAddress: sipAddress
-													 })
-						
-						onEntryClicked: {
-							if (SettingsModel.contactsEnabled) {
-								window.setView('ContactEdit', { sipAddress: entry.sipAddress })
-							} else {
-								CallsListModel.createChatRoom( '', false, [entry.sipAddress], true )
-							}
-						}
-						
-						onLaunchCall: CallsListModel.launchAudioCall(sipAddress, '')
-						onLaunchChat: CallsListModel.launchChat( sipAddress,0 )
-						onLaunchSecureChat: CallsListModel.launchChat( sipAddress,1 )
-						onLaunchVideoCall: CallsListModel.launchVideoCall(sipAddress, '')
-					}
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 90
-						colorSet: MainWindowStyle.buttons.telKeyad
-						onClicked: telKeypad.visible = !telKeypad.visible
-						toggled: telKeypad.visible
-					}					
-					ActionButton {
-						Layout.leftMargin: 30
-						isCustom: true
-						backgroundRadius: 4
-						colorSet: MainWindowStyle.buttons.newChatGroup
+        sourceComponent: testCompo
+    }
+    Component{
+        id: testCompo
+        //visible: true
+       ColumnLayout {
+            // Workaround to get these properties in `MainWindow.js`.
+            readonly property alias contactsEntry: contactsEntry
+            readonly property alias conferencesEntry: conferencesEntry
 
-						//: 'Start a chat room' : Tooltip to illustrate a button
-						tooltipText : qsTr('newChatRoom')
-						visible: (SettingsModel.standardChatEnabled || SettingsModel.secureChatEnabled)
-						enabled: SettingsModel.groupChatEnabled
-						onClicked: {
-							window.detachVirtualWindow()
-							window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
-													   ,{})
-						}
-						TooltipArea{
-							visible: !SettingsModel.groupChatEnabled
-							maxWidth: smartSearchBar.width
-							delay:0
-							//: 'Conference URI is not set. You have to change it in your account settings in order to create new group chats.' : Tooltip to warn the user to change a setting to activate an action.
-							text: qsTr('newChatRoomUriMissing')
-						}
-					}
-					
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 4
-						colorSet: MainWindowStyle.buttons.newConference
-						visible: SettingsModel.conferenceEnabled
-						enabled: SettingsModel.videoConferenceEnabled 
-						tooltipText:qsTr('newConferenceButton')
-						onClicked: {
-							window.detachVirtualWindow()
-							window.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
-													   ,{}, function (status) {
-														if( status){
-															setView('Conferences')
-														}
-													   })
-						}
-						TooltipArea{
-							visible: !SettingsModel.videoConferenceEnabled
-							maxWidth: smartSearchBar.width
-							delay:0
-							//: 'Video conference URI is not set. You have to change it in your account settings in order to create new meetings.' : Tooltip to warn the user to change a setting to activate an action.
-							text: qsTr('newConferenceUriMissing')
-						}
-					}
-					
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 4
-						colorSet: MainWindowStyle.buttons.burgerMenu
-						visible: Qt.platform.os !== 'osx'
-						
-						toggled: menuBar.isOpenned
-						onClicked: toggled ? menuBar.close() : menuBar.open()// a bit useless as Menu will depopup on losing focus but this code is kept for giving idea
-						MainWindowMenuBar {
-							id: menuBar
-							onDisplayRecordings: {
-								timeline.model.unselectAll()
-								setView('Recordings')
-							}
-						}
-					}
-				}
-			}
+            readonly property alias contentLoader: contentLoader
+            readonly property alias menu: menu
 
-			// -----------------------------------------------------------------------
-			// Content.
-			// -----------------------------------------------------------------------
-			
-			RowLayout {
-				Layout.fillHeight: true
-				Layout.fillWidth: true
-				
-				spacing: 0
-				
-				// Main menu.
-				ColumnLayout {
-					id:leftPanel
-					Layout.maximumWidth: MainWindowStyle.menu.width
-					Layout.preferredWidth: MainWindowStyle.menu.width
-					
-					spacing: 0
-					
-					ApplicationMenu {
-						id: menu
-						
-						defaultSelectedEntry: null
-						
-						entryHeight: MainWindowStyle.menu.height+10
-						entryWidth: MainWindowStyle.menu.width
-						
-						ApplicationMenuEntry {
-							id: contactsEntry
-							
-							icon: MainWindowStyle.menu.contacts.icon
-							iconSize: MainWindowStyle.menu.contacts.iconSize
-							overwriteColor: isSelected ? MainWindowStyle.menu.contacts.selectedColor.color : MainWindowStyle.menu.contacts.colorModel.color
-							name: LdapListModel.count > 0
-							//: 'Local contacts' : Contacts section label in main window when we have to specify that they are local to the application.
-															? qsTr('localContactsEntry').toUpperCase() 
-							//: 'Contacts' : Contacts section label in main waindow.
-															: qsTr('contactsEntry').toUpperCase()
-							
-							visible: SettingsModel.contactsEnabled
-							
-							onSelected: {
-								ContactsListModel.update()
-								timeline.model.unselectAll()
-								setView('Contacts')
-							}
-							onClicked:{
-								ContactsListModel.update()
-								setView('Contacts')
-							}
-							Icon{
-								anchors.right:parent.right
-								anchors.verticalCenter: parent.verticalCenter
-								anchors.rightMargin: 10
-								icon: MainWindowStyle.menu.direction.icon
-								overwriteColor: contactsEntry.overwriteColor
-								iconSize: MainWindowStyle.menu.direction.iconSize
-								
-							}
-						}
-						
-						ApplicationMenuEntry {
-							id: conferencesEntry
-							
-							icon: MainWindowStyle.menu.conferences.icon
-							iconSize: MainWindowStyle.menu.conferences.iconSize
-							overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-							//: 'Meetings' : Meeting title for main window.
-							name: qsTr('mainWindowConferencesTitle').toUpperCase()
-							visible: SettingsModel.videoConferenceEnabled && SettingsModel.conferenceEnabled
-							
-							onSelected: {
-								timeline.model.unselectAll()
-								setView('Conferences')
-							}
-							onClicked:{
-								setView('Conferences')
-							}
-							Icon{
-								anchors.right:parent.right
-								anchors.verticalCenter: parent.verticalCenter
-								anchors.rightMargin: 10
-								icon: MainWindowStyle.menu.direction.icon
-								overwriteColor: conferencesEntry.overwriteColor
-								iconSize: MainWindowStyle.menu.direction.iconSize
-							}
-						}
-					}
-					
-					// History.
-					Timeline {
-						id: timeline
-						
-						Layout.fillHeight: true
-						Layout.fillWidth: true
-						model: TimelineProxyModel{
-							listSource: TimelineProxyModel.Main
-							onListSourceChanged: console.log("listSourceChanged")
-						}
-						
-						onEntrySelected:{
-							if( entry ) {
-								if( entry.selected){
-									console.debug("Load conversation from entry selected on timeline")
-									window.setView('Conversation', {
-												chatRoomModel:entry.chatRoomModel
-											   })
-								}
-							}else{
-								
-								window.setView('Home', {})
-							}
-							menu.resetSelectedEntry()
-						}
-						onShowHistoryRequest: {
-							timeline.model.unselectAll()
-							window.setView('HistoryView')
-						}
-					}
-				}
-				
-				// Main content.
-				Item{
-					Layout.fillHeight: true
-					Layout.fillWidth: true
-					Loader {
-						id: contentLoader
-						
-						objectName: '__contentLoader'
-						
-						anchors.fill: parent
-						
-						source: 'Home.qml'
-						Component.onCompleted: if(accountStatus.noAccountConfigured) source= 'Assistant.qml' // default proxy = 1. Do not use this set diretly in source because of bindings that will override next setSource
-					}
-					TelKeypad {
-						anchors.right: parent.right
-						anchors.top: parent.top
-						id: telKeypad
-						onSendDtmf: smartSearchBar.text += dtmf
-						visible: SettingsModel.showTelKeypadAutomatically
-					}
-				}
-			}
-		}
-	}
+            readonly property alias timeline: timeline
+            readonly property alias mainSearchBar: toolBar.mainSearchBar
+
+            spacing: 0
+            // -----------------------------------------------------------------------
+
+            AuthenticationNotifier {
+                onAuthenticationRequested: Logic.handleAuthenticationRequested(authInfo, realm, sipAddress, userId)
+            }
+
+            // -----------------------------------------------------------------------
+            // Toolbar properties.
+            // -----------------------------------------------------------------------
+
+            ToolBar {
+                id: toolBar
+                property alias mainSearchBar : smartSearchBar
+                visible: AccountSettingsModel.registrationState===0
+                Layout.fillWidth: true
+                Layout.preferredHeight: MainWindowStyle.toolBar.height
+                hoverEnabled : true
+
+                background: MainWindowStyle.toolBar.background
+
+                RowLayout {
+                    anchors {
+                        fill: parent
+                        leftMargin: MainWindowStyle.toolBar.leftMargin
+                        rightMargin: MainWindowStyle.toolBar.rightMargin
+                    }
+                    spacing: MainWindowStyle.toolBar.spacing
+
+                    ActionButton {
+                        icon: (leftPanel.visible?'panel_shown':'panel_hidden')
+
+                        //: 'Hide Timeline' : Tooltip for a button that hide the timeline
+                        tooltipText : (leftPanel.visible?qsTr('hideTimeline')
+                                                          //: 'Open Timeline' : Tooltip for a button that open the timeline
+                                                        :qsTr('openTimeline'))
+                        iconSize: MainWindowStyle.panelButtonSize
+                        //autoIcon: true
+                        onClicked: leftPanel.visible = !leftPanel.visible
+                    }
+                    ActionButton {
+                        id: home
+                        isCustom: true
+                        backgroundRadius: 4
+                        colorSet: MainWindowStyle.buttons.home
+                        //: 'Open Home' : Tooltip for a button that open the home view
+                        tooltipText : qsTr('openHome')
+                        //autoIcon: true
+                        onClicked: setView('Home')
+                    }
+
+                    AccountStatus {
+                        id: accountStatus
+                        betterIcon:true
+                        Layout.preferredHeight: parent.height
+                        Layout.preferredWidth: MainWindowStyle.accountStatus.width
+                        Layout.fillWidth: false
+
+                        TooltipArea {
+                            text: UtilsCpp.toDisplayString(AccountSettingsModel.sipAddress, SettingsModel.sipDisplayMode)
+                            hoveringCursor: Qt.PointingHandCursor
+                        }
+
+                        onClicked:  {
+                            CoreManager.forceRefreshRegisters()
+                            Logic.manageAccounts()
+                        }
+                    }
+
+                    ColumnLayout {
+                        Layout.preferredWidth: MainWindowStyle.autoAnswerStatus.width
+                        visible: SettingsModel.autoAnswerStatus
+
+                        Icon {
+                            icon: SettingsModel.autoAnswerStatus
+                                  ? 'auto_answer_custom'
+                                  : ''
+                            iconSize: MainWindowStyle.autoAnswerStatus.iconSize
+                            overwriteColor: MainWindowStyle.autoAnswerStatus.text.colorModel.color
+                        }
+
+                        Text {
+                            clip: true
+                            color: MainWindowStyle.autoAnswerStatus.text.colorModel.color
+                            font {
+                                bold: true
+                                pointSize: MainWindowStyle.autoAnswerStatus.text.pointSize
+                            }
+                            text: qsTr('autoAnswerStatus')
+                            visible: SettingsModel.autoAnswerStatus
+                            width: parent.width
+                        }
+                    }
+
+                    SmartSearchBar {
+                        id: smartSearchBar
+
+                        Layout.fillWidth: true
+
+                        maxMenuHeight: MainWindowStyle.searchBox.maxHeight
+                        placeholderText: qsTr('mainSearchBarPlaceholder')
+                        tooltipText: qsTr('smartSearchBarTooltip')
+                        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+
+                        onAddContact: window.setView('ContactEdit', {
+                                                         sipAddress: sipAddress
+                                                     })
+
+                        onEntryClicked: {
+                            if (SettingsModel.contactsEnabled) {
+                                window.setView('ContactEdit', { sipAddress: entry.sipAddress })
+                            } else {
+                                CallsListModel.createChatRoom( '', false, [entry.sipAddress], true )
+                            }
+                        }
+
+                        onLaunchCall: CallsListModel.launchAudioCall(sipAddress, '')
+                        onLaunchChat: CallsListModel.launchChat( sipAddress,0 )
+                        onLaunchSecureChat: CallsListModel.launchChat( sipAddress,1 )
+                        onLaunchVideoCall: CallsListModel.launchVideoCall(sipAddress, '')
+                    }
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 90
+                        colorSet: MainWindowStyle.buttons.telKeyad
+                        onClicked: telKeypad.visible = !telKeypad.visible
+                        toggled: telKeypad.visible
+                    }
+                    ActionButton {
+                        Layout.leftMargin: 30
+                        isCustom: true
+                        backgroundRadius: 4
+                        colorSet: MainWindowStyle.buttons.newChatGroup
+
+                        //: 'Start a chat room' : Tooltip to illustrate a button
+                        tooltipText : qsTr('newChatRoom')
+                        visible: (SettingsModel.standardChatEnabled || SettingsModel.secureChatEnabled)
+                        enabled: SettingsModel.groupChatEnabled
+                        onClicked: {
+                            window.detachVirtualWindow()
+                            window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
+                                                       ,{})
+                        }
+                        TooltipArea{
+                            visible: !SettingsModel.groupChatEnabled
+                            maxWidth: smartSearchBar.width
+                            delay:0
+                            //: 'Conference URI is not set. You have to change it in your account settings in order to create new group chats.' : Tooltip to warn the user to change a setting to activate an action.
+                            text: qsTr('newChatRoomUriMissing')
+                        }
+                    }
+
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 4
+                        colorSet: MainWindowStyle.buttons.newConference
+                        visible: SettingsModel.conferenceEnabled
+                        enabled: SettingsModel.videoConferenceEnabled
+                        tooltipText:qsTr('newConferenceButton')
+                        onClicked: {
+                            window.detachVirtualWindow()
+                            window.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
+                                                       ,{}, function (status) {
+                                                        if( status){
+                                                            setView('Conferences')
+                                                        }
+                                                       })
+                        }
+                        TooltipArea{
+                            visible: !SettingsModel.videoConferenceEnabled
+                            maxWidth: smartSearchBar.width
+                            delay:0
+                            //: 'Video conference URI is not set. You have to change it in your account settings in order to create new meetings.' : Tooltip to warn the user to change a setting to activate an action.
+                            text: qsTr('newConferenceUriMissing')
+                        }
+                    }
+
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 4
+                        colorSet: MainWindowStyle.buttons.burgerMenu
+                        visible: Qt.platform.os !== 'osx'
+
+                        toggled: menuBar.isOpenned
+                        onClicked: toggled ? menuBar.close() : menuBar.open()// a bit useless as Menu will depopup on losing focus but this code is kept for giving idea
+                        MainWindowMenuBar {
+                            id: menuBar
+                            onDisplayRecordings: {
+                                timeline.model.unselectAll()
+                                setView('Recordings')
+                            }
+                        }
+                    }
+                }
+            }
+
+            // -----------------------------------------------------------------------
+            // Content.
+            // -----------------------------------------------------------------------
+
+            RowLayout {
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                spacing: 0
+
+                // Main menu.
+                ColumnLayout {
+                    id:leftPanel
+                    visible: AccountSettingsModel.registrationState===0
+                    Layout.maximumWidth: MainWindowStyle.menu.width
+                    Layout.preferredWidth: MainWindowStyle.menu.width
+
+                    spacing: 0
+
+                    ApplicationMenu {
+                        id: menu
+
+                        defaultSelectedEntry: null
+
+                        entryHeight: MainWindowStyle.menu.height+10
+                        entryWidth: MainWindowStyle.menu.width
+
+                        ApplicationMenuEntry {
+                            id: contactsEntry
+
+                            icon: MainWindowStyle.menu.contacts.icon
+                            iconSize: MainWindowStyle.menu.contacts.iconSize
+                            overwriteColor: isSelected ? MainWindowStyle.menu.contacts.selectedColor.color : MainWindowStyle.menu.contacts.colorModel.color
+                            name: LdapListModel.count > 0
+                            //: 'Local contacts' : Contacts section label in main window when we have to specify that they are local to the application.
+                                                            ? qsTr('localContactsEntry').toUpperCase()
+                            //: 'Contacts' : Contacts section label in main waindow.
+                                                            : qsTr('contactsEntry').toUpperCase()
+
+                            visible: SettingsModel.contactsEnabled
+
+                            onSelected: {
+                                ContactsListModel.update()
+                                timeline.model.unselectAll()
+                                setView('Contacts')
+                            }
+                            onClicked:{
+                                ContactsListModel.update()
+                                setView('Contacts')
+                            }
+                            Icon{
+                                anchors.right:parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.rightMargin: 10
+                                icon: MainWindowStyle.menu.direction.icon
+                                overwriteColor: contactsEntry.overwriteColor
+                                iconSize: MainWindowStyle.menu.direction.iconSize
+
+                            }
+                        }
+
+                        ApplicationMenuEntry {
+                            id: conferencesEntry
+
+                            icon: MainWindowStyle.menu.conferences.icon
+                            iconSize: MainWindowStyle.menu.conferences.iconSize
+                            overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
+                            //: 'Meetings' : Meeting title for main window.
+                            name: qsTr('mainWindowConferencesTitle').toUpperCase()
+                            visible: SettingsModel.videoConferenceEnabled && SettingsModel.conferenceEnabled
+
+                            onSelected: {
+                                timeline.model.unselectAll()
+                                setView('Conferences')
+                            }
+                            onClicked:{
+                                setView('Conferences')
+                            }
+                            Icon{
+                                anchors.right:parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.rightMargin: 10
+                                icon: MainWindowStyle.menu.direction.icon
+                                overwriteColor: conferencesEntry.overwriteColor
+                                iconSize: MainWindowStyle.menu.direction.iconSize
+                            }
+                        }
+                    }
+
+                    // History.
+                    Timeline {
+                        id: timeline
+
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        model: TimelineProxyModel{
+                            listSource: TimelineProxyModel.Main
+                            onListSourceChanged: console.log("listSourceChanged")
+                        }
+
+                        onEntrySelected:{
+                            if( entry ) {
+                                if( entry.selected){
+                                    console.debug("Load conversation from entry selected on timeline")
+                                    window.setView('Conversation', {
+                                                chatRoomModel:entry.chatRoomModel
+                                               })
+                                }
+                            }else{
+
+                                window.setView('Home', {})
+                            }
+                            menu.resetSelectedEntry()
+                        }
+                        onShowHistoryRequest: {
+                            timeline.model.unselectAll()
+                            window.setView('HistoryView')
+                        }
+                    }
+                }
+
+                // Main content.
+                Item{
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    Loader {
+                        id: contentLoader
+
+                        objectName: '__contentLoader'
+
+                        anchors.fill: parent
+
+                        source:AccountSettingsModel.registrationState===0? 'Home.qml' :'Login.qml'
+                    }
+                    TelKeypad {
+                        anchors.right: parent.right
+                        anchors.top: parent.top
+                        id: telKeypad
+                        onSendDtmf: smartSearchBar.text += dtmf
+                        visible: SettingsModel.showTelKeypadAutomatically
+                    }
+                    Connections {
+                        target: AccountSettingsModel
+
+                        onRegistrationStateChanged: {
+                            if(AccountSettingsModel.registrationState!==0)
+                                contentLoader.setSource("Login.qml")
+                            }
+
+
+                        }
+                    }
+
+                }
+
+        }
+
+//       BusyIndicator {
+//                       anchors.fill:parent
+//                       running:true
+//                       color: AccountStatusStyle.busyColor.color
+//                   }
+    }
 	Loader{
 		id: customMenuBar
 		active:Qt.platform.os === 'osx'
@@ -433,11 +457,13 @@ ApplicationWindow {
 			}
 		}
 	}
+
 	Component.onCompleted: if(Qt.platform.os === 'osx') menuBar = customMenuBar
 	// ---------------------------------------------------------------------------
 	// Url handlers.
 	// ---------------------------------------------------------------------------
-	
+
+
 	Connections {
 		target: UrlHandlers
 		

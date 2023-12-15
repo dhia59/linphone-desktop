@@ -309,6 +309,12 @@ void App::stop(){
 		delete mParser;
 }
 // -----------------------------------------------------------------------------
+void App::handleLogout() {
+	qDebug() << "handleLogout called";
+	if (CoreManager::getInstance()->getAccountList().empty()) {
+		QMetaObject::invokeMethod(getMainWindow(), "setView", Q_ARG(QVariant, Constants::AssistantViewName), Q_ARG(QVariant, QString("")), Q_ARG(QVariant, QString("")));
+	}
+}
 
 QStringList App::cleanParserKeys(QCommandLineParser * parser, QStringList keys){
 	QStringList oldArguments = parser->optionNames();
@@ -874,7 +880,14 @@ void App::setTrayIcon () {
 	
 	QAction *quitAction = new QAction(tr("quit"), root);
 	root->connect(quitAction, &QAction::triggered, this, &App::quit);
-	
+	///logout
+	QAction *logoutAction = new QAction(tr("logout"), root);
+	root->connect(logoutAction, &QAction::triggered, this,[=]() {
+		CoreManager *coreManager = CoreManager::getInstance();
+		AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
+		accountSettingsModel->logout();
+		//connect(accountSettingsModel, &AccountSettingsModel::accountLogout, this, &App::handleLogout);
+		});
 	// trayIcon: Left click actions.
 	static QMenu *menu = new QMenu();// Static : Workaround about a bug with setContextMenu where it cannot be called more than once.
 	root->connect(systemTrayIcon, &QSystemTrayIcon::activated, [root](
@@ -897,6 +910,7 @@ void App::setTrayIcon () {
 	menu->addAction(restoreAction);
 	menu->addSeparator();
 	menu->addAction(quitAction);
+	menu->addAction(logoutAction);
 	if(!mSystemTrayIcon)
 		systemTrayIcon->setContextMenu(menu);// This is a Qt bug. We cannot call setContextMenu more than once. So we have to keep an instance of the menu.
 	systemTrayIcon->setIcon(QIcon(Constants::WindowIconPath));
@@ -1108,9 +1122,9 @@ void App::openAppAfterInit (bool mustBeIconified) {
 #endif // ifndef __APPLE__
 	
 	// Display Assistant if it does not exist proxy config.
-	if (coreManager->getAccountList().empty())
-		QMetaObject::invokeMethod(mainWindow, "setView", Q_ARG(QVariant, Constants::AssistantViewName), Q_ARG(QVariant, QString("")), Q_ARG(QVariant, QString("")));
-	
+	//if (coreManager->getAccountList().empty())
+	//	QMetaObject::invokeMethod(mainWindow, "setView", Q_ARG(QVariant, Constants::AssistantViewName), Q_ARG(QVariant, QString("")), Q_ARG(QVariant, QString("")));
+
 #ifdef ENABLE_UPDATE_CHECK
 	QTimer *timer = new QTimer(mEngine);
 	timer->setInterval(Constants::VersionUpdateCheckInterval);

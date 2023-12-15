@@ -43,6 +43,17 @@ Item {
 			Qt.quit()
 		}
 	}
+    Shortcut {
+        id: logoutShortcut
+
+        context: Qt.ApplicationShortcut
+        //sequence: StandardKey.
+
+        onActivated: {
+            console.info("Logouttttt");
+            AccountSettingsModel.logout()
+        }
+    }
 	
 	Shortcut {
 		id: aboutShortcut
@@ -94,7 +105,11 @@ Item {
 			
 			onTriggered: aboutShortcut.onActivated()
 		}
-		
+        MenuItem {
+            text: "Logout"
+
+            onTriggered: logoutShortcut.onActivated()
+        }
 		MenuItem {
 			text: qsTr('quit')
 			

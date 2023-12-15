@@ -129,6 +129,10 @@
         <source>commandLineOptionQtLogsOnly</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>logout</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AssistantAbstractView</name>
@@ -1488,32 +1492,8 @@ Sunucu url&apos;si yapılandırılmadı.</translation>
         <translation>%1 NASIL KULLANILIR</translation>
     </message>
     <message>
-        <source>inviteDescription</source>
-        <translation>%1&apos;daki arkadaşlarınızı davet edin.</translation>
-    </message>
-    <message>
-        <source>inviteTitle</source>
-        <translation>ARKADAŞLARINIZI DAVET EDİN</translation>
-    </message>
-    <message>
-        <source>accountAssistantDescription</source>
-        <translation>%1 hesabı oluştur veya yönet.</translation>
-    </message>
-    <message>
-        <source>accountAssistantTitle</source>
-        <translation>HESAP YARDIMCISI</translation>
-    </message>
-    <message>
-        <source>assistantButton</source>
-        <translation>YARDIMCI</translation>
-    </message>
-    <message>
         <source>showTooltips</source>
         <translation>Bilgi çubuklarını göster</translation>
-    </message>
-    <message>
-        <source>inviteButton</source>
-        <translation>DAVET ET</translation>
     </message>
 </context>
 <context>
@@ -1792,6 +1772,21 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
 </context>
 <context>
+    <name>Login</name>
+    <message>
+        <source>usernameLabel</source>
+        <translation type="unfinished">Kullanıcı adı</translation>
+    </message>
+    <message>
+        <source>passwordLabel</source>
+        <translation type="unfinished">Parola</translation>
+    </message>
+    <message>
+        <source>transportLabel</source>
+        <translation type="unfinished">Taşıma</translation>
+    </message>
+</context>
+<context>
     <name>MAC_APPLICATION_MENU</name>
     <message>
         <source>About %1</source>
@@ -1825,49 +1820,35 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainWindow</name>
     <message>
-        <source>mainSearchBarPlaceholder</source>
-        <translation>Kişi ara, çağrı veya sohbet başlat…</translation>
-    </message>
-    <message>
-        <source>contactsEntry</source>
-        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation>KİŞİLER</translation>
-    </message>
-    <message>
-        <source>autoAnswerStatus</source>
-        <translation>kendiliğinden</translation>
-    </message>
-    <message>
-        <source>smartSearchBarTooltip</source>
-        <translation>Sesli veya görüntülü çağrı başlatmak, ileti göndermek ve kişi eklemek için akıllı arama çubuğunu kullanın. Yalnızca arkadaşınızın SIP adresini veya kullanıcı adını girin.</translation>
-    </message>
-    <message>
-        <source>newConferenceButton</source>
-        <translation>Konferans aramasını başlat</translation>
-    </message>
-    <message>
-        <source>newChatRoom</source>
-        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
-        <translation>Konuşma odası başlat</translation>
-    </message>
-    <message>
         <source>hideTimeline</source>
         <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation>Zaman Çizelgesini Gizle</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openTimeline</source>
         <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation>Zaman Çizelgesini Aç</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openHome</source>
         <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation>Evi Aç</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainSearchBarPlaceholder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>smartSearchBarTooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newChatRoom</source>
+        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1876,18 +1857,32 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>newConferenceButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>newConferenceUriMissing</source>
         <extracomment>&apos;Video conference URI is not set. You have to change it in your account settings in order to create new meetings.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>confirmFetchUri</source>
-        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
+        <source>localContactsEntry</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>localContactsEntry</source>
-        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
+        <source>contactsEntry</source>
+        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainWindowConferencesTitle</source>
+        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

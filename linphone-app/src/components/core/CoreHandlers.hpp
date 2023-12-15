@@ -71,7 +71,7 @@ private:
 			const std::shared_ptr<linphone::Account> & account,
 			linphone::RegistrationState state,
 			const std::string & message) override;
-	
+
 	void onAuthenticationRequested (
 			const std::shared_ptr<linphone::Core> &core,
 			const std::shared_ptr<linphone::AuthInfo> &authInfo,

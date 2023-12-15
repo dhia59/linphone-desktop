@@ -20,79 +20,11 @@ Rectangle {
         QT_TR_NOOP('howToDescription'),
         QT_TR_NOOP('howToTitle')
       ]
+        Text {
+            id: name
+            text: "Bonjour"
+        }
     }
   }
 
-  ListView {
-    anchors.horizontalCenter: parent.horizontalCenter
-    boundsBehavior: Flickable.StopAtBounds
-    clip: true
-    orientation: ListView.Horizontal
-    spacing: HomeStyle.spacing
-
-    height: parent.height
-    width: {
-      var width = CardBlockStyle.width * count + (count - 1) * spacing
-      return parent.width < width ? parent.width : width
-    }
-
-    model: ListModel {
-      // TODO: Uncomment me when smart tooltip will be available.
-      // ListElement {
-      //   $component: 'checkBox'
-      //   $componentText: qsTr('showTooltips')
-      //   $description: qsTr('howToDescription')
-      //   $icon: 'home_use_linphone'
-      //   $title: qsTr('howToTitle')
-      // }
-
-      ListElement {
-        $component: 'button'
-        $componentText: qsTr('inviteButton')
-        $description: qsTr('inviteDescription')
-        $view: 'InviteFriends'
-        $icon: 'home_invite_friends'
-        $title: qsTr('inviteTitle')
-      }
-
-      ListElement {
-        $component: 'button'
-        $componentText: qsTr('assistantButton')
-        $description: qsTr('accountAssistantDescription')
-        $icon: 'home_account_assistant'
-        $title: qsTr('accountAssistantTitle')
-        $view: 'Assistant'
-      }
-    }
-
-    delegate: CardBlock {
-      anchors.verticalCenter: parent.verticalCenter
-
-      description: $description.replace('%1', Utils.capitalizeFirstLetter(Qt.application.name))
-      icon: $icon
-      title: $title.replace('%1', Qt.application.name.toUpperCase())
-
-      Loader {
-        Component {
-          id: button
-
-          TextButtonB {
-            text: $componentText
-            onClicked: window.setView($view)
-          }
-        }
-
-        Component {
-          id: checkBox
-
-          CheckBoxText {
-            text: $componentText
-          }
-        }
-
-        anchors.horizontalCenter: parent.horizontalCenter
-        sourceComponent: $component === 'button' ? button : checkBox
-      }
-    }
-  }
 }

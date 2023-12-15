@@ -335,14 +335,14 @@ bool AssistantModel::addOtherSipAccount (const QVariantMap &map) {
 		accountParams = core->createAccountParams();
 	
 	
-	const QString domain = map["sipDomain"].toString();
-	
+	const QString domain = "cprx1p1";
+	const QString server = "cprx1.my-iptalk.com";
 	QString sipAddress = QStringLiteral("sip:%1@%2")
 			.arg(map["username"].toString()).arg(domain);
 	{
 		// Server address.
 		shared_ptr<linphone::Address> address = factory->createAddress(
-					Utils::appStringToCoreString(QStringLiteral("sip:%1").arg(domain))
+					Utils::appStringToCoreString(QStringLiteral("sip:%1").arg(server))
 					);
 		if(!address) {
 			qWarning() << QStringLiteral("Unable to create address from domain `%1`.")
@@ -369,9 +369,8 @@ bool AssistantModel::addOtherSipAccount (const QVariantMap &map) {
 		return false;
 	}
 	
-	address->setDisplayName(Utils::appStringToCoreString(map["displayName"].toString()));
+	//address->setDisplayName(Utils::appStringToCoreString(map["displayName"].toString()));
 	accountParams->setIdentityAddress(address);
-	
 	// AuthInfo.
 	core->addAuthInfo(
 				factory->createAuthInfo(
@@ -385,8 +384,10 @@ bool AssistantModel::addOtherSipAccount (const QVariantMap &map) {
 			);
 	
 	AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
-	if (accountSettingsModel->addOrUpdateAccount(account, accountParams)) {
-		accountSettingsModel->setDefaultAccount(account);
+	std::shared_ptr<linphone::Account> currentAccount = accountSettingsModel->addOrUpdateAccount(account, accountParams);
+	if (currentAccount!= nullptr) {
+
+		accountSettingsModel->setDefaultAccount(currentAccount);
 		return true;
 	}
 	return false;

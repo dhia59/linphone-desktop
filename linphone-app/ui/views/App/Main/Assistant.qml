@@ -34,8 +34,8 @@ Item {
 		anchors.fill: parent
 		
 		viewsPath: 'qrc:/ui/views/App/Main/Assistant/'
-		initialItem: viewsPath + 'AssistantHome.qml'
+        initialItem:'Recordings.qml'
 		
-		onExit:window.setView('Home')
+        onExit:window.setView('Recordings')
 	}
 }

@@ -129,6 +129,10 @@
         <source>commandLineOptionQtLogsOnly</source>
         <translation>Tisknout pouze logy z aplikace</translation>
     </message>
+    <message>
+        <source>logout</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AssistantAbstractView</name>
@@ -1508,32 +1512,8 @@ Adresa URL není nakonfigurována.</translation>
         <translation>JAK POUŽÍVAT %1</translation>
     </message>
     <message>
-        <source>inviteDescription</source>
-        <translation>Pozvěte přátele na %1.</translation>
-    </message>
-    <message>
-        <source>inviteTitle</source>
-        <translation>POZVAT PŘÁTELE</translation>
-    </message>
-    <message>
-        <source>accountAssistantDescription</source>
-        <translation>Vytvoření nebo správa účtu %1.</translation>
-    </message>
-    <message>
-        <source>accountAssistantTitle</source>
-        <translation>ASISTENT ÚČTU</translation>
-    </message>
-    <message>
-        <source>assistantButton</source>
-        <translation>PRŮVODCE</translation>
-    </message>
-    <message>
         <source>showTooltips</source>
         <translation>Zobrazit popisky</translation>
-    </message>
-    <message>
-        <source>inviteButton</source>
-        <translation>POZVAT</translation>
     </message>
 </context>
 <context>
@@ -1812,6 +1792,21 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
 </context>
 <context>
+    <name>Login</name>
+    <message>
+        <source>usernameLabel</source>
+        <translation type="unfinished">Uživatelské jméno</translation>
+    </message>
+    <message>
+        <source>passwordLabel</source>
+        <translation type="unfinished">Heslo</translation>
+    </message>
+    <message>
+        <source>transportLabel</source>
+        <translation type="unfinished">Přenos</translation>
+    </message>
+</context>
+<context>
     <name>MAC_APPLICATION_MENU</name>
     <message>
         <source>About %1</source>
@@ -1845,70 +1840,70 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainWindow</name>
     <message>
-        <source>mainSearchBarPlaceholder</source>
-        <translation>Vyhledejte kontakt, začněte hovor nebo chat…</translation>
-    </message>
-    <message>
-        <source>contactsEntry</source>
-        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation>KONTAKTY</translation>
-    </message>
-    <message>
-        <source>autoAnswerStatus</source>
-        <translation>automaticky</translation>
-    </message>
-    <message>
-        <source>smartSearchBarTooltip</source>
-        <translation>Pomocí inteligentního vyhledávacího panelu můžete přímo zahájit audio a videohovory, poslat zprávu nebo přidat nový kontakt. Stačí zadat adresu SIP nebo uživatelské jméno přítele.</translation>
-    </message>
-    <message>
-        <source>newConferenceButton</source>
-        <translation>Zahájit schůzku</translation>
-    </message>
-    <message>
-        <source>newChatRoom</source>
-        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
-        <translation>Založit chatovací místnost</translation>
-    </message>
-    <message>
         <source>hideTimeline</source>
         <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation>Skrýt události</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openTimeline</source>
         <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation>Otevřít časovou osu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>openHome</source>
         <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation>Domů</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
-        <translation>Schůzky</translation>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainSearchBarPlaceholder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>smartSearchBarTooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newChatRoom</source>
+        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>newChatRoomUriMissing</source>
         <extracomment>&apos;Conference URI is not set. You have to change it in your account settings in order to create new group chats.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
-        <translation>URI konference není nastaven. Abyste mohli vytvářet nové skupinové chaty, musíte jej změnit v nastavení účtu.</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newConferenceButton</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>newConferenceUriMissing</source>
         <extracomment>&apos;Video conference URI is not set. You have to change it in your account settings in order to create new meetings.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
-        <translation>URI videokonference není nastaven. Abyste mohli vytvářet nové konference, musíte jej změnit v nastavení účtu.</translation>
-    </message>
-    <message>
-        <source>confirmFetchUri</source>
-        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
-        <translation>Chcete stáhnout a použít konfiguraci z této adresy URL?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>localContactsEntry</source>
         <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
-        <translation>Místní kontakty</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>contactsEntry</source>
+        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainWindowConferencesTitle</source>
+        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

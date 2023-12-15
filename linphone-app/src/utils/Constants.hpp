@@ -151,7 +151,7 @@ public:
 	static constexpr char AttachVirtualWindowMethodName[] = "attachVirtualWindow";
 	static constexpr char AboutPath[] = "qrc:/ui/views/App/Main/Dialogs/About.qml";
 	
-	static constexpr char AssistantViewName[] = "Assistant";
+	static constexpr char AssistantViewName[] = "Login";
 	
 	static constexpr char QtDomain[] = "qt";
 	static constexpr char SrcPattern[] = "/src/";

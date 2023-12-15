@@ -10,14 +10,14 @@
     <entry name="quality_reporting_collector" overwrite="true"></entry>
     <entry name="quality_reporting_enabled" overwrite="true">0</entry>
     <entry name="quality_reporting_interval" overwrite="true">0</entry>
-    <entry name="reg_expires" overwrite="true">3600</entry>
+    <entry name="reg_expires" overwrite="true">540</entry>
     <entry name="reg_identity" overwrite="true"></entry>
     <entry name="reg_proxy" overwrite="true"></entry>
     <entry name="reg_route" overwrite="true"></entry>
     <entry name="reg_sendregister" overwrite="true">1</entry>
     <entry name="nat_policy_ref" overwrite="true"></entry>
     <entry name="refkey" overwrite="true"></entry>
-    <entry name="realm" overwrite="true"></entry>
+    <entry name="realm" overwrite="true">cprx1.my-iptalk.com</entry>
     <entry name="conference_factory_uri" overwrite="true"></entry>
     <entry name="audio_video_conference_factory_uri" overwrite="true"></entry>
     <entry name="lime_server_url" overwrite="true"></entry>
