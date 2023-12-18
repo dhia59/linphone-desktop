@@ -12,7 +12,7 @@ Project.sln.lnk
 WORK
 OUTPUT
 Makefile
-CMakeLists.txt.user
+#CMakeLists.txt.user
 build*
 build-*-Debug
 build-*-Default

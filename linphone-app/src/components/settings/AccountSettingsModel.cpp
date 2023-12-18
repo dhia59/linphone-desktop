@@ -33,37 +33,37 @@
 #include "SettingsModel.hpp"
 
 
-// =============================================================================
+ // =============================================================================
 
 using namespace std;
 
-static inline AccountSettingsModel::RegistrationState mapLinphoneRegistrationStateToUi (linphone::RegistrationState state) {
+static inline AccountSettingsModel::RegistrationState mapLinphoneRegistrationStateToUi(linphone::RegistrationState state) {
 	switch (state) {
-		case linphone::RegistrationState::None:
-		case linphone::RegistrationState::Cleared:
-		case linphone::RegistrationState::Failed:
-			return AccountSettingsModel::RegistrationStateNotRegistered;
-			
-		case linphone::RegistrationState::Progress:
-			return AccountSettingsModel::RegistrationStateInProgress;
-			
-		case linphone::RegistrationState::Ok:
-			break;
+	case linphone::RegistrationState::None:
+	case linphone::RegistrationState::Cleared:
+	case linphone::RegistrationState::Failed:
+		return AccountSettingsModel::RegistrationStateNotRegistered;
+
+	case linphone::RegistrationState::Progress:
+		return AccountSettingsModel::RegistrationStateInProgress;
+
+	case linphone::RegistrationState::Ok:
+		break;
 	}
-	
+
 	return AccountSettingsModel::RegistrationStateRegistered;
 }
 
 // -----------------------------------------------------------------------------
 
-AccountSettingsModel::AccountSettingsModel (QObject *parent) : QObject(parent) {
+AccountSettingsModel::AccountSettingsModel(QObject *parent) : QObject(parent) {
 	CoreManager *coreManager = CoreManager::getInstance();
 	QObject::connect(
-				coreManager->getHandlers().get(), &CoreHandlers::registrationStateChanged,
-				this, &AccountSettingsModel::handleRegistrationStateChanged
-				);
+		coreManager->getHandlers().get(), &CoreHandlers::registrationStateChanged,
+		this, &AccountSettingsModel::handleRegistrationStateChanged
+	);
 	//QObject::connect(coreManager, &CoreManager::eventCountChanged, this, [this]() { emit accountSettingsUpdated(); });
-	
+
 	QObject::connect(this, &AccountSettingsModel::accountSettingsUpdated, this, &AccountSettingsModel::usernameChanged);
 	QObject::connect(this, &AccountSettingsModel::accountSettingsUpdated, this, &AccountSettingsModel::sipAddressChanged);
 	QObject::connect(this, &AccountSettingsModel::accountSettingsUpdated, this, &AccountSettingsModel::fullSipAddressChanged);
@@ -80,28 +80,28 @@ AccountSettingsModel::AccountSettingsModel (QObject *parent) : QObject(parent) {
 
 // -----------------------------------------------------------------------------
 
-shared_ptr<const linphone::Address> AccountSettingsModel::getUsedSipAddress () const {
+shared_ptr<const linphone::Address> AccountSettingsModel::getUsedSipAddress() const {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Account> account = core->getDefaultAccount();
 	return account ? account->getParams()->getIdentityAddress() : core->createPrimaryContactParsed();
 }
 
- std::shared_ptr<linphone::Account> AccountSettingsModel::findAccount(shared_ptr<const linphone::Address> address) const {
+std::shared_ptr<linphone::Account> AccountSettingsModel::findAccount(shared_ptr<const linphone::Address> address) const {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	list<shared_ptr<linphone::Account>> accounts = CoreManager::getInstance()->getAccountList();
-	for(auto account : accounts){
-		if(account && account->getContactAddress() && account->getContactAddress()->weakEqual(address))
+	for (auto account : accounts) {
+		if (account && account->getContactAddress() && account->getContactAddress()->weakEqual(address))
 			return account;
 	}
 	return nullptr;
 }
 
-void AccountSettingsModel::setUsedSipAddress (const shared_ptr<const linphone::Address> &address) {
+void AccountSettingsModel::setUsedSipAddress(const shared_ptr<const linphone::Address> &address) {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Account> account = core->getDefaultAccount();
-	if( account){
+	if (account) {
 		auto params = account->getParams()->clone();
-		if(!params->setIdentityAddress(address)) {
+		if (!params->setIdentityAddress(address)) {
 			account->setParams(params);
 			emit sipAddressChanged();
 		}
@@ -111,62 +111,62 @@ void AccountSettingsModel::setUsedSipAddress (const shared_ptr<const linphone::A
 	emit sipAddressChanged();
 }
 
-QString AccountSettingsModel::getUsedSipAddressAsStringUriOnly () const {
+QString AccountSettingsModel::getUsedSipAddressAsStringUriOnly() const {
 	return Utils::coreStringToAppString(getUsedSipAddress()->asStringUriOnly());
 }
 
-QString AccountSettingsModel::getUsedSipAddressAsString () const {
+QString AccountSettingsModel::getUsedSipAddressAsString() const {
 	return Utils::coreStringToAppString(getUsedSipAddress()->asString());
 }
 // -----------------------------------------------------------------------------
 
-std::shared_ptr<linphone::Account> AccountSettingsModel::addOrUpdateAccount (std::shared_ptr<linphone::Account> account, const std::shared_ptr<linphone::AccountParams>& accountParams) {
-	
+std::shared_ptr<linphone::Account> AccountSettingsModel::addOrUpdateAccount(std::shared_ptr<linphone::Account> account, const std::shared_ptr<linphone::AccountParams>& accountParams) {
+
 	CoreManager *coreManager = CoreManager::getInstance();
 	shared_ptr<linphone::Core> core = coreManager->getCore();
 	list<shared_ptr<linphone::Account>> accounts = coreManager->getAccountList();
-	if(!account)
+	if (!account)
 		account = core->createAccount(accountParams);
 	if (account->setParams(accountParams) == -1) {
 		qWarning() << QStringLiteral("Unable to update account: `%1`.")
-					  .arg(QString::fromStdString(account->getParams()->getIdentityAddress()->asString()));
+			.arg(QString::fromStdString(account->getParams()->getIdentityAddress()->asString()));
 		return nullptr;
 	}
 	if (find(accounts.cbegin(), accounts.cend(), account) == accounts.cend()) {
 		if (core->addAccount(account) == -1) {
 			qWarning() << QStringLiteral("Unable to add account: `%1`.")
-						  .arg(QString::fromStdString(account->getParams()->getIdentityAddress()->asString()));
+				.arg(QString::fromStdString(account->getParams()->getIdentityAddress()->asString()));
 			return nullptr;
 		}
-		
+
 		coreManager->addingAccount(account->getParams());
 	}
-	
+
 	emit accountSettingsUpdated();
-	
+
 	return account;
 }
 
-QVariantMap AccountSettingsModel::getAccountDescription (const shared_ptr<linphone::Account> &account) {
+QVariantMap AccountSettingsModel::getAccountDescription(const shared_ptr<linphone::Account> &account) {
 	QVariantMap map;
 	auto accountParams = account->getParams();
-	
+
 	{
 		const shared_ptr<const linphone::Address> address = accountParams->getIdentityAddress();
 		map["sipAddress"] = address
-				? Utils::coreStringToAppString(accountParams->getIdentityAddress()->asString())
-				: QString("");
+			? Utils::coreStringToAppString(accountParams->getIdentityAddress()->asString())
+			: QString("");
 	}
 	map["serverAddress"] = Utils::coreStringToAppString(accountParams->getServerAddress()->asString());
 	map["registrationDuration"] = accountParams->getExpires();
 	map["publishDuration"] = accountParams->getPublishExpires();
-	
-	if( map["serverAddress"].toString().toUpper().contains("TRANSPORT="))// transport has been specified : let the RFC select the transport
+
+	if (map["serverAddress"].toString().toUpper().contains("TRANSPORT="))// transport has been specified : let the RFC select the transport
 		map["transport"] = LinphoneEnums::toString(LinphoneEnums::fromLinphone(accountParams->getTransport()));
 	else// Set to TLS as default
 		map["transport"] = "TLS";
-		auto routes = accountParams->getRoutesAddresses();
-	if( routes.size() > 0)
+	auto routes = accountParams->getRoutesAddresses();
+	if (routes.size() > 0)
 		map["route"] = Utils::coreStringToAppString(routes.front()->asString());
 	else
 		map["route"] = "";
@@ -185,70 +185,72 @@ QVariantMap AccountSettingsModel::getAccountDescription (const shared_ptr<linpho
 	map["dialPrefixCallChat"] = accountParams->getUseInternationalPrefixForCallsAndChats();
 	map["dialEscapePlus"] = accountParams->dialEscapePlusEnabled();
 	map["rtpBundleEnabled"] = accountParams->rtpBundleEnabled();
-	
+
 	shared_ptr<linphone::NatPolicy> natPolicy = accountParams->getNatPolicy();
 	bool createdNat = !natPolicy;
 	if (createdNat)
 		natPolicy = CoreManager::getInstance()->getCore()->createNatPolicy();
 	map["iceEnabled"] = natPolicy->iceEnabled();
 	map["turnEnabled"] = natPolicy->turnEnabled();
-	
-	
+
+
 	const string &turnUser(natPolicy->getStunServerUsername());
 	const string &stunServer(natPolicy->getStunServer());
-	
+
 	map["turnUser"] = Utils::coreStringToAppString(turnUser);
 	map["stunServer"] = Utils::coreStringToAppString(stunServer);
-	
-	if (createdNat){
+
+	if (createdNat) {
 		auto accountParamsUpdated = accountParams->clone();
 		accountParamsUpdated->setNatPolicy(natPolicy);
 		account->setParams(accountParamsUpdated);
 	}
-	if(turnUser != ""){
+	if (turnUser != "") {
 		shared_ptr<const linphone::AuthInfo> authInfo = CoreManager::getInstance()->getCore()->findAuthInfo(
-				"", turnUser, stunServer
-				);
+			"", turnUser, stunServer
+		);
 		map["turnPassword"] = authInfo ? Utils::coreStringToAppString(authInfo->getPassword()) : QString("");
-	}else
+	}
+	else
 		map["turnPassword"] = "";
-	
+
 	return map;
 }
 
-QString AccountSettingsModel::getConferenceUri() const{
+QString AccountSettingsModel::getConferenceUri() const {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Account> account = core->getDefaultAccount();
 	return account ? Utils::coreStringToAppString(account->getParams()->getConferenceFactoryUri()) : "";
 }
 
-QString AccountSettingsModel::getVideoConferenceUri() const{
+QString AccountSettingsModel::getVideoConferenceUri() const {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Account> account = core->getDefaultAccount();
-	if(account) {
-		auto address = account->getParams()->getAudioVideoConferenceFactoryAddress();		
+	if (account) {
+		auto address = account->getParams()->getAudioVideoConferenceFactoryAddress();
 		return address ? Utils::coreStringToAppString(address->asString()) : "";
-	}else
+	}
+	else
 		return "";
 }
 
-QString AccountSettingsModel::getLimeServerUrl() const{
+QString AccountSettingsModel::getLimeServerUrl() const {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Account> account = core->getDefaultAccount();
 	return account ? Utils::coreStringToAppString(account->getParams()->getLimeServerUrl()) : "";
 }
 
-bool AccountSettingsModel::getUseInternationalPrefixForCallsAndChats() const{
+bool AccountSettingsModel::getUseInternationalPrefixForCallsAndChats() const {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
-	if(core){
+	if (core) {
 		shared_ptr<linphone::Account> account = core->getDefaultAccount();
-		if(account)
+		if (account)
 			return account->getParams()->getUseInternationalPrefixForCallsAndChats();
 	}
 	return false;
 }
 
-void AccountSettingsModel::setDefaultAccount (const shared_ptr<linphone::Account> &account) {
+void AccountSettingsModel::setDefaultAccount(const shared_ptr<linphone::Account> &account) {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	if (mSelectedAccount != account) {
 		core->setDefaultAccount(account);
@@ -258,24 +260,24 @@ void AccountSettingsModel::setDefaultAccount (const shared_ptr<linphone::Account
 	}
 }
 
-void AccountSettingsModel::setDefaultAccountFromSipAddress (const QString &sipAddress) {
+void AccountSettingsModel::setDefaultAccountFromSipAddress(const QString &sipAddress) {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	auto address = Utils::interpretUrl(sipAddress);
-	if ( core->createPrimaryContactParsed()->weakEqual(address)) {
+	if (core->createPrimaryContactParsed()->weakEqual(address)) {
 		setDefaultAccount(nullptr);
 		return;
 	}
-	
+
 	for (const auto &account : CoreManager::getInstance()->getAccountList())
 		if (account->getParams()->getIdentityAddress()->weakEqual(address)) {
 			setDefaultAccount(account);
 			return;
 		}
-	
+
 	qWarning() << "Unable to set default account from:" << sipAddress;
 }
 
-void AccountSettingsModel::enableRegister (std::shared_ptr<linphone::Account> account, bool enable){
+void AccountSettingsModel::enableRegister(std::shared_ptr<linphone::Account> account, bool enable) {
 	auto params = account->getParams()->clone();
 	enableRegister(params, enable, Utils::coreStringToAppString(params->getContactParameters()));
 	account->setParams(params);
@@ -288,64 +290,66 @@ void AccountSettingsModel::logout() {
 	for (auto nextAccount : allAccounts) {
 		accountSettingsModel->removeAccount(nextAccount);
 	}
-	emit accountLogout();
+	coreManager->forceRefreshRegisters();
 }
-void AccountSettingsModel::removeAccount (const shared_ptr<linphone::Account> &account) {
-	
+void AccountSettingsModel::removeAccount(const shared_ptr<linphone::Account> &account) {
+
 	CoreManager *coreManager = CoreManager::getInstance();
 	std::shared_ptr<linphone::Account> newAccount = nullptr;
 	std::list<std::shared_ptr<linphone::Account>> allAccounts = coreManager->getAccountList();
-	if( account == coreManager->getCore()->getDefaultAccount()){
-		for(auto nextAccount : allAccounts){
-			if( nextAccount != account){
+	if (account == coreManager->getCore()->getDefaultAccount()) {
+		for (auto nextAccount : allAccounts) {
+			if (nextAccount != account) {
 				newAccount = nextAccount;
 				break;
 			}
 		}
 		setDefaultAccount(newAccount);
 	}
-// "message-expires" is used to keep contact for messages. Setting to 0 will remove the contact for messages too.
-// Check if a "message-expires" exists and set it to 0
+	// "message-expires" is used to keep contact for messages. Setting to 0 will remove the contact for messages too.
+	// Check if a "message-expires" exists and set it to 0
 	QStringList parameters = Utils::coreStringToAppString(account->getParams()->getContactParameters()).split(";");
-	for(int i = 0 ; i < parameters.size() ; ++i){
+	for (int i = 0; i < parameters.size(); ++i) {
 		QStringList fields = parameters[i].split("=");
-		if( fields.size() > 1 && fields[0].simplified() == "message-expires"){
+		if (fields.size() > 1 && fields[0].simplified() == "message-expires") {
 			parameters[i] = Constants::DefaultContactParametersOnRemove;
 		}
 	}
 	auto accountParams = account->getParams()->clone();
-	accountParams->setContactParameters(Utils::appStringToCoreString(parameters.join(";")));	
+	accountParams->setContactParameters(Utils::appStringToCoreString(parameters.join(";")));
 	bool isRegistered = account->getState() == linphone::RegistrationState::Ok;
 	if (account->setParams(accountParams) == -1) {
 		qWarning() << QStringLiteral("Unable to reset message-expiry property before removing account: `%1`.")
-				  .arg(QString::fromStdString(account->getParams()->getIdentityAddress()->asString()));
-	}else if(isRegistered && account->getParams()->registerEnabled()) { // Wait for update
+			.arg(QString::fromStdString(account->getParams()->getIdentityAddress()->asString()));
+	}
+	else if (isRegistered && account->getParams()->registerEnabled()) { // Wait for update
 		mRemovingAccounts.push_back(account);
-	}else{// Registration is not enabled : Removing without wait.
+	}
+	else {// Registration is not enabled : Removing without wait.
 		CoreManager::getInstance()->getCore()->removeAccount(account);
 	}
-	
+
 	emit accountSettingsUpdated();
 }
 
 
-void AccountSettingsModel::enableRegister(std::shared_ptr<linphone::AccountParams> params, bool registerEnabled, QString contactParameters){
+void AccountSettingsModel::enableRegister(std::shared_ptr<linphone::AccountParams> params, bool registerEnabled, QString contactParameters) {
 	bool findMessageExpires = false;
 	QStringList parameters = contactParameters.split(";");
-	for(int i = 0 ; i < parameters.size() ; ++i){
+	for (int i = 0; i < parameters.size(); ++i) {
 		QStringList fields = parameters[i].split("=");
-		if( fields.size() > 1 && fields[0].simplified() == "message-expires"){
+		if (fields.size() > 1 && fields[0].simplified() == "message-expires") {
 			findMessageExpires = true;
-			if(!registerEnabled)// replace message-expires by 0 in order to not get new incoming messages.
+			if (!registerEnabled)// replace message-expires by 0 in order to not get new incoming messages.
 				parameters[i] = Constants::DefaultContactParametersOnRemove;
-			else if(!params->registerEnabled() && fields[1].toInt() == 0)
+			else if (!params->registerEnabled() && fields[1].toInt() == 0)
 				parameters[i] = Constants::DefaultContactParameters;
 		}
 	}
-	if(!findMessageExpires){
-		if(!registerEnabled)// message-expires was not found we need to disable the account.
+	if (!findMessageExpires) {
+		if (!registerEnabled)// message-expires was not found we need to disable the account.
 			parameters.push_back(Constants::DefaultContactParametersOnRemove);
-		else if(!params->registerEnabled())// Switch on
+		else if (!params->registerEnabled())// Switch on
 			parameters.push_back(Constants::DefaultContactParameters);
 	}
 	params->setContactParameters(Utils::appStringToCoreString(parameters.join(";")));
@@ -353,45 +357,45 @@ void AccountSettingsModel::enableRegister(std::shared_ptr<linphone::AccountParam
 }
 
 bool AccountSettingsModel::addOrUpdateAccount(
-		const shared_ptr<linphone::Account> &account,
-		const QVariantMap &data
-		) {
+	const shared_ptr<linphone::Account> &account,
+	const QVariantMap &data
+) {
 	bool newPublishPresence = false;
 	auto accountParams = account->getParams()->clone();
-	
+
 	QString literal = data["sipAddress"].toString();
-	
+
 	// Sip address.
 	{
-		
+
 		shared_ptr<linphone::Address> address = Utils::interpretUrl(literal);
 		if (!address) {
 			qWarning() << QStringLiteral("Unable to create sip address object from: `%1`.").arg(literal);
 			return false;
 		}
-		
+
 		if (accountParams->setIdentityAddress(address)) {
 			qWarning() << QStringLiteral("Unable to set identity address: `%1`.")
-						  .arg(Utils::coreStringToAppString(address->asStringUriOnly()));
+				.arg(Utils::coreStringToAppString(address->asStringUriOnly()));
 			return false;
 		}
 	}
-	
+
 	// Server address.
 	{
 		auto serverAddress = Utils::interpretUrl(data["serverAddress"].toString());
-		
+
 		if (accountParams->setServerAddress(serverAddress)) {
 			qWarning() << QStringLiteral("Unable to add server address: `%1`.").arg(serverAddress->asString().c_str());
 			return false;
 		}
 	}
-	
-	if(data.contains("registrationDuration"))
+
+	if (data.contains("registrationDuration"))
 		accountParams->setExpires(data["registrationDuration"].toInt());
-	if(data.contains("publishDuration"))
+	if (data.contains("publishDuration"))
 		accountParams->setPublishExpires(data["publishDuration"].toInt());
-	if(data.contains("route") && data["route"].toString() != "") {
+	if (data.contains("route") && data["route"].toString() != "") {
 		std::list<std::shared_ptr<linphone::Address>> routes;
 		routes.push_back(Utils::interpretUrl(data["route"].toString()));
 		accountParams->setRoutesAddresses(routes);
@@ -403,57 +407,59 @@ bool AccountSettingsModel::addOrUpdateAccount(
 	accountParams->setLimeServerUrl(Utils::appStringToCoreString(data["limeServerUrl"].toString()));
 
 	QString contactParameters = Utils::coreStringToAppString(accountParams->getContactParameters());
-	if(data.contains("contactParams"))
+	if (data.contains("contactParams"))
 		contactParameters = data["contactParams"].toString();
-	if(data.contains("avpfInterval"))
+	if (data.contains("avpfInterval"))
 		accountParams->setAvpfRrInterval(uint8_t(data["avpfInterval"].toInt()));
-	if(data.contains("registerEnabled")){
+	if (data.contains("registerEnabled")) {
 		enableRegister(accountParams, data["registerEnabled"].toBool(), contactParameters);
-	}else{
+	}
+	else {
 		accountParams->setContactParameters(Utils::appStringToCoreString(contactParameters));
 	}
-	if(data.contains("publishPresence")) {
+	if (data.contains("publishPresence")) {
 		newPublishPresence = accountParams->publishEnabled() != data["publishPresence"].toBool();
 		accountParams->enablePublish(data["publishPresence"].toBool());
-	}else
+	}
+	else
 		newPublishPresence = accountParams->publishEnabled();
-	if(data.contains("avpfEnabled"))
+	if (data.contains("avpfEnabled"))
 		accountParams->setAvpfMode(data["avpfEnabled"].toBool()
 			? linphone::AVPFMode::Enabled
 			: linphone::AVPFMode::Default
-			  );
-	if(data.contains("dialPrefix"))
+		);
+	if (data.contains("dialPrefix"))
 		accountParams->setInternationalPrefix(Utils::appStringToCoreString(data["dialPrefix"].toString()));
-	if(data.contains("dialPrefixCallChat"))
+	if (data.contains("dialPrefixCallChat"))
 		accountParams->setUseInternationalPrefixForCallsAndChats(data["dialPrefixCallChat"].toBool());
-	if(data.contains("dialEscapePlus"))
+	if (data.contains("dialEscapePlus"))
 		accountParams->enableDialEscapePlus(data["dialEscapePlus"].toBool());
-	if(data.contains("rtpBundleEnabled"))
+	if (data.contains("rtpBundleEnabled"))
 		accountParams->enableRtpBundle(data["rtpBundleEnabled"].toBool());
-	
-	
+
+
 	shared_ptr<linphone::NatPolicy> natPolicy = accountParams->getNatPolicy();
 	bool createdNat = !natPolicy;
 	if (createdNat)
 		natPolicy = CoreManager::getInstance()->getCore()->createNatPolicy();
-	if(data.contains("iceEnabled"))
+	if (data.contains("iceEnabled"))
 		natPolicy->enableIce(data["iceEnabled"].toBool());
-	if(data.contains("iceEnabled"))
+	if (data.contains("iceEnabled"))
 		natPolicy->enableStun(data["iceEnabled"].toBool());
 	string turnUser, stunServer;
-	if(data.contains("turnUser"))
+	if (data.contains("turnUser"))
 		turnUser = Utils::appStringToCoreString(data["turnUser"].toString());
-	if(data.contains("stunServer"))
+	if (data.contains("stunServer"))
 		stunServer = Utils::appStringToCoreString(data["stunServer"].toString());
-	if(data.contains("turnEnabled"))
+	if (data.contains("turnEnabled"))
 		natPolicy->enableTurn(data["turnEnabled"].toBool());
 	natPolicy->setStunServerUsername(turnUser);
 	natPolicy->setStunServer(stunServer);
-	
-	if( createdNat)
+
+	if (createdNat)
 		accountParams->setNatPolicy(natPolicy);
-	
-	if( turnUser != ""){
+
+	if (turnUser != "") {
 		shared_ptr<linphone::Core> core(CoreManager::getInstance()->getCore());
 		shared_ptr<const linphone::AuthInfo> authInfo(core->findAuthInfo("", turnUser, stunServer));
 		if (authInfo) {
@@ -463,34 +469,35 @@ bool AccountSettingsModel::addOrUpdateAccount(
 			clonedAuthInfo->setPassword(Utils::appStringToCoreString(data["turnPassword"].toString()));
 			core->addAuthInfo(clonedAuthInfo);
 			core->removeAuthInfo(authInfo);
-		} else
+		}
+		else
 			core->addAuthInfo(linphone::Factory::get()->createAuthInfo(
-								  turnUser,
-								  turnUser,
-								  Utils::appStringToCoreString(data["turnPassword"].toString()),
-							  "",
-							  stunServer,
-							  ""
-		));
+				turnUser,
+				turnUser,
+				Utils::appStringToCoreString(data["turnPassword"].toString()),
+				"",
+				stunServer,
+				""
+			));
 	}
-	if( newPublishPresence)
+	if (newPublishPresence)
 		emit publishPresenceChanged();
-	return addOrUpdateAccount(account, accountParams)!= nullptr;
+	return addOrUpdateAccount(account, accountParams) != nullptr;
 }
 
-bool AccountSettingsModel::addOrUpdateAccount (
-  const QVariantMap &data
+bool AccountSettingsModel::addOrUpdateAccount(
+	const QVariantMap &data
 ) {
 	shared_ptr<linphone::Account> account;
 	QString sipAddress = data["sipAddress"].toString();
 	shared_ptr<linphone::Address> address = Utils::interpretUrl(sipAddress);
-	
+
 	for (const auto &databaseAccount : CoreManager::getInstance()->getAccountList())
-	  if (databaseAccount->getParams()->getIdentityAddress()->weakEqual(address)) {
-		account = databaseAccount;
-	  }
-	if(!account)
-		account = createAccount(data.contains("configFilename") ? data["configFilename"].toString() : "create-app-sip-account.rc" );
+		if (databaseAccount->getParams()->getIdentityAddress()->weakEqual(address)) {
+			account = databaseAccount;
+		}
+	if (!account)
+		account = createAccount(data.contains("configFilename") ? data["configFilename"].toString() : "create-app-sip-account.rc");
 	return addOrUpdateAccount(account, data);
 }
 
@@ -501,99 +508,100 @@ shared_ptr<linphone::Account> AccountSettingsModel::createAccount(const QString&
 	return core->createAccount(core->createAccountParams());
 }
 
-void AccountSettingsModel::addAuthInfo (
-		const shared_ptr<linphone::AuthInfo> &authInfo,
-		const QString &password,
-		const QString &userId
-		) {
+void AccountSettingsModel::addAuthInfo(
+	const shared_ptr<linphone::AuthInfo> &authInfo,
+	const QString &password,
+	const QString &userId
+) {
 	authInfo->setPassword(Utils::appStringToCoreString(password));
 	authInfo->setUserid(Utils::appStringToCoreString(userId));
-	
+
 	CoreManager::getInstance()->getCore()->addAuthInfo(authInfo);
 }
 
-void AccountSettingsModel::eraseAllPasswords () {
+void AccountSettingsModel::eraseAllPasswords() {
 	CoreManager::getInstance()->getCore()->clearAllAuthInfo();
 }
 
 // -----------------------------------------------------------------------------
 
-QString AccountSettingsModel::getUsername () const {
+QString AccountSettingsModel::getUsername() const {
 	shared_ptr<const linphone::Address> address = getUsedSipAddress();
 	const string displayName = address->getDisplayName();
-	
+
 	return Utils::coreStringToAppString(
-				displayName.empty() ? address->getUsername() : displayName
-									  );
+		displayName.empty() ? address->getUsername() : displayName
+	);
 }
 
-void AccountSettingsModel::setUsername (const QString &username) {
+void AccountSettingsModel::setUsername(const QString &username) {
 	shared_ptr<const linphone::Address> address = getUsedSipAddress();
 	shared_ptr<linphone::Address> newAddress = address->clone();
 	QString oldUsername = Utils::coreStringToAppString(newAddress->getUsername());
-	if( oldUsername != username) {
+	if (oldUsername != username) {
 		if (newAddress->setDisplayName(Utils::appStringToCoreString(username))) {
 			qWarning() << QStringLiteral("Unable to set displayName on sip address: `%1`.")
-						  .arg(Utils::coreStringToAppString(newAddress->asStringUriOnly()));
-		} else {
+				.arg(Utils::coreStringToAppString(newAddress->asStringUriOnly()));
+		}
+		else {
 			setUsedSipAddress(newAddress);
 			emit usernameChanged();
 		}
 	}
 }
 
-AccountSettingsModel::RegistrationState AccountSettingsModel::getRegistrationState () const {
+AccountSettingsModel::RegistrationState AccountSettingsModel::getRegistrationState() const {
 	shared_ptr<linphone::Account> account = CoreManager::getInstance()->getCore()->getDefaultAccount();
 	return account ? mapLinphoneRegistrationStateToUi(account->getState()) : RegistrationStateNoAccount;
 }
 
 // -----------------------------------------------------------------------------
 
-QString AccountSettingsModel::getPrimaryUsername () const {
+QString AccountSettingsModel::getPrimaryUsername() const {
 	return Utils::coreStringToAppString(
-				CoreManager::getInstance()->getCore()->createPrimaryContactParsed()->getUsername()
-				);
+		CoreManager::getInstance()->getCore()->createPrimaryContactParsed()->getUsername()
+	);
 }
 
-void AccountSettingsModel::setPrimaryUsername (const QString &username) {
+void AccountSettingsModel::setPrimaryUsername(const QString &username) {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Address> primary = core->createPrimaryContactParsed();
-	
+
 	QString oldUsername = Utils::coreStringToAppString(primary->getUsername());
-	if(oldUsername != username){
+	if (oldUsername != username) {
 		primary->setUsername(Utils::appStringToCoreString(
-								 username.isEmpty() ? APPLICATION_NAME : username
-													  ));
+			username.isEmpty() ? APPLICATION_NAME : username
+		));
 		core->setPrimaryContact(primary->asString());
 		emit primaryUsernameChanged();
 	}
 }
 
-QString AccountSettingsModel::getPrimaryDisplayName () const {
+QString AccountSettingsModel::getPrimaryDisplayName() const {
 	return Utils::coreStringToAppString(CoreManager::getInstance()->getCore()->createPrimaryContactParsed()->getDisplayName());
 }
 
-void AccountSettingsModel::setPrimaryDisplayName (const QString &displayName) {
+void AccountSettingsModel::setPrimaryDisplayName(const QString &displayName) {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Address> primary = core->createPrimaryContactParsed();
-	
+
 	QString oldDisplayName = Utils::coreStringToAppString(primary->getDisplayName());
-	if(oldDisplayName != displayName){
+	if (oldDisplayName != displayName) {
 		primary->setDisplayName(Utils::appStringToCoreString(displayName));
 		core->setPrimaryContact(primary->asString());
 		emit primaryDisplayNameChanged();
 	}
 }
 
-QString AccountSettingsModel::getPrimarySipAddress () const {
+QString AccountSettingsModel::getPrimarySipAddress() const {
 	return Utils::coreStringToAppString(
-				CoreManager::getInstance()->getCore()->createPrimaryContactParsed()->asString()
-				);
+		CoreManager::getInstance()->getCore()->createPrimaryContactParsed()->asString()
+	);
 }
 
-QString AccountSettingsModel::getDefaultAccountDomain() const{
+QString AccountSettingsModel::getDefaultAccountDomain() const {
 	auto account = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if(account)
+	if (account)
 		return Utils::coreStringToAppString(account->getParams()->getDomain());
 	else
 		return "";
@@ -601,20 +609,20 @@ QString AccountSettingsModel::getDefaultAccountDomain() const{
 
 // -----------------------------------------------------------------------------
 
-QVariantList AccountSettingsModel::getAccounts () const {
+QVariantList AccountSettingsModel::getAccounts() const {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	QVariantList accounts;
 	auto settingsModel = CoreManager::getInstance()->getSettingsModel();
-	if(settingsModel->getShowLocalSipAccount()) {
+	if (settingsModel->getShowLocalSipAccount()) {
 		QVariantMap account;
 		account["sipAddress"] = Utils::coreStringToAppString(core->createPrimaryContactParsed()->asStringUriOnly());
 		account["fullSipAddress"] = Utils::coreStringToAppString(core->createPrimaryContactParsed()->asString());
-		account["unreadMessageCount"] = settingsModel->getStandardChatEnabled() || settingsModel->getSecureChatEnabled() ?  core->getUnreadChatMessageCountFromLocal(core->createPrimaryContactParsed()) : 0;
+		account["unreadMessageCount"] = settingsModel->getStandardChatEnabled() || settingsModel->getSecureChatEnabled() ? core->getUnreadChatMessageCountFromLocal(core->createPrimaryContactParsed()) : 0;
 		account["missedCallCount"] = CoreManager::getInstance()->getMissedCallCountFromLocal(account["sipAddress"].toString());
 		account["account"].setValue(nullptr);
 		accounts << account;
 	}
-	
+
 	for (const auto &account : CoreManager::getInstance()->getAccountList()) {
 		QVariantMap accountMap;
 		auto params = account->getParams();
@@ -626,31 +634,33 @@ QVariantList AccountSettingsModel::getAccounts () const {
 		accountMap["registerEnabled"] = params->registerEnabled();
 		accounts << accountMap;
 	}
-	
+
 	return accounts;
 }
 
 // -----------------------------------------------------------------------------
 
-void AccountSettingsModel::handleRegistrationStateChanged (
-		const shared_ptr<linphone::Account> & account,
-		linphone::RegistrationState state
-		) {
+void AccountSettingsModel::handleRegistrationStateChanged(
+	const shared_ptr<linphone::Account> & account,
+	linphone::RegistrationState state
+) {
 	Q_UNUSED(state)
-	auto coreManager = CoreManager::getInstance();
+		auto coreManager = CoreManager::getInstance();
 	shared_ptr<linphone::Account> defaultAccount = coreManager->getCore()->getDefaultAccount();
-	if( state == linphone::RegistrationState::Cleared){
+	if (state == linphone::RegistrationState::Cleared) {
 		auto authInfo = account->findAuthInfo();
-		if(authInfo)
-			QTimer::singleShot(60000, [authInfo](){// 60s is just to be sure. account_update remove deleted account only after 32s
-				CoreManager::getInstance()->getCore()->removeAuthInfo(authInfo);
-			});
-	}else if(mRemovingAccounts.contains(account)){
+		if (authInfo)
+			QTimer::singleShot(60000, [authInfo]() {// 60s is just to be sure. account_update remove deleted account only after 32s
+			CoreManager::getInstance()->getCore()->removeAuthInfo(authInfo);
+		});
+	}
+	else if (mRemovingAccounts.contains(account)) {
 		mRemovingAccounts.removeAll(account);
-		QTimer::singleShot(100, [account, this](){// removeAccount cannot be called from callback
-				CoreManager::getInstance()->getCore()->removeAccount(account);
-				emit accountsChanged();
-	    });
+		QTimer::singleShot(100, [account, this]() {// removeAccount cannot be called from callback
+			CoreManager::getInstance()->getCore()->removeAccount(account);
+			emit accountsChanged();
+			emit accountLogout();
+		});
 	}
 	if (defaultAccount == account) {
 		emit defaultRegistrationChanged();
@@ -659,7 +669,7 @@ void AccountSettingsModel::handleRegistrationStateChanged (
 			logout();
 			emit failedRegistration();
 		}
-	}		
+	}
 	emit registrationStateChanged();
 }
 

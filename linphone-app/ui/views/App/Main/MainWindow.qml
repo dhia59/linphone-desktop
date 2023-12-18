@@ -17,60 +17,60 @@ import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 // =============================================================================
 
 ApplicationWindow {
-	id: window
-	
-	property string _currentView
-	property var _lockedInfo
-	property SmartSearchBar mainSearchBar : (mainLoader.item ? mainLoader.item.mainSearchBar : null)
-	
-	// ---------------------------------------------------------------------------
-	
-	function lockView (info) {
-		Logic.lockView(info)
-	}
-	
-	function unlockView () {
-		Logic.unlockView()
-	}
-	
-	function setView (view, props, callback) {
-		Logic.setView(view, props, callback)
-	}
-	
-	// ---------------------------------------------------------------------------
-	// Window properties.
-	// ---------------------------------------------------------------------------
-	
-	minimumHeight: MainWindowStyle.minimumHeight
-	minimumWidth: MainWindowStyle.minimumWidth
-	
-	title: Utils.capitalizeFirstLetter(applicationName)
-	
-	// ---------------------------------------------------------------------------
-	
-	onActiveFocusItemChanged: Logic.handleActiveFocusItemChanged(activeFocusItem)
-	onClosing: Logic.handleClosing(close)
-	
-	// ---------------------------------------------------------------------------
-	
-	Connections {
-		target: CoreManager
+    id: window
+
+    property string _currentView
+    property var _lockedInfo
+    property SmartSearchBar mainSearchBar : (mainLoader.item ? mainLoader.item.mainSearchBar : null)
+
+    // ---------------------------------------------------------------------------
+
+    function lockView (info) {
+        Logic.lockView(info)
+    }
+
+    function unlockView () {
+        Logic.unlockView()
+    }
+
+    function setView (view, props, callback) {
+        Logic.setView(view, props, callback)
+    }
+
+    // ---------------------------------------------------------------------------
+    // Window properties.
+    // ---------------------------------------------------------------------------
+
+    minimumHeight: MainWindowStyle.minimumHeight
+    minimumWidth: MainWindowStyle.minimumWidth
+
+    title: Utils.capitalizeFirstLetter(applicationName)
+
+    // ---------------------------------------------------------------------------
+
+    onActiveFocusItemChanged: Logic.handleActiveFocusItemChanged(activeFocusItem)
+    onClosing: Logic.handleClosing(close)
+
+    // ---------------------------------------------------------------------------
+
+    Connections {
+        target: CoreManager
         onCoreManagerInitialized: {
                 mainLoader.active = true
         }
-	}
-	
-	Shortcut {
-		sequence: StandardKey.Close
-		onActivated: window.hide()
-	}
-	// ---------------------------------------------------------------------------
-	
-	Loader {
-		id: mainLoader
-		
-		active: false
-		anchors.fill: parent
+    }
+
+    Shortcut {
+        sequence: StandardKey.Close
+        onActivated: window.hide()
+    }
+    // ---------------------------------------------------------------------------
+
+    Loader {
+        id: mainLoader
+
+        active: false
+        anchors.fill: parent
         sourceComponent: testCompo
     }
     Component{
@@ -101,7 +101,7 @@ ApplicationWindow {
             ToolBar {
                 id: toolBar
                 property alias mainSearchBar : smartSearchBar
-                visible: AccountSettingsModel.registrationState === AccountSettingsModel.RegistrationStateRegistered
+                visible: AccountSettingsModel.registrationState===0
                 Layout.fillWidth: true
                 Layout.preferredHeight: MainWindowStyle.toolBar.height
                 hoverEnabled : true
@@ -145,7 +145,8 @@ ApplicationWindow {
                         Layout.fillWidth: false
 
                         TooltipArea {
-                            text: UtilsCpp.toDisplayString(AccountSettingsModel.sipAddress, SettingsModel.sipDisplayMode)
+                            text: AccountSettingsModel.registrationState
+                           // text: UtilsCpp.toDisplayString(AccountSettingsModel.sipAddress, SettingsModel.sipDisplayMode)
                             hoveringCursor: Qt.PointingHandCursor
                         }
 
@@ -214,54 +215,7 @@ ApplicationWindow {
                         onClicked: telKeypad.visible = !telKeypad.visible
                         toggled: telKeypad.visible
                     }
-//                    ActionButton {
-//                        Layout.leftMargin: 30
-//                        isCustom: true
-//                        backgroundRadius: 4
-//                        colorSet: MainWindowStyle.buttons.newChatGroup
 
-//                        //: 'Start a chat room' : Tooltip to illustrate a button
-//                        tooltipText : qsTr('newChatRoom')
-//                        visible: (SettingsModel.standardChatEnabled || SettingsModel.secureChatEnabled)
-//                        enabled: SettingsModel.groupChatEnabled
-//                        onClicked: {
-//                            window.detachVirtualWindow()
-//                            window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
-//                                                       ,{})
-//                        }
-//                        TooltipArea{
-//                            visible: !SettingsModel.groupChatEnabled
-//                            maxWidth: smartSearchBar.width
-//                            delay:0
-//                            //: 'Conference URI is not set. You have to change it in your account settings in order to create new group chats.' : Tooltip to warn the user to change a setting to activate an action.
-//                            text: qsTr('newChatRoomUriMissing')
-//                        }
-//                    }
-
-//                    ActionButton {
-//                        isCustom: true
-//                        backgroundRadius: 4
-//                        colorSet: MainWindowStyle.buttons.newConference
-//                        visible: SettingsModel.conferenceEnabled
-//                        enabled: SettingsModel.videoConferenceEnabled
-//                        tooltipText:qsTr('newConferenceButton')
-//                        onClicked: {
-//                            window.detachVirtualWindow()
-//                            window.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
-//                                                       ,{}, function (status) {
-//                                                        if( status){
-//                                                            setView('Conferences')
-//                                                        }
-//                                                       })
-//                        }
-//                        TooltipArea{
-//                            visible: !SettingsModel.videoConferenceEnabled
-//                            maxWidth: smartSearchBar.width
-//                            delay:0
-//                            //: 'Video conference URI is not set. You have to change it in your account settings in order to create new meetings.' : Tooltip to warn the user to change a setting to activate an action.
-//                            text: qsTr('newConferenceUriMissing')
-//                        }
-//                    }
 
                     ActionButton {
                         isCustom: true
@@ -295,7 +249,7 @@ ApplicationWindow {
                 // Main menu.
                 ColumnLayout {
                     id:leftPanel
-                    visible: AccountSettingsModel.registrationState === AccountSettingsModel.RegistrationStateRegistered
+                    visible: AccountSettingsModel.registrationState===0
                     Layout.maximumWidth: MainWindowStyle.menu.width
                     Layout.preferredWidth: MainWindowStyle.menu.width
 
@@ -447,44 +401,44 @@ ApplicationWindow {
         }
 
     }
-	Loader{
-		id: customMenuBar
-		active:Qt.platform.os === 'osx'
-		sourceComponent:MainWindowTopMenuBar{
-			onDisplayRecordings: {
-				if(mainLoader.item)
-					mainLoader.item.timeline.model.unselectAll()
-				setView('Recordings')
-			}
-		}
-	}
+    Loader{
+        id: customMenuBar
+        active:Qt.platform.os === 'osx'
+        sourceComponent:MainWindowTopMenuBar{
+            onDisplayRecordings: {
+                if(mainLoader.item)
+                    mainLoader.item.timeline.model.unselectAll()
+                setView('Recordings')
+            }
+        }
+    }
 
-	Component.onCompleted: if(Qt.platform.os === 'osx') menuBar = customMenuBar
-	// ---------------------------------------------------------------------------
-	// Url handlers.
-	// ---------------------------------------------------------------------------
+    Component.onCompleted: if(Qt.platform.os === 'osx') menuBar = customMenuBar
+    // ---------------------------------------------------------------------------
+    // Url handlers.
+    // ---------------------------------------------------------------------------
 
 
-	Connections {
-		target: UrlHandlers
-		
-		onSip: {
-			mainSearchBar.text = sipAddress
-		}
-	}
-	Connections{
-		target: App
-		onRequestFetchConfig: {
-			window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
-										flat: true,
-										//: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
-										descriptionText: '<b>'+qsTr('confirmFetchUri')
-												+'</b><br/><br/>'+filePath,
-										}, function (status) {
-											if (status) {
-												App.setFetchConfig(filePath)
-											}
-										})
-		}
-	}
+    Connections {
+        target: UrlHandlers
+
+        onSip: {
+            mainSearchBar.text = sipAddress
+        }
+    }
+    Connections{
+        target: App
+        onRequestFetchConfig: {
+            window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+                                        flat: true,
+                                        //: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
+                                        descriptionText: '<b>'+qsTr('confirmFetchUri')
+                                                +'</b><br/><br/>'+filePath,
+                                        }, function (status) {
+                                            if (status) {
+                                                App.setFetchConfig(filePath)
+                                            }
+                                        })
+        }
+    }
 }
