@@ -1,6 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
-import QtQml.Models 2.15
+//import QtQml.Models 2.15
 
 import Clipboard 1.0
 import Common 1.0

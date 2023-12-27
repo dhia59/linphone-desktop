@@ -1209,7 +1209,8 @@ void SettingsModel::setUseRfc2833ForDtmfs (bool status) {
 // -----------------------------------------------------------------------------
 
 bool SettingsModel::getIpv6Enabled () const {
-	return CoreManager::getInstance()->getCore()->ipv6Enabled();
+	return false;
+	//return CoreManager::getInstance()->getCore()->ipv6Enabled();
 }
 
 void SettingsModel::setIpv6Enabled (bool status) {

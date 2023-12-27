@@ -62,7 +62,7 @@ TabContainer {
 
           Switch {
             checked: SettingsModel.ipv6Enabled
-
+			enabled: false 
             onClicked: SettingsModel.ipv6Enabled = !checked
           }
         }

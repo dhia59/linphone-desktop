@@ -1,5 +1,5 @@
 import QtQuick 2.7
-import QtQuick.Controls 2.5
+import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
 import Common 1.0
@@ -8,18 +8,21 @@ import ConstantsCpp 1.0
 
 import App.Styles 1.0
 import Common.Styles 1.0
-
+import Linphone.Styles 1.0
 // =============================================================================
 
 Item {
     property bool isErrorLabel: false
+    property bool isBusy: false
     ColumnLayout {
         anchors.horizontalCenter:  parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         id: formComponent
         property bool isValid: username.text.length &&
                                password.text.length
-
+        onIsValidChanged: {
+            mainActionButton.enabled = true;
+        }
         width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
         property alias usernameText: username.text
         property alias passwordText: password.text
@@ -88,9 +91,12 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
 
             TextButtonB {
-                id: mainActionButton
+              id: mainActionButton
+              enabled:false
               text:"Login"
                 onClicked:{
+                  isBusy= true
+                 //   busyIndicator.running= true
                     if (!assistantModel.addOtherSipAccount({
                         username:formComponent.usernameText,
                         password: formComponent.passwordText,
@@ -106,11 +112,6 @@ Item {
             }
         }
 
-
-
-
-
-    }
 
     AssistantModel {
         id: assistantModel
@@ -136,5 +137,32 @@ Item {
 
         }
     }
+}
+    Loader{
+        id:busyIndicatorLoader
+        source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
+        visible: AccountSettingsModel.registrationState === AccountSettingsModel.RegistrationStateInProgress
+        anchors.fill: parent
+        onVisibleChanged: {
+            console.log("visibleeee ", isBusy)
+        }
+
+        onLoaded: {
+          // busyOverlay.visible = busyIndicatorLoader.active;
+         }
+  }
+    Rectangle {
+           id: busyOverlay
+           color: "transparent"
+           anchors.fill: parent
+           visible: busyIndicatorLoader.visible
+           MouseArea {
+               anchors.fill: parent
+               onClicked: {
+                   // Prevent interaction with the main page while busy
+               }
+           }
+       }
+
 }
 

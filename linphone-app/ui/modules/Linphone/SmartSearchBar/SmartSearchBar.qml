@@ -59,16 +59,7 @@ SearchBox {
 	SipAddressesView {
 		id: view
 		
-		actions: [{
-				colorSet: SipAddressesViewStyle.videoCall,
-				secure: 0,
-				visible: true,
-				handler: function (entry) {
-					searchBox.launchVideoCall(entry.sipAddress)
-					searchBox.closeMenu()
-				},
-				visible: SettingsModel.videoAvailable && SettingsModel.outgoingCallsEnabled && SettingsModel.showStartVideoCallButton
-			}, {
+        actions: [{
 				colorSet: SipAddressesViewStyle.call,
 				secure: 0,
 				visible: true,

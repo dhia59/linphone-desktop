@@ -1850,7 +1850,7 @@ Cliquez ici : &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>mainSearchBarPlaceholder</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher, se rencontrer et appeler</translation>
     </message>
     <message>
         <source>smartSearchBarTooltip</source>
@@ -1864,7 +1864,7 @@ Cliquez ici : &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     <message>
         <source>contactsEntry</source>
         <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Contacts</translation>
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>

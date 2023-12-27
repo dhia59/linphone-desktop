@@ -380,11 +380,8 @@ ApplicationWindow {
                     Connections {
                         target: AccountSettingsModel
 
-                        onRegistrationStateChanged: {
-                            if(AccountSettingsModel.registrationState!==0)
-                            {
-                                 contentLoader.setSource("Login.qml")
-                            }
+                        onAccountLogout: {
+                             contentLoader.setSource("Login.qml")
                          }
                         }
                     Connections {
