@@ -52,15 +52,7 @@ MenuBar {
 			}
 			shortcut: StandardKey.HelpContents
 		}
-        MenuItem {
-            text: "Logout"
-            role: MenuItem.Logout
-            onTriggered: {
-                App.logout()
-            }
-            //shortcut: StandardKey.Quit
 
-        }
 		MenuItem {
 			text: qsTr('quit')
 			role: MenuItem.QuitRole

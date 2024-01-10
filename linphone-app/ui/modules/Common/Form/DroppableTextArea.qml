@@ -23,10 +23,10 @@ Item {
 	property alias placeholderText: textArea.placeholderText
 	property alias text: textArea.text
 	property alias cursorPosition: textArea.cursorPosition
-	property alias recordAudioToggled: recordAudioButton.toggled
+    //property alias recordAudioToggled: recordAudioButton.toggled
 	
-	property bool dropEnabled: true
-	property string dropDisabledReason
+    //property bool dropEnabled: true
+    //property string dropDisabledReason
 	property bool isEphemeral : false
 	property bool emojiVisible: false
 	
@@ -74,56 +74,56 @@ Item {
 			anchors.fill: parent
 			spacing: 0
 			// Handle click to select files.
-			ActionButton {
-				id: fileChooserButton
-				property int totalWidth: width
+//			ActionButton {
+//				id: fileChooserButton
+//				property int totalWidth: width
 				
-				Layout.leftMargin: DroppableTextAreaStyle.fileChooserButton.margins
-				Layout.alignment: Qt.AlignVCenter
-				//anchors.verticalCenter: parent.verticalCenter
-				enabled: droppableTextArea.dropEnabled
-				isCustom: true
-				backgroundRadius: 8
-				colorSet: DroppableTextAreaStyle.fileChooserButton
+//				Layout.leftMargin: DroppableTextAreaStyle.fileChooserButton.margins
+//				Layout.alignment: Qt.AlignVCenter
+//				//anchors.verticalCenter: parent.verticalCenter
+//				enabled: droppableTextArea.dropEnabled
+//				isCustom: true
+//				backgroundRadius: 8
+//				colorSet: DroppableTextAreaStyle.fileChooserButton
 				
-				visible: droppableTextArea.enabled
+//				visible: droppableTextArea.enabled
 				
-				onClicked: fileDialogLoader.active=true
-				Loader{// Qt display warnings on open this FileDialog. A loader is used to avoid printing warnings each time a chat is shown.
-					id: fileDialogLoader
-					active: false
-					sourceComponent: Component{
-						FileDialog {
-							id: fileDialog
+//				onClicked: fileDialogLoader.active=true
+//				Loader{// Qt display warnings on open this FileDialog. A loader is used to avoid printing warnings each time a chat is shown.
+//					id: fileDialogLoader
+//					active: false
+//					sourceComponent: Component{
+//						FileDialog {
+//							id: fileDialog
 							
-							folder: shortcuts.home
-							title: qsTr('fileChooserTitle')
-							selectMultiple: true
-							onAccepted: {_emitFiles(fileDialog.fileUrls);fileDialogLoader.active = false}
-							onRejected: fileDialogLoader.active = false
-							Component.onCompleted: fileDialog.open()
-						}
-					}
-				}
-				tooltipText: droppableTextArea.dropEnabled
-							 ? qsTr('attachmentTooltip')
-							 : droppableTextArea.dropDisabledReason
-			}
+//							folder: shortcuts.home
+//							title: qsTr('fileChooserTitle')
+//							selectMultiple: true
+//							onAccepted: {_emitFiles(fileDialog.fileUrls);fileDialogLoader.active = false}
+//							onRejected: fileDialogLoader.active = false
+//							Component.onCompleted: fileDialog.open()
+//						}
+//					}
+//				}
+//				tooltipText: droppableTextArea.dropEnabled
+//							 ? qsTr('attachmentTooltip')
+//							 : droppableTextArea.dropDisabledReason
+//			}
 			// Record audio
-			ActionButton {
-				id: recordAudioButton
-				visible: droppableTextArea.enabled
+//			ActionButton {
+//				id: recordAudioButton
+//				visible: droppableTextArea.enabled
 				
-				Layout.alignment: Qt.AlignVCenter
-				Layout.leftMargin: 0
-				enabled: droppableTextArea.dropEnabled
-				isCustom: true
-				backgroundRadius: 8
-				colorSet: DroppableTextAreaStyle.chatMicro
+//				Layout.alignment: Qt.AlignVCenter
+//				Layout.leftMargin: 0
+//				enabled: droppableTextArea.dropEnabled
+//				isCustom: true
+//				backgroundRadius: 8
+//				colorSet: DroppableTextAreaStyle.chatMicro
 				
-				onClicked: droppableTextArea.audioRecordRequest()
+//				onClicked: droppableTextArea.audioRecordRequest()
 				
-			}
+//			}
 			
 			// Text area.
 			Item{

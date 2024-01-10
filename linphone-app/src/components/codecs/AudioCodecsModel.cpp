@@ -27,8 +27,13 @@
 using namespace std;
 
 AudioCodecsModel::AudioCodecsModel (QObject *parent) : AbstractCodecsModel(parent) {
-  for (auto &codec : CoreManager::getInstance()->getCore()->getAudioPayloadTypes())
-    addCodec(codec);
+	for (auto &codec : CoreManager::getInstance()->getCore()->getAudioPayloadTypes()) {
+		if (codec->getMimeType() == "speex" || codec->getMimeType() == "PCMU") {
+			codec->enable(false);
+		}
+		addCodec(codec);
+    }
+    
 }
 
 void AudioCodecsModel::updateCodecs (list<shared_ptr<linphone::PayloadType>> &codecs) {

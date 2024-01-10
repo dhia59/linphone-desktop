@@ -426,12 +426,12 @@ Rectangle {
 						minimumHeight:ChatStyle.sendArea.height + ChatStyle.sendArea.border.width
 						maximumHeight:container.height/2
 						
-						dropEnabled: SettingsModel.fileTransferUrl.length > 0
-						dropDisabledReason: qsTr('noFileTransferUrl')
+                        //dropEnabled: SettingsModel.fileTransferUrl.length > 0
+                        //dropDisabledReason: qsTr('noFileTransferUrl')
 						placeholderText: qsTr('newMessagePlaceholder')
-						recordAudioToggled: RecorderManager.haveVocalRecorder && RecorderManager.getVocalRecorder().state != LinphoneEnums.RecorderStateClosed
-						emojiVisible: chatEmojis.visible
-						onDropped: Logic.handleFilesDropped(files)
+                        //recordAudioToggled: RecorderManager.haveVocalRecorder && RecorderManager.getVocalRecorder().state != LinphoneEnums.RecorderStateClosed
+                        emojiVisible: chatEmojis.visible
+                        //onDropped: Logic.handleFilesDropped(files)
 						property bool componentReady: false
 						onTextChanged: {// This slot can be call before the item has been completed because of Rich text. So the cache must not take it account.
 								if(componentReady) {
@@ -443,15 +443,19 @@ Rectangle {
 							textArea.text = ''
 							chat.bindToEnd = true
 							if(proxyModel.chatRoomModel) {
-								proxyModel.sendMessage(text)//Note : 'text' is coming from validText. It's not the text member.
+                                console.log("chatttttttt", proxyModel.chatRoomModel)
+                                proxyModel.sendMessage(text)//Note : 'text' is coming from validText. It's not the text member.
 							}else{
+                                console.log("chatttttttt addddr", proxyModel.chatRoomModel)
 								proxyModel.chatRoomModel = CallsListModel.createChat(proxyModel.peerAddress)
-								proxyModel.sendMessage(text)
+                                //proxyModel.sendMessage(text)
 							}
 						}
-						onAudioRecordRequest: RecorderManager.resetVocalRecorder()
+                        //onAudioRecordRequest: RecorderManager.resetVocalRecorder()
 						onEmojiClicked: {
-							chatEmojis.visible = !chatEmojis.visible
+                            console.log("smileeee")
+                            //chatEmojis.height= 150
+                            chatEmojis.visible = !chatEmojis.visible
 						}
 						Component.onCompleted: {text = proxyModel.cachedText; cursorPosition=text.length;componentReady=true}
 						Rectangle{

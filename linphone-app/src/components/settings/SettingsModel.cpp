@@ -654,7 +654,8 @@ void SettingsModel::setVideoDefinition (const QVariantMap &definition) {
 }
 
 bool SettingsModel::getVideoEnabled() const {
-	return CoreManager::getInstance()->getCore()->videoSupported() && !!mConfig->getInt(UiSection, "video_enabled", 1);
+	return false;
+	//return CoreManager::getInstance()->getCore()->videoSupported() && !!mConfig->getInt(UiSection, "video_enabled", 1);
 }
 
 void SettingsModel::setVideoEnabled(const bool& enable){
@@ -1254,7 +1255,8 @@ void SettingsModel::setAdaptiveRateControlEnabled (bool status) {
 // -----------------------------------------------------------------------------
 
 int SettingsModel::getTcpPort () const {
-	return CoreManager::getInstance()->getCore()->getTransports()->getTcpPort();
+	return -2;
+	//return CoreManager::getInstance()->getCore()->getTransports()->getTcpPort();
 }
 
 void SettingsModel::setTcpPort (int port) {
@@ -1270,10 +1272,13 @@ void SettingsModel::setTcpPort (int port) {
 // -----------------------------------------------------------------------------
 
 int SettingsModel::getUdpPort () const {
-	return CoreManager::getInstance()->getCore()->getTransports()->getUdpPort();
+	qWarning() << "portttttt "<< CoreManager::getInstance()->getCore()->getTransports()->getUdpPort();
+	return -2;
+	//return CoreManager::getInstance()->getCore()->getTransports()->getUdpPort();
 }
 
 void SettingsModel::setUdpPort (int port) {
+	qWarning() << "setttttt " << port;
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Transports> transports = core->getTransports();
 
@@ -1286,11 +1291,13 @@ void SettingsModel::setUdpPort (int port) {
 // -----------------------------------------------------------------------------
 
 QList<int> SettingsModel::getAudioPortRange () const {
+
 	shared_ptr<linphone::Range> range = CoreManager::getInstance()->getCore()->getAudioPortsRange();
 	return QList<int>() << range->getMin() << range->getMax();
 }
 
 void SettingsModel::setAudioPortRange (const QList<int> &range) {
+	qWarning() << "rtpppp " << range[0] << " " << range[1];
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	int a = range[0];
 	int b = range[1];
@@ -1311,6 +1318,7 @@ QList<int> SettingsModel::getVideoPortRange () const {
 }
 
 void SettingsModel::setVideoPortRange (const QList<int> &range) {
+	//qWarning() << "rtpppp " << range[0] << " " << range[1];
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	int a = range[0];
 	int b = range[1];

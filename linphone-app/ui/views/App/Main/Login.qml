@@ -76,7 +76,7 @@ Item {
             Text {
                 visible: isErrorLabel
                 id: errorLabel
-                text: "Non valide !!!"
+                text: "Nom d'utilisateur ou mot de passe invalide"
                 color: "red"
             }
 
@@ -132,13 +132,12 @@ Item {
         target: AccountSettingsModel
 
         onFailedRegistration: {
-            console.log("Fail register test");
            isErrorLabel= true
-
         }
     }
 }
-    Loader{
+
+ Loader{
         id:busyIndicatorLoader
         source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
         visible: AccountSettingsModel.registrationState === AccountSettingsModel.RegistrationStateInProgress
@@ -146,10 +145,6 @@ Item {
         onVisibleChanged: {
             console.log("visibleeee ", isBusy)
         }
-
-        onLoaded: {
-          // busyOverlay.visible = busyIndicatorLoader.active;
-         }
   }
     Rectangle {
            id: busyOverlay
@@ -162,7 +157,7 @@ Item {
                    // Prevent interaction with the main page while busy
                }
            }
-       }
+   }
 
 }
 

@@ -864,13 +864,14 @@ bool CallModel::getLocalVideoEnabled () const {
 }
 
 bool CallModel::getVideoEnabled () const {
-	if(mCall){
+	return false;
+	/*if(mCall){
 		if(mCall->getState() == linphone::Call::State::End )
 			return false;
 		shared_ptr<const linphone::CallParams> params = mCall->getCurrentParams();
 		return params && params->videoEnabled();
 	}else
-		return CoreManager::getInstance()->getSettingsModel()->getVideoEnabled();
+		return CoreManager::getInstance()->getSettingsModel()->getVideoEnabled();*/
 }
 
 void CallModel::setVideoEnabled (bool status) {

@@ -90,9 +90,9 @@ ApplicationWindow {
             spacing: 0
             // -----------------------------------------------------------------------
 
-            AuthenticationNotifier {
-                onAuthenticationRequested: Logic.handleAuthenticationRequested(authInfo, realm, sipAddress, userId)
-            }
+//            AuthenticationNotifier {
+//                onAuthenticationRequested: Logic.handleAuthenticationRequested(authInfo, realm, sipAddress, userId)
+//            }
 
             // -----------------------------------------------------------------------
             // Toolbar properties.
@@ -115,27 +115,16 @@ ApplicationWindow {
                     }
                     spacing: MainWindowStyle.toolBar.spacing
 
-                    ActionButton {
-                        icon: (leftPanel.visible?'panel_shown':'panel_hidden')
-
-                        //: 'Hide Timeline' : Tooltip for a button that hide the timeline
-                        tooltipText : (leftPanel.visible?qsTr('hideTimeline')
-                                                          //: 'Open Timeline' : Tooltip for a button that open the timeline
-                                                        :qsTr('openTimeline'))
-                        iconSize: MainWindowStyle.panelButtonSize
-                        //autoIcon: true
-                        onClicked: leftPanel.visible = !leftPanel.visible
-                    }
-                    ActionButton {
-                        id: home
-                        isCustom: true
-                        backgroundRadius: 4
-                        colorSet: MainWindowStyle.buttons.home
-                        //: 'Open Home' : Tooltip for a button that open the home view
-                        tooltipText : qsTr('openHome')
-                        //autoIcon: true
-                        onClicked: setView('Home')
-                    }
+//                    ActionButton {
+//                        id: home
+//                        isCustom: true
+//                        backgroundRadius: 4
+//                        colorSet: MainWindowStyle.buttons.home
+//                        //: 'Open Home' : Tooltip for a button that open the home view
+//                        tooltipText : qsTr('openHome')
+//                        //autoIcon: true
+//                        onClicked: setView('Home')
+//                    }
 
                     AccountStatus {
                         id: accountStatus
@@ -145,8 +134,7 @@ ApplicationWindow {
                         Layout.fillWidth: false
 
                         TooltipArea {
-                            text: AccountSettingsModel.registrationState
-                           // text: UtilsCpp.toDisplayString(AccountSettingsModel.sipAddress, SettingsModel.sipDisplayMode)
+                           text: UtilsCpp.toDisplayString(AccountSettingsModel.sipAddress, SettingsModel.sipDisplayMode)
                             hoveringCursor: Qt.PointingHandCursor
                         }
 
@@ -303,7 +291,6 @@ ApplicationWindow {
                             icon: MainWindowStyle.menu.conferences.icon
                             iconSize: MainWindowStyle.menu.conferences.iconSize
                             overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-                            //: 'Meetings' : Meeting title for main window.
                             name: qsTr('mainWindowConferencesTitle').toUpperCase()
                             visible: SettingsModel.videoConferenceEnabled && SettingsModel.conferenceEnabled
 

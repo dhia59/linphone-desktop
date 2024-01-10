@@ -886,7 +886,7 @@ void App::setTrayIcon () {
 		CoreManager *coreManager = CoreManager::getInstance();
 		AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
 		accountSettingsModel->logout();
-		//connect(accountSettingsModel, &AccountSettingsModel::accountLogout, this, &App::handleLogout);
+
 		});
 	// trayIcon: Left click actions.
 	static QMenu *menu = new QMenu();// Static : Workaround about a bug with setContextMenu where it cannot be called more than once.
@@ -910,7 +910,6 @@ void App::setTrayIcon () {
 	menu->addAction(restoreAction);
 	menu->addSeparator();
 	menu->addAction(quitAction);
-	menu->addAction(logoutAction);
 	if(!mSystemTrayIcon)
 		systemTrayIcon->setContextMenu(menu);// This is a Qt bug. We cannot call setContextMenu more than once. So we have to keep an instance of the menu.
 	systemTrayIcon->setIcon(QIcon(Constants::WindowIconPath));
