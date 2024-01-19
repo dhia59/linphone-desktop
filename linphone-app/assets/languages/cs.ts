@@ -545,11 +545,6 @@
         </translation>
     </message>
     <message>
-        <source>noFileTransferUrl</source>
-        <translation>Soubor nelze odeslat .
-Adresa URL není nakonfigurována.</translation>
-    </message>
-    <message>
         <source>newMessagePlaceholder</source>
         <translation>Zadejte svoji zprávu</translation>
     </message>
@@ -1277,16 +1272,8 @@ Adresa URL není nakonfigurována.</translation>
 <context>
     <name>DroppableTextArea</name>
     <message>
-        <source>fileChooserTitle</source>
-        <translation>Vyberte jeden nebo více souborů</translation>
-    </message>
-    <message>
         <source>dropYourAttachment</source>
         <translation>Zahodit přílohu</translation>
-    </message>
-    <message>
-        <source>attachmentTooltip</source>
-        <translation>Odeslat soubor</translation>
     </message>
 </context>
 <context>
@@ -1504,16 +1491,8 @@ Adresa URL není nakonfigurována.</translation>
 <context>
     <name>Home</name>
     <message>
-        <source>howToDescription</source>
-        <translation>Potřebujete pomoc s používáním %1?</translation>
-    </message>
-    <message>
-        <source>howToTitle</source>
-        <translation>JAK POUŽÍVAT %1</translation>
-    </message>
-    <message>
-        <source>showTooltips</source>
-        <translation>Zobrazit popisky</translation>
+        <source>homeTitle</source>
+        <translation type="unfinished">VÍTEJTE</translation>
     </message>
 </context>
 <context>
@@ -1840,21 +1819,6 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainWindow</name>
     <message>
-        <source>hideTimeline</source>
-        <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openTimeline</source>
-        <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openHome</source>
-        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1878,7 +1842,6 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

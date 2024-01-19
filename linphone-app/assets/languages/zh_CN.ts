@@ -520,11 +520,6 @@
         <source>newMessagePlaceholder</source>
         <translation>输入你的消息</translation>
     </message>
-    <message>
-        <source>noFileTransferUrl</source>
-        <translation>无法发送文件。
-未配置服务器地址。</translation>
-    </message>
     <message numerus="yes">
         <source>chatTyping</source>
         <extracomment>&apos;%1 is typing...&apos; indicate that someone is composing in chat</extracomment>
@@ -1265,16 +1260,8 @@
 <context>
     <name>DroppableTextArea</name>
     <message>
-        <source>fileChooserTitle</source>
-        <translation>请选择一个或多个文件</translation>
-    </message>
-    <message>
         <source>dropYourAttachment</source>
         <translation>拖放您的附件</translation>
-    </message>
-    <message>
-        <source>attachmentTooltip</source>
-        <translation>发送文件</translation>
     </message>
 </context>
 <context>
@@ -1484,16 +1471,8 @@
 <context>
     <name>Home</name>
     <message>
-        <source>howToDescription</source>
-        <translation>需要关于如何使用 %1 的帮助？</translation>
-    </message>
-    <message>
-        <source>howToTitle</source>
-        <translation>如何使用 %1</translation>
-    </message>
-    <message>
-        <source>showTooltips</source>
-        <translation>显示工具提示</translation>
+        <source>homeTitle</source>
+        <translation type="unfinished">欢迎</translation>
     </message>
 </context>
 <context>
@@ -1820,21 +1799,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <source>hideTimeline</source>
-        <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openTimeline</source>
-        <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openHome</source>
-        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1858,7 +1822,6 @@
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

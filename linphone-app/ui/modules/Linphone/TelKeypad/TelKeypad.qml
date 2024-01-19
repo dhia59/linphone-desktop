@@ -15,9 +15,16 @@ Rectangle {
 	property var call
 	signal sendDtmf(var dtmf)
 	signal keyPressed(var event)
-	
+    property bool clicked: false
+    property bool containsMouse: false
+    function open () {
+        telKeypad.popup()
+    }
+    function close(){
+        telKeypad.close()
+    }
 	color: TelKeypadStyle.colorModel.color   // useless as it is overridden by buttons color, but keep it if buttons are transparent
-	onActiveFocusChanged: {if(activeFocus) selectedArea.border.width=TelKeypadStyle.selectedBorderWidth; else selectedArea.border.width=0}
+    onActiveFocusChanged: {if(activeFocus) selectedArea.border.width=TelKeypadStyle.selectedBorderWidth; else selectedArea.border.width=0}
 	Keys.onPressed: keyPressed(event)
 	layer {
 		effect: PopupShadow {}
@@ -32,15 +39,18 @@ Rectangle {
 	// ---------------------------------------------------------------------------
 	MouseArea{
 			anchors.fill:parent
-			onClicked: telKeypad.forceActiveFocus()
-	}
+            onClicked:{telKeypad.forceActiveFocus()
+               // console.log
+           }
+    }
+    //onActiveFocusChanged:{}
 	ColumnLayout {
 		anchors.fill: parent
 		anchors.topMargin: TelKeypadStyle.rowSpacing+5
 		anchors.bottomMargin: TelKeypadStyle.rowSpacing+5
 		anchors.leftMargin: TelKeypadStyle.columnSpacing+5
 		anchors.rightMargin: TelKeypadStyle.columnSpacing+5
-		
+
 		Text{
 			id: history
 			Layout.preferredWidth: parent.width
@@ -57,7 +67,7 @@ Rectangle {
 			visible: showHistory
 			MouseArea{
 				anchors.fill: parent
-				onClicked: parent.text = ''
+                onClicked: {parent.text = ''}
 			}
 		}
 		
@@ -73,10 +83,10 @@ Rectangle {
 			
 			Repeater {
 				model: [
-					'1', '2', '3', 'A',
-					'4', '5', '6', 'B',
-					'7', '8', '9', 'C',
-					'*', '0', '#', 'D',
+                    '1', '2', '3',
+                    '4', '5', '6',
+                    '7', '8', '9',
+                    '*', '0', '#'
 				]
 				
 				TelKeypadButton {
@@ -116,5 +126,9 @@ Rectangle {
 		focus:false
 		enabled:false
 		radius:TelKeypadStyle.radius
-	}
+        MouseArea{
+            anchors.fill: parent
+            onClicked: console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+        }
+}
 }

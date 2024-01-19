@@ -520,11 +520,6 @@
         <source>newMessagePlaceholder</source>
         <translation>Enter your message</translation>
     </message>
-    <message>
-        <source>noFileTransferUrl</source>
-        <translation>Unable to send file.
-Server URL not configured.</translation>
-    </message>
     <message numerus="yes">
         <source>chatTyping</source>
         <extracomment>&apos;%1 is typing...&apos; indicate that someone is composing in chat</extracomment>
@@ -1271,16 +1266,8 @@ Server URL not configured.</translation>
 <context>
     <name>DroppableTextArea</name>
     <message>
-        <source>fileChooserTitle</source>
-        <translation>Please choose one or more files</translation>
-    </message>
-    <message>
         <source>dropYourAttachment</source>
         <translation>Drop your attachment</translation>
-    </message>
-    <message>
-        <source>attachmentTooltip</source>
-        <translation>Send a file</translation>
     </message>
 </context>
 <context>
@@ -1494,16 +1481,8 @@ Server URL not configured.</translation>
 <context>
     <name>Home</name>
     <message>
-        <source>howToDescription</source>
-        <translation>Need help on how to use %1?</translation>
-    </message>
-    <message>
-        <source>howToTitle</source>
-        <translation>HOW TO USE %1</translation>
-    </message>
-    <message>
-        <source>showTooltips</source>
-        <translation>Show tooltips</translation>
+        <source>homeTitle</source>
+        <translation type="unfinished">WELCOME</translation>
     </message>
 </context>
 <context>
@@ -1830,21 +1809,6 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainWindow</name>
     <message>
-        <source>hideTimeline</source>
-        <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openTimeline</source>
-        <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openHome</source>
-        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1868,7 +1832,6 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

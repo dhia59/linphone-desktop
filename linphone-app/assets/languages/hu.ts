@@ -520,11 +520,6 @@
         <source>newMessagePlaceholder</source>
         <translation>Írja be az üzenetét</translation>
     </message>
-    <message>
-        <source>noFileTransferUrl</source>
-        <translation>Nem sikerült elküldeni a fájlt.
-A kiszolgáló URL-je nincs konfigurálva.</translation>
-    </message>
     <message numerus="yes">
         <source>chatTyping</source>
         <extracomment>&apos;%1 is typing...&apos; indicate that someone is composing in chat</extracomment>
@@ -1265,16 +1260,8 @@ A kiszolgáló URL-je nincs konfigurálva.</translation>
 <context>
     <name>DroppableTextArea</name>
     <message>
-        <source>fileChooserTitle</source>
-        <translation>Válasszon egy vagy több fájlt</translation>
-    </message>
-    <message>
         <source>dropYourAttachment</source>
         <translation>Adja hozzá ide a mellékletet</translation>
-    </message>
-    <message>
-        <source>attachmentTooltip</source>
-        <translation>Fájl küldése</translation>
     </message>
 </context>
 <context>
@@ -1484,16 +1471,8 @@ A kiszolgáló URL-je nincs konfigurálva.</translation>
 <context>
     <name>Home</name>
     <message>
-        <source>howToDescription</source>
-        <translation>Segítségre van szüksége a(z) %1 használatához?</translation>
-    </message>
-    <message>
-        <source>howToTitle</source>
-        <translation>Hogyan kell %1 használni</translation>
-    </message>
-    <message>
-        <source>showTooltips</source>
-        <translation>Buboréksúgók megjelenítése</translation>
+        <source>homeTitle</source>
+        <translation type="unfinished">Isten hozott</translation>
     </message>
 </context>
 <context>
@@ -1820,21 +1799,6 @@ Kattintson ide: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainWindow</name>
     <message>
-        <source>hideTimeline</source>
-        <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openTimeline</source>
-        <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openHome</source>
-        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1858,7 +1822,6 @@ Kattintson ide: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

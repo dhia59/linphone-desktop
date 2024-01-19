@@ -22,7 +22,7 @@ ApplicationWindow {
     property string _currentView
     property var _lockedInfo
     property SmartSearchBar mainSearchBar : (mainLoader.item ? mainLoader.item.mainSearchBar : null)
-
+    property bool isVisibleTelKeypad: false
     // ---------------------------------------------------------------------------
 
     function lockView (info) {
@@ -73,6 +73,7 @@ ApplicationWindow {
         anchors.fill: parent
         sourceComponent: testCompo
     }
+
     Component{
         id: testCompo
         //visible: true
@@ -200,9 +201,36 @@ ApplicationWindow {
                         isCustom: true
                         backgroundRadius: 90
                         colorSet: MainWindowStyle.buttons.telKeyad
-                        onClicked: telKeypad.visible = !telKeypad.visible
+                        onClicked:popup.open()//toggled ? telKeypad.close() : telKeypad.open() //telKeypad.visible = !telKeypad.visible
                         toggled: telKeypad.visible
+
                     }
+                    Popup {
+                            id: popup
+                            x: (parent.width - width) -10
+                            y: (parent.height - height)+90
+                            width: 200
+                            height: 100
+                         //   modal: true
+
+
+                            Rectangle {
+                                width: parent.width-50
+                                height: parent.height-50
+                                color:Qt.rgba(0, 0, 0, 0)
+                                 border.color: "transparent"
+                                 border.width: 0
+                                TelKeypad {
+                                    anchors.right: parent.right
+                                    anchors.top: parent.top
+                                    id: telKeypad
+                                    onSendDtmf: smartSearchBar.text += dtmf
+                                    visible:true//SettingsModel.showTelKeypadAutomatically
+                                    onVisibleChanged: isVisibleTelKeypad= visible
+                                    //onTarget: {telKeypad.containsMouse= true;console.log('testtttttttttttttttttttt', telKeypad.containsMouse)}
+                                }
+                            }
+                        }
 
 
                     ActionButton {
@@ -231,7 +259,7 @@ ApplicationWindow {
             RowLayout {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-
+                id:mainRow
                 spacing: 0
 
                 // Main menu.
@@ -346,8 +374,10 @@ ApplicationWindow {
 
                 // Main content.
                 Item{
+                    id: test
                     Layout.fillHeight: true
                     Layout.fillWidth: true
+
                     Loader {
                         id: contentLoader
 
@@ -357,13 +387,18 @@ ApplicationWindow {
 
                         source:AccountSettingsModel.registrationState===0? 'Home.qml' :'Login.qml'
                     }
-                    TelKeypad {
-                        anchors.right: parent.right
-                        anchors.top: parent.top
-                        id: telKeypad
-                        onSendDtmf: smartSearchBar.text += dtmf
-                        visible: SettingsModel.showTelKeypadAutomatically
-                    }
+//                    TelKeypad {
+//                        anchors.right: parent.right
+//                        anchors.top: parent.top
+//                        id: telKeypad
+//                        onSendDtmf: smartSearchBar.text += dtmf
+//                        visible:SettingsModel.showTelKeypadAutomatically
+//                        onVisibleChanged: isVisibleTelKeypad= visible
+//                        //onTarget: {telKeypad.containsMouse= true;console.log('testtttttttttttttttttttt', telKeypad.containsMouse)}
+//                    }
+
+
+
                     Connections {
                         target: AccountSettingsModel
 
@@ -378,9 +413,22 @@ ApplicationWindow {
                             contentLoader.setSource("Login.qml",{"isErrorLabel": "true"})
                         }
                     }
-                    }
 
+                    }
+                function hideTelKeypad(){
+                    if (!telKeypad.containsMouse) {
+                       // telKeypad.visible = false;
+                    }
+                  }
                 }
+
+//            MouseArea {
+//                   anchors.fill: parent
+//                   visible: isVisibleTelKeypad
+//                   onClicked: {
+//                       mainRow.hideTelKeypad()
+//                   }
+//               }
 
         }
 
@@ -401,7 +449,6 @@ ApplicationWindow {
     // ---------------------------------------------------------------------------
     // Url handlers.
     // ---------------------------------------------------------------------------
-
 
     Connections {
         target: UrlHandlers

@@ -520,11 +520,6 @@
         <source>newMessagePlaceholder</source>
         <translation>Введите сообщение</translation>
     </message>
-    <message>
-        <source>noFileTransferUrl</source>
-        <translation>Не удалось отправить файл.
-Не настроен адрес сервера.</translation>
-    </message>
     <message numerus="yes">
         <source>chatTyping</source>
         <extracomment>&apos;%1 is typing...&apos; indicate that someone is composing in chat</extracomment>
@@ -1277,16 +1272,8 @@
 <context>
     <name>DroppableTextArea</name>
     <message>
-        <source>fileChooserTitle</source>
-        <translation>Пожалуйста, выберите один или несколько файлов</translation>
-    </message>
-    <message>
         <source>dropYourAttachment</source>
         <translation>Поместите вложение</translation>
-    </message>
-    <message>
-        <source>attachmentTooltip</source>
-        <translation>Отправить файл</translation>
     </message>
 </context>
 <context>
@@ -1504,16 +1491,8 @@
 <context>
     <name>Home</name>
     <message>
-        <source>howToDescription</source>
-        <translation>Нужна помощь в использовании %1?</translation>
-    </message>
-    <message>
-        <source>howToTitle</source>
-        <translation>КАК ПОЛЬЗОВАТЬСЯ %1</translation>
-    </message>
-    <message>
-        <source>showTooltips</source>
-        <translation>Показывать подсказки</translation>
+        <source>homeTitle</source>
+        <translation type="unfinished">ДОБРО ПОЖАЛОВАТЬ</translation>
     </message>
 </context>
 <context>
@@ -1840,21 +1819,6 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <source>hideTimeline</source>
-        <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openTimeline</source>
-        <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openHome</source>
-        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1878,7 +1842,6 @@
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

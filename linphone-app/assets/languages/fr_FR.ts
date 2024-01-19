@@ -161,7 +161,7 @@
     </message>
     <message>
         <source>homeDescription</source>
-        <translation>Cet assistant va vous aider à configurer et utiliser votre compte SIP.</translation>
+        <translation>NetcomPhone, l&apos;outil de communication ultime qui révolutionne votre expérience téléphonique. Restez connecté, communiquez en toute simplicité et profitez d&apos;une qualité sonore exceptionnelle pour des échanges inoubliables, à portée de main.</translation>
     </message>
     <message>
         <source>createAppSipAccount</source>
@@ -519,11 +519,6 @@
     <message>
         <source>newMessagePlaceholder</source>
         <translation>Entrer votre message</translation>
-    </message>
-    <message>
-        <source>noFileTransferUrl</source>
-        <translation>Impossible d&apos;envoyer un fichier.
-URL du serveur non configurée.</translation>
     </message>
     <message numerus="yes">
         <source>chatTyping</source>
@@ -1271,16 +1266,8 @@ URL du serveur non configurée.</translation>
 <context>
     <name>DroppableTextArea</name>
     <message>
-        <source>fileChooserTitle</source>
-        <translation>Merci de choisir un ou plusieurs fichiers</translation>
-    </message>
-    <message>
         <source>dropYourAttachment</source>
         <translation>Déposez votre pièce jointe</translation>
-    </message>
-    <message>
-        <source>attachmentTooltip</source>
-        <translation>Envoyer un fichier</translation>
     </message>
 </context>
 <context>
@@ -1494,16 +1481,8 @@ URL du serveur non configurée.</translation>
 <context>
     <name>Home</name>
     <message>
-        <source>howToDescription</source>
-        <translation>Besoin d&apos;aide pour utiliser %1 ?</translation>
-    </message>
-    <message>
-        <source>howToTitle</source>
-        <translation>COMMENT UTILISER %1</translation>
-    </message>
-    <message>
-        <source>showTooltips</source>
-        <translation>Voir les bulles d&apos;aides</translation>
+        <source>homeTitle</source>
+        <translation type="unfinished">BIENVENUE</translation>
     </message>
 </context>
 <context>
@@ -1830,27 +1809,12 @@ Cliquez ici : &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainWindow</name>
     <message>
-        <source>hideTimeline</source>
-        <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openTimeline</source>
-        <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openHome</source>
-        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>mainSearchBarPlaceholder</source>
-        <translation>Rechercher, se rencontrer et appeler</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>smartSearchBarTooltip</source>
@@ -1864,11 +1828,10 @@ Cliquez ici : &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     <message>
         <source>contactsEntry</source>
         <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation>Contacts</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

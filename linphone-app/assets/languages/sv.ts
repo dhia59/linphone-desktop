@@ -520,11 +520,6 @@
         <source>newMessagePlaceholder</source>
         <translation>Ange ditt meddelande</translation>
     </message>
-    <message>
-        <source>noFileTransferUrl</source>
-        <translation>Det gick inte att skicka filen.
-Serverwebbadressen är inte konfigurerad.</translation>
-    </message>
     <message numerus="yes">
         <source>chatTyping</source>
         <extracomment>&apos;%1 is typing...&apos; indicate that someone is composing in chat</extracomment>
@@ -1271,16 +1266,8 @@ Serverwebbadressen är inte konfigurerad.</translation>
 <context>
     <name>DroppableTextArea</name>
     <message>
-        <source>fileChooserTitle</source>
-        <translation>Välj en eller flera filer</translation>
-    </message>
-    <message>
         <source>dropYourAttachment</source>
         <translation>Släpp din bilaga</translation>
-    </message>
-    <message>
-        <source>attachmentTooltip</source>
-        <translation>Skicka en fil</translation>
     </message>
 </context>
 <context>
@@ -1494,16 +1481,8 @@ Serverwebbadressen är inte konfigurerad.</translation>
 <context>
     <name>Home</name>
     <message>
-        <source>howToDescription</source>
-        <translation>Behöver du hjälp med hur du använder %1?</translation>
-    </message>
-    <message>
-        <source>howToTitle</source>
-        <translation>HUR DU ANVÄNDER %1</translation>
-    </message>
-    <message>
-        <source>showTooltips</source>
-        <translation>Visa verktygstips</translation>
+        <source>homeTitle</source>
+        <translation type="unfinished">VÄLKOMMEN</translation>
     </message>
 </context>
 <context>
@@ -1830,21 +1809,6 @@ Klicka här: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainWindow</name>
     <message>
-        <source>hideTimeline</source>
-        <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openTimeline</source>
-        <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openHome</source>
-        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1868,7 +1832,6 @@ Klicka här: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>

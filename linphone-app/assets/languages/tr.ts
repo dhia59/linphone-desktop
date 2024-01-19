@@ -520,11 +520,6 @@
         <source>newMessagePlaceholder</source>
         <translation>İletinizi girin</translation>
     </message>
-    <message>
-        <source>noFileTransferUrl</source>
-        <translation>Dosya gönderilemiyor.
-Sunucu url&apos;si yapılandırılmadı.</translation>
-    </message>
     <message numerus="yes">
         <source>chatTyping</source>
         <extracomment>&apos;%1 is typing...&apos; indicate that someone is composing in chat</extracomment>
@@ -1265,16 +1260,8 @@ Sunucu url&apos;si yapılandırılmadı.</translation>
 <context>
     <name>DroppableTextArea</name>
     <message>
-        <source>fileChooserTitle</source>
-        <translation>Lütfen bir veya daha çok dosya seçin</translation>
-    </message>
-    <message>
         <source>dropYourAttachment</source>
         <translation>Ekinizi atın</translation>
-    </message>
-    <message>
-        <source>attachmentTooltip</source>
-        <translation>Dosya gönder</translation>
     </message>
 </context>
 <context>
@@ -1484,16 +1471,8 @@ Sunucu url&apos;si yapılandırılmadı.</translation>
 <context>
     <name>Home</name>
     <message>
-        <source>howToDescription</source>
-        <translation>%1&apos;un nasıl kullanılacağıyla ilgili yardıma mı gereksiniyorsunuz?</translation>
-    </message>
-    <message>
-        <source>howToTitle</source>
-        <translation>%1 NASIL KULLANILIR</translation>
-    </message>
-    <message>
-        <source>showTooltips</source>
-        <translation>Bilgi çubuklarını göster</translation>
+        <source>homeTitle</source>
+        <translation type="unfinished">HOŞ GELDİNİZ</translation>
     </message>
 </context>
 <context>
@@ -1820,21 +1799,6 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainWindow</name>
     <message>
-        <source>hideTimeline</source>
-        <extracomment>&apos;Hide Timeline&apos; : Tooltip for a button that hide the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openTimeline</source>
-        <extracomment>&apos;Open Timeline&apos; : Tooltip for a button that open the timeline</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>openHome</source>
-        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1858,7 +1822,6 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <extracomment>&apos;Meetings&apos; : Meeting title for main window.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
