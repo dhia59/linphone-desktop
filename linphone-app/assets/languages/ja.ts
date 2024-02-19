@@ -1005,29 +1005,37 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">あなたのアドレス帳からこの連絡先を削除してもよろしいですか？</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>連絡先を検索</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>全て</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>接続済</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>連絡先に追加</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>あなたのアドレス帳からこの連絡先を削除してもよろしいですか？</translation>
+        <translation type="unfinished">連絡先に追加</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
         <translation type="unfinished">会議ベースのチャットルームを作成するには、アカウント設定で会議URIを設定する必要があります。</translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

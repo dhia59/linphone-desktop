@@ -18,9 +18,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#ifndef CONTACTS_LIST_MODEL_H_
-#define CONTACTS_LIST_MODEL_H_
+#ifndef CONTACTS_ENREACH_LIST_MODEL_H_
+#define CONTACTS_ENREACH_LIST_MODEL_H_
 
 #include <memory>
 
@@ -32,39 +31,33 @@ namespace linphone {
 	class FriendList;
 }
 
-class ContactModel;
+class ContactEnreachModel;
 class VcardModel;
 class FriendListListener;
 
-class ContactsListModel : public ProxyListModel {
+class ContactsEnreachListModel : public ProxyListModel {
 	friend class SipAddressesModel;
-	friend class ProxyListModelIterator;
+	
 	Q_OBJECT;
 	
 public:
-	ContactsListModel (QObject *parent = Q_NULLPTR);
-	virtual ~ContactsListModel();
-	using iterator = ProxyListModelIterator;
+	ContactsEnreachListModel (QObject *parent = Q_NULLPTR);
+	virtual ~ContactsEnreachListModel();
+	
 	bool removeRows (int row, int count, const QModelIndex &parent = QModelIndex()) override;
 	
-	QSharedPointer<ContactModel> findContactModelFromSipAddress (const QString &sipAddress) const;
-	QSharedPointer<ContactModel> findContactModelFromUsername (const QString &username) const;
+	QSharedPointer<ContactEnreachModel> findContactEnreachModelFromSipAddress (const QString &sipAddress) const;
+	QSharedPointer<ContactEnreachModel> findContactEnreachModelFromUsername (const QString &username) const;
 	
-	Q_INVOKABLE ContactModel *getContactModelFromAddress (const QString& address) const;
-	Q_INVOKABLE ContactModel *addContact (VcardModel *vcardModel);
-	Q_INVOKABLE void removeContact (ContactModel *contact);
+	Q_INVOKABLE ContactEnreachModel *getContactEnreachModelFromAddress (const QString& address) const;
+	Q_INVOKABLE ContactEnreachModel *addContact (ContactEnreachModel* contact);
+	Q_INVOKABLE void removeContact (ContactEnreachModel *contact);
 	
 	Q_INVOKABLE void cleanAvatars ();
 	Q_INVOKABLE void update ();
 	
 	void connectTo(FriendListListener * listener);
-	iterator begin() {
-		return iterator(mList.begin());
-	}
-
-	iterator end() {
-		return iterator(mList.end());
-	}
+	
 public slots:
 	void onContactCreated(const std::shared_ptr<linphone::Friend> & linphoneFriend);
 	void onContactDeleted(const std::shared_ptr<linphone::Friend> & linphoneFriend);
@@ -73,19 +66,19 @@ public slots:
 	void onPresenceReceived(const std::list<std::shared_ptr<linphone::Friend>> & friends);
 	
 signals:
-	void contactAdded (QSharedPointer<ContactModel>);
-	void contactRemoved (QSharedPointer<ContactModel>);
-	void contactUpdated (QSharedPointer<ContactModel>);
+	void contactAdded (QSharedPointer<ContactEnreachModel>);
+	void contactRemoved (QSharedPointer<ContactEnreachModel>);
+	void contactUpdated (QSharedPointer<ContactEnreachModel>);
 	
-	void sipAddressAdded (QSharedPointer<ContactModel>, const QString &sipAddress);
-	void sipAddressRemoved (QSharedPointer<ContactModel>, const QString &sipAddress);
+	void sipAddressAdded (QSharedPointer<ContactEnreachModel>, const QString &sipAddress);
+	void sipAddressRemoved (QSharedPointer<ContactEnreachModel>, const QString &sipAddress);
 	
 private:
-	void addContact (QSharedPointer<ContactModel> contact);
+	void addContact (QSharedPointer<ContactEnreachModel> contact);
 	
-	QMap<QString, QSharedPointer<ContactModel>>	mOptimizedSearch;
+	QMap<QString, QSharedPointer<ContactEnreachModel>>	mOptimizedSearch;
 	std::list<std::shared_ptr<linphone::FriendList>> mLinphoneFriends;
 	std::shared_ptr<FriendListListener> mFriendListListener;
 };
 
-#endif // CONTACTS_LIST_MODEL_H_
+#endif // CONTACTS_ENREACH_LIST_MODEL_H_

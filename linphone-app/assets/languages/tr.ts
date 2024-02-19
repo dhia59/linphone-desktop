@@ -1005,29 +1005,37 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Bu kişiyi adres defterinizden silmek istediğinize emin misiniz?</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>Kişi ara</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>Tümü</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>Bağlı</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>KİŞİ EKLE</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>Bu kişiyi adres defterinizden silmek istediğinize emin misiniz?</translation>
+        <translation type="unfinished">KİŞİ EKLE</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
-        <translation>Toplantı tabanlı konuşma odası oluşturmak için hesap ayarlarınızda toplantı URI&apos;si belirlemelisiniz.</translation>
+        <translation type="unfinished">Toplantı tabanlı konuşma odası oluşturmak için hesap ayarlarınızda toplantı URI&apos;si belirlemelisiniz.</translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

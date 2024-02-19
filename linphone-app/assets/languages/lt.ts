@@ -1017,28 +1017,36 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Ar tikrai norite pašalinti šį kontaktą iš savo adresų knygos?</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>Ieškoti kontakto</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>Visi</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>Prisijungę</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>PRIDĖTI KONTAKTĄ</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>Ar tikrai norite pašalinti šį kontaktą iš savo adresų knygos?</translation>
+        <translation type="unfinished">PRIDĖTI KONTAKTĄ</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

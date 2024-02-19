@@ -18,27 +18,25 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CONTACTS_LIST_PROXY_MODEL_H_
-#define CONTACTS_LIST_PROXY_MODEL_H_
+#ifndef CONTACTS_ENREACH_LIST_PROXY_MODEL_H_
+#define CONTACTS_ENREACH_LIST_PROXY_MODEL_H_
 
 #include <QSortFilterProxyModel>
-
+#include "ContactEnreach.hpp"
+#include "ContactEnreachModel.hpp"
 // =============================================================================
 
-class ContactModel;
-class ContactsListModel;
-
-class ContactsListProxyModel : public QSortFilterProxyModel {
+class ContactsEnreachListProxyModel : public QSortFilterProxyModel {
+	
   Q_OBJECT;
 
-  Q_PROPERTY(
-    bool useConnectedFilter
-    READ isConnectedFilterUsed
-    WRITE setConnectedFilter
-  );
+  Q_PROPERTY(bool useConnectedFilter READ isConnectedFilterUsed WRITE setConnectedFilter );
+  Q_PROPERTY(bool useLocalFilter READ isLocalFilterUsed WRITE setLocalFilter);
+  Q_PROPERTY(bool usePartageFilter READ isPartageFilterUsed WRITE setPartgeFilter);
+  Q_PROPERTY(bool usePersonnelFilter READ isPersonnelFilterUsed WRITE setPersonnelFilter);
 
 public:
-  ContactsListProxyModel (QObject *parent = Q_NULLPTR);
+  ContactsEnreachListProxyModel (QObject *parent = Q_NULLPTR);
 
   Q_INVOKABLE void setFilter (const QString &pattern);
 
@@ -48,22 +46,39 @@ protected:
 
 private:
   float computeStringWeight (const QString &string, float percentage) const;
-  float computeContactWeight (const ContactModel *contact) const;
+  float computeContactWeight (const ContactEnreachModel *contact) const;
+ 
+
 
   bool isConnectedFilterUsed () const {
     return mUseConnectedFilter;
   }
-
+  bool isLocalFilterUsed() const {
+	  return mUseLocalFilter;
+  }
+  bool isPartageFilterUsed() const {
+	  return mUsePartageFilter;
+  }
+  bool isPersonnelFilterUsed() const{ 
+	return mUsePersonnelFilter;
+  }
   void setConnectedFilter (bool useConnectedFilter);
+  void setLocalFilter(bool useLocalFilter);
+  void setPartgeFilter(bool usePartageFilter);
   void getList();
+  void listLinphoneContacts(ContactsEnreachListModel *contacts, QVariantList *listSips);
+  void listApiContacts( ContactsEnreachListModel *contacts);
+  void setPersonnelFilter(bool usePersonnelFiler);
   QString mFilter;
   bool mUseConnectedFilter = false;
-
+  bool mUseLocalFilter = false;
+  bool mUsePartageFilter = false;
+  bool mUsePersonnelFilter = false;
   // It's just a cache to save values computed by `filterAcceptsRow`
   // and reused by `lessThan`.
-  mutable QHash<const ContactModel *, unsigned int> mWeights;
+  mutable QHash<ContactEnreachModel*, unsigned int> mWeights;
 
   static const QRegExp SearchSeparators;
 };
 
-#endif // CONTACTS_LIST_PROXY_MODEL_H_
+#endif // CONTACTS_ENREACH_LIST_PROXY_MODEL_H_

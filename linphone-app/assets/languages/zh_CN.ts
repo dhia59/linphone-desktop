@@ -1005,29 +1005,37 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">你真的要从地址簿中移除该联系人吗？</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>搜索联系人</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>全部</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>已连接</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>添加联系人</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>你真的要从地址簿中移除该联系人吗？</translation>
+        <translation type="unfinished">添加联系人</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
-        <translation>您需要在帐户设置中设置会议 URI 以创建基于会议的聊天室。</translation>
+        <translation type="unfinished">您需要在帐户设置中设置会议 URI 以创建基于会议的聊天室。</translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

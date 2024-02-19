@@ -1005,29 +1005,37 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Tényleg eltávolítja ezt a névjegyet a címjegyzékből?</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>Névjegy keresése</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>Összes</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>Kapcsolódva</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>Névjegy hozzáadása</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>Tényleg eltávolítja ezt a névjegyet a címjegyzékből?</translation>
+        <translation type="unfinished">Névjegy hozzáadása</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
-        <translation>Konferenciaalapú csevegőszoba létrehozásához be kell állítania a konferencia URI-címét a fiókbeállításokban.</translation>
+        <translation type="unfinished">Konferenciaalapú csevegőszoba létrehozásához be kell állítania a konferencia URI-címét a fiókbeállításokban.</translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1017,28 +1017,36 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Ви справді бажаєте вилучити цей контакт з вашої адресної книги?</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>Знайти контакт</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>Усі</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>Під&apos;єднані</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>ДОДАТИ КОНТАКТ</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>Ви справді бажаєте вилучити цей контакт з вашої адресної книги?</translation>
+        <translation type="unfinished">ДОДАТИ КОНТАКТ</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

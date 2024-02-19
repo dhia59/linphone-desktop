@@ -17,6 +17,37 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+#ifndef _PROXY_LIST_MODEL_ITERATOR_H_
+#define _PROXY_LIST_MODEL_ITERATOR_H_
+#include <QSharedPointer>
+class ProxyListModelIterator : public std::iterator<std::input_iterator_tag, QSharedPointer<QObject>> {
+	friend class ProxyListModel;
+
+public:
+	ProxyListModelIterator(QList<QSharedPointer<QObject>>::iterator it)
+		: iterator(it) {}
+
+	ProxyListModelIterator& operator++() {
+		++iterator;
+		return *this;
+	}
+
+	bool operator==(const ProxyListModelIterator& other) const {
+		return iterator == other.iterator;
+	}
+
+	bool operator!=(const ProxyListModelIterator& other) const {
+		return iterator != other.iterator;
+	}
+
+	QSharedPointer<QObject> operator*() const {
+		return *iterator;
+	}
+
+private:
+	QList<QSharedPointer<QObject>>::iterator iterator;
+};
+#endif
 
 #ifndef _PROXY_LIST_MODEL_H_
 #define _PROXY_LIST_MODEL_H_
@@ -28,13 +59,14 @@
 // =============================================================================
 
 class ProxyListModel : public ProxyAbstractListModel<QSharedPointer<QObject>> {
+	friend class ProxyListModelIterator;
 	Q_OBJECT
 	
 public:
 	Q_PROPERTY(int count READ getCount NOTIFY countChanged)
 	ProxyListModel (QObject *parent = Q_NULLPTR);
 	virtual ~ProxyListModel();
-	
+	using iterator = ProxyListModelIterator;
 	template <class T>
 	QSharedPointer<T> getAt(const int& index) const{
 		return ProxyAbstractListModel<QSharedPointer<QObject>>::getAt(index).objectCast<T>();
@@ -61,6 +93,13 @@ public:
 	template <class T>
 	void add(QSharedPointer<T> item){
 		ProxyAbstractListModel<QSharedPointer<QObject>>::add(item.template objectCast<QObject>());
+	}
+	iterator begin() {
+		return iterator(mList.begin());
+	}
+
+	iterator end() {
+		return iterator(mList.end());
 	}
 
 	template <class T>

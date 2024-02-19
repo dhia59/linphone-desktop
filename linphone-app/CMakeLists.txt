@@ -229,6 +229,9 @@ set(SOURCES
 	src/components/conferenceScheduler/ConferenceScheduler.cpp
 	src/components/conferenceScheduler/ConferenceSchedulerListener.cpp
 	src/components/contact/ContactModel.cpp
+	src/components/contacts/ContactEnreach.cpp
+	src/components/contacts/ContactEnreachModel.cpp
+	src/components/contacts/ContactsEnreachListModel.cpp
 	src/components/contact/VcardModel.cpp
 	src/components/contacts/ContactsImporterModel.cpp
 	src/components/contacts/ContactsImporterPluginsManager.cpp
@@ -236,6 +239,7 @@ set(SOURCES
 	src/components/contacts/ContactsImporterListProxyModel.cpp
 	src/components/contacts/ContactsListModel.cpp
 	src/components/contacts/ContactsListProxyModel.cpp
+	src/components/contacts/ContactsEnreachListProxyModel.cpp
 	src/components/content/ContentModel.cpp
 	src/components/content/ContentListModel.cpp
 	src/components/content/ContentProxyModel.cpp
@@ -371,6 +375,9 @@ set(HEADERS
 	src/components/conferenceScheduler/ConferenceScheduler.hpp
 	src/components/conferenceScheduler/ConferenceSchedulerListener.hpp
 	src/components/contact/ContactModel.hpp
+	src/components/contacts/ContactEnreach.hpp
+	src/components/contacts/ContactEnreachModel.hpp
+	src/components/contacts/ContactsEnreachListModel.hpp
 	src/components/contact/VcardModel.hpp
 	src/components/contacts/ContactsImporterModel.hpp
 	src/components/contacts/ContactsImporterPluginsManager.hpp
@@ -378,6 +385,7 @@ set(HEADERS
 	src/components/contacts/ContactsImporterListProxyModel.hpp
 	src/components/contacts/ContactsListModel.hpp
 	src/components/contacts/ContactsListProxyModel.hpp
+	src/components/contacts/ContactsEnreachListProxyModel.hpp
 	src/components/content/ContentModel.hpp
 	src/components/content/ContentListModel.hpp
 	src/components/content/ContentProxyModel.hpp
@@ -589,7 +597,7 @@ endforeach ()
 if (NOT WIN32)
 	add_custom_target(
 		check_qml DEPENDS ${QML_SOURCES}
-		COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/../tools/check_qml_syntax"
+		COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/../tools/check_qml_syntax"	
 		)
 endif()
 

@@ -1011,28 +1011,36 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Vill du verkligen ta bort denna kontakt från din adressbok?</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>Sök kontakt</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>Alla</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>Ansluten</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>LÄGG TILL KONTAKT</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>Vill du verkligen ta bort denna kontakt från din adressbok?</translation>
+        <translation type="unfinished">LÄGG TILL KONTAKT</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

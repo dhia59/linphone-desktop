@@ -37,6 +37,7 @@ class CallsListModel;
 class ChatModel;
 class ChatRoomModel;
 class ContactsListModel;
+class ContactsEnreachListModel;
 class ContactsImporterListModel;
 class CoreHandlers;
 class EventCountNotifier;
@@ -101,7 +102,11 @@ public:
 		Q_CHECK_PTR(mContactsListModel);
 		return mContactsListModel;
 	}
-	
+	ContactsEnreachListModel *getContactsEnreachListModel() const {
+		Q_CHECK_PTR(mContactsEnreachListModel);
+		return mContactsEnreachListModel;
+	}
+
 	ContactsImporterListModel *getContactsImporterListModel () const {
 		Q_CHECK_PTR(mContactsImporterListModel);
 		return mContactsImporterListModel;
@@ -222,6 +227,7 @@ private:
 	
 	CallsListModel *mCallsListModel = nullptr;
 	ContactsListModel *mContactsListModel = nullptr;
+	ContactsEnreachListModel *mContactsEnreachListModel = nullptr;
 	ContactsImporterListModel *mContactsImporterListModel = nullptr;
 	TimelineListModel *mTimelineListModel = nullptr;
 	ChatModel *mChatModel = nullptr;

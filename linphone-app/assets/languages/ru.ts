@@ -1017,29 +1017,37 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Вы действительно хотите удалить этот контакт из вашей адресной книги?</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>Найти контакт</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>Все</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>Подключенные</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>ДОБАВИТЬ КОНТАКТ</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>Вы действительно хотите удалить этот контакт из вашей адресной книги?</translation>
+        <translation type="unfinished">ДОБАВИТЬ КОНТАКТ</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
-        <translation>Вам необходимо установить URI конференции в настройках вашего аккаунта, чтобы создать чат-комнату на основе конференции.</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

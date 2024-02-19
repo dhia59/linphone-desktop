@@ -27,6 +27,14 @@
 
 #include "ContactsListModel.hpp"
 #include "ContactsListProxyModel.hpp"
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QDebug>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonParseError>
 
 // =============================================================================
 
@@ -57,8 +65,9 @@ const QRegExp ContactsListProxyModel::SearchSeparators("^[^_.-;@ ][_.-;@ ]");
 // -----------------------------------------------------------------------------
 
 ContactsListProxyModel::ContactsListProxyModel (QObject *parent) : QSortFilterProxyModel(parent) {
-  setSourceModel(CoreManager::getInstance()->getContactsListModel());
-  sort(0);
+  /*setSourceModel(CoreManager::getInstance()->getContactsListModel());
+  sort(0);*/
+	getList();
 }
 
 // -----------------------------------------------------------------------------
@@ -66,6 +75,70 @@ ContactsListProxyModel::ContactsListProxyModel (QObject *parent) : QSortFilterPr
 void ContactsListProxyModel::setFilter (const QString &pattern) {
   mFilter = pattern;
   invalidate();
+}
+
+void ContactsListProxyModel::getList() {
+	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+	QUrl url("http://localhost:5249/Enreach/GetContactsByUsername");
+	QNetworkRequest request(url);
+	QNetworkReply *reply = manager->get(request);
+
+	if (reply) {
+		QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
+			if (reply) {
+				if (reply->error() == QNetworkReply::NoError) {
+
+					QByteArray responseData = reply->readAll();
+					qDebug() << "Response:" << responseData;
+					QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
+					
+					if (!jsonResponse.isNull()) {
+						QJsonArray jsonArray = jsonResponse.array();
+				//	/*	QList<ContactEnreach*> contactList;
+				//		ContactEnreachModel* contactModel = new ContactEnreachModel(this);*/
+						ContactModel* contactModel ;
+			         	ContactsListModel* ContactsList = new ContactsListModel();
+				//		QList<VcardModel*> vcardList;
+						for (const QJsonValue &jsonValue : jsonArray) {
+							if (jsonValue.isObject()) {
+								QJsonObject jsonObject = jsonValue.toObject();
+								//ContactEnreach* contact = new ContactEnreach();
+								//std::shared_ptr<linphone::Vcard> vcard = std::make_shared<linphone::Vcard>();
+								//VcardModel *contact = new VcardModel(false);
+								//VcardModel *contact = new VcardModel();
+								//contact->setContactType(jsonObject.value("contact_type").toString());
+								//contact->setFirstName(jsonObject.value("firstname").toString());
+								//contact->setUsername(jsonObject.value("lastname").toString());
+								/*contact->setTel(jsonObject.value("tel").toString());
+								contact->setExt(jsonObject.value("ext").toString());
+								contact->setSipAddresses(QString("test@cprxp1"));*/
+								//contactList.append(contact);
+								/*ContactsList->addContact(contact);
+								contactModel->setVcardModel(contact);*/
+							}
+						}
+				//		
+						//contactModel->setContactEnreachs(contactList);
+						setSourceModel(ContactsList);
+						sort(0);
+				}
+				}
+				else {
+					qDebug() << "Error Code:" << reply->error();
+					qDebug() << "Error String:" << reply->errorString();
+
+				}
+
+				// Clean up the reply
+				reply->deleteLater();
+			}
+			else {
+				qDebug() << "noo reply";
+			}
+
+		});
+	}
+	//return QJsonArray();
 }
 
 // -----------------------------------------------------------------------------

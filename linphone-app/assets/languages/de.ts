@@ -1011,29 +1011,37 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Möchten Sie wirklich diesen Kontakt aus Ihrem Adressbuch entfernen?</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>Suche Kontakt</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>Alle</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>Verbunden</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>KONTAKT HINZUFÜGEN</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>Möchten sie diesen Kontakt wirklich aus Ihrem Adressbuch löschen?</translation>
+        <translation type="unfinished">KONTAKT HINZUFÜGEN</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
-        <translation>Sie müssen eine Konferenz-URI in den Kontoeinstellungen festlegen um einen konferenzbasierten Chatraum zu erstellen.</translation>
+        <translation type="unfinished">Sie müssen eine Konferenz-URI in den Kontoeinstellungen festlegen um einen konferenzbasierten Chatraum zu erstellen.</translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

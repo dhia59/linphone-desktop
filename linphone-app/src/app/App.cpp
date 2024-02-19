@@ -733,6 +733,7 @@ void App::registerTypes () {
 	registerType<ConferenceInfoModel>("ConferenceInfoModel");
 	registerType<ConferenceInfoProxyModel>("ConferenceInfoProxyModel");
 	registerType<ContactsListProxyModel>("ContactsListProxyModel");
+	registerType<ContactsEnreachListProxyModel>("ContactsEnreachListProxyModel");
 	registerType<ContactsImporterListProxyModel>("ContactsImporterListProxyModel");
 	registerType<ContentProxyModel>("ContentProxyModel");
 	registerType<FileDownloader>("FileDownloader");
@@ -774,6 +775,7 @@ void App::registerTypes () {
 	registerUncreatableType<ConferenceHelperModel::ConferenceAddModel>("ConferenceAddModel");
 	registerUncreatableType<ConferenceModel>("ConferenceModel");
 	registerUncreatableType<ContactModel>("ContactModel");
+	registerUncreatableType<ContactEnreachModel>("ContactEnreachModel");
 	registerUncreatableType<ContactsImporterModel>("ContactsImporterModel");
 	registerUncreatableType<ContentModel>("ContentModel");
 	registerUncreatableType<ContentListModel>("ContentListModel");
@@ -811,6 +813,7 @@ void App::registerSharedTypes () {
 	registerSharedSingletonType<SipAddressesModel, &CoreManager::getSipAddressesModel>("SipAddressesModel");  
 	registerSharedSingletonType<CallsListModel, &CoreManager::getCallsListModel>("CallsListModel");
 	registerSharedSingletonType<ContactsListModel, &CoreManager::getContactsListModel>("ContactsListModel");
+	registerSharedSingletonType<ContactsEnreachListModel, &CoreManager::getContactsEnreachListModel>("ContactsEnreachListModel");
 	registerSharedSingletonType<ContactsImporterListModel, &CoreManager::getContactsImporterListModel>("ContactsImporterListModel");
 	registerSharedSingletonType<LdapListModel, &CoreManager::getLdapListModel>("LdapListModel");
 	registerSharedSingletonType<TimelineListModel, &CoreManager::getTimelineListModel>("TimelineListModel");

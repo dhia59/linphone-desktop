@@ -1011,29 +1011,37 @@
 <context>
     <name>Contacts</name>
     <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Do you really want to remove this contact from your address book?</translation>
+    </message>
+    <message>
         <source>searchContactPlaceholder</source>
-        <translation>Search contact</translation>
-    </message>
-    <message>
-        <source>selectAllContacts</source>
-        <translation>All</translation>
-    </message>
-    <message>
-        <source>selectConnectedContacts</source>
-        <translation>Connected</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>addContact</source>
-        <translation>ADD CONTACT</translation>
-    </message>
-    <message>
-        <source>removeContactDescription</source>
-        <translation>Do you really want to remove this contact from your address book?</translation>
+        <translation type="unfinished">ADD CONTACT</translation>
     </message>
     <message>
         <source>missingConferenceURI</source>
         <extracomment>&apos;You need to set the conference URI in your account settings to create a conference based chat room.&apos; : Tooltip to warn the user that a setting is missing in its configuration.</extracomment>
-        <translation>You need to set the conference URI in your account settings to create a conference based chat room.</translation>
+        <translation type="unfinished">You need to set the conference URI in your account settings to create a conference based chat room.</translation>
+    </message>
+    <message>
+        <source>Tous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Employés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Partagés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnels</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
