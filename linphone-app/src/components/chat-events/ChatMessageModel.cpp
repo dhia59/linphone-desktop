@@ -167,6 +167,7 @@ long ChatMessageModel::getEphemeralLifetime() const{
 }
 
 LinphoneEnums::ChatMessageState ChatMessageModel::getState() const{
+	qWarning() << QStringLiteral("stateeeeee %1.").arg(mChatMessage ? LinphoneEnums::fromLinphone(mChatMessage->getState()) : LinphoneEnums::ChatMessageStateIdle);
 	return mChatMessage ? LinphoneEnums::fromLinphone(mChatMessage->getState()) : LinphoneEnums::ChatMessageStateIdle;
 }
 

@@ -69,9 +69,10 @@ Item {
 					readonly property bool isDelivered: $chatEntry.state == LinphoneEnums.ChatMessageStateDeliveredToUser
 					readonly property bool isRead: $chatEntry.state == LinphoneEnums.ChatMessageStateDisplayed
 					
-					icon: iconId.isError
+                    icon:/*(iconId.isRead ? 'chat_read' : (iconId.isDelivered  ? 'chat_delivered' : '' ) )*/
+                         iconId.isError
 						  ? 'chat_error'
-						  : (iconId.isRead ? 'chat_read' : (iconId.isDelivered  ? 'chat_delivered' : '' ) )
+                          : (iconId.isRead ? 'chat_read' : (iconId.isDelivered  ? 'chat_delivered' : '' ) )
 					iconSize: ChatStyle.entry.message.outgoing.sendIconSize
 					anchors.bottom: parent.bottom
 					anchors.horizontalCenter: parent.horizontalCenter

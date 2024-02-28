@@ -692,8 +692,51 @@ void ChatRoomModel::updateParticipants(const QVariantList& participants){
 
 
 // -----------------------------------------------------------------------------
-
-void ChatRoomModel::sendMessage (const QString &message) {
+/*
+void ChatRoomModel::sendMessage(const QString &message, bool useHeader) {
+	std::list<shared_ptr<linphone::ChatMessage> > _messages;
+	bool isBasicChatRoom = isBasic();
+	if (mReplyModel && mReplyModel->getChatMessage()) {
+		_messages.push_back(mChatRoom->createReplyMessage(mReplyModel->getChatMessage()));
+	}
+	else
+		_messages.push_back(mChatRoom->createEmptyMessage());
+	auto recorder = CoreManager::getInstance()->getRecorderManager();
+	if (recorder->haveVocalRecorder()) {
+		recorder->getVocalRecorder()->stop();
+		auto content = recorder->getVocalRecorder()->getRecorder()->createContent();
+		if (content) {
+			_messages.back()->addContent(content);
+		}
+	}
+	auto fileContents = CoreManager::getInstance()->getChatModel()->getContentListModel()->getSharedList<ContentModel>();
+	for (auto content : fileContents) {
+		if (isBasicChatRoom && _messages.back()->getContents().size() > 0)	// Basic chat rooms don't support multipart
+			_messages.push_back(mChatRoom->createEmptyMessage());
+		_messages.back()->addFileContent(content->getContent());
+	}
+	if (!message.isEmpty()) {
+		if (isBasicChatRoom && _messages.back()->getContents().size() > 0)	// Basic chat rooms don't support multipart
+			_messages.push_back(mChatRoom->createEmptyMessage());
+		_messages.back()->addUtf8TextContent(message.toUtf8().toStdString());
+	}
+	bool sent = false;
+	for (auto itMessage = _messages.begin(); itMessage != _messages.end(); ++itMessage) {
+		if ((*itMessage)->getContents().size() > 0) {// Have something to send
+			(*itMessage)->addCustomHeader
+			(*itMessage)->send();
+			emit messageSent((*itMessage));
+			sent = true;
+		}
+	}
+	if (sent) {
+		setReply(nullptr);
+		if (recorder->haveVocalRecorder())
+			recorder->clearVocalRecorder();
+		CoreManager::getInstance()->getChatModel()->clear();
+	}
+}*/
+void ChatRoomModel::sendMessage (const QString &message, bool useHeader) {
 	std::list<shared_ptr<linphone::ChatMessage> > _messages;
 	bool isBasicChatRoom = isBasic();
 	if(mReplyModel && mReplyModel->getChatMessage()) {
@@ -722,6 +765,8 @@ void ChatRoomModel::sendMessage (const QString &message) {
 	bool sent = false;
 	for(auto itMessage = _messages.begin() ; itMessage != _messages.end() ; ++itMessage) {
 		if((*itMessage)->getContents().size() > 0){// Have something to send
+			if (useHeader)
+				(*itMessage)->addCustomHeader("x-tosend", "no");
 			(*itMessage)->send();
 			emit messageSent((*itMessage));
 			sent = true;
@@ -1302,8 +1347,17 @@ void ChatRoomModel::onMessageReceived(const std::shared_ptr<linphone::ChatRoom> 
 }
 
 void ChatRoomModel::onMessagesReceived(const std::shared_ptr<linphone::ChatRoom> & chatRoom, const std::list<std::shared_ptr<linphone::ChatMessage>> & messages){
-	for(auto message : messages)
-		if(message) ChatMessageModel::initReceivedTimestamp(message, true);
+	for (auto message : messages) {
+		//message->sets
+		if (message->getCustomHeader("x-direction") == "from") {			
+			sendMessage(QString::fromStdString(message->getUtf8Text()), true);
+			chatRoom->deleteMessage(message);			
+			
+		}
+		else if(message) ChatMessageModel::initReceivedTimestamp(message, true);
+		
+	}
+		
 	setUnreadMessagesCount(chatRoom->getUnreadMessagesCount());
 	updateLastUpdateTime();
 }
@@ -1371,6 +1425,7 @@ void ChatRoomModel::onChatMessageSending(const std::shared_ptr<linphone::ChatRoo
 
 void ChatRoomModel::onChatMessageSent(const std::shared_ptr<linphone::ChatRoom> & chatRoom, const std::shared_ptr<const linphone::EventLog> & eventLog){
 	auto message = eventLog->getChatMessage();
+	auto test = message->getState();	
 	if(message) ChatMessageModel::initReceivedTimestamp(message, true);	// Just in case
 	updateLastUpdateTime();
 }
