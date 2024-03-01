@@ -74,7 +74,7 @@ void ContactEnreach::setSipAddresses(QVariantList& newAddresses)
 	sipAddresses = newAddresses;
 }
 
-void ContactEnreach::addSipAddress(QString& addr)
+void ContactEnreach::addSipAddress(const QString& addr)
 {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Address> linphoneAddress = core->createAddress(addr.toStdString());

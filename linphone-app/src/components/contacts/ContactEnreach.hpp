@@ -38,7 +38,7 @@ public:
 	void setTel(QString& tel);
 	void setExt(QString& ext);
 	void setSipAddresses(QVariantList& addresses);
-	void addSipAddress(QString& addresses);
+	void addSipAddress(const QString& addresses);
 signals:
 	// Signals for property changes
 	void contactTypeChanged();
