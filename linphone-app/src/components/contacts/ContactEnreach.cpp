@@ -69,7 +69,7 @@ void ContactEnreach::setExt(const QString& newExt)
 	ext = newExt;
 }
 
-void ContactEnreach::setSipAddresses(QVariantList& newAddresses)
+void ContactEnreach::setSipAddresses(const QVariantList& newAddresses)
 {
 	sipAddresses = newAddresses;
 }

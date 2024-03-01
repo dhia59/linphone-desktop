@@ -37,7 +37,7 @@ public:
 	void setFullName(const QString& newFullName);
 	void setTel(const QString& tel);
 	void setExt(const QString& ext);
-	void setSipAddresses(QVariantList& addresses);
+	void setSipAddresses(const QVariantList& addresses);
 	void addSipAddress(const QString& addresses);
 signals:
 	// Signals for property changes
