@@ -68,9 +68,9 @@ void ContactsEnreachListProxyModel::getList() {
 	listApiContacts(contacts);
 }
 void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListModel *contacts, QVariantList *listSips) {
-	ContactsListModel contactsListModel = CoreManager::getInstance()->getContactsListModel();
+	ContactsListModel* contactsListModel = CoreManager::getInstance()->getContactsListModel();
 
-	for (const auto &model : contactsListModel) {
+	for (const auto &model : *contactsListModel) {
 		QSharedPointer<ContactModel> contactModelParsed = qSharedPointerCast<ContactModel>(model);
 		ContactEnreach* contact = new ContactEnreach();
 		contact->setContactType(QString("personnel"));
