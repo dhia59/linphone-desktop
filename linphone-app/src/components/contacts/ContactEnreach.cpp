@@ -36,7 +36,7 @@ QVariantList ContactEnreach::getSipAddresses() const {
 	return sipAddresses;
 }
 
-void ContactEnreach::setContactType(QString& newContactType)
+void ContactEnreach::setContactType(const QString& newContactType)
 {
 	if (contactType != newContactType) {
 		contactType = newContactType;
@@ -44,27 +44,27 @@ void ContactEnreach::setContactType(QString& newContactType)
 	}
 }
 
-void ContactEnreach::setFirstName(QString& newfirstName)
+void ContactEnreach::setFirstName(const QString& newfirstName)
 {
 	firstName = newfirstName;
 }
 
-void ContactEnreach::setLastName(QString& newlastName)
+void ContactEnreach::setLastName(const QString& newlastName)
 {
 	lastName = newlastName;
 }
 
-void ContactEnreach::setFullName(QString & newFullName)
+void ContactEnreach::setFullName(const QString & newFullName)
 {
 	fullName = newFullName;
 }
 
-void ContactEnreach::setTel(QString& newtel)
+void ContactEnreach::setTel(const QString& newtel)
 {
 	tel = newtel;
 }
 
-void ContactEnreach::setExt(QString& newExt)
+void ContactEnreach::setExt(const QString& newExt)
 {
 	ext = newExt;
 }

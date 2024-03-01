@@ -31,12 +31,12 @@ public:
 	QString getTel() const;
 	QString getExt() const;
 	QVariantList getSipAddresses() const;
-	void setContactType(QString& contactType);
-	void setFirstName(QString& fistName);
-	void setLastName(QString& lastName);
-	void setFullName(QString& newFullName);
-	void setTel(QString& tel);
-	void setExt(QString& ext);
+	void setContactType(const QString& contactType);
+	void setFirstName(const QString& fistName);
+	void setLastName(const QString& lastName);
+	void setFullName(const QString& newFullName);
+	void setTel(const QString& tel);
+	void setExt(const QString& ext);
 	void setSipAddresses(QVariantList& addresses);
 	void addSipAddress(const QString& addresses);
 signals:
