@@ -73,7 +73,7 @@ Item {
 	
 	Item {
 		implicitHeight: searchField.height + menu.height
-		width: parent.width
+		width: parent.width 
 		
 		TextField {
 			id: searchField

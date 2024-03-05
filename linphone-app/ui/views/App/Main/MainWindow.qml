@@ -116,6 +116,113 @@ ApplicationWindow {
                     }
                     spacing: MainWindowStyle.toolBar.spacing
 
+                    ApplicationMenu {
+                        id: menu
+                        x:0
+
+                        defaultSelectedEntry: null
+
+                        entryHeight: MainWindowStyle.menu.height
+                        entryWidth: MainWindowStyle.menu.width
+
+                        ApplicationMenuEntry {
+                            id: contactsEntry
+
+                            icon: MainWindowStyle.menu.contacts.icon
+                            iconSize: MainWindowStyle.menu.contacts.iconSize
+                            overwriteColor:isSelected ? MainWindowStyle.menu.contacts.selectedColor.color : MainWindowStyle.menu.contacts.colorModel.color
+                            name: LdapListModel.count > 0
+                            //: 'Local contacts' : Contacts section label in main window when we have to specify that they are local to the application.
+                                  ? qsTr('localContactsEntry').toUpperCase()
+                            //: 'Contacts' : Contacts section label in main waindow.
+                                                            : qsTr('contactsEntry').toUpperCase()
+
+                            visible: SettingsModel.contactsEnabled
+
+                            onSelected: {
+                                ContactsListModel.update()
+                                timeline.model.unselectAll()
+                                setView('Contacts')
+                            }
+                            onClicked:{
+                                ContactsListModel.update()
+                                setView('Contacts')
+                            }
+                            Icon{
+                                anchors.right:parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.rightMargin: 10
+                                icon: MainWindowStyle.menu.direction.icon
+                                overwriteColor:contactsEntry.overwriteColor //MainWindowStyle.menu.contacts.colorModel.color
+                                iconSize: MainWindowStyle.menu.direction.iconSize
+
+                            }
+                        }
+
+                        ApplicationMenuEntry {
+                            id: conferencesEntry
+
+                            icon: MainWindowStyle.menu.conferences.icon
+                            iconSize: MainWindowStyle.menu.conferences.iconSize
+                            overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
+                            name: qsTr('mainWindowConferencesTitle').toUpperCase()
+                            visible: SettingsModel.videoConferenceEnabled && SettingsModel.conferenceEnabled
+
+                            onSelected: {
+                                timeline.model.unselectAll()
+                                setView('Conferences')
+                            }
+                            onClicked:{
+                                setView('Conferences')
+                            }
+                            Icon{
+                                anchors.right:parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.rightMargin: 10
+                                icon: MainWindowStyle.menu.direction.icon
+                                overwriteColor: conferencesEntry.overwriteColor
+                                iconSize: MainWindowStyle.menu.direction.iconSize
+                            }
+                        }
+                    }
+                    ActionButton {
+                        id: telkeypadButton
+                        isCustom: true
+                        x: 270
+                        y:-15
+                        backgroundRadius: 90
+                        colorSet: MainWindowStyle.buttons.telKeyad
+                        onClicked:popup.open()//toggled ? telKeypad.close() : telKeypad.open() //telKeypad.visible = !telKeypad.visible
+                        toggled: telKeypad.visible
+
+                    }
+                    Popup {
+                            id: popup
+                            x:100
+                            y: 50
+                            width: 200
+                            height: 100
+                         //   modal: true
+
+
+                            Rectangle {
+                                width: parent.width-50
+                                height: parent.height-50
+                                color:Qt.rgba(0, 0, 0, 0)
+                                 border.color: "transparent"
+                                 border.width: 0
+                                TelKeypad {
+                                    anchors.right: parent.right
+                                    anchors.top: parent.top
+                                    id: telKeypad
+                                    onSendDtmf: smartSearchBar.text += dtmf
+                                    visible:true//SettingsModel.showTelKeypadAutomatically
+                                    onVisibleChanged: isVisibleTelKeypad= visible
+                                    //onTarget: {telKeypad.containsMouse= true;console.log('testtttttttttttttttttttt', telKeypad.containsMouse)}
+                                }
+                            }
+                        }
+
 //                    ActionButton {
 //                        id: home
 //                        isCustom: true
@@ -127,7 +234,7 @@ ApplicationWindow {
 //                        onClicked: setView('Home')
 //                    }
 
-                    AccountStatus {
+                    /*AccountStatus {
                         id: accountStatus
                         betterIcon:true
                         Layout.preferredHeight: parent.height
@@ -143,7 +250,7 @@ ApplicationWindow {
                             CoreManager.forceRefreshRegisters()
                             Logic.manageAccounts()
                         }
-                    }
+                    }*/
 
                     ColumnLayout {
                         Layout.preferredWidth: MainWindowStyle.autoAnswerStatus.width
@@ -197,40 +304,6 @@ ApplicationWindow {
                         onLaunchSecureChat: CallsListModel.launchChat( sipAddress,1 )
                         onLaunchVideoCall: CallsListModel.launchVideoCall(sipAddress, '')
                     }
-                    ActionButton {
-                        isCustom: true
-                        backgroundRadius: 90
-                        colorSet: MainWindowStyle.buttons.telKeyad
-                        onClicked:popup.open()//toggled ? telKeypad.close() : telKeypad.open() //telKeypad.visible = !telKeypad.visible
-                        toggled: telKeypad.visible
-
-                    }
-                    Popup {
-                            id: popup
-                            x: (parent.width - width) -10
-                            y: (parent.height - height)+90
-                            width: 200
-                            height: 100
-                         //   modal: true
-
-
-                            Rectangle {
-                                width: parent.width-50
-                                height: parent.height-50
-                                color:Qt.rgba(0, 0, 0, 0)
-                                 border.color: "transparent"
-                                 border.width: 0
-                                TelKeypad {
-                                    anchors.right: parent.right
-                                    anchors.top: parent.top
-                                    id: telKeypad
-                                    onSendDtmf: smartSearchBar.text += dtmf
-                                    visible:true//SettingsModel.showTelKeypadAutomatically
-                                    onVisibleChanged: isVisibleTelKeypad= visible
-                                    //onTarget: {telKeypad.containsMouse= true;console.log('testtttttttttttttttttttt', telKeypad.containsMouse)}
-                                }
-                            }
-                        }
 
 
                     ActionButton {
@@ -271,74 +344,6 @@ ApplicationWindow {
 
                     spacing: 0
 
-                    ApplicationMenu {
-                        id: menu
-
-                        defaultSelectedEntry: null
-
-                        entryHeight: MainWindowStyle.menu.height+10
-                        entryWidth: MainWindowStyle.menu.width
-
-                        ApplicationMenuEntry {
-                            id: contactsEntry
-
-                            icon: MainWindowStyle.menu.contacts.icon
-                            iconSize: MainWindowStyle.menu.contacts.iconSize
-                            overwriteColor: isSelected ? MainWindowStyle.menu.contacts.selectedColor.color : MainWindowStyle.menu.contacts.colorModel.color
-                            name: LdapListModel.count > 0
-                            //: 'Local contacts' : Contacts section label in main window when we have to specify that they are local to the application.
-                                                            ? qsTr('localContactsEntry').toUpperCase()
-                            //: 'Contacts' : Contacts section label in main waindow.
-                                                            : qsTr('contactsEntry').toUpperCase()
-
-                            visible: SettingsModel.contactsEnabled
-
-                            onSelected: {
-                                ContactsListModel.update()
-                                timeline.model.unselectAll()
-                                setView('Contacts')
-                            }
-                            onClicked:{
-                                ContactsListModel.update()
-                                setView('Contacts')
-                            }
-                            Icon{
-                                anchors.right:parent.right
-                                anchors.verticalCenter: parent.verticalCenter
-                                anchors.rightMargin: 10
-                                icon: MainWindowStyle.menu.direction.icon
-                                overwriteColor: contactsEntry.overwriteColor
-                                iconSize: MainWindowStyle.menu.direction.iconSize
-
-                            }
-                        }
-
-                        ApplicationMenuEntry {
-                            id: conferencesEntry
-
-                            icon: MainWindowStyle.menu.conferences.icon
-                            iconSize: MainWindowStyle.menu.conferences.iconSize
-                            overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-                            name: qsTr('mainWindowConferencesTitle').toUpperCase()
-                            visible: SettingsModel.videoConferenceEnabled && SettingsModel.conferenceEnabled
-
-                            onSelected: {
-                                timeline.model.unselectAll()
-                                setView('Conferences')
-                            }
-                            onClicked:{
-                                setView('Conferences')
-                            }
-                            Icon{
-                                anchors.right:parent.right
-                                anchors.verticalCenter: parent.verticalCenter
-                                anchors.rightMargin: 10
-                                icon: MainWindowStyle.menu.direction.icon
-                                overwriteColor: conferencesEntry.overwriteColor
-                                iconSize: MainWindowStyle.menu.direction.iconSize
-                            }
-                        }
-                    }
 
                     // History.
                     Timeline {

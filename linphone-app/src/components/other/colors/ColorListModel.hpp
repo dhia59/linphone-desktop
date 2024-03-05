@@ -60,20 +60,22 @@ class ColorListModel : public ProxyListModel {
 		QSharedPointer<ColorModel> color;
 		ADD_COLOR("a", "transparent", "Generic transparent color.")
 		
-		ADD_COLOR("c", "#CBCBCB", "Button pressed, separatos, fields.")
+		ADD_COLOR("c", "#222154", "Button pressed, separatos, fields.")
 		ADD_COLOR("d", "#5A585B", "Text (Ephemerals)")
-		ADD_COLOR("e", "#F3F3F3", "Chat text area Background")
-		ADD_COLOR("f", "#E8E8E8", "Border color")
-		ADD_COLOR("g", "#6B7A86", "SIP Address; Text of Contact, question popup; Selected button.")
-		ADD_COLOR("h", "#687680", "Others")
+		ADD_COLOR("ee", "#9d9eb3", "Chat text area Background")
+		ADD_COLOR("e", "white", "Chat text area Background")
+		ADD_COLOR("f", "white", "Border color")
+		ADD_COLOR("g", "#222154", "SIP Address; Text of Contact, question popup; Selected button.")
+		ADD_COLOR("h", "#222154", "Others")
+		ADD_COLOR("ok", "#ffc545", "Others")
 		
 		// Primary color.
-		ADD_COLOR("i", "#FF5E00", "Primary color.")//263D86
+		ADD_COLOR("i", "#ffc545", "Primary color.")//263D86
 		ADD_COLOR_WITH_LINK_MODE("primary_d", "", "Primary color for deactivated items.", "i", ColorModel::CONTEXT_DEACTIVATED)
 		ADD_COLOR_WITH_LINK_MODE("m", "", "Primary color for clicked items.", "i", ColorModel::CONTEXT_PRESSED)
 		ADD_COLOR_WITH_LINK_MODE("b", "", "Primary color for hovered items.", "i", ColorModel::CONTEXT_HOVERED)
-		ADD_COLOR("secondary_h", "#4B5964", "Secondary color for hovered items.")
-		ADD_COLOR("n", "#A1A1A1", "Primary color for pressed button")
+		ADD_COLOR("secondary_h", "#222154", "Secondary color for hovered items.")
+		ADD_COLOR("n", "", "Primary color for pressed button")
 		ADD_COLOR("o", "#D0D8DE", "Primary color for disabled button")
 		
 		ADD_COLOR("outgoing_bg","#FFEEE5","Outgoing message background")
@@ -87,17 +89,17 @@ class ColorListModel : public ProxyListModel {
 		
 		ADD_COLOR("primary_accept", "#9ECD1D", "Primary color for accepting button")
 		
-		ADD_COLOR("j", "#4B5964", "Username, Background cancel button hovered.")
+		ADD_COLOR("j", "#222154", "Username, Background cancel button hovered.")
 		
 		// Popups, home, call, assistant and settings background.
 		ADD_COLOR("k", "#FFFFFF", "Popups, home, call, assistant and settings background.")
 		
-		ADD_COLOR("l", "#000000", "Generic Black color")
+		ADD_COLOR("l", "#222154", "Generic Black color")
 		
 		ADD_COLOR("p", "#17A81A", "Progress bar.")
 		
 		ADD_COLOR("q", "#FFFFFF", "Fields, backgrounds and text color on some items")
-		
+		ADD_COLOR("qq", "#222154", "avarar background")
 		ADD_COLOR("r", "#909fab", "Background button normal.")
 		
 		ADD_COLOR("s", "#96be64", "Security")
@@ -148,7 +150,7 @@ class ColorListModel : public ProxyListModel {
 		
 		ADD_COLOR("readonly_fg", "#B1B1B1", "Chat text area Readonly foreground")
 		
-		ADD_COLOR("telkeypad_bg", "#4D5B66", "Background for phone keypad")
+		ADD_COLOR("telkeypad_bg", "#222154", "Background for phone keypad")
 		ADD_COLOR("telkeypad_fg", "#E4E4E4", "Foreground for phone keypad")
 		ADD_COLOR("telkeypad_h", "#B1B1B1", "Foreground for phone keypad")
 		
@@ -177,7 +179,7 @@ class ColorListModel : public ProxyListModel {
 //		bg=background, fg=foreground
 
 // Standard actions :
-		ADD_COLOR("s_n_b_bg", "#96A5B1", "[M] Standard normal button : background")
+		ADD_COLOR("s_n_b_bg", "#222154", "[M] Standard normal button : background")
 		ADD_COLOR("s_d_b_bg", "#D0D8DE", "[M] Standard disabled button : background")
 		ADD_COLOR("s_h_b_bg", "#4B5964", "[M] Standard hovered button : background")
 		ADD_COLOR_WITH_LINK("s_p_b_bg", "", "[M] Standard pressed button : background", "i")
@@ -239,7 +241,7 @@ class ColorListModel : public ProxyListModel {
 		ADD_COLOR("l_p_b_bg", "transparent", "[M] List pressed button : background")
 		ADD_COLOR_WITH_LINK("l_u_b_bg", "", "[M] List updating button : background", "l_p_b_bg")
 		
-		ADD_COLOR("l_n_b_fg", "#4B5964", "[M] List normal button : foreground")
+		ADD_COLOR("l_n_b_fg", "#222154", "[M] List normal button : foreground")
 		ADD_COLOR("l_d_b_fg", "#8096A5B1", "[M] List disabled button : foreground")
 		ADD_COLOR("l_h_b_fg", "#96A5B1", "[M] List hovered button : foreground")
 		ADD_COLOR_WITH_LINK("l_p_b_fg", "", "[M] List pressed button : foreground", "i")
@@ -253,7 +255,7 @@ class ColorListModel : public ProxyListModel {
 		ADD_COLOR("me_p_b_bg", "transparent", "[M] Menu pressed button : background")
 		ADD_COLOR_WITH_LINK("me_u_b_bg", "", "[M] Menu updating button : background", "me_p_b_bg")
 		
-		ADD_COLOR("me_n_b_fg", "#4B5964", "[M] Menu normal button : foreground")
+		ADD_COLOR("me_n_b_fg", "#222154", "[M] Menu normal button : foreground")
 		ADD_COLOR("me_h_b_fg", "#96A5B1", "[M] Menu hovered button : foreground")
 		ADD_COLOR_WITH_LINK_MODE("me_d_b_fg", "", "[M] Menu disabled button : foreground", "me_h_b_fg", ColorModel::CONTEXT_DEACTIVATED)
 		ADD_COLOR_WITH_LINK("me_p_b_fg", "", "[M] Menu pressed button : foreground", "i")
@@ -265,10 +267,10 @@ class ColorListModel : public ProxyListModel {
 		ADD_COLOR("me_p_b_inv_bg", "transparent", "[M] Menu pressed button : inverse background")
 		ADD_COLOR_WITH_LINK("me_c_b_inv_bg", "", "[M] Menu checked button : inverse foreground", "i")
 		
-		ADD_COLOR("me_n_b_inv_fg", "white", "[M] Menu normal button : inverse foreground")
-		ADD_COLOR_WITH_LINK_MODE("me_d_b_inv_fg", "", "[M] Menu disabled button : inverse foreground", "me_n_b_inv_fg", ColorModel::CONTEXT_DEACTIVATED)
-		ADD_COLOR_WITH_LINK_MODE("me_h_b_inv_fg", "", "[M] Menu hovered button : inverse foreground", "me_n_b_inv_fg", ColorModel::CONTEXT_DEACTIVATED)
-		ADD_COLOR("me_p_b_inv_fg", "white", "[M] Menu pressed button : inverse foreground")
+		ADD_COLOR("me_n_b_inv_fg", "#ffc545", "[M] Menu normal button : inverse foreground")
+		//ADD_COLOR_WITH_LINK_MODE("me_d_b_inv_fg", "", "[M] Menu disabled button : inverse foreground", "me_n_b_inv_fg", ColorModel::CONTEXT_DEACTIVATED)
+		//ADD_COLOR_WITH_LINK_MODE("me_h_b_inv_fg", "", "[M] Menu hovered button : inverse foreground", "me_n_b_inv_fg", ColorModel::CONTEXT_DEACTIVATED)
+		ADD_COLOR("me_p_b_inv_fg", "#ffc545", "[M] Menu pressed button : inverse background")
 		ADD_COLOR("me_c_b_inv_fg", "white", "[M] Menu checked button : inverse foreground")
 //-------------------------------------	
 // Wave Play

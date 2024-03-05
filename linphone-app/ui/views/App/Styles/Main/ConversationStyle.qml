@@ -10,7 +10,7 @@ import ColorsList 1.0
 QtObject {
 	property string sectionName : 'Conversation'
 	property QtObject bar: QtObject {
-		property var backgroundColor: ColorsList.add(sectionName+'_bar_bg', 'e')
+		property var backgroundColor: ColorsList.add(sectionName+'_bar_bg', 'ee')
 		property var searchIconColor: ColorsList.add(sectionName+'_bar_search', 'c')
 		property int avatarSize: 60
 		property int groupChatSize: 80

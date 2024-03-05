@@ -8,8 +8,8 @@ import ColorsList 1.0
 
 QtObject {
 	property string sectionName: 'Avatar'
-	property var backgroundColor: ColorsList.add(sectionName+'_bg', 'd')
-	property var backgroundDarkModeColor: ColorsList.add(sectionName+'_dark_bg', 'q')
+	property var backgroundColor: ColorsList.add(sectionName+'_bg', 'qq')
+	property var backgroundDarkModeColor: ColorsList.add(sectionName+'_dark_bg', 'qq')
 	
 	
 	property string personImage : 'contact_custom'

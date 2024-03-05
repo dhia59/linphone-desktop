@@ -89,7 +89,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
 	auto authInfo = QString::fromStdString( defaultAddress->findAuthInfo()->getUsername());
-	QUrl url(QString("http://localhost:5249/Enreach/GetContactsByUsername?userName="+authInfo));
+	QUrl url(QString("http://185.164.213.62:8081/Enreach/GetContactsByUsername?userName="+authInfo));
 	QNetworkRequest request(url);
 	QNetworkReply *reply = manager->get(request);
 	QVariantList *listSips = new QVariantList();

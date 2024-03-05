@@ -1477,13 +1477,6 @@
     </message>
 </context>
 <context>
-    <name>Home</name>
-    <message>
-        <source>homeTitle</source>
-        <translation type="unfinished">ようこそ</translation>
-    </message>
-</context>
-<context>
     <name>Incall</name>
     <message>
         <source>acceptVideoDescription</source>
@@ -1819,6 +1812,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>localContactsEntry</source>
         <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
         <translation type="unfinished"></translation>
@@ -1830,11 +1828,6 @@
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>confirmFetchUri</source>
-        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

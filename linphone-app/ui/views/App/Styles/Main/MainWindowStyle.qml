@@ -69,7 +69,7 @@ QtObject {
 	
 	property QtObject toolBar: QtObject {
 		property int height: 70
-		property int leftMargin: 18
+        property int leftMargin: 0
 		property int rightMargin: 18
 		property int spacing: 16
 		

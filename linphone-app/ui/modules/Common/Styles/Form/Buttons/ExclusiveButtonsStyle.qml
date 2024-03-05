@@ -13,7 +13,7 @@ QtObject {
 			property var hovered: ColorsList.add(sectionName+'_h', 'n')
 			property var normal: ColorsList.add(sectionName+'_n', 'x')
 			property var pressed: ColorsList.add(sectionName+'_p', 'i')
-			property var selected: ColorsList.add(sectionName+'_c', 'g')
+			property var selected: ColorsList.add(sectionName+'_c', "ok")
 		}
 	}
 }

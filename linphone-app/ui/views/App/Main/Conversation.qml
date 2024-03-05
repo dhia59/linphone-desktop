@@ -65,98 +65,98 @@ ColumnLayout  {
 	
 	Rectangle {
 		id:mainBar
-		Layout.fillWidth: true
-		Layout.preferredHeight: ConversationStyle.bar.height
-		
-		color: ConversationStyle.bar.backgroundColor.color
-		clip:false
-		
-		RowLayout {
-			id:contactBar
-			anchors {
-				fill: parent
-				leftMargin: ConversationStyle.bar.leftMargin
-				rightMargin: ConversationStyle.bar.rightMargin
-			}
-			spacing: ConversationStyle.bar.spacing
-			
-			Avatar {
-				id: avatar
-				
-				Layout.preferredHeight: ConversationStyle.bar.avatarSize
-				Layout.preferredWidth: ConversationStyle.bar.avatarSize
-				
-				image: Logic.getAvatar()
-				presenceLevel: chatRoomModel && chatRoomModel.presenceStatus
-				presenceTimestamp: chatRoomModel && chatRoomModel.presenceTimestamp
-				
-				//username: Logic.getUsername()
-				username: chatRoomModel?chatRoomModel.username:( conversation._sipAddressObserver ? UtilsCpp.getDisplayName(conversation._sipAddressObserver.peerAddress) : '')
-				isOneToOne: chatRoomModel==undefined || chatRoomModel.isOneToOne==undefined || chatRoomModel.isOneToOne
-			}
-			
-			Item{
-				Layout.fillHeight: true
-				Layout.fillWidth: true
-				RowLayout{
-					anchors.fill: parent
-					spacing:0
-					
-					ColumnLayout{
-						
-						property int maximumContentWidth: contactBar.width
-														  -(avatar.visible?avatar.width:0)
-														  -actionBar.width - (secureIcon.visible?secureIcon.width :0)
-														  -3*ConversationStyle.bar.spacing 
-						Layout.fillHeight: true
-						Layout.minimumWidth: 20
-						Layout.maximumWidth: maximumContentWidth
-						Layout.preferredWidth: contactDescription.contentWidth
-						spacing: 5
-						Row{
-							Layout.topMargin: 15
-							Layout.preferredHeight: implicitHeight
-							Layout.alignment: Qt.AlignBottom
-							visible: chatRoomModel && chatRoomModel.isMeAdmin && !usernameEdit.visible && !chatRoomModel.isOneToOne
-							
-							Icon{
-								id:adminIcon
-								icon : ConversationStyle.bar.status.adminStatusIcon
-								overwriteColor: ConversationStyle.bar.status.adminStatusColor.color
-								iconSize: ConversationStyle.bar.status.adminStatusIconSize
-							}
-							Text{
-								anchors.verticalCenter: parent.verticalCenter
-								//: 'Admin' : Admin(istrator)
-								//~ Context One word title for describing the current admin status
-								text: qsTr('adminStatus')
-								color: ConversationStyle.bar.status.adminTextColor.color
-								font.pointSize: Units.dp * 8
-							}
-						}
-						
-						ContactDescription {
-							id:contactDescription
-							Layout.minimumWidth: 20
-							Layout.maximumWidth: parent.maximumContentWidth
-							Layout.preferredWidth: contentWidth
-							Layout.preferredHeight: contentHeight
-							Layout.alignment: Qt.AlignTop | Qt.AlignLeft
-							visible: !usernameEdit.visible 
-							contactDescriptionStyle: ConversationStyle.bar.contactDescription
-							titleText: avatar.username
-							titleClickable: chatRoomModel && chatRoomModel.isMeAdmin && !chatRoomModel.isOneToOne
-							subtitleText: if(chatRoomModel) {
-												if(chatRoomModel.groupEnabled) {
-													return chatRoomModel.participants.displayNamesToString;
-												}else if(avatar.hasPresence) {
-													return avatar.presenceText
-												}else if(chatRoomModel.isSecure())
-													return chatRoomModel.participants.addressesToString;
-												else
-													return UtilsCpp.toDisplayString(SipAddressesModel.cleanSipAddress(chatRoomModel.sipAddress), SettingsModel.sipDisplayMode)
-										  }else
-											  return ''
+        Layout.fillWidth: true
+        Layout.preferredHeight: ConversationStyle.bar.height
+
+        color: ConversationStyle.bar.backgroundColor.color
+        clip:false
+
+        RowLayout {
+            id:contactBar
+            anchors {
+                fill: parent
+                leftMargin: ConversationStyle.bar.leftMargin
+                rightMargin: ConversationStyle.bar.rightMargin
+            }
+            spacing: ConversationStyle.bar.spacing
+
+            Avatar {
+                id: avatar
+
+                Layout.preferredHeight: ConversationStyle.bar.avatarSize
+                Layout.preferredWidth: ConversationStyle.bar.avatarSize
+
+                image: Logic.getAvatar()
+                presenceLevel: chatRoomModel && chatRoomModel.presenceStatus
+                presenceTimestamp: chatRoomModel && chatRoomModel.presenceTimestamp
+
+                //username: Logic.getUsername()
+                username: chatRoomModel?chatRoomModel.username:( conversation._sipAddressObserver ? UtilsCpp.getDisplayName(conversation._sipAddressObserver.peerAddress) : '')
+                isOneToOne: chatRoomModel==undefined || chatRoomModel.isOneToOne==undefined || chatRoomModel.isOneToOne
+            }
+
+            Item{
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                RowLayout{
+                    anchors.fill: parent
+                    spacing:0
+
+                    ColumnLayout{
+
+                        property int maximumContentWidth: contactBar.width
+                                                          -(avatar.visible?avatar.width:0)
+                                                          -actionBar.width - (secureIcon.visible?secureIcon.width :0)
+                                                          -3*ConversationStyle.bar.spacing
+                        Layout.fillHeight: true
+                        Layout.minimumWidth: 20
+                        Layout.maximumWidth: maximumContentWidth
+                        Layout.preferredWidth: contactDescription.contentWidth
+                        spacing: 5
+                        Row{
+                            Layout.topMargin: 15
+                            Layout.preferredHeight: implicitHeight
+                            Layout.alignment: Qt.AlignBottom
+                            visible: chatRoomModel && chatRoomModel.isMeAdmin && !usernameEdit.visible && !chatRoomModel.isOneToOne
+
+                            Icon{
+                                id:adminIcon
+                                icon : ConversationStyle.bar.status.adminStatusIcon
+                                overwriteColor: ConversationStyle.bar.status.adminStatusColor.color
+                                iconSize: ConversationStyle.bar.status.adminStatusIconSize
+                            }
+                            Text{
+                                anchors.verticalCenter: parent.verticalCenter
+                                //: 'Admin' : Admin(istrator)
+                                //~ Context One word title for describing the current admin status
+                                text: qsTr('adminStatus')
+                                color: ConversationStyle.bar.status.adminTextColor.color
+                                font.pointSize: Units.dp * 8
+                            }
+                        }
+
+                        ContactDescription {
+                            id:contactDescription
+                            Layout.minimumWidth: 20
+                            Layout.maximumWidth: parent.maximumContentWidth
+                            Layout.preferredWidth: contentWidth
+                            Layout.preferredHeight: contentHeight
+                            Layout.alignment: Qt.AlignTop | Qt.AlignLeft
+                            visible: !usernameEdit.visible
+                            contactDescriptionStyle: ConversationStyle.bar.contactDescription
+                            titleText: avatar.username
+                            titleClickable: chatRoomModel && chatRoomModel.isMeAdmin && !chatRoomModel.isOneToOne
+                            subtitleText: if(chatRoomModel) {
+                                                if(chatRoomModel.groupEnabled) {
+                                                    return chatRoomModel.participants.displayNamesToString;
+                                                }else if(avatar.hasPresence) {
+                                                    return avatar.presenceText
+                                                }else if(chatRoomModel.isSecure())
+                                                    return chatRoomModel.participants.addressesToString;
+                                                else
+                                                    return UtilsCpp.toDisplayString(SipAddressesModel.cleanSipAddress(chatRoomModel.sipAddress), SettingsModel.sipDisplayMode)
+                                          }else
+                                              return ''
 							
 							/*
 							participants: if(chatRoomModel) {
@@ -168,7 +168,7 @@ ColumnLayout  {
 												  return ''
 										  }else
 											  return ''
-							sipAddress: {
+                            sipAddress: {
 								if(chatRoomModel) {
 									if(chatRoomModel.groupEnabled) {
 										return '';
@@ -177,7 +177,7 @@ ColumnLayout  {
 									}else {
 										return chatRoomModel.sipAddress;
 									}
-								}else {
+                                }else {
 									return conversation.fullPeerAddress || conversation.peerAddress || '';
 								}
 								
