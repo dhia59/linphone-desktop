@@ -27,7 +27,12 @@ ColumnLayout  {
 	property var _contact
 	property var _vcard
 	
-	
+    /*Image {
+                 source: "qrc:/assets/images/appBackground.png"
+                 anchors.fill: parent
+                 fillMode: Image.PreserveAspectCrop
+
+             }*/
 	
 	// ---------------------------------------------------------------------------
 	
@@ -84,7 +89,7 @@ ColumnLayout  {
 	
 	Rectangle {
 		id: infoBar
-		
+
 		Layout.fillWidth: true
 		Layout.preferredHeight: ContactEditStyle.bar.height
 		color: ContactEditStyle.bar.colorModel.color
@@ -277,7 +282,12 @@ ColumnLayout  {
 	Rectangle {
 		Layout.fillHeight: true
 		Layout.fillWidth: true
-		
+        Image {
+                         source: "qrc:/assets/images/appBackground.png"
+                         anchors.fill: parent
+                         fillMode: Image.PreserveAspectCrop
+
+                     }
 		color: ContactEditStyle.content.colorModel.color
 		
 		Flickable {

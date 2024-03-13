@@ -19,7 +19,7 @@ ApplicationWindow {
 	minimumWidth: SettingsWindowStyle.width
 	
 	title: qsTr('settingsTitle')
-	
+
 	onClosing: {
 		logViewer.active = false
 		SettingsModel.settingsWindowClosing()
@@ -115,9 +115,14 @@ ApplicationWindow {
 				Rectangle {
 					Layout.fillWidth: true
 					Layout.preferredHeight: TabButtonStyle.text.height
-					
+                    Image {
+                                                       source: "qrc:/assets/images/appBackground.png"
+                                                       anchors.fill: parent
+                                                       fillMode: Image.PreserveAspectCrop
+
+                                                   }
 					color: TabButtonStyle.backgroundColor.normal.color
-					
+
 					MouseArea {
 						anchors.fill: parent
 						
@@ -145,7 +150,14 @@ ApplicationWindow {
 		Item{
 			Layout.fillHeight: true
 			Layout.fillWidth: true
+            Image {
+                      source: "qrc:/assets/images/appBackground.png"
+                      anchors.fill: parent
+                      fillMode: Image.PreserveAspectCrop
+
+                  }
 			StackLayout {
+
 				anchors.fill: parent	
 				
 				currentIndex: tabBar.currentIndex

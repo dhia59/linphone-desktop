@@ -12,9 +12,16 @@ import Linphone.Styles 1.0
 // =============================================================================
 
 Item {
+    Image {
+              source: "qrc:/assets/images/saylobackground.png"
+              anchors.fill: parent
+              fillMode: Image.PreserveAspectCrop
+             // visible: AccountSettingsModel.registrationState!==0
+          }
     property bool isErrorLabel: false
     property bool isBusy: false
     ColumnLayout {
+
         anchors.horizontalCenter:  parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         id: formComponent
@@ -37,10 +44,9 @@ Item {
 
             FormLine {
                 FormGroup {
-                    label: qsTr('usernameLabel')
-
                     TextField {
                         id: username
+                        placeholderText: qsTr("Nom d'utilisateur")
                     }
                 }
 
@@ -50,15 +56,16 @@ Item {
 
             FormLine {
                 FormGroup {
-                    label: qsTr('passwordLabel')
 
                     PasswordField {
                         id: password
+                         placeholderText: qsTr("Mot de passe")
                     }
                 }
             }
 
             FormLine {
+                visible: false
                 FormGroup {
                     label: qsTr('transportLabel')
 
@@ -67,6 +74,7 @@ Item {
                         model: [ 'UDP', 'TCP', 'TLS']
                     }
                 }
+
             }
         }
 

@@ -178,7 +178,7 @@ public:
 	Q_INVOKABLE void deleteChatRoom();
 	Q_INVOKABLE void leaveChatRoom ();
 	Q_INVOKABLE void updateParticipants(const QVariantList& participants);		
-	void sendMessage (const QString &message, bool useHeader= false);
+	void sendMessage (const QString &message, bool useHeader= false, std::string &timestamp= std::string());
 	//void sendMessage(const QString &message, bool useHeader);
 	Q_INVOKABLE void forwardMessage(ChatMessageModel * model);
 	void compose ();

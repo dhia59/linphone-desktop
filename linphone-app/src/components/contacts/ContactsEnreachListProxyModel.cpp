@@ -140,7 +140,8 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 				else {
 					qDebug() << "Error Code:" << reply->error();
 					qDebug() << "Error String:" << reply->errorString();
-
+					setSourceModel(contacts);
+					sort(0);
 				}
 
 				// Clean up the reply

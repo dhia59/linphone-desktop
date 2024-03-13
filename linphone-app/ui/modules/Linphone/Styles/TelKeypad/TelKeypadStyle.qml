@@ -8,9 +8,9 @@ import ColorsList 1.0
 QtObject {
 	property string sectionName: 'TelKeypad'
 	property int columnSpacing: 12
-	property int height: 240
+    property int height: 200
 	property int rowSpacing: 12
-	property int width: 240
+    property int width: 200
 	property var colorModel: ColorsList.add(sectionName+'', 'telkeypad_bg')
 	property var selectedColor : ColorsList.add(sectionName+'_c', 'm')
 	property int selectedBorderWidth: 2

@@ -230,8 +230,7 @@ ColumnLayout {
                         id: actions
                         property ChatRoomModel lastChatRoom
                         property var contactModel: $modelData
-                        Component.onCompleted: {
-                        console.log("reppppppppppppppppppp ", actions.contactModel.contactEnreach.sipAddresses)}
+
                         Connections{
                             target: lastChatRoom
                             onStateChanged: if(state === 1) {

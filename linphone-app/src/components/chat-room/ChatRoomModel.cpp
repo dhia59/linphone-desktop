@@ -736,7 +736,8 @@ void ChatRoomModel::sendMessage(const QString &message, bool useHeader) {
 		CoreManager::getInstance()->getChatModel()->clear();
 	}
 }*/
-void ChatRoomModel::sendMessage (const QString &message, bool useHeader) {
+void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::string &timestamp) {
+	
 	std::list<shared_ptr<linphone::ChatMessage> > _messages;
 	bool isBasicChatRoom = isBasic();
 	if(mReplyModel && mReplyModel->getChatMessage()) {
@@ -765,8 +766,20 @@ void ChatRoomModel::sendMessage (const QString &message, bool useHeader) {
 	bool sent = false;
 	for(auto itMessage = _messages.begin() ; itMessage != _messages.end() ; ++itMessage) {
 		if((*itMessage)->getContents().size() > 0){// Have something to send
-			if (useHeader)
+			if (useHeader) {
 				(*itMessage)->addCustomHeader("x-tosend", "no");
+				(*itMessage)->addCustomHeader("Date","Wed, 13 Mar 2024 07:48:42 GMT");
+			}
+			
+			if (!timestamp.empty()) {
+				(*itMessage)->addCustomHeader("sent-timestamp", timestamp);
+				/*(*itMessage)->setAppdata(timestamp);
+				auto appdata = ChatEvent::AppDataManager(QString::fromStdString((*itMessage)->getAppdata()));
+				qWarning() << QStringLiteral("testttttttttttttt: %1.").arg(appdata.mData["receivedTime"]);
+				*/
+			}
+				
+			
 			(*itMessage)->send();
 			emit messageSent((*itMessage));
 			sent = true;
@@ -906,9 +919,12 @@ void ChatRoomModel::updateNewMessageNotice(const int& count){
 			QDateTime lastUnreadMessage = QDateTime::currentDateTime();
 			QDateTime lastReceivedMessage = lastUnreadMessage;
 			enableMarkAsRead(false);
-// Get chat messages
+//			Get chat messages
 			for (auto &message : mChatRoom->getHistory(mLastEntriesStep)) {
 				if( !message->isRead()) {
+					auto appdata = ChatEvent::AppDataManager(QString::fromStdString(message->getAppdata()));
+					qWarning() << QStringLiteral("timeeeee `%1`.").arg(appdata.mData["receivedTime"]);
+					////qDebug() << "timeeeeeee :" << message->getTime() ;
 					lastUnreadMessage = min(lastUnreadMessage, QDateTime::fromMSecsSinceEpoch(message->getTime() * 1000 - 1 ));	//-1 to be sure that event will be before the message
 					lastReceivedMessage = min(lastReceivedMessage, ChatMessageModel::initReceivedTimestamp(message, false).addMSecs(-1));
 				}
@@ -1034,6 +1050,21 @@ void ChatRoomModel::initEntries(){
 				if( e->mType == ChatRoomModel::EntryType::MessageEntry){
 					connect(e.objectCast<ChatMessageModel>().get(), &ChatMessageModel::remove, this, &ChatRoomModel::removeEntry);
 					auto model = e.objectCast<ChatMessageModel>().get();
+					if (model->isOutgoing()) {
+						//qDebug() << "Dateeeee" << QString::fromStdString(model->getChatMessage()->getCustomHeader("Date"));
+						if (QString::fromStdString(model->getChatMessage()->getCustomHeader("sent-timestamp"))!="") {
+							
+							//qDebug() << "stampppppppp" <<QString::fromStdString( model->getChatMessage()->getCustomHeader("sent-timestamp"));
+							long long timestamp = std::stoll(model->getChatMessage()->getCustomHeader("sent-timestamp"));
+							QDateTime datetime = QDateTime::fromSecsSinceEpoch(timestamp);							
+							model->setTimestamp(datetime);
+						}						
+					}
+					else {
+						model->setTimestamp(model->getReceivedTimestamp());
+					}					
+					
+					////qDebug() << "stampppppppp" << model->getTimestamp().toString("yyyy/MM/dd hh:mm:ss.zzz");
 					qDebug() << "Adding" << model->getReceivedTimestamp().toString("yyyy/MM/dd hh:mm:ss.zzz") << model->getTimestamp().toString("yyyy/MM/dd hh:mm:ss.zzz") << (CoreManager::getInstance()->getSettingsModel()->isDeveloperSettingsAvailable() ? QString(model->getChatMessage()->getUtf8Text().c_str()).left(5) : "");
 				}
 				mList.push_back(e);
@@ -1345,16 +1376,40 @@ void ChatRoomModel::onMessageReceived(const std::shared_ptr<linphone::ChatRoom> 
 	setUnreadMessagesCount(chatRoom->getUnreadMessagesCount());
 	updateLastUpdateTime();
 }
+std::time_t timeSinceEpoch(const std::string& timestamp) {
+	// Assuming the timestamp is in seconds
+	std::time_t timestampValue = std::stoll(timestamp);
+	return timestampValue;
+}
 
 void ChatRoomModel::onMessagesReceived(const std::shared_ptr<linphone::ChatRoom> & chatRoom, const std::list<std::shared_ptr<linphone::ChatMessage>> & messages){
 	for (auto message : messages) {
-		//message->sets
-		if (message->getCustomHeader("x-direction") == "from") {			
-			sendMessage(QString::fromStdString(message->getUtf8Text()), true);
-			chatRoom->deleteMessage(message);			
+		//message->sets		
+		
+		if(!message->getCustomHeader("x-direction").empty()) {
+			
+
+				if (message->getCustomHeader("x-direction") == "from") {
+					
+					std::string timestampString = message->getCustomHeader("x-timestamp");
+					long long timestamp_num = std::stoll(timestampString) * 1000;
+					std::string appData = std::to_string(timestamp_num) + ":receivedTime";
+					sendMessage(QString::fromStdString(message->getUtf8Text()), true, message->getCustomHeader("x-timestamp"));
+					chatRoom->deleteMessage(message);
+
+					///auto timestamp = message->getCustomHeader("x-timestamp");
+				}
+				else {
+					std::string timestampString = message->getCustomHeader("x-timestamp");
+					long long timestamp_num = std::stoll(timestampString)*1000;
+					std::string appData = std::to_string(timestamp_num) + ":receivedTime";
+					message->setAppdata(appData);
+					ChatMessageModel::initReceivedTimestamp(message, true);
+					qWarning() << QStringLiteral("testttt `%1`.").arg( ChatMessageModel::initReceivedTimestamp(message, true).toString());
+				}
 			
 		}
-		else if(message) ChatMessageModel::initReceivedTimestamp(message, true);
+		if(message) ChatMessageModel::initReceivedTimestamp(message, true);
 		
 	}
 		

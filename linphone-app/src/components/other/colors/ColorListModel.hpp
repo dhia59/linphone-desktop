@@ -59,6 +59,7 @@ class ColorListModel : public ProxyListModel {
 	void init() {
 		QSharedPointer<ColorModel> color;
 		ADD_COLOR("a", "transparent", "Generic transparent color.")
+		ADD_COLOR("#ffc545", "transparent", "Generic transparent color.")
 		
 		ADD_COLOR("c", "#222154", "Button pressed, separatos, fields.")
 		ADD_COLOR("d", "#5A585B", "Text (Ephemerals)")
@@ -77,6 +78,7 @@ class ColorListModel : public ProxyListModel {
 		ADD_COLOR("secondary_h", "#222154", "Secondary color for hovered items.")
 		ADD_COLOR("n", "", "Primary color for pressed button")
 		ADD_COLOR("o", "#D0D8DE", "Primary color for disabled button")
+
 		
 		ADD_COLOR("outgoing_bg","#FFEEE5","Outgoing message background")
 		ADD_COLOR("incoming_bg","#F3F3F3","Incoming message background")
@@ -100,6 +102,7 @@ class ColorListModel : public ProxyListModel {
 		
 		ADD_COLOR("q", "#FFFFFF", "Fields, backgrounds and text color on some items")
 		ADD_COLOR("qq", "#222154", "avarar background")
+		ADD_COLOR("qqq", "#ffc545", "avarar background")
 		ADD_COLOR("r", "#909fab", "Background button normal.")
 		
 		ADD_COLOR("s", "#96be64", "Security")
@@ -138,10 +141,10 @@ class ColorListModel : public ProxyListModel {
 		ADD_COLOR("conference_entry_bg", "#D0D8DE", "Conferences : Background entry")
 		
 		
-		ADD_COLOR("conference_bg", "#798791", "Conferences: Background")
+		ADD_COLOR("conference_bg", "transparent", "Conferences: Background")
 		ADD_COLOR("conference_avatar_sticker_bg", "#A1A1A1", "Conferences : Background for sticker avatar")
 		ADD_COLOR("conference_avatar_preview_sticker_bg", "#475663", "Conferences : Background for sticker avatar of preview")
-		ADD_COLOR("conference_avatar_initials_bg", "#798791", "Conferences : Background for avatar initials")
+		ADD_COLOR("conference_avatar_initials_bg", "transparent", "Conferences : Background for avatar initials")
 		
 		ADD_COLOR("fullscreen_conference_bg", "black", "Conferences: Fullscreen background")
 		
@@ -150,7 +153,7 @@ class ColorListModel : public ProxyListModel {
 		
 		ADD_COLOR("readonly_fg", "#B1B1B1", "Chat text area Readonly foreground")
 		
-		ADD_COLOR("telkeypad_bg", "#222154", "Background for phone keypad")
+		ADD_COLOR("telkeypad_bg", "#ffc545", "Background for phone keypad")
 		ADD_COLOR("telkeypad_fg", "#E4E4E4", "Foreground for phone keypad")
 		ADD_COLOR("telkeypad_h", "#B1B1B1", "Foreground for phone keypad")
 		

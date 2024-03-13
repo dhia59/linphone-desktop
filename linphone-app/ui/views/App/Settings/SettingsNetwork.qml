@@ -15,7 +15,12 @@ TabContainer {
     // -------------------------------------------------------------------------
     // General.
     // -------------------------------------------------------------------------
+    Image {
+                        source: "qrc:/assets/images/appBackground.png"
+                        anchors.fill: parent
+                        fillMode: Image.PreserveAspectCrop
 
+                    }
     Form {
       title: qsTr('generalTitle')
       visible: SettingsModel.developerSettingsEnabled

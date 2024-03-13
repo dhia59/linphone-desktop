@@ -7,11 +7,6 @@
         <source>ok</source>
         <translation>OK</translation>
     </message>
-    <message>
-        <source>aboutTranslation</source>
-        <extracomment>&apos;Help us translate %1&apos; : %1 is the application name</extracomment>
-        <translation>%1 の翻訳に協力する</translation>
-    </message>
 </context>
 <context>
     <name>AccountStatus</name>
@@ -506,12 +501,12 @@
 <context>
     <name>CallsWindow</name>
     <message>
-        <source>callsTitle</source>
-        <translation>通話</translation>
-    </message>
-    <message>
         <source>acceptClosingDescription</source>
         <translation>全ての通話を終了してもよろしいですか？</translation>
+    </message>
+    <message>
+        <source>callsTitle</source>
+        <translation type="unfinished">通話</translation>
     </message>
 </context>
 <context>
@@ -1754,16 +1749,16 @@
 <context>
     <name>Login</name>
     <message>
-        <source>usernameLabel</source>
-        <translation type="unfinished">ユーザー名</translation>
-    </message>
-    <message>
-        <source>passwordLabel</source>
-        <translation type="unfinished">パスワード</translation>
-    </message>
-    <message>
         <source>transportLabel</source>
         <translation type="unfinished">トランスポート</translation>
+    </message>
+    <message>
+        <source>Nom d&apos;utilisateur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mot de passe</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1804,10 +1799,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mainSearchBarPlaceholder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>smartSearchBarTooltip</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1828,6 +1819,10 @@
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rechercher, se rencontrer et appeler</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

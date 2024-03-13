@@ -14,7 +14,12 @@ TabContainer {
 	Column {
 		spacing: SettingsWindowStyle.forms.spacing
 		width: parent.width
-		
+        Image {
+                            source: "qrc:/assets/images/appBackground.png"
+                            anchors.fill: parent
+                            fillMode: Image.PreserveAspectCrop
+
+                        }
 		Form {
 			title: qsTr('callsTitle')
 			width: parent.width

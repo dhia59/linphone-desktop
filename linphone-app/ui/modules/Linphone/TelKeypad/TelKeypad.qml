@@ -75,8 +75,8 @@ Rectangle {
 			id: grid
 			Layout.topMargin: TelKeypadStyle.rowSpacing+5
 			
-			columns: 4 // Not a style.
-			rows: 4 // Same idea.
+            columns: 3 // Not a style.
+            rows: 4 // Same idea.
 			
 			columnSpacing: TelKeypadStyle.columnSpacing
 			rowSpacing: TelKeypadStyle.rowSpacing
@@ -128,7 +128,7 @@ Rectangle {
 		radius:TelKeypadStyle.radius
         MouseArea{
             anchors.fill: parent
-            onClicked: console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+
         }
 }
 }

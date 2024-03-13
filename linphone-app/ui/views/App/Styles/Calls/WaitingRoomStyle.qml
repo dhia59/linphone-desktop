@@ -8,7 +8,7 @@ import ColorsList 1.0
 
 QtObject {
 	property string sectionName: 'WaitingRoom'
-	property var backgroundColor: ColorsList.add(sectionName+'_description', '', '', '#798791')
+	property var backgroundColor: ColorsList.add(sectionName+'_description', '', '', 'transparent')
 	property var menuColor: ColorsList.add(sectionName+'_menu', 'r')
 	
 	property QtObject title: QtObject {

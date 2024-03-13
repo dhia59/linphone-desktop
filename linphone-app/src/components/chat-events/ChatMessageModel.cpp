@@ -88,9 +88,10 @@ ChatMessageModel::ChatMessageModel ( std::shared_ptr<linphone::ChatMessage> chat
 				txt += content->getUtf8Text().c_str();
 		}
 		mContent = txt;
-		
+		qWarning() << "Helooooooo "; chatMessage->getAppdata();
 		mTimestamp = QDateTime::fromMSecsSinceEpoch(chatMessage->getTime() * 1000);
 		mReceivedTimestamp = ChatMessageModel::initReceivedTimestamp(chatMessage, false);
+	    /// << chatMessage->getContents();
 	}
 	mWasDownloaded = false;
 
@@ -167,7 +168,7 @@ long ChatMessageModel::getEphemeralLifetime() const{
 }
 
 LinphoneEnums::ChatMessageState ChatMessageModel::getState() const{
-	qWarning() << QStringLiteral("stateeeeee %1.").arg(mChatMessage ? LinphoneEnums::fromLinphone(mChatMessage->getState()) : LinphoneEnums::ChatMessageStateIdle);
+	//qWarning() << QStringLiteral("stateeeeee %1.").arg(mChatMessage ? LinphoneEnums::fromLinphone(mChatMessage->getState()) : LinphoneEnums::ChatMessageStateIdle);
 	return mChatMessage ? LinphoneEnums::fromLinphone(mChatMessage->getState()) : LinphoneEnums::ChatMessageStateIdle;
 }
 
@@ -225,10 +226,12 @@ void ChatMessageModel::setWasDownloaded(bool wasDownloaded){
 }
 
 void ChatMessageModel::setTimestamp(const QDateTime& timestamp) {
+	qWarning() << "toooooo";
 	mTimestamp = timestamp;
 }
 
 void ChatMessageModel::setReceivedTimestamp(const QDateTime& timestamp) {
+	qWarning() << "booooooooo";
 	mReceivedTimestamp = timestamp;
 }
 
@@ -263,7 +266,9 @@ void ChatMessageModel::updateFileTransferInformation(){
 
 QDateTime ChatMessageModel::initReceivedTimestamp(const std::shared_ptr<linphone::ChatMessage> &message, bool isNew, bool force){
 	auto appdata = ChatEvent::AppDataManager(QString::fromStdString(message->getAppdata()));
+	///qWarning() << QStringLiteral("recievedddddd `%1`.").arg(appdata.mData["receivedTime"]);
 	if(force || !appdata.mData.contains("receivedTime")){// If already set : Do not overwrite.
+		
 		appdata.mData["receivedTime"] = QString::number(isNew ? QDateTime::currentMSecsSinceEpoch() : message->getTime()*1000);
 		qDebug() << (isNew ? "New" : "Old") << " message received at " << QDateTime::fromMSecsSinceEpoch(appdata.mData["receivedTime"].toLongLong()).toString("yyyy/MM/dd hh:mm:ss.zzz") << QDateTime::fromMSecsSinceEpoch(message->getTime()*1000).toString("yyyy/MM/dd hh:mm:ss.zzz");
 		message->setAppdata(Utils::appStringToCoreString(appdata.toString()));

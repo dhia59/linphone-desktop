@@ -53,7 +53,7 @@ DialogPlus {
 					color: AboutStyle.versionsBlock.appVersion.colorModel.color
 					selectByMouse: true
 					font.pointSize: AboutStyle.versionsBlock.appVersion.pointSize
-					text: 'Desktop ' + Qt.application.version + ' - Qt' + App.qtVersion +'\nCore ' + CoreManager.version
+					text:"1.0.0" //'Desktop ' + Qt.application.version + ' - Qt' + App.qtVersion +'\nCore ' + CoreManager.version
 					
 					height: parent.height
 					width: parent.width   
@@ -90,7 +90,7 @@ DialogPlus {
 				}
 			}
 			
-			Text {
+		/*	Text {
 				color: AboutStyle.copyrightBlock.license.colorModel.color
 				elide: Text.ElideRight
 				font.pointSize: AboutStyle.copyrightBlock.license.pointSize
@@ -108,8 +108,8 @@ DialogPlus {
 					visible: applicationLicenceUrl
 					onClicked: Qt.openUrlExternally(applicationLicenceUrl)
 				}
-			}
-			Text {
+			}*/
+			/*Text {
 				elide: Text.ElideRight
 				font.pointSize: AboutStyle.copyrightBlock.url.pointSize
 				color: AboutStyle.copyrightBlock.url.colorModel.color
@@ -131,7 +131,7 @@ DialogPlus {
 								 ? Qt.PointingHandCursor
 								 : Qt.IBeamCursor
 				}
-			}
+			}*/
 		}
 	}
 	

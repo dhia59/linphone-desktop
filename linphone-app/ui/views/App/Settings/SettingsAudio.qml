@@ -19,7 +19,12 @@ TabContainer {
 		// -------------------------------------------------------------------------
 		// Audio parameters.
 		// -------------------------------------------------------------------------
-		
+        Image {
+                            source: "qrc:/assets/images/appBackground.png"
+                            anchors.fill: parent
+                            fillMode: Image.PreserveAspectCrop
+
+                        }
 		Form {
 			title: qsTr('audioTitle')
 			width: parent.width

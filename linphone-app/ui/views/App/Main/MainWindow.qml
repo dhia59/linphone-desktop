@@ -77,6 +77,7 @@ ApplicationWindow {
     Component{
         id: testCompo
         //visible: true
+
        ColumnLayout {
             // Workaround to get these properties in `MainWindow.js`.
             readonly property alias contactsEntry: contactsEntry
@@ -205,12 +206,14 @@ ApplicationWindow {
                          //   modal: true
 
 
+
                             Rectangle {
                                 width: parent.width-50
                                 height: parent.height-50
                                 color:Qt.rgba(0, 0, 0, 0)
                                  border.color: "transparent"
                                  border.width: 0
+                                  radius:20
                                 TelKeypad {
                                     anchors.right: parent.right
                                     anchors.top: parent.top
@@ -283,7 +286,7 @@ ApplicationWindow {
                         Layout.fillWidth: true
 
                         maxMenuHeight: MainWindowStyle.searchBox.maxHeight
-                        placeholderText: qsTr('mainSearchBarPlaceholder')
+                        placeholderText: qsTr('Rechercher, se rencontrer et appeler')
                         tooltipText: qsTr('smartSearchBarTooltip')
                         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
 
@@ -310,8 +313,6 @@ ApplicationWindow {
                         isCustom: true
                         backgroundRadius: 4
                         colorSet: MainWindowStyle.buttons.burgerMenu
-                        visible: Qt.platform.os !== 'osx'
-
                         toggled: menuBar.isOpenned
                         onClicked: toggled ? menuBar.close() : menuBar.open()// a bit useless as Menu will depopup on losing focus but this code is kept for giving idea
                         MainWindowMenuBar {
@@ -375,7 +376,17 @@ ApplicationWindow {
                             window.setView('HistoryView')
                         }
                     }
-                }
+
+                    TextButtonB {
+                        x: 20
+                       // width: parent.width
+                        y:parent.height- 200
+                        addHeight: 25
+                        addWidth: 140
+                        text:"Ajouter un contact" //qsTr('addContact')
+                        onClicked: window.setView('ContactEdit')
+                    }}
+
 
                 // Main content.
                 Item{

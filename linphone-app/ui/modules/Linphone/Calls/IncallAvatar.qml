@@ -34,14 +34,13 @@ Avatar {
 	
 	backgroundColor: CallStyle.container.avatar.backgroundColor.color
 	foregroundColor: mainItem.isPaused ? CallStyle.container.pause.colorModel.color : 'transparent'
-	
-	image: {
+    image: {
 		if (_sipAddressObserver) {
 			var contact = _sipAddressObserver.contact
 			return contact && contact.vcard.avatar
 		}else
 			return null;
-	}
+    }
 	
 	username: _username
 	Text {

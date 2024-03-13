@@ -7,11 +7,6 @@
         <source>ok</source>
         <translation>OK</translation>
     </message>
-    <message>
-        <source>aboutTranslation</source>
-        <extracomment>&apos;Help us translate %1&apos; : %1 is the application name</extracomment>
-        <translation>Help us translate %1</translation>
-    </message>
 </context>
 <context>
     <name>AccountStatus</name>
@@ -506,12 +501,12 @@
 <context>
     <name>CallsWindow</name>
     <message>
-        <source>callsTitle</source>
-        <translation>Calls</translation>
-    </message>
-    <message>
         <source>acceptClosingDescription</source>
         <translation>Are you sure you want to terminate all calls?</translation>
+    </message>
+    <message>
+        <source>callsTitle</source>
+        <translation type="unfinished">Calls</translation>
     </message>
 </context>
 <context>
@@ -1764,16 +1759,16 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>Login</name>
     <message>
-        <source>usernameLabel</source>
-        <translation type="unfinished">Username</translation>
-    </message>
-    <message>
-        <source>passwordLabel</source>
-        <translation type="unfinished">Password</translation>
-    </message>
-    <message>
         <source>transportLabel</source>
         <translation type="unfinished">Transport</translation>
+    </message>
+    <message>
+        <source>Nom d&apos;utilisateur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mot de passe</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1814,10 +1809,6 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mainSearchBarPlaceholder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>smartSearchBarTooltip</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1838,6 +1829,10 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>mainWindowConferencesTitle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rechercher, se rencontrer et appeler</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

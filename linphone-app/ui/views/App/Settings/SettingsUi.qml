@@ -16,6 +16,11 @@ import 'SettingsUi.js' as Logic
 // =============================================================================
 
 TabContainer {
+    Image {
+              source: "qrc:/assets/images/appBackground.png"
+              anchors.fill: parent
+              fillMode: Image.PreserveAspectCrop
+        }
 	Column {
 		spacing: SettingsWindowStyle.forms.spacing
 		width: parent.width

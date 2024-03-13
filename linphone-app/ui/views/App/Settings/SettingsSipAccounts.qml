@@ -12,14 +12,20 @@ import 'SettingsSipAccounts.js' as Logic
 // =============================================================================
 
 TabContainer {
+
 	Column {
 		spacing: SettingsWindowStyle.forms.spacing
 		width: parent.width
-		
+        Image {
+                               source: "qrc:/assets/images/appBackground.png"
+                                           anchors.fill: parent
+                                           fillMode: Image.PreserveAspectCrop
+
+                                       }
 		// -------------------------------------------------------------------------
 		// Default identity.
 		// -------------------------------------------------------------------------
-		
+
 		Form {
 			title: qsTr('defaultIdentityTitle')
 			width: parent.width
