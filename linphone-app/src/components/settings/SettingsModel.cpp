@@ -1581,6 +1581,8 @@ static inline string getLegacySavedCallsFolder (const shared_ptr<linphone::Confi
 	return path;
 }
 
+
+
 QString SettingsModel::getSavedCallsFolder () const {
 	auto path = mConfig->getString(UiSection, "saved_calls_folder", "");// Avoid to call default function if exist.
 	if(path == "")
@@ -1592,6 +1594,18 @@ void SettingsModel::setSavedCallsFolder (const QString &folder) {
 	QString cleanedFolder = QDir::cleanPath(folder) + QDir::separator();
 	mConfig->setString(UiSection, "saved_calls_folder", Utils::appStringToCoreString(cleanedFolder));
 	emit savedCallsFolderChanged(cleanedFolder);
+}
+QString SettingsModel::getMVVMFolder() const {
+	auto path = mConfig->getString(UiSection, "saved_mvvm_folder", "");// Avoid to call default function if exist.
+	if (path == "")
+		path = Paths::getMVVMDirPath();
+	return QDir::cleanPath(Utils::coreStringToAppString(path)) + QDir::separator();
+}
+
+void SettingsModel::setMVVMFolder(const QString &folder) {
+	QString cleanedFolder = QDir::cleanPath(folder) + QDir::separator();
+	mConfig->setString(UiSection, "saved_mvvm_folder", Utils::appStringToCoreString(cleanedFolder));
+	emit savedMVVMChanged(cleanedFolder);
 }
 
 // -----------------------------------------------------------------------------

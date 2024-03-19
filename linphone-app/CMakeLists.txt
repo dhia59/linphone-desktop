@@ -287,6 +287,10 @@ set(SOURCES
 	src/components/recorder/RecorderModel.cpp
 	src/components/recorder/RecordingListModel.cpp
 	src/components/recorder/RecordingProxyModel.cpp
+
+	src/components/vocalMessages/MVVMModel.cpp
+	src/components/vocalMessages/MVVMListModel.cpp
+	src/components/vocalMessages/MVVMProxyModel.cpp
 	src/components/search/SearchListener.cpp
 	src/components/search/SearchResultModel.cpp
 	src/components/search/SearchSipAddressesModel.cpp
@@ -434,6 +438,10 @@ set(HEADERS
 	src/components/recorder/RecorderModel.hpp
 	src/components/recorder/RecordingListModel.hpp
 	src/components/recorder/RecordingProxyModel.hpp
+
+	src/components/vocalMessages/MVVMModel.hpp
+	src/components/vocalMessages/MVVMListModel.hpp
+	src/components/vocalMessages/MVVMProxyModel.hpp
 	src/components/search/SearchListener.hpp
 	src/components/search/SearchResultModel.hpp
 	src/components/search/SearchSipAddressesModel.hpp

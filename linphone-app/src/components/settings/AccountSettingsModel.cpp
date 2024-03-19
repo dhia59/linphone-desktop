@@ -283,14 +283,20 @@ void AccountSettingsModel::enableRegister(std::shared_ptr<linphone::Account> acc
 	account->setParams(params);
 }
 void AccountSettingsModel::logout() {
-	CoreManager *coreManager = CoreManager::getInstance();
-	AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
-	std::list<std::shared_ptr<linphone::Account>> allAccounts = coreManager->getAccountList();
-	qWarning() << "Logout from" << allAccounts.size();
-	for (auto nextAccount : allAccounts) {
-		accountSettingsModel->removeAccount(nextAccount);
+	shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+	if (!config->hasSection("apiAuth")) {
+		CoreManager *coreManager = CoreManager::getInstance();
+		AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
+		std::list<std::shared_ptr<linphone::Account>> allAccounts = coreManager->getAccountList();
+		qWarning() << "Logout from" << allAccounts.size();
+		for (auto nextAccount : allAccounts) {
+			accountSettingsModel->removeAccount(nextAccount);
+		}
+
+		config->cleanSection("apiAuth");
+		coreManager->forceRefreshRegisters();
 	}
-	coreManager->forceRefreshRegisters();
+
 }
 void AccountSettingsModel::removeAccount(const shared_ptr<linphone::Account> &account) {
 

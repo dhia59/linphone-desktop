@@ -1860,6 +1860,11 @@ Clique aqui: &lt;a href=&quot;%1&quot;&gt;%1 &lt;/a&gt;
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
         <translation>Gravações</translation>
     </message>
+    <message>
+        <source>Messagerie vocale</source>
+        <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindowTopMenuBar</name>
@@ -1884,6 +1889,11 @@ Clique aqui: &lt;a href=&quot;%1&quot;&gt;%1 &lt;/a&gt;
         <source>recordings</source>
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
         <translation>Gravações</translation>
+    </message>
+    <message>
+        <source>Messagerie vocale</source>
+        <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4006,6 +4016,19 @@ Clique aqui: &lt;a href=&quot;%1&quot;&gt;%1 &lt;/a&gt;
     <message>
         <source>Write key failed: %1</source>
         <translation>Falha na escrita da chave: % 1</translation>
+    </message>
+</context>
+<context>
+    <name>VocalMessages</name>
+    <message>
+        <source>recordingsVocalLabel</source>
+        <extracomment>&apos;Vocal&apos; : Label for recording type that is a vocal message.</extracomment>
+        <translation type="unfinished">Vocal</translation>
+    </message>
+    <message>
+        <source>recordingsDelete</source>
+        <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
+        <translation type="unfinished">Você tem certeza de que quer apagar este item?</translation>
     </message>
 </context>
 <context>

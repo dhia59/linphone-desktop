@@ -230,6 +230,15 @@ void CoreHandlers::onMessagesReceived (
 	
 	appSettings.beginGroup("chatrooms");
 	for(auto message : messages){
+		
+		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+		if (!message->getCustomHeader("x-token").empty()) {
+			config->setString("apiAuth", "x-token", message->getCustomHeader("x-token"));
+		}
+		if (!message->getCustomHeader("x-instance").empty()) {
+			config->setString("apiAuth", "x-instance", message->getCustomHeader("x-instance"));
+		}
+		
 		if(message) ChatMessageModel::initReceivedTimestamp(message, true);
 		if( !message || message->isOutgoing()  )
 			continue;

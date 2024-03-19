@@ -41,7 +41,7 @@ void ChatRoomListener::onMessageReceived(const std::shared_ptr<linphone::ChatRoo
 	emit messageReceived(chatRoom, message);
 }
 void ChatRoomListener::onMessagesReceived(const std::shared_ptr<linphone::ChatRoom> & chatRoom, const std::list<std::shared_ptr<linphone::ChatMessage>> & messages){
-	//qDebug() << "ChatRoomListener::onMessagesReceived";
+	qDebug() << "ChatRoomListener::onMessagesReceived";
 	emit messagesReceived(chatRoom, messages);
 }
 void ChatRoomListener::onNewEvent(const std::shared_ptr<linphone::ChatRoom> & chatRoom, const std::shared_ptr<const linphone::EventLog> & eventLog){

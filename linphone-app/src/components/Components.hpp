@@ -79,6 +79,7 @@
 #include "recorder/RecorderManager.hpp"
 #include "recorder/RecordingListModel.hpp"
 #include "recorder/RecordingProxyModel.hpp"
+#include "vocalMessages/MVVMProxyModel.hpp"
 #include "settings/AccountSettingsModel.hpp"
 #include "settings/SettingsModel.hpp"
 #include "search/SearchResultModel.hpp"

@@ -33,6 +33,7 @@ namespace Paths {
 	std::string getAvatarsDirPath ();
 	std::string getCallHistoryFilePath ();
 	std::string getCapturesDirPath ();
+	std::string getMVVMDirPath();
 	std::string getCodecsDirPath ();
 	std::string getConfigDirPath (bool writable = true);
 	std::string getConfigFilePath (const QString &configPath = QString(), bool writable = true);

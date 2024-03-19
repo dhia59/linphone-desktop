@@ -226,12 +226,12 @@ void ChatMessageModel::setWasDownloaded(bool wasDownloaded){
 }
 
 void ChatMessageModel::setTimestamp(const QDateTime& timestamp) {
-	qWarning() << "toooooo";
+
 	mTimestamp = timestamp;
 }
 
 void ChatMessageModel::setReceivedTimestamp(const QDateTime& timestamp) {
-	qWarning() << "booooooooo";
+
 	mReceivedTimestamp = timestamp;
 }
 
@@ -265,8 +265,15 @@ void ChatMessageModel::updateFileTransferInformation(){
 }
 
 QDateTime ChatMessageModel::initReceivedTimestamp(const std::shared_ptr<linphone::ChatMessage> &message, bool isNew, bool force){
+	
+	
+	if (! message->getCustomHeader("sent-timestamp").empty()) {	
+		std::string timestampString = message->getCustomHeader("sent-timestamp");
+		long long timestamp_num = std::stoll(timestampString) * 1000;
+		std::string data = std::to_string(timestamp_num) + ":receivedTime";
+		message->setAppdata(data);
+	}
 	auto appdata = ChatEvent::AppDataManager(QString::fromStdString(message->getAppdata()));
-	///qWarning() << QStringLiteral("recievedddddd `%1`.").arg(appdata.mData["receivedTime"]);
 	if(force || !appdata.mData.contains("receivedTime")){// If already set : Do not overwrite.
 		
 		appdata.mData["receivedTime"] = QString::number(isNew ? QDateTime::currentMSecsSinceEpoch() : message->getTime()*1000);

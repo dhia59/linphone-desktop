@@ -112,7 +112,7 @@ Rectangle {
 			}
 		}
 		
-		ContactDescription {
+    ContactDescription {
 			id: description
 			
 			Layout.fillHeight: true
@@ -122,21 +122,22 @@ Rectangle {
 			titleText: item.subject
 						? item.subject
 						: item.username
-			subtitleText: entry && item.showSubtitle
+            /*subtitleText: entry && item.showSubtitle
 							? UtilsCpp.toDisplayString(
 								item.subtitle
 								? item.subtitle
 								: (entry.isOneToOne == undefined || entry.isOneToOne) && (entry.haveEncryption == undefined || !entry.haveEncryption)
 									? item.organizer
 										? item.organizer
-										: entry.sipAddress || entry.peerAddress || entry.fullPeerAddress || ''
+                                        : entry.sipAddress || entry.peerAddress || entry.fullPeerAddress || ''
 									: entry.participants
 										? entry.participants.addressesToString
 										: ''
 							, SettingsModel.sipDisplayMode)
 							: ''
-		}
-		
+                            */
+        }
+
 		ContactMessageCounter {
 			Layout.alignment: Qt.AlignTop
 			Layout.preferredWidth: count > 0 && visible ? implicitWidth : 0

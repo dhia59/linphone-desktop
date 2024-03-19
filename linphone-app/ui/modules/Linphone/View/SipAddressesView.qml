@@ -184,7 +184,7 @@ ScrollableListView {
 						color: headerButton.pressed
 							   ? SipAddressesViewStyle.header.text.color.pressed.color
 							   : SipAddressesViewStyle.header.text.color.normal.color
-						text: sipAddressesView.headerButtonDescription
+                        text: sipAddressesView.headerButtonDescription
 					}
 					
 					Icon {

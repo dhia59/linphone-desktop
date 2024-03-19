@@ -146,7 +146,7 @@ ColumnLayout  {
                             contactDescriptionStyle: ConversationStyle.bar.contactDescription
                             titleText: avatar.username
                             titleClickable: chatRoomModel && chatRoomModel.isMeAdmin && !chatRoomModel.isOneToOne
-                            subtitleText: if(chatRoomModel) {
+                            /*subtitleText: if(chatRoomModel) {
                                                 if(chatRoomModel.groupEnabled) {
                                                     return chatRoomModel.participants.displayNamesToString;
                                                 }else if(avatar.hasPresence) {
@@ -157,6 +157,7 @@ ColumnLayout  {
                                                     return UtilsCpp.toDisplayString(SipAddressesModel.cleanSipAddress(chatRoomModel.sipAddress), SettingsModel.sipDisplayMode)
                                           }else
                                               return ''
+                            */
 							
 							/*
 							participants: if(chatRoomModel) {

@@ -210,6 +210,7 @@ class SettingsModel : public QObject {
 	
 	Q_PROPERTY(QString savedScreenshotsFolder READ getSavedScreenshotsFolder WRITE setSavedScreenshotsFolder NOTIFY savedScreenshotsFolderChanged)
 	Q_PROPERTY(QString savedCallsFolder READ getSavedCallsFolder WRITE setSavedCallsFolder NOTIFY savedCallsFolderChanged)
+	Q_PROPERTY(QString mvvmFolder READ getMVVMFolder WRITE setMVVMFolder NOTIFY savedMVVMChanged)
 	Q_PROPERTY(QString downloadFolder READ getDownloadFolder WRITE setDownloadFolder NOTIFY downloadFolderChanged)
 	
 	Q_PROPERTY(bool exitOnClose READ getExitOnClose WRITE setExitOnClose NOTIFY exitOnCloseChanged)
@@ -592,6 +593,10 @@ public:
 	
 	QString getSavedCallsFolder () const;
 	void setSavedCallsFolder (const QString &folder);
+
+	QString getMVVMFolder() const;
+
+	void setMVVMFolder(const QString & folder);
 	
 	QString getDownloadFolder () const;
 	void setDownloadFolder (const QString &folder);
@@ -853,6 +858,7 @@ signals:
 	
 	void savedScreenshotsFolderChanged (const QString &folder);
 	void savedCallsFolderChanged (const QString &folder);
+	void savedMVVMChanged(const QString &folder);
 	void downloadFolderChanged (const QString &folder);
 	
 	void remoteProvisioningChanged (const QString &remoteProvisioning);

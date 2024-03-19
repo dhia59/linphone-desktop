@@ -208,7 +208,10 @@ string Paths::getCallHistoryFilePath () {
 string Paths::getCapturesDirPath () {
 	return getWritableDirPath(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + Constants::PathCaptures);
 }
-
+string Paths::getMVVMDirPath() {
+	auto test = getWritableDirPath(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + Constants::PathMVVM);
+	return getWritableDirPath(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + Constants::PathMVVM);
+}
 string Paths::getCodecsDirPath () {
 	return getWritableDirPath(QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + Constants::PathCodecs);
 }

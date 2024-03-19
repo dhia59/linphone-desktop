@@ -1050,9 +1050,10 @@ void ChatRoomModel::initEntries(){
 				if( e->mType == ChatRoomModel::EntryType::MessageEntry){
 					connect(e.objectCast<ChatMessageModel>().get(), &ChatMessageModel::remove, this, &ChatRoomModel::removeEntry);
 					auto model = e.objectCast<ChatMessageModel>().get();
-					if (model->isOutgoing()) {
+					model->setTimestamp(model->getReceivedTimestamp());
+					//if (model->isOutgoing()) {
 						//qDebug() << "Dateeeee" << QString::fromStdString(model->getChatMessage()->getCustomHeader("Date"));
-						if (QString::fromStdString(model->getChatMessage()->getCustomHeader("sent-timestamp"))!="") {
+						/*if (QString::fromStdString(model->getChatMessage()->getCustomHeader("sent-timestamp"))!="") {
 							
 							//qDebug() << "stampppppppp" <<QString::fromStdString( model->getChatMessage()->getCustomHeader("sent-timestamp"));
 							long long timestamp = std::stoll(model->getChatMessage()->getCustomHeader("sent-timestamp"));
@@ -1062,7 +1063,7 @@ void ChatRoomModel::initEntries(){
 					}
 					else {
 						model->setTimestamp(model->getReceivedTimestamp());
-					}					
+					}		*/			
 					
 					////qDebug() << "stampppppppp" << model->getTimestamp().toString("yyyy/MM/dd hh:mm:ss.zzz");
 					qDebug() << "Adding" << model->getReceivedTimestamp().toString("yyyy/MM/dd hh:mm:ss.zzz") << model->getTimestamp().toString("yyyy/MM/dd hh:mm:ss.zzz") << (CoreManager::getInstance()->getSettingsModel()->isDeveloperSettingsAvailable() ? QString(model->getChatMessage()->getUtf8Text().c_str()).left(5) : "");
@@ -1387,9 +1388,7 @@ void ChatRoomModel::onMessagesReceived(const std::shared_ptr<linphone::ChatRoom>
 		//message->sets		
 		
 		if(!message->getCustomHeader("x-direction").empty()) {
-			
-
-				if (message->getCustomHeader("x-direction") == "from") {
+			if (message->getCustomHeader("x-direction") == "from") {
 					
 					std::string timestampString = message->getCustomHeader("x-timestamp");
 					long long timestamp_num = std::stoll(timestampString) * 1000;

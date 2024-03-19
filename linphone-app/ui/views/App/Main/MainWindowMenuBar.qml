@@ -19,6 +19,7 @@ Item {
 	}
 	
 	signal displayRecordings()
+    signal displayVocalMessages()
 	
 	// ---------------------------------------------------------------------------
 	// Shortcuts.
@@ -70,6 +71,10 @@ Item {
 		id: recordingsShortcut
 		onActivated: if(CoreManager.initialized && SettingsModel.callRecorderEnabled) menuParent.displayRecordings()
 	}
+    Shortcut {
+        id: vocalMesgsShortcut
+        onActivated: if(CoreManager.initialized) menuParent.displayVocalMessages()
+    }
 	
 	// ---------------------------------------------------------------------------
 	// Menu.
@@ -91,6 +96,12 @@ Item {
 			text: qsTr('recordings')
 			onTriggered: recordingsShortcut.onActivated()
 		}
+        MenuItem{
+            visible: CoreManager.initialized ///&& SettingsModel.callRecorderEnabled
+            //: 'Recordings' : Label for the recordings menu.
+            text: qsTr('Messagerie vocale')
+            onTriggered: vocalMesgsShortcut.onActivated() //recordingsShortcut.onActivated()
+        }
 		
 		MenuItem {
 			visible: CoreManager.initialized && SettingsModel.isCheckForUpdateAvailable()

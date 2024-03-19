@@ -1870,6 +1870,11 @@
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
         <translation>Записи</translation>
     </message>
+    <message>
+        <source>Messagerie vocale</source>
+        <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindowTopMenuBar</name>
@@ -1894,6 +1899,11 @@
         <source>recordings</source>
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
         <translation>Записи</translation>
+    </message>
+    <message>
+        <source>Messagerie vocale</source>
+        <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4019,6 +4029,19 @@
     <message>
         <source>Write key failed: %1</source>
         <translation>Ошибка записи ключа: %1</translation>
+    </message>
+</context>
+<context>
+    <name>VocalMessages</name>
+    <message>
+        <source>recordingsVocalLabel</source>
+        <extracomment>&apos;Vocal&apos; : Label for recording type that is a vocal message.</extracomment>
+        <translation type="unfinished">Голос</translation>
+    </message>
+    <message>
+        <source>recordingsDelete</source>
+        <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
+        <translation type="unfinished">Вы уверены, что хотите удалить эту запись?</translation>
     </message>
 </context>
 <context>

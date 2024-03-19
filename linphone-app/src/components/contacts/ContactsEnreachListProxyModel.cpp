@@ -39,6 +39,8 @@
 #include "ContactsEnreachListModel.hpp"
 #include "utils/SipConstant.hpp"
 #include <QObject>
+#include <QByteArray>
+
 // =============================================================================
 
 using namespace std;
@@ -89,8 +91,15 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
 	auto authInfo = QString::fromStdString( defaultAddress->findAuthInfo()->getUsername());
-	QUrl url(QString("http://185.164.213.62:8081/Enreach/GetContactsByUsername?userName="+authInfo));
+	QUrl url(QString("http://185.164.213.62:8081/Enreach/GetContactsByUsernameWithAuth?userName="+authInfo));
 	QNetworkRequest request(url);
+	shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+	request.setRawHeader("instance",QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
+	request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
+	QList<QByteArray> headers = request.rawHeaderList();
+	foreach(const QByteArray &header, headers) {
+		qDebug() <<"heloooooooooo"+ header << ":" << request.rawHeader(header);
+	}
 	QNetworkReply *reply = manager->get(request);
 	QVariantList *listSips = new QVariantList();
 	if (reply) {

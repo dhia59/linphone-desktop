@@ -504,6 +504,7 @@
         <file>ui/views/App/Main/MainWindow.qml</file>
         <file>ui/views/App/Main/MainWindowTopMenuBar.qml</file>
         <file>ui/views/App/Main/Recordings.qml</file>
+        <file>ui/views/App/Main/VocalMessages.qml</file>
         <file>ui/views/App/Settings/Dialogs/SettingsLdapEdit.qml</file>
         <file>ui/views/App/Settings/Dialogs/SettingsSipAccountsEdit.js</file>
         <file>ui/views/App/Settings/Dialogs/SettingsSipAccountsEdit.qml</file>

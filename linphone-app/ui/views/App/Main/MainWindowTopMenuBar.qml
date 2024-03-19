@@ -11,6 +11,7 @@ MenuBar {
 		menu.open()
 	}
 	signal displayRecordings()
+    signal displayVocalMessages()
 	
 	// ---------------------------------------------------------------------------
 	// Menu.
@@ -34,7 +35,13 @@ MenuBar {
 			role: MenuItem.ApplicationSpecificRole
 			onTriggered: menuBar.displayRecordings()
 		}
-
+        MenuItem {
+            visible: CoreManager.initialized// && SettingsModel.callRecorderEnabled
+            //: 'Recordings' : Label for the recordings menu.
+            text: qsTr('Messagerie vocale')
+            role: MenuItem.ApplicationSpecificRole
+            onTriggered: menuBar.displayVocalMessages()
+        }
 		MenuItem {
 			visible: CoreManager.initialized && SettingsModel.isCheckForUpdateAvailable()
 			//: 'Check for updates' : Item menu for checking updates

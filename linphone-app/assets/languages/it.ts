@@ -1860,6 +1860,11 @@ Clicca: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Messagerie vocale</source>
+        <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindowTopMenuBar</name>
@@ -1882,6 +1887,11 @@ Clicca: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>recordings</source>
+        <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie vocale</source>
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
         <translation type="unfinished"></translation>
     </message>
@@ -4005,6 +4015,19 @@ Clicca: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>Write key failed: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VocalMessages</name>
+    <message>
+        <source>recordingsVocalLabel</source>
+        <extracomment>&apos;Vocal&apos; : Label for recording type that is a vocal message.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>recordingsDelete</source>
+        <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>

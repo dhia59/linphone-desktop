@@ -321,6 +321,11 @@ ApplicationWindow {
                                 timeline.model.unselectAll()
                                 setView('Recordings')
                             }
+                            onDisplayVocalMessages: {
+                                timeline.model.unselectAll()
+                                setView('VocalMessages')
+                            }
+
                         }
                     }
                 }

@@ -215,7 +215,7 @@ Rectangle {
 				verticalAlignment: Text.AlignVCenter
 				visible: !mainItem.conferenceInfoModel
 			}
-			Text{
+        /*	Text{
 				Layout.fillWidth: true
 				text: mainItem.callModel && UtilsCpp.toDisplayString(SipAddressesModel.cleanSipAddress(mainItem.callModel.peerAddress), SettingsModel.sipDisplayMode)
 				color: WaitingRoomStyle.callee.colorModel.color
@@ -224,6 +224,7 @@ Rectangle {
 				verticalAlignment: Text.AlignVCenter
 				visible: mainItem.callModel && !mainItem.conferenceInfoModel && text != displayName.text
 			}
+            */
 		}
 		// -------------------------------------------------------------------------
 		// Action Buttons.

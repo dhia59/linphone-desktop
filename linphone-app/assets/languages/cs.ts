@@ -1870,6 +1870,11 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
         <translation>Nahrávky</translation>
     </message>
+    <message>
+        <source>Messagerie vocale</source>
+        <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindowTopMenuBar</name>
@@ -1894,6 +1899,11 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>recordings</source>
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
         <translation>Nahrávky</translation>
+    </message>
+    <message>
+        <source>Messagerie vocale</source>
+        <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4043,6 +4053,19 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     <message>
         <source>Write key failed: %1</source>
         <translation>Zapsání klíče se nezdařilo: %1</translation>
+    </message>
+</context>
+<context>
+    <name>VocalMessages</name>
+    <message>
+        <source>recordingsVocalLabel</source>
+        <extracomment>&apos;Vocal&apos; : Label for recording type that is a vocal message.</extracomment>
+        <translation type="unfinished">Hlas</translation>
+    </message>
+    <message>
+        <source>recordingsDelete</source>
+        <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
+        <translation type="unfinished">Opravdu chcete tuto položku odstranit?</translation>
     </message>
 </context>
 <context>
