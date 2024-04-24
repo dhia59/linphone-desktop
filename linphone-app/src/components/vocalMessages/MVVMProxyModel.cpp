@@ -40,6 +40,7 @@
 #include <QQmlApplicationEngine>
 #include "app/App.hpp"
 #include <QFile>
+
 #include <Windows.h>
 
 using namespace std;
@@ -75,11 +76,17 @@ MVVMProxyModel::MVVMProxyModel (QObject *parent) : SortFilterProxyModel(parent) 
 void MVVMProxyModel::ListMVVM() {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	auto authInfo = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-
-	QUrl url(QString("http://185.164.213.62:8081/Enreach/listVoiceMessages?userName="+authInfo ));
-	QNetworkRequest request(url);
+	auto username = defaultAddress->findAuthInfo()->getUsername();
 	shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+	auto lastCheck =config->getString(username, "mvvm-lastcheck", "");
+	auto baseUrl = "http://185.164.213.62:8081/Enreach/listVoiceMessages?userName=" + username;
+	if (lastCheck != "") 
+	{
+		baseUrl += "&AddedSince=" + lastCheck;
+	}	
+	QUrl url(QString::fromStdString(baseUrl));
+	QNetworkRequest request(url);	
+	
 	request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
 	request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
 	QList<QByteArray> headers = request.rawHeaderList();
@@ -98,29 +105,36 @@ void MVVMProxyModel::ListMVVM() {
 					if (!jsonResponse.isNull()) {
 						
 						QJsonArray jsonArray = jsonResponse.array();
-						for (const QJsonValue &jsonValue : jsonArray) {
-							QString folder = CoreManager::getInstance()->getSettingsModel()->getMVVMFolder();
+						QString folder = CoreManager::getInstance()->getSettingsModel()->getMVVMFolder()+ "/" +QString::fromStdString(username)+ "/";
+						QDir dir(folder);
+						if (!dir.exists()) {
+							dir.mkdir(folder);
+						}
+						
+						for (const QJsonValue &jsonValue : jsonArray) {						
+
 							if (jsonValue.isObject()) {
 								QJsonObject jsonObject = jsonValue.toObject();
 							
 								QString fileContentBase64 = jsonObject.value("fileContent").toString();
 								QByteArray fileContent = QByteArray::fromBase64(fileContentBase64.toUtf8());
+								qInfo() << "fileeeee " << folder+ jsonObject.value("fileName").toString();
 								QFile file(folder+jsonObject.value("fileName").toString()); 	
 								if (!file.exists()) {
 									QString dateTimeString = jsonObject.value("fileDate").toString();
-									QDateTime fileTime = QDateTime::fromString(dateTimeString, Qt::ISODate);
-									
+									QDateTime fileTime = QDateTime::fromString(dateTimeString, Qt::ISODate);									
 									if (file.open(QIODevice::WriteOnly)) {
 										qint64 bytesWritten = file.write(fileContent);
 										file.close();
 										setFileCreationTime(folder + jsonObject.value("fileName").toString(), fileTime);
 
 									}
-								}
-											
+								}							
 
 							}
 						}
+						auto currentTime = QDateTime::currentDateTime().toString("yyyyMMddhhmmsszzz");
+						config->setString(username, "mvvm-lastcheck",currentTime.toStdString());
 						auto list = new MVVMListModel(this);
 						setSourceModel(list);
 						sort(0);

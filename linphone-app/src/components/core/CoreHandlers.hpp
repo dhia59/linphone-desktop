@@ -56,12 +56,12 @@ signals:
 	void messagesReceived (const std::list<std::shared_ptr<linphone::ChatMessage>> &messages);
 	void presenceReceived (const QString &sipAddress, const std::shared_ptr<const linphone::PresenceModel> &presenceModel);
 	void presenceStatusReceived(std::shared_ptr<linphone::Friend> contact);
-	void registrationStateChanged (const std::shared_ptr<linphone::Account> &account, linphone::RegistrationState state);
+	void registrationStateChanged(const std::shared_ptr<linphone::Account> &account, linphone::RegistrationState state, const std::string &message);
 	void ecCalibrationResult(linphone::EcCalibratorStatus status, int delayMs);
 	void setLastRemoteProvisioningState(const linphone::ConfiguringState &state);
 	void conferenceInfoReceived(const std::shared_ptr<const linphone::ConferenceInfo> & conferenceInfo);
 	void foundQRCode(const std::string & result);
-	
+	void accountFirstLogin();
 private:
 	// ---------------------------------------------------------------------------
 	// Linphone callbacks.

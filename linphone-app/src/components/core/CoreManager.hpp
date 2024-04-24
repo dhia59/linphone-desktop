@@ -49,6 +49,7 @@ class SettingsModel;
 class SipAddressesModel;
 class VcardModel;
 class TimelineListModel;
+class ContactsEnreachListProxyModel;
 
 
 class CoreManager : public QObject {
@@ -132,6 +133,10 @@ public:
 	AccountSettingsModel *getAccountSettingsModel () const {
 		Q_CHECK_PTR(mAccountSettingsModel);
 		return mAccountSettingsModel;
+	}
+	ContactsEnreachListProxyModel *getContactsEnreachListProxyModel() const {
+		Q_CHECK_PTR(mContactsEnreachListProxyModel);
+		return mContactsEnreachListProxyModel;
 	}
 	LdapListModel *getLdapListModel() const{
 		return mLdapListModel;
@@ -236,6 +241,7 @@ private:
 	SettingsModel *mSettingsModel = nullptr;
 	EmojisSettingsModel *mEmojisSettingsModel =nullptr;
 	AccountSettingsModel *mAccountSettingsModel = nullptr;
+	ContactsEnreachListProxyModel *mContactsEnreachListProxyModel = nullptr;
 	
 	EventCountNotifier *mEventCountNotifier = nullptr;
 

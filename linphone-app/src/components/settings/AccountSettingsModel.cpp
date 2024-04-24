@@ -62,6 +62,10 @@ AccountSettingsModel::AccountSettingsModel(QObject *parent) : QObject(parent) {
 		coreManager->getHandlers().get(), &CoreHandlers::registrationStateChanged,
 		this, &AccountSettingsModel::handleRegistrationStateChanged
 	);
+	/*QObject::connect(
+		coreManager->getHandlers().get(), &CoreHandlers::registrationStateChangedWithMessage,
+		this, &AccountSettingsModel::handleRegistrationStateChangedWithMessage
+	);*/
 	//QObject::connect(coreManager, &CoreManager::eventCountChanged, this, [this]() { emit accountSettingsUpdated(); });
 
 	QObject::connect(this, &AccountSettingsModel::accountSettingsUpdated, this, &AccountSettingsModel::usernameChanged);
@@ -284,7 +288,7 @@ void AccountSettingsModel::enableRegister(std::shared_ptr<linphone::Account> acc
 }
 void AccountSettingsModel::logout() {
 	shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
-	if (!config->hasSection("apiAuth")) {
+	//if (!config->hasSection("apiAuth")) {
 		CoreManager *coreManager = CoreManager::getInstance();
 		AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
 		std::list<std::shared_ptr<linphone::Account>> allAccounts = coreManager->getAccountList();
@@ -293,9 +297,9 @@ void AccountSettingsModel::logout() {
 			accountSettingsModel->removeAccount(nextAccount);
 		}
 
-		config->cleanSection("apiAuth");
+		config->cleanSection("defaultAccount");
 		coreManager->forceRefreshRegisters();
-	}
+		emit accountLogout();
 
 }
 void AccountSettingsModel::removeAccount(const shared_ptr<linphone::Account> &account) {
@@ -648,11 +652,23 @@ QVariantList AccountSettingsModel::getAccounts() const {
 
 void AccountSettingsModel::handleRegistrationStateChanged(
 	const shared_ptr<linphone::Account> & account,
-	linphone::RegistrationState state
+	linphone::RegistrationState state,
+	const std::string &message
 ) {
 	Q_UNUSED(state)
-		auto coreManager = CoreManager::getInstance();
+	auto coreManager = CoreManager::getInstance();
 	shared_ptr<linphone::Account> defaultAccount = coreManager->getCore()->getDefaultAccount();
+	
+	
+	if(state== linphone::RegistrationState::Ok){	
+		if (defaultAccount != nullptr) {
+			shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+			std::string username = defaultAccount->findAuthInfo()->getUsername();
+			if (config->getString("defaultAccount", "username", "") == "")
+				config->setBool("defaultAccount", "contactsSyncro", false);
+			config->setString("defaultAccount", "username", username);
+		}	
+	}
 	if (state == linphone::RegistrationState::Cleared) {
 		auto authInfo = account->findAuthInfo();
 		if (authInfo)
@@ -670,10 +686,28 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 	}
 	if (defaultAccount == account) {
 		emit defaultRegistrationChanged();
-		if (state == linphone::RegistrationState::Failed) {
+		if (state == linphone::RegistrationState::Failed) {			
 			qWarning() << QStringLiteral("Registration failed");
-			logout();
-			emit failedRegistration();
+			qWarning() << QString::fromStdString(message);
+			if (message == "Registration impossible (network down)" || message== "io error") {
+				shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+				std::string username = defaultAccount->findAuthInfo()->getUsername();
+				std::string password = defaultAccount->findAuthInfo()->getPassword();
+				qWarning() << QStringLiteral("checking account");
+				std::string currentUserName= config->getString("defaultAccount", "username", "");
+				//std::string currentPassword = config->getString("defaultAccount", "password", "");
+				if (username != currentUserName) {				
+					logout();
+					emit networkErrorFirstLogin();
+				}
+				else {
+				   emit networkErrorLoggedIn();
+				}
+			}			
+			else {
+				logout();
+				emit failedRegistration();
+			}
 		}
 	}
 	emit registrationStateChanged();

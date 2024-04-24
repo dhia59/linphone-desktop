@@ -54,7 +54,7 @@ ColumnLayout {
             ExclusiveButtons {
                 texts: [
                     qsTr('Tous'),
-                    qsTr('Employés'),
+                    qsTr('Collaborateurs'),
                     qsTr('Partagés'),
                     qsTr('Personnels')
                 ]

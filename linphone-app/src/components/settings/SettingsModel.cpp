@@ -1599,7 +1599,7 @@ QString SettingsModel::getMVVMFolder() const {
 	auto path = mConfig->getString(UiSection, "saved_mvvm_folder", "");// Avoid to call default function if exist.
 	if (path == "")
 		path = Paths::getMVVMDirPath();
-	return QDir::cleanPath(Utils::coreStringToAppString(path)) + QDir::separator();
+	return QDir::cleanPath(Utils::coreStringToAppString(path));
 }
 
 void SettingsModel::setMVVMFolder(const QString &folder) {

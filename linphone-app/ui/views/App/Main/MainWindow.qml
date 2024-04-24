@@ -18,7 +18,7 @@ import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 
 ApplicationWindow {
     id: window
-
+    property bool  noNetworkAlert:false
     property string _currentView
     property var _lockedInfo
     property SmartSearchBar mainSearchBar : (mainLoader.item ? mainLoader.item.mainSearchBar : null)
@@ -99,11 +99,29 @@ ApplicationWindow {
             // -----------------------------------------------------------------------
             // Toolbar properties.
             // -----------------------------------------------------------------------
+            RowLayout{
+                visible: noNetworkAlert
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                 Rectangle {
+                     width: parent.width
+                     height: 30
+                     color: "gray"
+                     //anchors.centerIn: parent
+                     Text {
+                         color: "red"
+                         id: name
+                         text: qsTr("Aucune connexion internet")
+                        /// anchors.centerIn: parent
+                     }
+                 }
+            }
+
 
             ToolBar {
                 id: toolBar
                 property alias mainSearchBar : smartSearchBar
-                visible: AccountSettingsModel.registrationState===0
+                visible: AccountSettingsModel.registrationState===0 || noNetworkAlert
                 Layout.fillWidth: true
                 Layout.preferredHeight: MainWindowStyle.toolBar.height
                 hoverEnabled : true
@@ -344,7 +362,7 @@ ApplicationWindow {
                 // Main menu.
                 ColumnLayout {
                     id:leftPanel
-                    visible: AccountSettingsModel.registrationState===0
+                    visible: AccountSettingsModel.registrationState===0 || noNetworkAlert
                     Layout.maximumWidth: MainWindowStyle.menu.width
                     Layout.preferredWidth: MainWindowStyle.menu.width
 
@@ -406,7 +424,7 @@ ApplicationWindow {
 
                         anchors.fill: parent
 
-                        source:AccountSettingsModel.registrationState===0? 'Home.qml' :'Login.qml'
+                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert? 'Home.qml' :'Login.qml'
                     }
 //                    TelKeypad {
 //                        anchors.right: parent.right
@@ -424,16 +442,29 @@ ApplicationWindow {
                         target: AccountSettingsModel
 
                         onAccountLogout: {
+                            console.log("logouttttttttt")
+                             noNetworkAlert= false;
                              contentLoader.setSource("Login.qml")
                          }
-                        }
-                    Connections {
-                        target: AccountSettingsModel
                         onFailedRegistration: {
-                            console.log("Fail register main");
+                            console.log("Fail register main credentials");
                             contentLoader.setSource("Login.qml",{"isErrorLabel": "true"})
                         }
-                    }
+                        onNetworkErrorFirstLogin:{
+                            console.log("Fail register main network");
+                            contentLoader.setSource("Login.qml",{"noNetworkAlert": "true"})
+                        }
+                        onNetworkErrorLoggedIn:{
+                            noNetworkAlert= true
+                            console.log("Fail register main loggedd")
+                        }
+                        onRegistrationStateChanged:{
+                            if(AccountSettingsModel.registrationState===2){
+                                noNetworkAlert= false;
+                            }
+                        }
+                        }
+
 
                     }
                 function hideTelKeypad(){

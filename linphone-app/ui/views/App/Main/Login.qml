@@ -20,6 +20,9 @@ Item {
           }
     property bool isErrorLabel: false
     property bool isBusy: false
+    property string errorMessage:""
+    property bool  noNetworkAlert:false
+
     ColumnLayout {
 
         anchors.horizontalCenter:  parent.horizontalCenter
@@ -87,7 +90,12 @@ Item {
                 text: "Nom d'utilisateur ou mot de passe invalide"
                 color: "red"
             }
-
+            Text {
+                visible: noNetworkAlert
+                id: networkerrorLabel
+                text: "Aucune connxion internet"
+                color: "red"
+            }
         }
         Row {
             id: buttons
@@ -130,7 +138,7 @@ Item {
 
         onAccountSettingsUpdated: {
             console.log("stateeeee   "+ AccountSettingsModel.registrationState)
-            if(AccountSettingsModel.registrationState===0){
+            if(AccountSettingsModel.registrationState===0 || noNetworkAlert){
                 window.setView('Home')
             }
         }
@@ -141,6 +149,22 @@ Item {
 
         onFailedRegistration: {
            isErrorLabel= true
+           // errorMessage="Nom d'utilisateur ou mot de passe invalide"
+        }
+        onNetworkErrorFirstLogin:{
+            console.log("helloooooo")
+            noNetworkAlert= true
+           // errorMessage="aucune connxion internet"
+        }
+        onNetworkErrorLoggedIn:{
+            noNetworkAlert= true
+            console.log("login logged ", noNetworkAlert)
+              window.setView('Home')
+        }
+        onRegistrationStateChanged:{
+            if(AccountSettingsModel.registrationState===2){
+                noNetworkAlert= false;
+            }
         }
     }
 }

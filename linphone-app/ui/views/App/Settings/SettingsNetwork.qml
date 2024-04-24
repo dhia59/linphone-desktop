@@ -165,7 +165,7 @@ TabContainer {
             Switch {
               id: fixSipUdpPort
 
-              readonly property int defaultPort: 5060
+              readonly property int defaultPort: 5070
 
               checked: SettingsModel.udpPort > 0
 

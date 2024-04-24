@@ -1,6 +1,7 @@
 #include "ContactEnreach.hpp"
 #include "utils/Utils.hpp"
 #include "components/core/CoreManager.hpp"
+
 using namespace std;
 ContactEnreach::ContactEnreach(QObject* parent) : QObject(parent) {
 	

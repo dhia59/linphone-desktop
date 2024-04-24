@@ -41,6 +41,8 @@ class VcardModel : public QObject {
   Q_PROPERTY(QString username READ getUsername WRITE setUsername NOTIFY vcardUpdated);
   Q_PROPERTY(QString avatar READ getAvatar WRITE setAvatar NOTIFY vcardUpdated);
   Q_PROPERTY(QVariantMap address READ getAddress NOTIFY vcardUpdated);
+  Q_PROPERTY(QString contactType READ getContactType WRITE setContactType NOTIFY vcardUpdated);
+
   //Q_PROPERTY(QString sipAddress 
   Q_PROPERTY(QVariantList sipAddresses READ getSipAddresses NOTIFY vcardUpdated);
   Q_PROPERTY(QVariantList sipUsernames READ getSipUsernames NOTIFY vcardUpdated);
@@ -65,7 +67,7 @@ public:
 
   QString getAvatar () const;
   bool setAvatar (const QString &path);
-
+  QString getContactType() const;
   QString getUsername () const;
   void setUsername (const QString &username);
 
@@ -101,6 +103,7 @@ public:
   Q_INVOKABLE void setLocality (const QString &locality);
   Q_INVOKABLE void setPostalCode (const QString &postalCode);
   Q_INVOKABLE void setCountry (const QString &country);
+  Q_INVOKABLE void setContactType(const QString& contactType);
 
   // ---------------------------------------------------------------------------
 
@@ -115,6 +118,7 @@ signals:
 private:
   bool mIsReadOnly = true;
   bool mAvatarIsReadOnly = true;
+  QString contactType;
 
   std::shared_ptr<linphone::Vcard> mVcard;
 };

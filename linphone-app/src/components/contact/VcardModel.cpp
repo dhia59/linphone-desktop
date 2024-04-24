@@ -261,6 +261,14 @@ void VcardModel::setCountry (const QString &country) {
 	emit vcardUpdated();
 }
 
+Q_INVOKABLE void VcardModel::setContactType(const QString & newContactType)
+{
+	if (contactType != newContactType) {
+		contactType = newContactType;
+		emit vcardUpdated();
+	}
+}
+
 // -----------------------------------------------------------------------------
 
 QVariantList VcardModel::getSipAddresses () const {
@@ -280,6 +288,12 @@ QVariantList VcardModel::getSipAddresses () const {
 
 	}
 	return list;
+}
+
+QString VcardModel::getContactType() const
+{
+	return contactType;
+
 }
 
 QVariantList VcardModel::getSipUsernames () const {

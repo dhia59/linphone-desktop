@@ -27,7 +27,7 @@
 #include "utils/Utils.hpp"
 
 #include "MVVMListModel.hpp"
-
+#include <QFile>
 #include <QDebug>
 #include <QQmlApplicationEngine>
 
@@ -46,19 +46,43 @@ MVVMListModel::~MVVMListModel(){
 
 void MVVMListModel::load(){
 	resetData();
-	QString folder = CoreManager::getInstance()->getSettingsModel()->getMVVMFolder();
-	qInfo() << "[Recordings] looking for recordings in " << CoreManager::getInstance()->getSettingsModel()->getMVVMFolder();
+	
+	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
+	auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
+	QString folder = CoreManager::getInstance()->getSettingsModel()->getMVVMFolder()+"/"+username+"/" ;
+	qInfo() << "[Recordings] looking for recordings in " << folder;
 	QDir dir( folder );
+	
 	QList<QSharedPointer<FileMediaModel>> files;
-	foreach(QFileInfo file, dir.entryInfoList(QDir::Files | QDir::NoDotAndDotDot)) {
+	auto list = dir.entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Time | QDir::Reversed);
+	if (list.count() > 15) {
+		while (list.count() > 15) {
+			QFile fileTodelete(list.at(15).filePath()); 
+			if (fileTodelete.remove())
+				list.removeAt(15);
+		}
+	}
+	foreach(QFileInfo file, list) {
 		auto recording = FileMediaModel::create(file);
 		if(recording) {
 			App::getInstance()->getEngine()->setObjectOwnership(recording.get(), QQmlEngine::CppOwnership);// Avoid QML to destroy it when passing by Q_INVOKABLE
 			files << recording;
 		}
 	}
-	if(files.size() > 0)
+	/*if (files.count() > 15) {
+		while (files.count()>15)
+		{
+			QFile fileTodelete(files.at(15)->getFilePath()); ;
+			if(fileTodelete.remove())
+				files.removeAt(15);
+		}
+	}
+	*/
+	if (files.size() > 0) {
 		add<FileMediaModel>(files);
+	}
+	
+		
 }
 
 QHash<int, QByteArray> MVVMListModel::roleNames () const {

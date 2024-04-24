@@ -39,7 +39,8 @@ public:
   ContactsEnreachListProxyModel (QObject *parent = Q_NULLPTR);
 
   Q_INVOKABLE void setFilter (const QString &pattern);
-
+public slots:
+	void loadContacts();
 protected:
   bool filterAcceptsRow (int sourceRow, const QModelIndex &sourceParent) const override;
   bool lessThan (const QModelIndex &left, const QModelIndex &right) const override;

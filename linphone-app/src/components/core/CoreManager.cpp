@@ -42,7 +42,7 @@
 #include "components/settings/SettingsModel.hpp"
 #include "components/sip-addresses/SipAddressesModel.hpp"
 #include "components/timeline/TimelineListModel.hpp"
-
+#include "components/contacts/ContactsEnreachListProxyModel.hpp"
 #include "utils/Utils.hpp"
 #include "utils/Constants.hpp"
 
@@ -100,6 +100,7 @@ void CoreManager::initCoreManager(){
 	mEmojisSettingsModel = new EmojisSettingsModel(this);
 	mCallsListModel = new CallsListModel(this);
 	mChatModel = new ChatModel(this);
+	mContactsEnreachListProxyModel = new ContactsEnreachListProxyModel(this);
 	
 	mContactsImporterListModel = new ContactsImporterListModel(this);
 	mLdapListModel = new LdapListModel(this);

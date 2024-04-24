@@ -1114,8 +1114,14 @@ void App::openAppAfterInit (bool mustBeIconified) {
 			core->setNatPolicy(core->getNatPolicy());
 		}
 	});
+	QObject::connect(
+		coreManager->getHandlers().get(), &CoreHandlers::accountFirstLogin,
+		coreManager->getContactsEnreachListProxyModel(), &ContactsEnreachListProxyModel::loadContacts
+	);
 	
 	QQuickWindow *mainWindow = getMainWindow();
+
+
 	
 #ifndef __APPLE__
 	// Enable TrayIconSystem.

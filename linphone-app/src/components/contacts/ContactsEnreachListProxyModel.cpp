@@ -40,7 +40,9 @@
 #include "utils/SipConstant.hpp"
 #include <QObject>
 #include <QByteArray>
-
+#include "components/contact/VcardModel.hpp"
+#include "components/settings/AccountSettingsModel.hpp"
+#include "components/core/CoreHandlers.hpp"
 // =============================================================================
 
 using namespace std;
@@ -59,12 +61,19 @@ namespace {
 const QRegExp ContactsEnreachListProxyModel::SearchSeparators("^[^_.-;@ ][_.-;@ ]");
 
 // -----------------------------------------------------------------------------
-
-ContactsEnreachListProxyModel::ContactsEnreachListProxyModel (QObject *parent) : QSortFilterProxyModel(parent) {
+ContactsEnreachListProxyModel::ContactsEnreachListProxyModel (QObject *parent) : QSortFilterProxyModel(parent) {	
+	CoreManager *coreManager = CoreManager::getInstance();
+	QObject::connect(
+		coreManager->getHandlers().get(), &CoreHandlers::accountFirstLogin,
+		this, &ContactsEnreachListProxyModel::loadContacts
+	);
 	getList();
 }
 // -----------------------------------------------------------------------------
-
+void ContactsEnreachListProxyModel::loadContacts() {
+	qDebug() << "contactsLoaddddddddddd" ;
+	getList();
+}
 void ContactsEnreachListProxyModel::getList() {
 	ContactsEnreachListModel *contacts = new ContactsEnreachListModel();
 	listApiContacts(contacts);
@@ -90,77 +99,86 @@ void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListMode
 void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *contacts) {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	auto authInfo = QString::fromStdString( defaultAddress->findAuthInfo()->getUsername());
-	QUrl url(QString("http://185.164.213.62:8081/Enreach/GetContactsByUsernameWithAuth?userName="+authInfo));
-	QNetworkRequest request(url);
-	shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
-	request.setRawHeader("instance",QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
-	request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
-	QList<QByteArray> headers = request.rawHeaderList();
-	foreach(const QByteArray &header, headers) {
-		qDebug() <<"heloooooooooo"+ header << ":" << request.rawHeader(header);
-	}
-	QNetworkReply *reply = manager->get(request);
-	QVariantList *listSips = new QVariantList();
-	if (reply) {
-		QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
-			if (reply) {
-				if (reply->error() == QNetworkReply::NoError) {
+	if (defaultAddress != nullptr)
+	{
+		auto authInfo = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
+		QUrl url(QString("http://185.164.213.62:8081/Enreach/GetContactsByUsernameWithAuth?userName=" + authInfo));
+		QNetworkRequest request(url);
+		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+		request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
+		request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
+		QList<QByteArray> headers = request.rawHeaderList();
+		foreach(const QByteArray &header, headers) {
+			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
+		}
+		QNetworkReply *reply = manager->get(request);
+		QVariantList *listSips = new QVariantList();
+		if (reply) {
+			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
+				if (reply) {
+					if (reply->error() == QNetworkReply::NoError) {
 
-					QByteArray responseData = reply->readAll();
-					qDebug() << "Response:" << responseData;
-					QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
-					if (!jsonResponse.isNull()) {
-						listLinphoneContacts(contacts, listSips);
-						QJsonArray jsonArray = jsonResponse.array();
-						for (const QJsonValue &jsonValue : jsonArray) {
-							if (jsonValue.isObject()) {
-								QJsonObject jsonObject = jsonValue.toObject();
-								ContactEnreach* contact = new ContactEnreach();
-								contact->setContactType(jsonObject.value("contact_type").toString());
-								contact->setFirstName(jsonObject.value("firstname").toString());
-								contact->setLastName(jsonObject.value("lastname").toString());
-								contact->setTel(jsonObject.value("tel").toString());
-								contact->setExt(jsonObject.value("ext").toString());
-								auto fullName = QString(contact->getFirstName() + " " + contact->getLastName());
-								contact->setFullName(fullName);
-								auto addr = QString();
-								if (contact->getContactType() == "partager")
-									addr = QString("sip:%1@%2").arg(contact->getTel()).arg(SipConstant::domain);
-								else
-									addr = QString("sip:%1@%2").arg(contact->getExt()).arg(SipConstant::domain);
-								auto test = listSips->contains(QString(addr));
-								if (! listSips->contains(QString(addr))) {
-									contact->addSipAddress(QString(addr));
-									//contact->getSipAddresses().count();
-									ContactEnreachModel* contactModel = new ContactEnreachModel(contact);
-									contacts->addContact(contactModel);
+						QByteArray responseData = reply->readAll();
+						qDebug() << "Response:" << responseData;
+						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
+						if (!jsonResponse.isNull()) {
+							listLinphoneContacts(contacts, listSips);
+							QJsonArray jsonArray = jsonResponse.array();
+							ContactsListModel listModel = new ContactsListModel();
+							for (const QJsonValue &jsonValue : jsonArray) {
+								if (jsonValue.isObject()) {
+									QJsonObject jsonObject = jsonValue.toObject();
+									ContactEnreach* contact = new ContactEnreach();
+
+									contact->setContactType(jsonObject.value("contact_type").toString());
+									contact->setFirstName(jsonObject.value("firstname").toString());
+									contact->setLastName(jsonObject.value("lastname").toString());
+									contact->setTel(jsonObject.value("tel").toString());
+									contact->setExt(jsonObject.value("ext").toString());
+									auto name = QString(contact->getFirstName() + " " + contact->getLastName());
+									contact->setFullName(name);
+									auto addr = QString();
+									if (contact->getContactType() == "partager")
+										addr = QString("sip:%1@%2").arg(contact->getTel()).arg(SipConstant::domain);
+									else
+										addr = QString("sip:%1@%2").arg(contact->getExt()).arg(SipConstant::domain);
+									auto fullName = jsonObject.value("firstname").toString() + " " + jsonObject.value("lastname").toString();
+									VcardModel* vcardModel = CoreManager::getInstance()->createDetachedVcardModel();
+									vcardModel->setUsername(fullName);
+									vcardModel->addSipAddress(addr);
+									listModel.addContact(vcardModel);
+									auto test = listSips->contains(QString(addr));
+									if (!listSips->contains(QString(addr))) {
+										contact->addSipAddress(QString(addr));
+										ContactEnreachModel* contactModel = new ContactEnreachModel(contact);
+										contacts->addContact(contactModel);
+									}
+
 								}
-
 							}
+
+
+							setSourceModel(contacts);
+							sort(0);
+
 						}
-						
-						
+					}
+					else {
+						qDebug() << "Error Code:" << reply->error();
+						qDebug() << "Error String:" << reply->errorString();
 						setSourceModel(contacts);
 						sort(0);
-
 					}
+
+					// Clean up the reply
+					reply->deleteLater();
 				}
 				else {
-					qDebug() << "Error Code:" << reply->error();
-					qDebug() << "Error String:" << reply->errorString();
-					setSourceModel(contacts);
-					sort(0);
+					qDebug() << "noo reply";
 				}
 
-				// Clean up the reply
-				reply->deleteLater();
-			}
-			else {
-				qDebug() << "noo reply";
-			}
-
-		});
+			});
+		}
 	}
 
 }

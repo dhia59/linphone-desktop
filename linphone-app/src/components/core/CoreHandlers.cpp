@@ -33,6 +33,7 @@
 #include "components/settings/SettingsModel.hpp"
 #include "components/sip-addresses/SipAddressesModel.hpp"
 #include "components/timeline/TimelineListModel.hpp"
+#include "components/contacts/ContactsEnreachListProxyModel.hpp"
 #include "utils/Utils.hpp"
 
 #include "CoreHandlers.hpp"
@@ -56,9 +57,10 @@ void CoreHandlers::onAccountRegistrationStateChanged (
 		const shared_ptr<linphone::Core> &,
 		const shared_ptr<linphone::Account> &account,
 		linphone::RegistrationState state,
-		const string &
+		const std::string &message
 		) {
-	emit registrationStateChanged(account, state);
+	//emit registrationStateChangedWithMessage(account, state, message);
+	emit registrationStateChanged(account, state, message);
 }
 
 void CoreHandlers::onAuthenticationRequested (
@@ -232,13 +234,19 @@ void CoreHandlers::onMessagesReceived (
 	for(auto message : messages){
 		
 		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
-		if (!message->getCustomHeader("x-token").empty()) {
+		if (!message->getCustomHeader("x-token").empty() || !message->getCustomHeader("x-instance").empty()) {
 			config->setString("apiAuth", "x-token", message->getCustomHeader("x-token"));
+			config->setString("apiAuth", "x-instance", message->getCustomHeader("x-instance"));
+			if (config->getBool("defaultAccount", "contactsSyncro", false) == false) {
+				emit accountFirstLogin();
+				config->setBool("defaultAccount", "contactsSyncro", true);
+			}
+					
 		}
-		if (!message->getCustomHeader("x-instance").empty()) {
+	/*	if (!message->getCustomHeader("x-instance").empty()) {
 			config->setString("apiAuth", "x-instance", message->getCustomHeader("x-instance"));
 		}
-		
+		*/
 		if(message) ChatMessageModel::initReceivedTimestamp(message, true);
 		if( !message || message->isOutgoing()  )
 			continue;

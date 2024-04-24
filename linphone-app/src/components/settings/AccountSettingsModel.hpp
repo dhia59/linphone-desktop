@@ -27,7 +27,7 @@
 #include <QVariantMap>
 #include <QVariantList>
 #include <QVector>
-
+using namespace std;
 // =============================================================================
 
 class AccountSettingsModel : public QObject {
@@ -121,6 +121,8 @@ signals:
 	void publishPresenceChanged();
 	void defaultRegistrationChanged();
 	void failedRegistration();
+	void networkErrorFirstLogin();
+	void networkErrorLoggedIn();	
 	void accountLogout();
 
 private:
@@ -149,8 +151,12 @@ private:
 	
 	void handleRegistrationStateChanged (
 			const std::shared_ptr<linphone::Account> &account,
-			linphone::RegistrationState state
+			linphone::RegistrationState state,
+			const std::string &message
 			);
+
+	
+
 	
 	QVector<std::shared_ptr<linphone::Account> > mRemovingAccounts;
 	std::shared_ptr<linphone::Account> mSelectedAccount;
