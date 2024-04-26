@@ -82,16 +82,24 @@ void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListMode
 	ContactsListModel* contactsListModel = CoreManager::getInstance()->getContactsListModel();
 
 	for (const auto &model : *contactsListModel) {
+		auto exists = false;
 		QSharedPointer<ContactModel> contactModelParsed = qSharedPointerCast<ContactModel>(model);
 		ContactEnreach* contact = new ContactEnreach();
 		contact->setContactType(QString("personnel"));
 		contact->setFullName(contactModelParsed->getVcardModel()->getUsername());
 		contact->setSipAddresses(contactModelParsed->getVcardModel()->getSipAddresses());
 		for (auto &sipadd : contact->getSipAddresses()) {
-			listSips->append(sipadd);
+			if (!listSips->contains(sipadd)) {
+				listSips->append(sipadd);
+			}
+			else
+				exists = true;
 		}
-		ContactEnreachModel* contactModel = new ContactEnreachModel(contact);
-		contacts->addContact(contactModel);
+		if (!exists) {
+			ContactEnreachModel* contactModel = new ContactEnreachModel(contact);
+			contacts->addContact(contactModel);
+		}
+	
 	}
 
 }
@@ -121,8 +129,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 						QByteArray responseData = reply->readAll();
 						qDebug() << "Response:" << responseData;
 						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
-						if (!jsonResponse.isNull()) {
-							listLinphoneContacts(contacts, listSips);
+						if (!jsonResponse.isNull()) {							
 							QJsonArray jsonArray = jsonResponse.array();
 							ContactsListModel listModel = new ContactsListModel();
 							for (const QJsonValue &jsonValue : jsonArray) {
@@ -153,9 +160,10 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 										ContactEnreachModel* contactModel = new ContactEnreachModel(contact);
 										contacts->addContact(contactModel);
 									}
-
+									listSips->append(addr);
 								}
 							}
+							listLinphoneContacts(contacts, listSips);
 
 
 							setSourceModel(contacts);

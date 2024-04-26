@@ -236,10 +236,15 @@ ApplicationWindow {
                                     anchors.right: parent.right
                                     anchors.top: parent.top
                                     id: telKeypad
-                                    onSendDtmf: smartSearchBar.text += dtmf
+                                    onSendDtmf: if(dtmf !=='call') smartSearchBar.text += dtmf
+                                    onSipAddressClicked: {
+                                           if (dtmf === 'call') {
+                                               console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+                                           }
+                                       }
                                     visible:true//SettingsModel.showTelKeypadAutomatically
                                     onVisibleChanged: isVisibleTelKeypad= visible
-                                    //onTarget: {telKeypad.containsMouse= true;console.log('testtttttttttttttttttttt', telKeypad.containsMouse)}
+
                                 }
                             }
                         }

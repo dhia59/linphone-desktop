@@ -15,6 +15,8 @@ Rectangle {
 	property var call
 	signal sendDtmf(var dtmf)
 	signal keyPressed(var event)
+    signal callClick(var dtmf)
+    signal sipAddressClicked (string sipAddress)
     property bool clicked: false
     property bool containsMouse: false
     function open () {
@@ -86,7 +88,8 @@ Rectangle {
                     '1', '2', '3',
                     '4', '5', '6',
                     '7', '8', '9',
-                    '*', '0', '#'
+                    '*', '0', '#',
+                    '','call',''
 				]
 				
 				TelKeypadButton {
@@ -101,6 +104,7 @@ Rectangle {
 					text: modelData
 					onSendDtmf: {
 						telKeypad.forceActiveFocus()
+                        //if(dtmf==='call') onSipAddressClicked(history.text)
 						if(telKeypad.call) telKeypad.call.sendDtmf(dtmf) 
 						telKeypad.sendDtmf(dtmf)
 						if(showHistory)
@@ -110,6 +114,7 @@ Rectangle {
 						target: telKeypad
 						onKeyPressed: telKeypadButton.activateEvent(event.key)
 					}
+
 				}
 			}
 		}
