@@ -30,7 +30,7 @@
 // =============================================================================
 
 class Constants : public QObject{
-	Q_OBJECT
+	Q_OBJECT 
 public:
 	Constants(QObject * parent = nullptr) : QObject(parent){}
 	
