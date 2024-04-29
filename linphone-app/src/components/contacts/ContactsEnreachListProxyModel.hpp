@@ -24,6 +24,7 @@
 #include <QSortFilterProxyModel>
 #include "ContactEnreach.hpp"
 #include "ContactEnreachModel.hpp"
+#include "ContactsEnreachListModel.hpp"
 // =============================================================================
 
 class ContactsEnreachListProxyModel : public QSortFilterProxyModel {
