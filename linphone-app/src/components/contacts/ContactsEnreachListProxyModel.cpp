@@ -153,7 +153,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 									VcardModel* vcardModel = CoreManager::getInstance()->createDetachedVcardModel();
 									vcardModel->setUsername(fullName);
 									vcardModel->addSipAddress(addr);
-									listModel.addContact(vcardModel);
+									listModel->addContact(vcardModel);
 									auto test = listSips->contains(QString(addr));
 									if (!listSips->contains(QString(addr))) {
 										contact->addSipAddress(QString(addr));
