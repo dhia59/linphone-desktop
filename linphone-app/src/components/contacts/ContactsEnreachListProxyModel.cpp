@@ -131,7 +131,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 						if (!jsonResponse.isNull()) {							
 							QJsonArray jsonArray = jsonResponse.array();
-							ContactsListModel listModel = new ContactsListModel();
+							ContactsListModel* listModel = new ContactsListModel();
 							for (const QJsonValue &jsonValue : jsonArray) {
 								if (jsonValue.isObject()) {
 									QJsonObject jsonObject = jsonValue.toObject();
@@ -153,7 +153,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 									VcardModel* vcardModel = CoreManager::getInstance()->createDetachedVcardModel();
 									vcardModel->setUsername(fullName);
 									vcardModel->addSipAddress(addr);
-									listModel.addContact(vcardModel);
+									listModel->addContact(vcardModel);
 									auto test = listSips->contains(QString(addr));
 									if (!listSips->contains(QString(addr))) {
 										contact->addSipAddress(QString(addr));
