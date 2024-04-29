@@ -131,7 +131,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 						if (!jsonResponse.isNull()) {							
 							QJsonArray jsonArray = jsonResponse.array();
-							ContactsListModel listModel = new ContactsListModel();
+							ContactsListModel* listModel = new ContactsListModel();
 							for (const QJsonValue &jsonValue : jsonArray) {
 								if (jsonValue.isObject()) {
 									QJsonObject jsonObject = jsonValue.toObject();
