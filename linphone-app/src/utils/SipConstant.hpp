@@ -27,8 +27,8 @@ class SipConstant : public QObject {
 	Q_OBJECT
 public:
 	SipConstant(QObject * parent = nullptr) : QObject(parent) {}
-	static extern const char domain[];
-	static extern const char server[];
+	static const char domain[];
+	static const char server[];
 };
 
 #endif // SIP_CONSTANT_H
