@@ -17,7 +17,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 #ifndef SIP_CONSTANT_H
 #define SIP_CONSTANT_H
 
@@ -33,6 +32,3 @@ public:
 };
 
 #endif // SIP_CONSTANT_H
-#endif // SIP_CONSTANT_H
-
-
