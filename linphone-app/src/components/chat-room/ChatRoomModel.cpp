@@ -736,7 +736,7 @@ void ChatRoomModel::sendMessage(const QString &message, bool useHeader) {
 		CoreManager::getInstance()->getChatModel()->clear();
 	}
 }*/
-void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::string &timestamp) {
+void ChatRoomModel::sendMessage (const QString &message, bool useHeader,const std::string &timestamp) {
 	
 	std::list<shared_ptr<linphone::ChatMessage> > _messages;
 	bool isBasicChatRoom = isBasic();
