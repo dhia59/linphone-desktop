@@ -19,7 +19,7 @@
  */
 
 #include <cmath>
-
+#include "ContactsEnreachListModel.hpp"
 #include "components/contact/ContactModel.hpp"
 #include "components/contact/VcardModel.hpp"
 #include "components/core/CoreManager.hpp"
@@ -36,7 +36,7 @@
 #include <QJsonArray>
 #include <QJsonParseError>
 #include "ContactEnreachModel.hpp"
-#include "ContactsEnreachListModel.hpp"
+
 #include "utils/SipConstant.hpp"
 #include <QObject>
 #include <QByteArray>
