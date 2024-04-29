@@ -42,5 +42,5 @@ rpm-*/
 
 vgcore.*
 linphone.spec
-SipConstant.hpp
+SipConstant.cpp
 use-other-sip-account.rc

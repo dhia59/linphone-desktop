@@ -312,6 +312,7 @@ set(SOURCES
 	src/components/tunnel/TunnelConfigListModel.cpp    
 	src/components/tunnel/TunnelConfigProxyModel.cpp
 	src/components/url-handlers/UrlHandlers.cpp
+	src/utils/SipConstant.cpp
 	src/utils/Constants.cpp
 	src/utils/LinphoneEnums.cpp
 	src/utils/MediastreamerUtils.cpp

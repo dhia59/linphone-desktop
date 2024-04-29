@@ -18,20 +18,21 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef SIP_CONSTANT_H
+#define SIP_CONSTANT_H
+
 #include <QObject>
 #include <QString>
-
-// =============================================================================
 
 class SipConstant : public QObject {
 	Q_OBJECT
 public:
 	SipConstant(QObject * parent = nullptr) : QObject(parent) {}
-	static constexpr char domain[] = "testDomain";
-	static constexpr char server[] = "testServer";
-
-
-	
+	static extern const char domain[];
+	static extern const char server[];
 };
+
+#endif // SIP_CONSTANT_H
+#endif // SIP_CONSTANT_H
 
 
