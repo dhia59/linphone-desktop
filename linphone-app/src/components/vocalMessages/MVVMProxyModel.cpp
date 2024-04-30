@@ -40,9 +40,32 @@
 #include <QQmlApplicationEngine>
 #include "app/App.hpp"
 #include <QFile>
+#include <sys/stat.h>
+#include <utime.h>
+#include "utils/Utils.hpp"
+#include "MVVMProxyModel.hpp"
+#include "components/settings/SettingsModel.hpp"
+#include "components/settings/AccountSettingsModel.hpp"
+#include "components/sip-addresses/SipAddressesModel.hpp"
+#include "components/file/FileMediaModel.hpp"
+#include "components/sound-player/SoundPlayer.hpp"
+#include "utils/Utils.hpp"
+#include "MVVMListModel.hpp"
+#include <QDebug>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QDebug>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonParseError>
 
-#include <Windows.h>
-
+#include <QQmlApplicationEngine>
+#include "app/App.hpp"
+#include <QFile>
+#include <sys/stat.h>
+#include <utime.h>
 using namespace std;
 // =============================================================================
 
@@ -76,17 +99,11 @@ MVVMProxyModel::MVVMProxyModel (QObject *parent) : SortFilterProxyModel(parent) 
 void MVVMProxyModel::ListMVVM() {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	auto username = defaultAddress->findAuthInfo()->getUsername();
+	auto authInfo = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
+
+	QUrl url(QString("http://185.164.213.62:8081/Enreach/listVoiceMessages?userName="+authInfo ));
+	QNetworkRequest request(url);
 	shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
-	auto lastCheck =config->getString(username, "mvvm-lastcheck", "");
-	auto baseUrl = "http://185.164.213.62:8081/Enreach/listVoiceMessages?userName=" + username;
-	if (lastCheck != "") 
-	{
-		baseUrl += "&AddedSince=" + lastCheck;
-	}	
-	QUrl url(QString::fromStdString(baseUrl));
-	QNetworkRequest request(url);	
-	
 	request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
 	request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
 	QList<QByteArray> headers = request.rawHeaderList();
@@ -105,36 +122,29 @@ void MVVMProxyModel::ListMVVM() {
 					if (!jsonResponse.isNull()) {
 						
 						QJsonArray jsonArray = jsonResponse.array();
-						QString folder = CoreManager::getInstance()->getSettingsModel()->getMVVMFolder()+ "/" +QString::fromStdString(username)+ "/";
-						QDir dir(folder);
-						if (!dir.exists()) {
-							dir.mkdir(folder);
-						}
-						
-						for (const QJsonValue &jsonValue : jsonArray) {						
-
+						for (const QJsonValue &jsonValue : jsonArray) {
+							QString folder = CoreManager::getInstance()->getSettingsModel()->getMVVMFolder();
 							if (jsonValue.isObject()) {
 								QJsonObject jsonObject = jsonValue.toObject();
 							
 								QString fileContentBase64 = jsonObject.value("fileContent").toString();
 								QByteArray fileContent = QByteArray::fromBase64(fileContentBase64.toUtf8());
-								qInfo() << "fileeeee " << folder+ jsonObject.value("fileName").toString();
 								QFile file(folder+jsonObject.value("fileName").toString()); 	
 								if (!file.exists()) {
 									QString dateTimeString = jsonObject.value("fileDate").toString();
-									QDateTime fileTime = QDateTime::fromString(dateTimeString, Qt::ISODate);									
+									QDateTime fileTime = QDateTime::fromString(dateTimeString, Qt::ISODate);
+									
 									if (file.open(QIODevice::WriteOnly)) {
 										qint64 bytesWritten = file.write(fileContent);
 										file.close();
 										setFileCreationTime(folder + jsonObject.value("fileName").toString(), fileTime);
 
 									}
-								}							
+								}
+											
 
 							}
 						}
-						auto currentTime = QDateTime::currentDateTime().toString("yyyyMMddhhmmsszzz");
-						config->setString(username, "mvvm-lastcheck",currentTime.toStdString());
 						auto list = new MVVMListModel(this);
 						setSourceModel(list);
 						sort(0);
@@ -159,40 +169,23 @@ void MVVMProxyModel::ListMVVM() {
 
 }
 bool MVVMProxyModel::setFileCreationTime(const QString& filePath, const QDateTime& creationTime) {
-	// Convert QDateTime to FILETIME
-	FILETIME fileTime;
-	SYSTEMTIME systemTime;
-	QDateTime localTime = creationTime.toLocalTime(); // Convert to local time
-	systemTime.wYear = localTime.date().year();
-	systemTime.wMonth = localTime.date().month();
-	systemTime.wDay = localTime.date().day();
-	systemTime.wHour = localTime.time().hour();
-	systemTime.wMinute = localTime.time().minute();
-	systemTime.wSecond = localTime.time().second();
-	systemTime.wMilliseconds = 0;
-	if (!SystemTimeToFileTime(&systemTime, &fileTime)) {
-		qDebug() << "Failed to convert QDateTime to FILETIME.";
-		return false;
-	}
+    // Convert QDateTime to time_t
+    time_t fileTime = creationTime.toSecsSinceEpoch();
 
-	// Open the file
-	LPCWSTR path = reinterpret_cast<LPCWSTR>(filePath.utf16());
-	HANDLE fileHandle = CreateFileW(path, FILE_WRITE_ATTRIBUTES, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-	if (fileHandle != INVALID_HANDLE_VALUE) {
-		// Set the file creation time
-		if (!SetFileTime(fileHandle, &fileTime, NULL, NULL)) {
-			qDebug() << "Failed to set file creation time.";
-			CloseHandle(fileHandle);
-			return false;
-		}
-		// Close the file handle
-		CloseHandle(fileHandle);
-		return true;
-	}
-	else {
-		qDebug() << "Failed to open file for writing.";
-		return false;
-	}
+    // Get file path in UTF-8
+    QByteArray filePathUtf8 = filePath.toUtf8().constData();
+
+    // Set the file creation time
+    struct utimbuf new_times;
+    new_times.actime = fileTime; // Keep the access time unchanged
+    new_times.modtime = fileTime; // Set the modification time to the desired creation time
+
+    if (utime(filePathUtf8.data(), &new_times) == 0) {
+        return true;
+    } else {
+        qDebug() << "Failed to set file creation time.";
+        return false;
+    }
 }
 void MVVMProxyModel::remove(FileMediaModel * fileModel){
 	QFile file(fileModel->getFilePath());
