@@ -339,6 +339,7 @@ void App::processArguments(QHash<QString,QString> args){
 	}
 	if(!mParser->parse(parameters))
 		qWarning() << "Parsing error : " << mParser->errorText();
+
 }
 
 static QQuickWindow *createSubWindow (QQmlApplicationEngine *engine, const char *path) {
@@ -581,7 +582,9 @@ QQuickWindow *App::getMainWindow () const {
 QQuickWindow *App::getSettingsWindow () const {
 	return mSettingsWindow;
 }
-
+QQuickWindow *App::getSelfCareWindow() const {
+	return mSelfCareWindow;
+}
 // -----------------------------------------------------------------------------
 
 void App::smartShowWindow (QQuickWindow *window) {
@@ -748,7 +751,7 @@ void App::registerTypes () {
 	registerType<SearchSipAddressesProxyModel>("SearchSipAddressesProxyModel");
 	registerType<TemporaryFile>("TemporaryFile");
 	registerType<TimeZoneProxyModel>("TimeZoneProxyModel");
-	
+	registerType<PstnModel>("PstnModel");
 	registerType<ColorProxyModel>("ColorProxyModel");
 	registerType<ImageColorsProxyModel>("ImageColorsProxyModel");
 	registerType<ImageProxyModel>("ImageProxyModel");
@@ -777,6 +780,7 @@ void App::registerTypes () {
 	registerUncreatableType<ConferenceModel>("ConferenceModel");
 	registerUncreatableType<ContactModel>("ContactModel");
 	registerUncreatableType<ContactEnreachModel>("ContactEnreachModel");
+	
 	registerUncreatableType<ContactsImporterModel>("ContactsImporterModel");
 	registerUncreatableType<ContentModel>("ContentModel");
 	registerUncreatableType<ContentListModel>("ContentListModel");
@@ -1107,6 +1111,7 @@ void App::openAppAfterInit (bool mustBeIconified) {
 	// Create other windows.
 	mCallsWindow = createSubWindow(mEngine, Constants::QmlViewCallsWindow);
 	mSettingsWindow = createSubWindow(mEngine, Constants::QmlViewSettingsWindow);
+	mSelfCareWindow = createSubWindow(mEngine, Constants::QmlViewSelfCareWindow);
 	QObject::connect(mSettingsWindow, &QWindow::visibilityChanged, this, [coreManager](QWindow::Visibility visibility) {
 		if (visibility == QWindow::Hidden) {
 			qInfo() << QStringLiteral("Update nat policy.");
@@ -1118,10 +1123,14 @@ void App::openAppAfterInit (bool mustBeIconified) {
 		coreManager->getHandlers().get(), &CoreHandlers::accountFirstLogin,
 		coreManager->getContactsEnreachListProxyModel(), &ContactsEnreachListProxyModel::loadContacts
 	);
-	
+
 	QQuickWindow *mainWindow = getMainWindow();
 
-
+	
+	QObject::connect(mSelfCareWindow, &QWindow::visibilityChanged, this, [coreManager](QWindow::Visibility visibility) {
+		//auto &tst= coreManager->getPstnModel()->listpstns();	
+	});
+	
 	
 #ifndef __APPLE__
 	// Enable TrayIconSystem.

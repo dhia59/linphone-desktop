@@ -231,6 +231,7 @@ set(SOURCES
 	src/components/contact/ContactModel.cpp
 	src/components/contacts/ContactEnreach.cpp
 	src/components/contacts/ContactEnreachModel.cpp
+	src/components/selfCare/PstnModel.cpp
 	src/components/contacts/ContactsEnreachListModel.cpp
 	src/components/contact/VcardModel.cpp
 	src/components/contacts/ContactsImporterModel.cpp
@@ -381,6 +382,7 @@ set(HEADERS
 	src/components/contact/ContactModel.hpp
 	src/components/contacts/ContactEnreach.hpp
 	src/components/contacts/ContactEnreachModel.hpp
+	src/components/selfCare/PstnModel.hpp
 	src/components/contacts/ContactsEnreachListModel.hpp
 	src/components/contact/VcardModel.hpp
 	src/components/contacts/ContactsImporterModel.hpp

@@ -39,6 +39,7 @@
 #include "components/recorder/RecorderManager.hpp"
 #include "components/settings/AccountSettingsModel.hpp"
 #include "components/settings/EmojisSettingsModel.hpp"
+#include "components/selfCare/PstnModel.hpp"
 #include "components/settings/SettingsModel.hpp"
 #include "components/sip-addresses/SipAddressesModel.hpp"
 #include "components/timeline/TimelineListModel.hpp"
@@ -101,7 +102,7 @@ void CoreManager::initCoreManager(){
 	mCallsListModel = new CallsListModel(this);
 	mChatModel = new ChatModel(this);
 	mContactsEnreachListProxyModel = new ContactsEnreachListProxyModel(this);
-	
+	//mPstnModel = new PstnModel(this);
 	mContactsImporterListModel = new ContactsImporterListModel(this);
 	mLdapListModel = new LdapListModel(this);
 	mEventCountNotifier = new EventCountNotifier(this);

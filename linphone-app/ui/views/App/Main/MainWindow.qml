@@ -121,7 +121,7 @@ ApplicationWindow {
             ToolBar {
                 id: toolBar
                 property alias mainSearchBar : smartSearchBar
-                visible: AccountSettingsModel.registrationState===0 || noNetworkAlert
+               // visible: AccountSettingsModel.registrationState===0 || noNetworkAlert
                 Layout.fillWidth: true
                 Layout.preferredHeight: MainWindowStyle.toolBar.height
                 hoverEnabled : true
@@ -367,7 +367,7 @@ ApplicationWindow {
                 // Main menu.
                 ColumnLayout {
                     id:leftPanel
-                    visible: AccountSettingsModel.registrationState===0 || noNetworkAlert
+                   // visible: AccountSettingsModel.registrationState===0 || noNetworkAlert
                     Layout.maximumWidth: MainWindowStyle.menu.width
                     Layout.preferredWidth: MainWindowStyle.menu.width
 
@@ -429,7 +429,7 @@ ApplicationWindow {
 
                         anchors.fill: parent
 
-                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert? 'Home.qml' :'Login.qml'
+                        source:'Home.qml'
                     }
 //                    TelKeypad {
 //                        anchors.right: parent.right
@@ -443,7 +443,7 @@ ApplicationWindow {
 
 
 
-                    Connections {
+                 /*   Connections {
                         target: AccountSettingsModel
 
                         onAccountLogout: {
@@ -468,7 +468,7 @@ ApplicationWindow {
                                 noNetworkAlert= false;
                             }
                         }
-                        }
+                        }*/
 
 
                     }

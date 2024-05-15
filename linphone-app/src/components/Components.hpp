@@ -112,5 +112,5 @@
 #include "other/timeZone/TimeZoneListModel.hpp"
 #include "other/timeZone/TimeZoneProxyModel.hpp"
 #include "other/units/Units.hpp"
-
+#include "components/selfCare/PstnModel.hpp"
 #endif // COMPONENTS_H_

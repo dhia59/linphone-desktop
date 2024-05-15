@@ -55,7 +55,18 @@ Item {
             AccountSettingsModel.logout()
         }
     }
-	
+
+  /*  Shortcut {
+        id: selfCareShortcut
+
+        context: Qt.ApplicationShortcut
+        //sequence: StandardKey.
+
+        onActivated: {
+            onActivated: App.smartShowWindow(App.getSelfCareWindow())
+        }
+    }
+    */
 	Shortcut {
 		id: aboutShortcut
 		
@@ -121,6 +132,12 @@ Item {
 
             onTriggered: logoutShortcut.onActivated()
         }
+        /*MenuItem {
+            text: "self care"
+
+            onTriggered: selfCareShortcut.onActivated()
+        }
+*/
 		MenuItem {
 			text: qsTr('quit')
 			

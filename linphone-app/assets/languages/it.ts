@@ -1027,15 +1027,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Employés</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Partagés</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Personnels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collaborateurs</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1835,6 +1835,10 @@ Clicca: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>Rechercher, se rencontrer et appeler</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Aucune connexion internet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindowMenuBar</name>
@@ -2539,6 +2543,13 @@ Clicca: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
 </context>
 <context>
+    <name>SelfCareWindow</name>
+    <message>
+        <source>Self care</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsAdvanced</name>
     <message>
         <source>logsTitle</source>
@@ -3202,6 +3213,22 @@ Clicca: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>webviewLoginUrlLabel</source>
         <extracomment>&apos;Login URL&apos; : Label for login URL.</extracomment>
         <translation>Indirizzo di accesso</translation>
+    </message>
+    <message>
+        <source>eraseAllPasswords</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>addAccount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>editHeader</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteHeader</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

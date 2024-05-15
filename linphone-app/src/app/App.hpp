@@ -118,6 +118,7 @@ public:
 
   Q_INVOKABLE QQuickWindow *getCallsWindow () const;
   Q_INVOKABLE QQuickWindow *getSettingsWindow () const;
+  Q_INVOKABLE QQuickWindow *getSelfCareWindow() const;
 
   Q_INVOKABLE static void smartShowWindow (QQuickWindow *window);
   Q_INVOKABLE static void checkForUpdates(bool force = false);
@@ -193,7 +194,7 @@ private:
 
   QQuickWindow *mCallsWindow = nullptr;
   QQuickWindow *mSettingsWindow = nullptr;
-
+  QQuickWindow *mSelfCareWindow = nullptr;
   ColorListModel * mColorListModel;
   ImageListModel * mImageListModel;
 

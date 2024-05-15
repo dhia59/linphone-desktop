@@ -88,7 +88,8 @@ Rectangle {
                     '1', '2', '3',
                     '4', '5', '6',
                     '7', '8', '9',
-                    '*', '0', '#'
+                    '*', '0', '#',
+                    '','call',''
 
 				]
 				
@@ -104,12 +105,13 @@ Rectangle {
 					text: modelData
 					onSendDtmf: {
 						telKeypad.forceActiveFocus()
-                        //if(dtmf==='call') onSipAddressClicked(history.text)
+                        if(dtmf==='call') sipAddressClicked(history.text)
 						if(telKeypad.call) telKeypad.call.sendDtmf(dtmf) 
 						telKeypad.sendDtmf(dtmf)
 						if(showHistory)
 							history.text += dtmf
 					}
+
 					Connections{
 						target: telKeypad
 						onKeyPressed: telKeypadButton.activateEvent(event.key)

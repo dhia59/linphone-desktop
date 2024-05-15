@@ -523,6 +523,8 @@
         <file>ui/views/App/Settings/SettingsVideo.js</file>
         <file>ui/views/App/Settings/SettingsVideo.qml</file>
         <file>ui/views/App/Settings/SettingsWindow.qml</file>
+        <file>ui/views/App/SelfCare/SelfCareWindow.qml</file>
+        <file>ui/views/App/SelfCare/CallerId.qml</file>
         <file>ui/views/App/Styles/Calls/CallStyle.qml</file>
         <file>ui/views/App/Styles/Calls/CallFullscreenStyle.qml</file>
         <file>ui/views/App/Styles/Calls/CallsWindowStyle.qml</file>

@@ -50,7 +50,7 @@ class SipAddressesModel;
 class VcardModel;
 class TimelineListModel;
 class ContactsEnreachListProxyModel;
-
+class PstnModel;
 
 class CoreManager : public QObject {
 	Q_OBJECT;
@@ -125,6 +125,11 @@ public:
 	SettingsModel *getSettingsModel () const {
 		Q_CHECK_PTR(mSettingsModel);
 		return mSettingsModel;
+	}
+
+	PstnModel *getPstnModel() const {
+		Q_CHECK_PTR(mPstnModel);
+		return mPstnModel;
 	}
 	EmojisSettingsModel *getEmojisSettingsModel () const {
 		return mEmojisSettingsModel;
@@ -239,6 +244,7 @@ private:
 	
 	SipAddressesModel *mSipAddressesModel = nullptr;
 	SettingsModel *mSettingsModel = nullptr;
+	PstnModel *mPstnModel = nullptr;
 	EmojisSettingsModel *mEmojisSettingsModel =nullptr;
 	AccountSettingsModel *mAccountSettingsModel = nullptr;
 	ContactsEnreachListProxyModel *mContactsEnreachListProxyModel = nullptr;
