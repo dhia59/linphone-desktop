@@ -48,6 +48,7 @@ using namespace std;
 
 PstnModel::PstnModel(QObject *parent) : QAbstractListModel(parent)
 {	
+	//m_data << "op1" << "op2"<<"op3";
       loadPstnLists();
 }
 
@@ -59,7 +60,7 @@ void PstnModel::loadPstnLists()
 	if (defaultAddress != nullptr)
 	{
 		auto authInfo = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url(QString("http://185.164.213.62:8081/SelfCare/GetListPSTNByUsername?userName=mbaraketTest.PiloteNetcom"));
+		QUrl url(QString("http://10.3.3.66:8081/SelfCare/GetCustomCallerInfo?userName=mbaraketTest.PiloteNetcom"));
 		QNetworkRequest request(url);
 		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
 		request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
@@ -81,12 +82,12 @@ void PstnModel::loadPstnLists()
 						if (!jsonResponse.isNull()) {
 							beginResetModel();
 							m_data.clear();
-							QJsonArray jsonArray = jsonResponse.array();
+							bool hideCallerId = jsonResponse["hideCallerId"].toBool();
+							setIsHideCustomNumber(hideCallerId);
+							QJsonArray jsonArray = jsonResponse["customCallerListPstns"].toArray();
 							for (const QJsonValue &jsonValue : jsonArray) {
-								if (jsonValue.isString()) {
-									m_data << jsonValue.toString();
-									m_labelTexts << jsonValue.toString();
-								}
+								m_data << jsonValue["number"].toString();
+								m_labelTexts << jsonValue["number"].toString();
 							}
 							endResetModel();
 						}
@@ -124,12 +125,156 @@ QVariant PstnModel::data(const QModelIndex &index, int role) const
 	if (!index.isValid())
 		return QVariant();
 
-	if (role == DisplayRole) {
+	if (role == DisplayRole  || role == Qt::DisplayRole) {
+		qDebug() << "itemmmmmm:" << m_data.at(index.row());
 		return m_data[index.row()];
 	}
 	else if (role == LabelRole) {
+		qDebug() << "itemmmmmm label :" << m_labelTexts.at(index.row());
 		return m_labelTexts[index.row()];
 	}
 
 	return QVariant();
+}
+QHash<int, QByteArray> PstnModel::roleNames() const
+{
+	QHash<int, QByteArray> roles;
+	roles[Qt::DisplayRole] = "display"; // Name for DisplayRole
+	roles[Qt::UserRole] = "label";      // Name for custom role
+	return roles;
+}
+
+bool PstnModel::getIsHideCustomNumber()
+{
+	return m_isHideCustomNumber;
+}
+
+void PstnModel::setIsHideCustomNumber(const bool isHideCustomNumber)
+{
+	m_isHideCustomNumber = isHideCustomNumber;
+	emit isHideCustomNumberChanged();
+}
+
+
+
+Q_INVOKABLE void PstnModel::updateCustomNumber(const int & currentIndex)
+{
+	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
+	if (defaultAddress != nullptr)
+	{
+		QUrl url("http://10.3.3.66:8081/SelfCare/UpdateCustomNumber");
+		QUrlQuery query;
+		query.addQueryItem("userName", "mbaraketTest.PiloteNetcom");
+		auto number = m_data.at(currentIndex);
+		//query.addQueryItem("customNumber", number); // Convert boolean to integer
+		url.setQuery(query);
+
+		QNetworkRequest request(url);
+		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+		request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
+		request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
+
+		// Example: Set content type header for JSON data
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+		QList<QByteArray> headers = request.rawHeaderList();
+		foreach(const QByteArray &header, headers) {
+			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
+		}
+		QJsonObject jsonObject;
+		jsonObject["manualCustomCallerID"] = number;
+	
+		QJsonDocument jsonDocument(jsonObject);
+		QByteArray jsonData = jsonDocument.toJson();
+
+		// Perform the POST request
+		QNetworkReply *reply = manager->post(request, jsonData); // No data for now, adjust as needed
+		if (reply) {
+			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
+				if (reply) {
+					if (reply->error() == QNetworkReply::NoError) {
+
+						QByteArray responseData = reply->readAll();
+						qDebug() << "Response:" << responseData;
+						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
+						if (!jsonResponse.isNull()) {
+				      		loadPstnLists();
+						}
+					}
+					else {
+						qDebug() << "Error Code:" << reply->error();
+						qDebug() << "Error String:" << reply->errorString();
+						sort(0);
+					}
+
+					// Clean up the reply
+					reply->deleteLater();
+				}
+				else {
+					qDebug() << "noo reply";
+				}
+
+			});
+		}
+	}
+}
+
+
+void PstnModel::hideCallerIdByUsername(const bool &isHideCustomNumber) 
+{
+	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
+	if (defaultAddress != nullptr)
+	{
+		QUrl url("http://10.3.3.66:8081/SelfCare/HideCallerIdByUsername");
+		QUrlQuery query;
+		query.addQueryItem("userName","mbaraketTest.PiloteNetcom");
+		auto testt = QString::number(isHideCustomNumber);
+		QString hideCallerIDString = (isHideCustomNumber ? "true" : "false");
+		query.addQueryItem("hideCallerID", hideCallerIDString); // Convert boolean to integer
+		url.setQuery(query);
+
+		QNetworkRequest request(url);
+		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+		request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
+		request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
+
+		// Example: Set content type header for JSON data
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+		QList<QByteArray> headers = request.rawHeaderList();
+		foreach(const QByteArray &header, headers) {
+			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
+		}
+
+		// Perform the POST request
+		QNetworkReply *reply = manager->post(request, QByteArray()); // No data for now, adjust as needed
+		if (reply) {
+			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
+				if (reply) {
+					if (reply->error() == QNetworkReply::NoError) {
+
+						QByteArray responseData = reply->readAll();
+						qDebug() << "Response:" << responseData;
+						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
+						if (!jsonResponse.isNull()) {
+		
+							loadPstnLists();
+						}
+					}
+					else {
+						qDebug() << "Error Code:" << reply->error();
+						qDebug() << "Error String:" << reply->errorString();
+						sort(0);
+					}
+
+					// Clean up the reply
+					reply->deleteLater();
+				}
+				else {
+					qDebug() << "noo reply";
+				}
+
+			});
+		}
+	}
 }

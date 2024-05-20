@@ -18,19 +18,19 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PSTNMODEL_H_
-#define PSTNMODEL_H_
+#ifndef ForwardingLisModel_H_
+#define ForwardingLisModel_H_
 
 #include <linphone++/linphone.hh>
 #include <utils/MediastreamerUtils.hpp>
 #include <QObject>
 #include <QVariantMap>
 #include <QFont>
-
+#include "ForwardingLisModel.hpp"
 #include "components/core/CoreHandlers.hpp"
 #include "utils/LinphoneEnums.hpp"
 #include "utils/Utils.hpp"
-
+#include "ForwardingModel.hpp"
 #ifdef ENABLE_QT_KEYCHAIN
 #include "components/vfs/VfsUtils.hpp"
 #endif
@@ -38,36 +38,28 @@
 #include <QStringList>
 
 
-class PstnModel : public QAbstractListModel
+class ForwardingLisModel : public QAbstractListModel
 {
+	friend ForwardingModel;
 	Q_OBJECT
-		Q_PROPERTY(bool isHideCustomNumber READ getIsHideCustomNumber WRITE setIsHideCustomNumber NOTIFY isHideCustomNumberChanged)
+		//Q_PROPERTY(bool isHideCustomNumber READ getIsHideCustomNumber WRITE setIsHideCustomNumber NOTIFY isHideCustomNumberChanged)
 public:
 	enum CustomRoles {
 		DisplayRole = Qt::UserRole + 1, // Custom role for display text
 		LabelRole                        // Custom role for label text
 	};
-	explicit PstnModel(QObject *parent = nullptr);
+	explicit ForwardingLisModel(QObject *parent = nullptr);
 
-	void loadPstnLists();
+	void loadListForwardings();
 	// Basic functionality:
 	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 	QHash<int, QByteArray> roleNames() const override;
-	// IsHideCustomNumber
-	bool getIsHideCustomNumber();
-	void setIsHideCustomNumber(const bool isHideCustomNumber);
-	Q_INVOKABLE  void hideCallerIdByUsername(const bool &isHideCustomNumber);
-	Q_INVOKABLE  void updateCustomNumber(const int &currentIndex);
-signals:
-	void isHideCustomNumberChanged();
 private:
-	QStringList m_data;
-	QStringList m_labelTexts;
-	bool m_isHideCustomNumber;
+	std::list<ForwardingModel> m_data;
 };
 
 
 // =============================================================================
 
-#endif // PSTNMODEL_H_
+#endif // ForwardingLisModel_H_

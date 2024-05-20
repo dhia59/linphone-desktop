@@ -56,7 +56,7 @@ Item {
         }
     }
 
-  /*  Shortcut {
+  Shortcut {
         id: selfCareShortcut
 
         context: Qt.ApplicationShortcut
@@ -66,7 +66,7 @@ Item {
             onActivated: App.smartShowWindow(App.getSelfCareWindow())
         }
     }
-    */
+
 	Shortcut {
 		id: aboutShortcut
 		
@@ -132,12 +132,12 @@ Item {
 
             onTriggered: logoutShortcut.onActivated()
         }
-        /*MenuItem {
+        MenuItem {
             text: "self care"
 
             onTriggered: selfCareShortcut.onActivated()
         }
-*/
+
 		MenuItem {
 			text: qsTr('quit')
 			

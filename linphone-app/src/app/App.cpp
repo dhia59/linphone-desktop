@@ -348,6 +348,7 @@ static QQuickWindow *createSubWindow (QQmlApplicationEngine *engine, const char 
 	
 	QQmlComponent component(engine, QUrl(path));
 	if (component.isError()) {
+
 		qWarning() << component.errors();
 		abort();
 	}
@@ -752,6 +753,8 @@ void App::registerTypes () {
 	registerType<TemporaryFile>("TemporaryFile");
 	registerType<TimeZoneProxyModel>("TimeZoneProxyModel");
 	registerType<PstnModel>("PstnModel");
+	registerType<ForwardingLisModel>("ForwardingLisModel");
+	//registerType<CustomCallerIdModel>("CustomCallerIdModel");
 	registerType<ColorProxyModel>("ColorProxyModel");
 	registerType<ImageColorsProxyModel>("ImageColorsProxyModel");
 	registerType<ImageProxyModel>("ImageProxyModel");
@@ -780,7 +783,7 @@ void App::registerTypes () {
 	registerUncreatableType<ConferenceModel>("ConferenceModel");
 	registerUncreatableType<ContactModel>("ContactModel");
 	registerUncreatableType<ContactEnreachModel>("ContactEnreachModel");
-	
+	registerUncreatableType<ForwardingModel>("ForwardingModel");
 	registerUncreatableType<ContactsImporterModel>("ContactsImporterModel");
 	registerUncreatableType<ContentModel>("ContentModel");
 	registerUncreatableType<ContentListModel>("ContentListModel");

@@ -21,27 +21,53 @@ Rectangle {
           id: model
       }
 
-        // Use a custom delegate to display both display text and label text
+      Form {
+          orientation: Qt.Vertical
+          width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
+         // anchors.horizontalCenter: parent.horizontalCenter
 
-
-
-      ComboBox  {
-          width: 200
-          model: model // Assuming you've set the model instance as a context property
-          delegate: ItemDelegate {
-                 width: parent.width
-
-                 Row {
-                     spacing: 10
-                     Text {
-                         text: model.display // Accessing DisplayRole
+          FormLine {
+              FormGroup {
+                  label:"Mon numéro personnalisé"
+                  ComboBox  {
+                         width: 200
+                         model: model
+                        textRole: "display"
+                        currentIndex: 0
+                        onCurrentIndexChanged: {
+                                // Execute code when an item is selected
+                                console.log("Selected index:", currentIndex)
+                            if(currentIndex>0)
+                               model.updateCustomNumber(currentIndex)
+                        }
                      }
-                     Text {
-                         text: model.label   // Accessing LabelRole
-                         font.italic: true
-                     }
-                 }
-             }
+              }
+              FormGroup{
+                  label:"Masquer mon numéro"
+                  Switch{
+                         anchors.verticalCenter: parent.verticalCenter
+                         width:50
+                                              //Layout.preferredWidth: 50
+                         indicatorStyle: SwitchStyle.aux
+                         enabled:true
+                         checked: model.isHideCustomNumber
+                         onClicked:{// model.isHideCustomNumber= !model.isHideCustomNumber
+                             model.hideCallerIdByUsername(!model.isHideCustomNumber)
+                            }
+
+                       }
+
+              }
+
+
+          }
+
       }
+
+
+
+
+
 }
 }
+

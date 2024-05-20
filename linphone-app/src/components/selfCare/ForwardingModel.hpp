@@ -18,8 +18,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PSTNMODEL_H_
-#define PSTNMODEL_H_
+#ifndef FORWARDINGMODEL_H_
+#define FORWARDINGMODEL_H_
 
 #include <linphone++/linphone.hh>
 #include <utils/MediastreamerUtils.hpp>
@@ -38,36 +38,34 @@
 #include <QStringList>
 
 
-class PstnModel : public QAbstractListModel
+class ForwardingModel :public QObject 
 {
 	Q_OBJECT
-		Q_PROPERTY(bool isHideCustomNumber READ getIsHideCustomNumber WRITE setIsHideCustomNumber NOTIFY isHideCustomNumberChanged)
+		Q_PROPERTY(QString label READ getLabel WRITE setLabel NOTIFY labelChanged)
 public:
 	enum CustomRoles {
 		DisplayRole = Qt::UserRole + 1, // Custom role for display text
 		LabelRole                        // Custom role for label text
 	};
-	explicit PstnModel(QObject *parent = nullptr);
+	explicit ForwardingModel(QObject *parent = nullptr);
 
 	void loadPstnLists();
 	// Basic functionality:
-	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+	/*int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 	QHash<int, QByteArray> roleNames() const override;
+	*/
 	// IsHideCustomNumber
-	bool getIsHideCustomNumber();
-	void setIsHideCustomNumber(const bool isHideCustomNumber);
-	Q_INVOKABLE  void hideCallerIdByUsername(const bool &isHideCustomNumber);
-	Q_INVOKABLE  void updateCustomNumber(const int &currentIndex);
+	QString getLabel();
+	void setLabel(const QString label);
 signals:
-	void isHideCustomNumberChanged();
+	void labelChanged();
 private:
-	QStringList m_data;
-	QStringList m_labelTexts;
-	bool m_isHideCustomNumber;
+	QString m_label;
+	
 };
 
 
 // =============================================================================
 
-#endif // PSTNMODEL_H_
+#endif // FORWARDINGMODEL_H_

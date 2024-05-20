@@ -113,4 +113,7 @@
 #include "other/timeZone/TimeZoneProxyModel.hpp"
 #include "other/units/Units.hpp"
 #include "components/selfCare/PstnModel.hpp"
+#include "components/selfCare/ForwardingModel.hpp"
+#include "components/selfCare/ForwardingLisModel.hpp"
+//#include "components/selfCare/CustomCallerIdModel.hpp"
 #endif // COMPONENTS_H_
