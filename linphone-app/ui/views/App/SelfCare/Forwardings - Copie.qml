@@ -22,7 +22,7 @@ Rectangle {
           }
           ForwardingListProxyModel {
               id: forwardingModel
-
+              Component.onCompleted: { console.log("forwarding model ", forwardingModel) }
           }
 
           Repeater {
@@ -40,11 +40,9 @@ Rectangle {
                         }
                     }
                     Column{
-                        ActionButton {
-                            isCustom: true
-                            backgroundRadius: 4
-                            colorSet: SettingsWindowStyle.buttons.editProxy
 
+                        TextButtonB {
+                            text: "update"
                             onClicked: {
                                 console.log("updateeeeee:", modelData.filtersOnTargetNumber)
                                 entryClicked(modelData)
@@ -53,11 +51,8 @@ Rectangle {
                         }
                     }
                     Column{
-                        ActionButton {
-                            isCustom: true
-                            backgroundRadius: 4
-                            colorSet: SettingsWindowStyle.buttons.deleteProxy
-
+                        TextButtonB {
+                            text: "delete"
                             onClicked: {
                                 console.log("delete:", modelData)
                                 if (forwardingManagement.deleteForwardingRule(modelData.forwardingID)) {

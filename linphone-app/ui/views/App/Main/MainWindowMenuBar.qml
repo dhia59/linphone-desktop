@@ -60,10 +60,9 @@ Item {
         id: selfCareShortcut
 
         context: Qt.ApplicationShortcut
-        //sequence: StandardKey.
-
-        onActivated: {
-            onActivated: App.smartShowWindow(App.getSelfCareWindow())
+         onActivated: {
+             App.showSelfCareWindow();
+            //onActivated: App.smartShowWindow(App.getSelfCareWindow())
         }
     }
 

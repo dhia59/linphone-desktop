@@ -99,8 +99,8 @@
         <file>assets/images/home_custom.svg</file>
         <file>assets/images/home_invite_friends.svg</file>
         <file>assets/images/home_use_linphone.svg</file>
-         <file>assets/images/appBackground.png</file>
-          <file>assets/images/saylocallsbackground.png</file>
+        <file>assets/images/appBackground.png</file>
+        <file>assets/images/saylocallsbackground.png</file>
         <file>assets/images/ics_edit_custom.svg</file>
         <file>assets/images/incoming_call_custom.svg</file>
         <file>assets/images/led_green.svg</file>
@@ -122,9 +122,9 @@
         <file>assets/images/missed_incoming_call_custom.svg</file>
         <file>assets/images/missed_outgoing_call_custom.svg</file>
         <file>assets/images/move_to_bottom_custom.svg</file>
-         <file>assets/images/saylobackground.png</file>
-           <file>assets/images/bouton.png</file>
-            <file>assets/images/bouton.svg</file>
+        <file>assets/images/saylobackground.png</file>
+        <file>assets/images/bouton.png</file>
+        <file>assets/images/bouton.svg</file>
         <file>assets/images/new_call_custom.svg</file>
         <file>assets/images/new_chat_group_custom.svg</file>
         <file>assets/images/notifications_off_custom.svg</file>
@@ -184,6 +184,7 @@
         <file>ui/modules/Common/Animations/BusyIndicator.qml</file>
         <file>ui/modules/Common/Constants/Constants.qml</file>
         <file>ui/modules/Common/Dialog/ConfirmDialog.qml</file>
+        <file>ui/modules/Common/Dialog/OKDialog.qml</file>
         <file>ui/modules/Common/Dialog/DateTimeDialog.qml</file>
         <file>ui/modules/Common/Dialog/DialogDescription.qml</file>
         <file>ui/modules/Common/Dialog/DialogPlus.qml</file>
@@ -389,6 +390,7 @@
         <file>ui/modules/Linphone/Presence/PresenceLevel.qml</file>
         <file>ui/modules/Linphone/qmldir</file>
         <file>ui/modules/Linphone/SmartSearchBar/SmartSearchBar.qml</file>
+        <file>ui/modules/Linphone/SmartSearchBar/ContactsAutoComplete.qml</file>
         <file>ui/modules/Linphone/Sticker/AvatarSticker.qml</file>
         <file>ui/modules/Linphone/Sticker/CameraSticker.qml</file>
         <file>ui/modules/Linphone/Sticker/DecorationSticker.qml</file>
@@ -447,6 +449,7 @@
         <file>ui/modules/Linphone/View/ParticipantsListView.qml</file>
         <file>ui/modules/Linphone/View/ParticipantsView.qml</file>
         <file>ui/modules/Linphone/View/SipAddressesView.qml</file>
+        <file>ui/modules/Linphone/View/SipAddressesAutoCompleteView.qml</file>
         <file>ui/scripts/Utils/port-tools.js</file>
         <file>ui/scripts/Utils/qmldir</file>
         <file>ui/scripts/Utils/utils.js</file>
@@ -525,6 +528,7 @@
         <file>ui/views/App/Settings/SettingsWindow.qml</file>
         <file>ui/views/App/SelfCare/SelfCareWindow.qml</file>
         <file>ui/views/App/SelfCare/CallerId.qml</file>
+        <file>ui/views/App/SelfCare/Forwardings.qml</file>
         <file>ui/views/App/Styles/Calls/CallStyle.qml</file>
         <file>ui/views/App/Styles/Calls/CallFullscreenStyle.qml</file>
         <file>ui/views/App/Styles/Calls/CallsWindowStyle.qml</file>
@@ -572,5 +576,9 @@
         <file>assets/icon.ico</file>
         <file>ui/views/App/Main/Login.qml</file>
         <file>ui/modules/Common/Animations/MyBusyIndicator.qml</file>
+        <file>ui/views/App/SelfCare/AddEditForwardingRule.qml</file>
+        <file>ui/views/App/SelfCare/ForwardingsManagement.qml</file>
+        <file>ui/views/App/SelfCare/AccountManagement.qml</file>
+        <file>ui/views/App/SelfCare/VoiceMailManagement.qml</file>
     </qresource>
 </RCC>

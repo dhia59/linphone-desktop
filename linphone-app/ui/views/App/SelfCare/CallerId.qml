@@ -20,9 +20,12 @@ Rectangle {
       PstnModel {
           id: model
       }
+      CallerManagement{
+          id: callerModel
+      }
 
       Form {
-          orientation: Qt.Vertical
+          orientation: Qt.Horizontal
           width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
          // anchors.horizontalCenter: parent.horizontalCenter
 
@@ -39,9 +42,15 @@ Rectangle {
                                 console.log("Selected index:", currentIndex)
                             if(currentIndex>0)
                                model.updateCustomNumber(currentIndex)
+                            currentIndex= 0;
                         }
                      }
               }
+
+
+
+          }
+          FormLine{
               FormGroup{
                   label:"Masquer mon numéro"
                   Switch{
@@ -50,16 +59,31 @@ Rectangle {
                                               //Layout.preferredWidth: 50
                          indicatorStyle: SwitchStyle.aux
                          enabled:true
-                         checked: model.isHideCustomNumber
+                         checked: callerModel.isHideCustomNumber
                          onClicked:{// model.isHideCustomNumber= !model.isHideCustomNumber
-                             model.hideCallerIdByUsername(!model.isHideCustomNumber)
+                             callerModel.hideCallerIdByUsername(!callerModel.isHideCustomNumber)
                             }
 
                        }
 
               }
+          }
+          FormLine{
+              FormGroup{
+                  label:"Ne pas déranger"
+                  Switch{
+                         anchors.verticalCenter: parent.verticalCenter
+                         width:50
+                         indicatorStyle: SwitchStyle.aux
+                         enabled:true
+                         checked: callerModel.dnd
+                         onClicked:{
+                             callerModel.setDndByUsername(!callerModel.dnd)
+                            }
 
+                       }
 
+              }
           }
 
       }

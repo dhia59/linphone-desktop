@@ -11,143 +11,93 @@ import Linphone 1.0
 import App.Styles 1.0
 
 // =============================================================================
-
 ApplicationWindow {
-	id: window
-	
-	minimumHeight: SettingsWindowStyle.height
-	minimumWidth: SettingsWindowStyle.width
-	
+    id:window
+    minimumHeight: SettingsWindowStyle.height
+    minimumWidth: SettingsWindowStyle.width
+
     title: qsTr('Self care')
+    signal loadForwardings ()
 
-	onClosing: {
-		logViewer.active = false
-		SettingsModel.settingsWindowClosing()
-		tabBar.setCurrentIndex(0)
-	}
-	
-	// ---------------------------------------------------------------------------
-	
-	Shortcut {
-		sequence: StandardKey.Close
-		onActivated: window.hide()
-	}
-	
-	// ---------------------------------------------------------------------------
-	
-	Rectangle {
-		anchors.fill: parent
-		color: SettingsWindowStyle.colorModel.color
-	}
-	
-	ColumnLayout {
-		anchors.fill: parent
-		spacing: 0
-		
-		// -------------------------------------------------------------------------
-		// Navigation bar.
-		// -------------------------------------------------------------------------
-    /*    Item{
-			Layout.fillWidth: true
-			Layout.preferredHeight: TabButtonStyle.text.height
-			RowLayout {
-				anchors.fill: parent
-				spacing: 0
-				TabBar {
-					id: tabBar
-                    y: 0
-                    //onCurrentIndexChanged: SettingsModel.onSettingsTabChanged(currentIndex)
-					spacing:0
-					TabButton {
-						iconName: TabButtonStyle.icon.sipAccountsIcon
-                        text: qsTr('redirection')
-						width: implicitWidth
-					}
-					
-                    TabButton {
-                        iconName: TabButtonStyle.icon.audioIcon
-                        text: qsTr('DND')
-                        width: implicitWidth
-                    }
-					
-                    TabButton {
-                        visible: SettingsModel.videoEnabled || SettingsModel.developerSettingsEnabled
-                        iconName: TabButtonStyle.icon.videoIcon
-                        text: qsTr("Numéro d'affichage")
-                        //width: visible ? implicitWidth : 0
-                    }
-					
-                    TabButton {
-                        iconName: TabButtonStyle.icon.callIcon
-                        text: qsTr('masquage de numéro')
-                        width: implicitWidth
-                    }
-					
-                    TabButton {
-                        enabled: SettingsModel.showNetworkSettings || SettingsModel.developerSettingsEnabled
-                        iconName: TabButtonStyle.icon.networkIcon
-                        text: qsTr('annonce VM')
-                        width: implicitWidth
-                    }
-					
-                    TabButton {
-                        visible: SettingsModel.tunnelAvailable()
-                        enabled: visible
-                        iconName: TabButtonStyle.icon.sipAccountsIcon
-                        //: 'Tunnel' : Tab title for tunnel section in settings.
-                        text: qsTr('réinitialisation de mdp')
-                       // width: visible ? implicitWidth : 0
-                    }
-					
-                   /* TabButton {
-                        iconName: TabButtonStyle.icon.advancedIcon
-                        text: qsTr('uiTab')
-                        width: implicitWidth
-                    }
-					
-                    TabButton {
-                        iconName: TabButtonStyle.icon.advancedIcon
-                        text: qsTr('uiAdvanced')
-                        width: implicitWidth
-                    }
+    // Principal conteneur
+    Row {
+        anchors.fill: parent
 
-				}
-			
+        // Menu latéral
+        Column{
+            Rectangle {
+                      width: 200
+                      color: "#f0f0f0"
 
-			}
-			Rectangle{
-				id: hideBar
-				anchors.fill: parent
-				color: TabButtonStyle.backgroundColor.normal.color
-                visible:false //logViewer.active
-			}
-        }
-*/
-		
-		// -------------------------------------------------------------------------
-		// Content.
-		// -------------------------------------------------------------------------
+                      Column {
+                          spacing: 10
+                          anchors.fill: parent
+                          anchors.margins: 10
+                          id: sideBar
+                          property int currentIndex: 0
+                          // Items du menu comme des rectangles avec des coins arrondis
+                          Repeater {
+                              model: ["Numéro personnalisé", "Redirection", "Messagerie vocale", "Compte"]
+                              delegate: Rectangle {
+                                  width: parent.width
+                                  height: 40
+                                  color: sideBar.currentIndex===index?"#222154": "#b0b0b0"
+                                  radius: 10
+                                  Text {
+                                      anchors.centerIn: parent
+                                      text: modelData
+                                      color: "#FFFFFF"
+                                  }
+                                   MouseArea{
+                                       anchors.fill: parent
+                                       onClicked: {
+                                           console.log('clickedddddddddd:', index)
+                                           sideBar.currentIndex= index
+                                       }
+                                   }
 
-        CallerId{
+                                  Rectangle {
+                                      id: control
+                                      anchors.fill: parent
+                                      color: "transparent"
+
+                                  }
+                              }
+                          }
+                      }
+                  }
 
         }
+    Column{
+        x:210
+    Rectangle {
+        color: "#ffffff"
+        anchors.fill: parent
 
+        Column {
+            spacing: 10
+            anchors.fill: parent
+            anchors.margins: 20
 
-		// -------------------------------------------------------------------------
-		// Buttons.
-		// -------------------------------------------------------------------------
-     /*   TextButtonB {
-            Layout.alignment: Qt.AlignRight
-            Layout.topMargin: SettingsWindowStyle.validButton.topMargin
-            Layout.bottomMargin: SettingsWindowStyle.validButton.bottomMargin
-            Layout.rightMargin: SettingsWindowStyle.validButton.rightMargin
+            Item{
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
 
-            text: qsTr('validButton')
-
-            onClicked: window.close()
+                    StackLayout {
+                        anchors.fill: parent
+                        currentIndex:sideBar.currentIndex
+                        CallerId {}
+                        ForwardingsManagement {}
+                        VoiceMailManagement{}
+                        AccountManagement{}
+                    }
         }
-        */
-	}
+    }
+
+}
 
 
+
+    }
+}
 }

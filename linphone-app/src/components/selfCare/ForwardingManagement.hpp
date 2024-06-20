@@ -18,15 +18,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ForwardingLisModel_H_
-#define ForwardingLisModel_H_
+#ifndef FORWARDINGMANAGEMENT_H_
+#define FORWARDINGMANAGEMENT_H_
 
 #include <linphone++/linphone.hh>
 #include <utils/MediastreamerUtils.hpp>
 #include <QObject>
 #include <QVariantMap>
 #include <QFont>
-#include "ForwardingLisModel.hpp"
+
 #include "components/core/CoreHandlers.hpp"
 #include "utils/LinphoneEnums.hpp"
 #include "utils/Utils.hpp"
@@ -37,29 +37,26 @@
 #include <QObject>
 #include <QStringList>
 
-
-class ForwardingLisModel : public QAbstractListModel
-{
-	friend ForwardingModel;
+class ForwardingManagement :public QObject
+{	
 	Q_OBJECT
-		//Q_PROPERTY(bool isHideCustomNumber READ getIsHideCustomNumber WRITE setIsHideCustomNumber NOTIFY isHideCustomNumberChanged)
 public:
-	enum CustomRoles {
-		DisplayRole = Qt::UserRole + 1, // Custom role for display text
-		LabelRole                        // Custom role for label text
-	};
-	explicit ForwardingLisModel(QObject *parent = nullptr);
+	explicit ForwardingManagement(QObject *parent = nullptr);
+	Q_INVOKABLE bool addForwardingRule(const QVariantMap &map);
+	Q_INVOKABLE bool editForwardingRule(const QVariantMap &map);
+	Q_INVOKABLE bool deleteForwardingRule(const QString &forwardingId);
+	Q_INVOKABLE bool activateDesactivateForwardingRule( ForwardingModel *forwardingmodel);
 
-	void loadListForwardings();
-	// Basic functionality:
-	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-	QHash<int, QByteArray> roleNames() const override;
 private:
-	std::list<ForwardingModel> m_data;
+	QString getOriginText(int origin);
+	QString getForwardTypeText(int forwardType);
+	QString getDestination(int destination);
+	QString JoinQvariantList(QVariantList &list,QString joinString);
+	int getNoAnswerDelay(int noAnswerdelay);
+	QString getTimeFilterText(QVariantList days, QString startDate, QString endDate);
 };
 
-
+Q_DECLARE_METATYPE(ForwardingManagement*)
 // =============================================================================
 
-#endif // ForwardingLisModel_H_
+#endif // FORWARDINGMANAGEMENT_H_

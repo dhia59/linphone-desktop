@@ -37,7 +37,7 @@
 #include "components/tunnel/TunnelModel.hpp"
 #include "include/LinphoneApp/PluginNetworkHelper.hpp"
 #include "utils/Utils.hpp"
-#include "PstnModel.hpp"
+#include "CallerManagement.hpp"
 #include "utils/Constants.hpp"
 #include "utils/MediastreamerUtils.hpp"
 
@@ -46,23 +46,23 @@
 
 using namespace std;
 
-PstnModel::PstnModel(QObject *parent) : QAbstractListModel(parent)
+CallerManagement::CallerManagement(QObject *parent) : QObject(parent)
 {	
 	//m_data << "op1" << "op2"<<"op3";
       loadPstnLists();
 }
 
 
-void PstnModel::loadPstnLists()
+void CallerManagement::loadPstnLists()
 {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url(QString("http://10.3.3.66:8081/SelfCare/GetListPstnWithDefault"));
+		QUrl url(QString("http://10.3.3.66:8081/SelfCare/GetCustomCallerInfo"));
 		QUrlQuery query;
-		query.addQueryItem("username", username);
+		query.addQueryItem("userName", username);
 		url.setQuery(query);
 		QNetworkRequest request(url);
 		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
@@ -83,20 +83,18 @@ void PstnModel::loadPstnLists()
 						qDebug() << "Response:" << responseData;
 						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 						if (!jsonResponse.isNull()) {
-							beginResetModel();
-							m_data.clear();
-							QJsonArray jsonArray = jsonResponse.array();
-							for (const QJsonValue &jsonValue : jsonArray) {
-								m_data << jsonValue["number"].toString();
-								m_labelTexts << jsonValue["number"].toString();
-							}							
-							endResetModel();
+							
+							bool hideCallerId = jsonResponse["hideCallerId"].toBool();
+							setIsHideCustomNumber(hideCallerId);
+							bool dnd = jsonResponse["dnd"].toBool();
+							setDnd(dnd);
+							
 						}
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
-						sort(0);
+					
 					}
 
 					// Clean up the reply
@@ -111,52 +109,42 @@ void PstnModel::loadPstnLists()
 	}
 }
 
-int PstnModel::rowCount(const QModelIndex &parent) const
-{
-	if (parent.isValid())
-		return 0;
+bool CallerManagement::getDnd() {
+	return m_dnd;
+}
 
-	return m_data.size();
+
+bool CallerManagement::getIsHideCustomNumber()
+{
+	return m_isHideCustomNumber;
+}
+
+void CallerManagement::setIsHideCustomNumber(const bool &isHideCustomNumber)
+{
+	m_isHideCustomNumber = isHideCustomNumber;
+	emit isHideCustomNumberChanged();
+}
+
+void CallerManagement::setDnd(const bool dnd)
+{
+	m_dnd = dnd;
+	emit dndChanged();
 }
 
 
 
-QVariant PstnModel::data(const QModelIndex &index, int role) const
-{
-	if (!index.isValid())
-		return QVariant();
-
-	if (role == DisplayRole  || role == Qt::DisplayRole) {
-		return m_data[index.row()];
-	}
-	else if (role == LabelRole) {
-	
-		return m_labelTexts[index.row()];
-	}
-
-	return QVariant();
-}
-QHash<int, QByteArray> PstnModel::roleNames() const
-{
-	QHash<int, QByteArray> roles;
-	roles[Qt::DisplayRole] = "display"; // Name for DisplayRole
-	roles[Qt::UserRole] = "label";      // Name for custom role
-	return roles;
-}
-
-
-Q_INVOKABLE void PstnModel::updateCustomNumber(const int & currentIndex)
+void CallerManagement::hideCallerIdByUsername(const bool &isHideCustomNumber) 
 {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
 	if (defaultAddress != nullptr)
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/UpdateCustomNumber");
+		QUrl url("http://10.3.3.66:8081/SelfCare/HideCallerIdByUsername");
 		QUrlQuery query;
-		query.addQueryItem("userName", username);
-		auto number = m_data.at(currentIndex);
-		//query.addQueryItem("customNumber", number); // Convert boolean to integer
+		query.addQueryItem("userName",username);		
+		QString hideCallerIDString = (isHideCustomNumber ? "true" : "false");
+		query.addQueryItem("hideCallerID", hideCallerIDString); // Convert boolean to integer
 		url.setQuery(query);
 
 		QNetworkRequest request(url);
@@ -170,14 +158,9 @@ Q_INVOKABLE void PstnModel::updateCustomNumber(const int & currentIndex)
 		foreach(const QByteArray &header, headers) {
 			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
 		}
-		QJsonObject jsonObject;
-		jsonObject["manualCustomCallerID"] = number;
-	
-		QJsonDocument jsonDocument(jsonObject);
-		QByteArray jsonData = jsonDocument.toJson();
 
 		// Perform the POST request
-		QNetworkReply *reply = manager->post(request, jsonData); // No data for now, adjust as needed
+		QNetworkReply *reply = manager->post(request, QByteArray()); // No data for now, adjust as needed
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
 				if (reply) {
@@ -187,13 +170,14 @@ Q_INVOKABLE void PstnModel::updateCustomNumber(const int & currentIndex)
 						qDebug() << "Response:" << responseData;
 						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 						if (!jsonResponse.isNull()) {
-				      		loadPstnLists();
+		
+							loadPstnLists();
 						}
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
-						sort(0);
+					
 					}
 
 					// Clean up the reply
@@ -208,3 +192,62 @@ Q_INVOKABLE void PstnModel::updateCustomNumber(const int & currentIndex)
 	}
 }
 
+void CallerManagement::setDndByUsername(const bool &dnd)
+{
+	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
+	if (defaultAddress != nullptr)//
+	{
+		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
+		QUrl url("http://10.3.3.66:8081/SelfCare/SetDndByUsername");
+		QUrlQuery query;
+		query.addQueryItem("username", username);
+		auto testt = QString::number(dnd);
+		QString dnDString = (dnd ? "true" : "false");
+		query.addQueryItem("dnd", dnDString); // Convert boolean to integer
+		url.setQuery(query);
+
+		QNetworkRequest request(url);
+		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+		request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
+		request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
+
+		// Example: Set content type header for JSON data
+		request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+		QList<QByteArray> headers = request.rawHeaderList();
+		foreach(const QByteArray &header, headers) {
+			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
+		}
+
+		// Perform the POST request
+		QNetworkReply *reply = manager->post(request, QByteArray()); // No data for now, adjust as needed
+		if (reply) {
+			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
+				if (reply) {
+					if (reply->error() == QNetworkReply::NoError) {
+
+						QByteArray responseData = reply->readAll();
+						qDebug() << "Response:" << responseData;
+						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
+						if (!jsonResponse.isNull()) {
+
+							loadPstnLists();
+						}
+					}
+					else {
+						qDebug() << "Error Code:" << reply->error();
+						qDebug() << "Error String:" << reply->errorString();
+				
+					}
+
+					// Clean up the reply
+					reply->deleteLater();
+				}
+				else {
+					qDebug() << "noo reply";
+				}
+
+			});
+		}
+	}
+}

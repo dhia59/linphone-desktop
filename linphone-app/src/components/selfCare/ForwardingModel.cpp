@@ -53,9 +53,61 @@ ForwardingModel::ForwardingModel(QObject *parent) : QObject(parent)
 	
 }
 
+ForwardingModel::~ForwardingModel()
+{
+}
+
 QString ForwardingModel::getLabel()
 {
+	QString test = m_label;
 	return m_label;
+}
+
+QString ForwardingModel::getforwardType()
+{
+	return m_ForwardType;
+}
+
+int ForwardingModel::getNoAnswerForwardingDelay()
+{
+	return m_noAnswerForwardingDelay;
+}
+
+QString ForwardingModel::getDestination()
+{
+	return m_destination;
+}
+
+QString ForwardingModel::getforwardingID()
+{
+	return m_forwardingId;
+}
+
+QString ForwardingModel::getFilter()
+{
+	return m_filter;
+}
+
+bool ForwardingModel::getActivated()
+{
+	return m_activated;
+}
+
+QStringList ForwardingModel::getFiltersOnTargetNumber()
+{
+	QStringList test = m_filtersOnTargetNumber;
+	return m_filtersOnTargetNumber;
+}
+
+QString ForwardingModel::getSpecificCaller()
+{
+	return m_specificCaller;
+}
+
+QString ForwardingModel::getTimeFilter()
+{
+	auto test = m_timeFilter;
+	return m_timeFilter;
 }
 
 void ForwardingModel::setLabel(const QString label)
@@ -65,4 +117,78 @@ void ForwardingModel::setLabel(const QString label)
 		emit labelChanged();
 	}
 }
+
+void ForwardingModel::setforwardType(const QString forwardType)
+{
+	if (m_ForwardType != forwardType) {
+		m_ForwardType = forwardType;
+		emit forwardTypeChanged();
+	}
+}
+
+void ForwardingModel::setNoAnswerForwardingDelay(const int noAnswerForwardingDelay)
+{
+	if ( m_noAnswerForwardingDelay != noAnswerForwardingDelay) {
+		m_noAnswerForwardingDelay = noAnswerForwardingDelay;
+		emit noAnswerForwardingDelayChanged();
+	}
+}
+
+void ForwardingModel::setDestination(const QString destination)
+{
+	if (m_destination != destination) {
+		m_destination = destination;
+		emit destinationChanged();
+	}
+}
+
+void ForwardingModel::setforwardingID(const QString id)
+{
+	if (m_forwardingId != id) {
+		m_forwardingId = id;
+		emit forwardingIDChanged();
+	}
+}
+
+void ForwardingModel::setfilter(const QString filter)
+{
+	if (m_filter != filter) {
+		m_filter = filter;
+		emit filterChanged();
+	}
+}
+
+void ForwardingModel::setActivated(const bool activated)
+{
+	if (m_activated != activated) {
+		m_activated = activated;
+		emit activeChanged();
+	}
+}
+
+void ForwardingModel::setFiltersOnTargetNumber(const QStringList targetNumbers)
+{
+	if (m_filtersOnTargetNumber != targetNumbers) {
+		m_filtersOnTargetNumber = targetNumbers;
+		emit filtersOnTargetNumberChanged();
+	}
+}
+
+void ForwardingModel::setSpecificCaller(const QString specificCaller)
+{
+	if (m_specificCaller != specificCaller) {
+		m_specificCaller = specificCaller;
+		emit specificCallerChanged();
+	}
+}
+
+void ForwardingModel::setTimeFilter(const QString timeFilter)
+{
+	if (m_timeFilter != timeFilter) {
+		m_timeFilter = timeFilter;
+		emit timeFilterChanged();
+	}
+}
+
+
 

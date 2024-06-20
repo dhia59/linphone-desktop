@@ -40,32 +40,77 @@
 
 class ForwardingModel :public QObject 
 {
-	Q_OBJECT
+		Q_OBJECT
 		Q_PROPERTY(QString label READ getLabel WRITE setLabel NOTIFY labelChanged)
+		Q_PROPERTY(QString forwardType READ getforwardType WRITE setforwardType NOTIFY forwardTypeChanged)
+		Q_PROPERTY(int noAnswerForwardingDelay READ getNoAnswerForwardingDelay WRITE setNoAnswerForwardingDelay NOTIFY noAnswerForwardingDelayChanged)
+		Q_PROPERTY(QString destination READ getDestination WRITE setDestination NOTIFY destinationChanged)
+		Q_PROPERTY(QString forwardingID READ getforwardingID WRITE setforwardingID NOTIFY forwardingIDChanged)
+		Q_PROPERTY(QString filter READ getFilter WRITE setfilter NOTIFY filterChanged)
+		Q_PROPERTY(bool activated READ getActivated WRITE setActivated NOTIFY activeChanged)
+		Q_PROPERTY(QStringList filtersOnTargetNumber READ getFiltersOnTargetNumber WRITE setFiltersOnTargetNumber NOTIFY filtersOnTargetNumberChanged)
+		Q_PROPERTY(QString specificCaller READ getSpecificCaller WRITE setSpecificCaller NOTIFY specificCallerChanged)
+		Q_PROPERTY(QString timeFilter READ getTimeFilter WRITE setTimeFilter NOTIFY timeFilterChanged)
+
 public:
 	enum CustomRoles {
 		DisplayRole = Qt::UserRole + 1, // Custom role for display text
 		LabelRole                        // Custom role for label text
 	};
-	explicit ForwardingModel(QObject *parent = nullptr);
+	ForwardingModel(QObject *parent = nullptr);
+	ForwardingModel(const ForwardingModel&) = delete;
+	ForwardingModel& operator=(const ForwardingModel&) = delete;
+	virtual ~ForwardingModel();
 
 	void loadPstnLists();
-	// Basic functionality:
-	/*int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-	QHash<int, QByteArray> roleNames() const override;
-	*/
-	// IsHideCustomNumber
 	QString getLabel();
+	QString getforwardType();
+	int getNoAnswerForwardingDelay();
+	QString getDestination();
+	QString getforwardingID();
+	QString getFilter();
+	bool getActivated();
+	QStringList getFiltersOnTargetNumber();
+	QString getSpecificCaller();
+	QString getTimeFilter();
+
 	void setLabel(const QString label);
+	void setforwardType(const QString forwardType);
+	void setNoAnswerForwardingDelay(const int noAnswerForwardingDelay);
+	void setDestination(const QString destination);
+	void setforwardingID(const QString id);
+	void setfilter(const QString filter);
+	void setActivated(const bool activated);
+	void setFiltersOnTargetNumber(const QStringList targetNumbers);
+	void setSpecificCaller(const QString specificCaller);
+	void setTimeFilter(const QString timeFilter);
 signals:
 	void labelChanged();
+	void forwardTypeChanged();
+	void noAnswerForwardingDelayChanged();
+	void destinationChanged();
+	void forwardingIDChanged();
+	void filterChanged();
+	void activeChanged();
+	void filtersOnTargetNumberChanged();
+	void specificCallerChanged();
+	void timeFilterChanged();
+	
 private:
 	QString m_label;
+	QString m_ForwardType;
+	int m_noAnswerForwardingDelay;
+	QString m_destination;
+	QString m_forwardingId;
+	QString m_filter;
+	bool m_activated;
+	QStringList m_filtersOnTargetNumber;
+	QString m_specificCaller;
+	QString m_timeFilter;
 	
 };
 
-
+Q_DECLARE_METATYPE(ForwardingModel *)
 // =============================================================================
 
 #endif // FORWARDINGMODEL_H_

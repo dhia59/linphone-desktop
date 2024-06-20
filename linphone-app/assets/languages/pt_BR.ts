@@ -47,6 +47,21 @@
     </message>
 </context>
 <context>
+    <name>AddEditForwardingRule</name>
+    <message>
+        <source>Filtrer par numéro appelé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jusqu&apos;a</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>App</name>
     <message>
         <source>commandLineOptionVerbose</source>
@@ -459,6 +474,13 @@
     <message>
         <source>callTransferDescription</source>
         <translation>Deseja transferir esta chamada?</translation>
+    </message>
+</context>
+<context>
+    <name>CallerId</name>
+    <message>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1036,6 +1058,13 @@
     </message>
     <message>
         <source>Collaborateurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ContactsAutoComplete</name>
+    <message>
+        <source>Choisir</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2259,6 +2288,13 @@ Clique aqui: &lt;a href=&quot;%1&quot;&gt;%1 &lt;/a&gt;
     <message>
         <source>newVoiceMessage</source>
         <extracomment>&apos;Voice message received!&apos; : message to warn the user in a notofication for voice messages.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OKDialog</name>
+    <message>
+        <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4056,6 +4092,13 @@ Clique aqui: &lt;a href=&quot;%1&quot;&gt;%1 &lt;/a&gt;
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation type="unfinished">Você tem certeza de que quer apagar este item?</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceMailManagement</name>
+    <message>
+        <source>voice</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

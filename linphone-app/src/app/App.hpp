@@ -115,6 +115,9 @@ public:
   Q_INVOKABLE void restart () {
     exit(RestartCode);
   }
+  void setSelfCareWindow();
+  Q_INVOKABLE void showSelfCareWindow();
+
 
   Q_INVOKABLE QQuickWindow *getCallsWindow () const;
   Q_INVOKABLE QQuickWindow *getSettingsWindow () const;

@@ -51,6 +51,8 @@ class VcardModel;
 class TimelineListModel;
 class ContactsEnreachListProxyModel;
 class PstnModel;
+class ForwardingManagement;
+class ForwardingListProxyModel;
 
 class CoreManager : public QObject {
 	Q_OBJECT;
@@ -107,7 +109,10 @@ public:
 		Q_CHECK_PTR(mContactsEnreachListModel);
 		return mContactsEnreachListModel;
 	}
-
+	ForwardingListProxyModel *getForwardingListProxyModel() const {
+		Q_CHECK_PTR(mForwardingListProxyModel);
+		return mForwardingListProxyModel;
+	}
 	ContactsImporterListModel *getContactsImporterListModel () const {
 		Q_CHECK_PTR(mContactsImporterListModel);
 		return mContactsImporterListModel;
@@ -142,6 +147,10 @@ public:
 	ContactsEnreachListProxyModel *getContactsEnreachListProxyModel() const {
 		Q_CHECK_PTR(mContactsEnreachListProxyModel);
 		return mContactsEnreachListProxyModel;
+	}
+	ForwardingManagement *getForwardingManagement() const {
+		Q_CHECK_PTR(mForwardingManagement);
+		return mForwardingManagement;
 	}
 	LdapListModel *getLdapListModel() const{
 		return mLdapListModel;
@@ -250,10 +259,11 @@ private:
 	ContactsEnreachListProxyModel *mContactsEnreachListProxyModel = nullptr;
 	
 	EventCountNotifier *mEventCountNotifier = nullptr;
-
+	ForwardingManagement *mForwardingManagement = nullptr;
 	HistoryModel * mHistoryModel = nullptr;
 	LdapListModel *mLdapListModel = nullptr;
 	RecorderManager* mRecorderManager = nullptr;
+	ForwardingListProxyModel* mForwardingListProxyModel;
 	
 	QTimer *mCbsTimer = nullptr;
 	

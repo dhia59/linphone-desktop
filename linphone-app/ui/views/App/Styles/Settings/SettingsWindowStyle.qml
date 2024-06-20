@@ -8,8 +8,8 @@ import ColorsList 1.0
 QtObject {
 	property string sectionName: 'SettingsWindow'
 	property var colorModel: ColorsList.add(sectionName+'_bg', 'k')
-	property int height: 640
-	property int width: 1024
+    property int height: 800
+    property int width: 1300
 	
 	property QtObject forms: QtObject {
 		property int spacing: 10

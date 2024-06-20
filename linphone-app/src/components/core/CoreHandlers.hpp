@@ -62,6 +62,9 @@ signals:
 	void conferenceInfoReceived(const std::shared_ptr<const linphone::ConferenceInfo> & conferenceInfo);
 	void foundQRCode(const std::string & result);
 	void accountFirstLogin();
+	void tokenRecieved();
+	void forwadingListUpdated();
+	
 private:
 	// ---------------------------------------------------------------------------
 	// Linphone callbacks.

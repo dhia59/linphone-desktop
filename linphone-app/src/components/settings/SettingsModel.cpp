@@ -1273,8 +1273,8 @@ void SettingsModel::setTcpPort (int port) {
 
 int SettingsModel::getUdpPort () const {
 	qWarning() << "portttttt "<< CoreManager::getInstance()->getCore()->getTransports()->getUdpPort();
-	return -2;
-	//return CoreManager::getInstance()->getCore()->getTransports()->getUdpPort();
+	return 5070;
+	return CoreManager::getInstance()->getCore()->getTransports()->getUdpPort();
 }
 
 void SettingsModel::setUdpPort (int port) {

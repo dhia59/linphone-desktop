@@ -30,7 +30,7 @@ ScrollableListView {
 	property string headerButtonIcon
 	property color headerButtonOverwriteColor
 	property var headerButtonAction
-	property bool showHeader : true
+    property bool showHeader : true
     property bool showSubtitle : false
 	property bool showSwitch : false
 	property bool showSeparator : true
@@ -161,7 +161,7 @@ ScrollableListView {
 				
 				visible: sipAddressesView.showHeader && !!sipAddressesView.headerButtonAction
 				
-				onClicked: sipAddressesView.headerButtonAction(sipAddressesView.interpretableSipAddress)
+                onClicked: {sipAddressesView.headerButtonAction(genSipAddress)}
 				
 				Rectangle {
 					anchors.fill: parent
@@ -248,7 +248,7 @@ ScrollableListView {
 				Contact {
 					Layout.fillHeight: true
 					Layout.fillWidth: true
-					showSubtitle: sipAddressesView.showSubtitle
+                    showSubtitle:sipAddressesView.showSubtitle
 					
 					entry: $modelData
 					
@@ -286,8 +286,8 @@ ScrollableListView {
 								}
 							}
 						}
-						active: sipAddressesView.showSwitch	// Resolve a random Qt crash from using indicator on switch. This way, switch is not loaded.
-						// https://bugreports.qt.io/browse/QTBUG-82285.
+                        active: sipAddressesView.showSwitch
+
 					}
 					Repeater {
 						model: sipAddressesView.actions

@@ -40,13 +40,14 @@
 #include "components/settings/AccountSettingsModel.hpp"
 #include "components/settings/EmojisSettingsModel.hpp"
 #include "components/selfCare/PstnModel.hpp"
-//#include "components/selfCare/CustomCallerIdModel.hpp"
+#include "components/selfCare/ForwardingManagement.hpp"
 #include "components/settings/SettingsModel.hpp"
 #include "components/sip-addresses/SipAddressesModel.hpp"
 #include "components/timeline/TimelineListModel.hpp"
 #include "components/contacts/ContactsEnreachListProxyModel.hpp"
 #include "utils/Utils.hpp"
 #include "utils/Constants.hpp"
+#include  "components/selfCare/ForwardingListProxyModel.hpp"
 
 #if defined(Q_OS_MACOS)
 #include "event-count-notifier/EventCountNotifierMacOs.hpp"
@@ -107,7 +108,9 @@ void CoreManager::initCoreManager(){
 	mContactsImporterListModel = new ContactsImporterListModel(this);
 	mLdapListModel = new LdapListModel(this);
 	mEventCountNotifier = new EventCountNotifier(this);
+	mForwardingManagement = new ForwardingManagement(this);
 	mTimelineListModel = new TimelineListModel(this);
+	mForwardingListProxyModel = new ForwardingListProxyModel(this);
 	mEventCountNotifier->updateUnreadMessageCount();
 	QObject::connect(mEventCountNotifier, &EventCountNotifier::eventCountChanged,this, &CoreManager::eventCountChanged);
 	migrate();

@@ -565,8 +565,22 @@ bool App::event (QEvent *event) {
 
 // -----------------------------------------------------------------------------
 
+
+void App::setSelfCareWindow()
+{
+	if(mSelfCareWindow==nullptr)
+		mSelfCareWindow = createSubWindow(mEngine, Constants::QmlViewSelfCareWindow);
+}
+
+void App::showSelfCareWindow()
+{
+	setSelfCareWindow();
+	smartShowWindow(getSelfCareWindow());
+}
+
 QQuickWindow *App::getCallsWindow () const {
 	if (CoreManager::getInstance()->getCore()->getConfig()->getInt(
+		
 				SettingsModel::UiSection, "disable_calls_window", 0
 				))
 		return nullptr;
@@ -584,6 +598,7 @@ QQuickWindow *App::getSettingsWindow () const {
 	return mSettingsWindow;
 }
 QQuickWindow *App::getSelfCareWindow() const {
+	
 	return mSelfCareWindow;
 }
 // -----------------------------------------------------------------------------
@@ -724,6 +739,7 @@ void App::registerTypes () {
 	qRegisterMetaType<QSharedPointer<ChatNoticeModel>>();
 	qRegisterMetaType<QSharedPointer<ChatCallModel>>();
 	qRegisterMetaType<QSharedPointer<ConferenceInfoModel>>();
+	//qRegisterMetaType<QSharedPointer<ForwardingModel>>();
 	//qRegisterMetaType<std::shared_ptr<ChatEvent>>();
 	LinphoneEnums::registerMetaTypes();
 	
@@ -753,7 +769,11 @@ void App::registerTypes () {
 	registerType<TemporaryFile>("TemporaryFile");
 	registerType<TimeZoneProxyModel>("TimeZoneProxyModel");
 	registerType<PstnModel>("PstnModel");
-	registerType<ForwardingLisModel>("ForwardingLisModel");
+	registerType<CallerManagement>("CallerManagement");
+	registerType<ForwardingListModel>("ForwardingListModel");
+	registerType<ForwardingListProxyModel>("ForwardingListProxyModel");
+	registerType<ForwardingManagement>("ForwardingManagement");
+	registerType<AccountManagementModel>("AccountManagementModel");
 	//registerType<CustomCallerIdModel>("CustomCallerIdModel");
 	registerType<ColorProxyModel>("ColorProxyModel");
 	registerType<ImageColorsProxyModel>("ImageColorsProxyModel");
@@ -900,6 +920,8 @@ void App::setTrayIcon () {
 		accountSettingsModel->logout();
 
 		});
+	
+
 	// trayIcon: Left click actions.
 	static QMenu *menu = new QMenu();// Static : Workaround about a bug with setContextMenu where it cannot be called more than once.
 	root->connect(systemTrayIcon, &QSystemTrayIcon::activated, [root](
@@ -1114,7 +1136,7 @@ void App::openAppAfterInit (bool mustBeIconified) {
 	// Create other windows.
 	mCallsWindow = createSubWindow(mEngine, Constants::QmlViewCallsWindow);
 	mSettingsWindow = createSubWindow(mEngine, Constants::QmlViewSettingsWindow);
-	mSelfCareWindow = createSubWindow(mEngine, Constants::QmlViewSelfCareWindow);
+	//mSelfCareWindow = createSubWindow(mEngine, Constants::QmlViewSelfCareWindow);
 	QObject::connect(mSettingsWindow, &QWindow::visibilityChanged, this, [coreManager](QWindow::Visibility visibility) {
 		if (visibility == QWindow::Hidden) {
 			qInfo() << QStringLiteral("Update nat policy.");
@@ -1126,13 +1148,18 @@ void App::openAppAfterInit (bool mustBeIconified) {
 		coreManager->getHandlers().get(), &CoreHandlers::accountFirstLogin,
 		coreManager->getContactsEnreachListProxyModel(), &ContactsEnreachListProxyModel::loadContacts
 	);
+	QObject::connect(
+		coreManager->getHandlers().get(), &CoreHandlers::forwadingListUpdated,
+		coreManager->getForwardingListProxyModel(), &ForwardingListProxyModel::handleListFowardingUpdate
+	);
+	QObject::connect(
+		coreManager->getHandlers().get(), &CoreHandlers::tokenRecieved,
+		coreManager->getForwardingListProxyModel(), &ForwardingListProxyModel::handleListFowardingUpdate
+	);
+
 
 	QQuickWindow *mainWindow = getMainWindow();
 
-	
-	QObject::connect(mSelfCareWindow, &QWindow::visibilityChanged, this, [coreManager](QWindow::Visibility visibility) {
-		//auto &tst= coreManager->getPstnModel()->listpstns();	
-	});
 	
 	
 #ifndef __APPLE__

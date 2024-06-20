@@ -18,54 +18,49 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PSTNMODEL_H_
-#define PSTNMODEL_H_
+#ifndef ForwardingListProxyModel_H_
+#define ForwardingListProxyModel_H_
 
 #include <linphone++/linphone.hh>
 #include <utils/MediastreamerUtils.hpp>
 #include <QObject>
 #include <QVariantMap>
 #include <QFont>
-
+#include <QList>
+#include "ForwardingListModel.hpp"
 #include "components/core/CoreHandlers.hpp"
 #include "utils/LinphoneEnums.hpp"
 #include "utils/Utils.hpp"
-
+#include "ForwardingModel.hpp"
 #ifdef ENABLE_QT_KEYCHAIN
 #include "components/vfs/VfsUtils.hpp"
 #endif
-#include <QObject>
+
 #include <QStringList>
-
-
-class PstnModel : public QAbstractListModel
-{
+#include "ForwardingManagement.hpp"
+#include <QSortFilterProxyModel>
+class ForwardingListProxyModel : public QSortFilterProxyModel
+{	
+	friend class ForwardingModel;
+	friend class ForwardingManagement;
 	Q_OBJECT
-		
-		
+
 public:
-	enum CustomRoles {
-		DisplayRole = Qt::UserRole + 1, // Custom role for display text
-		LabelRole                        // Custom role for label text
-	};
-	explicit PstnModel(QObject *parent = nullptr);
 
-	void loadPstnLists();
-	// Basic functionality:
-	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-	QHash<int, QByteArray> roleNames() const override;
+	explicit ForwardingListProxyModel(QObject *parent = nullptr);
+	void loadListForwardings();
+protected:
+	bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
+	bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
-	Q_INVOKABLE  void updateCustomNumber(const int &currentIndex);
-signals:
-	
+public slots:
+	void handleListFowardingUpdate();
+
 private:
-	QStringList m_data;
-	QStringList m_labelTexts;
-	
+     
 };
 
 
 // =============================================================================
 
-#endif // PSTNMODEL_H_
+#endif // ForwardingListProxyModel_H_
