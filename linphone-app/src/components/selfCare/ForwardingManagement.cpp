@@ -482,7 +482,5 @@ QString ForwardingManagement::getTimeFilterText(QVariantList days, QString start
 		}
 		daysString = dayList.join("+");
 	}
-	auto test= daysString + "/" + timeString;
-	qDebug() << "time filterrrrrrrrrrrrrr: "+ test;
 	return daysString + "/" + timeString;
 }
