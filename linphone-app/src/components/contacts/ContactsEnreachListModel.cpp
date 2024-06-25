@@ -57,6 +57,9 @@ ContactsEnreachListModel::~ContactsEnreachListModel(){
 	}
 }
 
+
+
+
 bool ContactsEnreachListModel::removeRows (int row, int count, const QModelIndex &parent) {
 	int limit = row + count - 1;
 	

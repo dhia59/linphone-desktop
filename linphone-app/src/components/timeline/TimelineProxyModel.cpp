@@ -66,6 +66,24 @@ TimelineProxyModel::TimelineListSource TimelineProxyModel::getListSource() const
 	return mListSource;
 }
 
+TimelineModel*  TimelineProxyModel::getFirstChatRoom(int row){
+	//return CoreManager::getInstance()->getTimelineListModel()->getAt(0)->getChatRoomModel()
+	QModelIndex index = sourceModel()->index(0, 0);
+	TimelineModel* a = sourceModel()->data(index).value<TimelineModel*>();
+	auto fr = a->getChatRoomModel()->mLastUpdateTime;
+	//TimelineModel* m = NULL;
+	//if( sourceModel())
+	//	qobject_cast<TimelineListModel*>(sourceModel())->getAt(0);
+	//qobject_cast<TimelineModel*>(qobject_cast<TimelineListModel*>(sourceModel())->getAt(0))
+	
+	//TimelineModel * getAt(const int& index);
+	//m = CoreManager::getInstance()->getTimelineListModel()->getAt(1);
+	//qobject_cast<TimelineListModel*>(sourceModel())->selectAll(true);
+	//auto d = m->getChatRoomModel();
+	//auto dd = d->mUnreadMessagesCount;
+	return a;
+}
+
 void TimelineProxyModel::setListSource(const TimelineListSource& source){
 	if(source != mListSource) {
 		TimelineListModel * model = nullptr;

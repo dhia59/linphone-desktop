@@ -36,7 +36,7 @@ Item {
 
   function _fillModel () {
     model.clear()
-     console.log("testtttttttt sip : ", $modelData)
+     //console.log("testtttttttt sip : ", $modelData)
     sipAddresses.forEach(function (sipAddress) {
       model.append({ $modelData: sipAddress })
     })

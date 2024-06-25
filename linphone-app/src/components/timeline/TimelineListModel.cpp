@@ -96,6 +96,12 @@ void TimelineListModel::selectAll(const bool& selected){
 		it->objectCast<TimelineModel>()->setSelected(selected);
 }
 
+TimelineModel*  TimelineListModel::getAt(const int& index){
+	auto timeline = mList.takeAt(index);
+	//emit selectedChanged(timeline.objectCast<TimelineModel>().data());
+	//auto timeline = mList[index].data(); // Obtenez le pointeur brut à partir du QSharedPointer<TimelineModel> à l'index spécifié
+	return timeline.objectCast<TimelineModel>().data();
+	}
 // -----------------------------------------------------------------------------
 
 bool TimelineListModel::removeRows (int row, int count, const QModelIndex &parent) {

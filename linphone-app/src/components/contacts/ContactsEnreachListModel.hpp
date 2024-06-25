@@ -55,6 +55,7 @@ public:
 	
 	Q_INVOKABLE void cleanAvatars ();
 	Q_INVOKABLE void update ();
+	//Q_INVOKABLE ContactEnreachModel*  getFirstEnreachContact(int row);
 	
 	void connectTo(FriendListListener * listener);
 	

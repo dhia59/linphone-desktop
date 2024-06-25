@@ -44,7 +44,7 @@ public:
     TimelineListModel * clone() const;
     void reset();
 	void selectAll(const bool& selected);
-	TimelineModel * getAt(const int& index);
+	TimelineModel*  getAt(const int& index);
 	QSharedPointer<TimelineModel> getTimeline(std::shared_ptr<linphone::ChatRoom> chatRoom, const bool &create);
 	Q_INVOKABLE QVariantList getLastChatRooms(const int& maxCount) const;
 	QSharedPointer<ChatRoomModel> getChatRoomModel(std::shared_ptr<linphone::ChatRoom> chatRoom, const bool &create);

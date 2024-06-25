@@ -23,6 +23,26 @@ Item {
     property string errorMessage:""
     property bool  noNetworkAlert:false
 
+
+
+    FontLoader {
+         id: fontAwesome
+         source: "qrc:/assets/fonts/fontawesome-desktop.otf"
+         onStatusChanged: {
+             if (status === FontLoader.Error) {
+                 console.error("Failed to load FontAwesome font: " + source);
+                 errorText.visible = true;
+             } else if (status === FontLoader.Ready) {
+                 console.log("FontAwesome font loaded successfully");
+                 console.log("Font name: " + fontAwesome.name);
+             } else if (status === FontLoader.Loading) {
+                 console.log("FontAwesome font is loading...");
+             }
+         }
+     }
+
+
+
     ColumnLayout {
 
         anchors.horizontalCenter:  parent.horizontalCenter
@@ -31,7 +51,7 @@ Item {
         property bool isValid: username.text.length &&
                                password.text.length
         onIsValidChanged: {
-            mainActionButton.enabled = true;
+            mainActionButton.enabled = isValid;
         }
         width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
         property alias usernameText: username.text
@@ -41,6 +61,7 @@ Item {
         }
 
         Form {
+            id:formcontainer
             orientation: Qt.Vertical
             width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
            // anchors.horizontalCenter: parent.horizontalCenter
@@ -49,7 +70,36 @@ Item {
                 FormGroup {
                     TextField {
                         id: username
-                        placeholderText: qsTr("Nom d'utilisateur")
+                        placeholderText: qsTr("Votre identifiant")
+                        Layout.preferredWidth: parent.width - 20
+                        Layout.alignment: Qt.AlignHCenter
+                        color: "white"
+                        font.pointSize: 11
+                        leftPadding: 30
+                        background: Rectangle {
+                            implicitWidth: 200
+                            implicitHeight: 50
+                            radius: implicitHeight / 2
+                            color: "transparent"
+
+                            Text {
+                                text: "\uf007"
+                                font.pointSize: 14
+                                font.family: fontAwesome.name
+                                color: "#20E8E4"
+                                anchors.left: parent.left
+                                anchors.verticalCenter: parent.verticalCenter
+                                leftPadding: 10
+                            }
+
+                            Rectangle {
+                                width: parent.width - 10
+                                height: 1
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.bottom: parent.bottom
+                                color: blue
+                            }
+                        }
                     }
                 }
 
@@ -62,7 +112,36 @@ Item {
 
                     PasswordField {
                         id: password
-                         placeholderText: qsTr("Mot de passe")
+                        placeholderText: qsTr("Votre mot de passe")
+                        Layout.preferredWidth: parent.width - 20
+                        Layout.alignment: Qt.AlignHCenter
+                        color: "white"
+                        font.pointSize: 11
+                        leftPadding: 30
+                        echoMode: TextField.PasswordEchoOnEdit
+                        background: Rectangle {
+                            implicitWidth: 200
+                            implicitHeight: 50
+                            radius: implicitHeight / 2
+                            color: "transparent"
+                            Text {
+                                text: "\uf023"
+                                font.pointSize: 14
+                                font.family: fontAwesome.name
+                                color: "#20E8E4"
+                                anchors.left: parent.left
+                                anchors.verticalCenter: parent.verticalCenter
+                                leftPadding: 10
+                            }
+
+                            Rectangle {
+                                width: parent.width - 10
+                                height: 1
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.bottom: parent.bottom
+                                color: blue
+                            }
+                        }
                     }
                 }
             }
@@ -97,19 +176,32 @@ Item {
                 color: "red"
             }
         }
-        Row {
-            id: buttons
 
+        Row {
+
+            id: buttons
+            topPadding: 60
           //  loading: assistantModel.isProcessing
 
             spacing: AssistantAbstractViewStyle.buttons.spacing
 
             anchors.horizontalCenter: parent.horizontalCenter
 
+
+          /*  CButton{
+                height: 50
+                Layout.preferredWidth: 200
+                Layout.alignment: Qt.AlignHCenter
+                name: "Log In"
+                baseColor: "blue"
+                borderColor: "red"
+
+            }*/
+
             TextButtonB {
               id: mainActionButton
               enabled:false
-              text:"Login"
+              text:"Me connecter"
                 onClicked:{
                   isBusy= true
                  //   busyIndicator.running= true
@@ -124,8 +216,10 @@ Item {
                         window.setView('Home')
                     }
                 }
+
                 anchors.verticalCenter: parent.verticalCenter
             }
+
         }
 
 
@@ -192,4 +286,3 @@ Item {
    }
 
 }
-

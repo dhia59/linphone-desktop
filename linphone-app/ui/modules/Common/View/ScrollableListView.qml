@@ -43,6 +43,15 @@ ListView {
 			cacheBuffer= (view.contentHeight > 0 ? view.contentHeight : 0)
 		if(bindToEnd) positionViewAtEnd()
 	}
+
+    Component.onCompleted: {
+        //console.log("_ListView is completed")
+        // Alternative ways to verify that this code is running
+       // view.backgroundColor = "yellow" // Visual cue
+        view.currentIndex = 0 // Select first item
+        //console.log("_First item selected:", view.currentIndex)
+
+    }
 	cacheBuffer: height > 0 ? height : 0
 	// ---------------------------------------------------------------------------
 	

@@ -291,6 +291,13 @@
     </message>
 </context>
 <context>
+    <name>CButton</name>
+    <message>
+        <source>Log In</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CallModel</name>
     <message>
         <source>callStatsCodec</source>
@@ -1004,10 +1011,6 @@
         <translation type="unfinished">你真的要从地址簿中移除该联系人吗？</translation>
     </message>
     <message>
-        <source>searchContactPlaceholder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>addContact</source>
         <translation type="unfinished">添加联系人</translation>
     </message>
@@ -1021,15 +1024,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Employés</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Partagés</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Personnels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collaborateurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>recherche contact</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1470,6 +1477,10 @@
         <source>cleanHistory</source>
         <translation>删除历史记录</translation>
     </message>
+    <message>
+        <source>Enter un numéro</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Incall</name>
@@ -1753,11 +1764,11 @@
         <translation type="unfinished">交通工具</translation>
     </message>
     <message>
-        <source>Nom d&apos;utilisateur</source>
+        <source>Votre identifiant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mot de passe</source>
+        <source>Votre mot de passe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1799,10 +1810,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>smartSearchBarTooltip</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>confirmFetchUri</source>
         <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
         <translation type="unfinished"></translation>
@@ -1818,11 +1825,35 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>mainWindowConferencesTitle</source>
+        <source>Rechercher, se rencontrer et appeler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Rechercher, se rencontrer et appeler</source>
+        <source>Aucune connexion internet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messageries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messageries vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1853,6 +1884,86 @@
     <message>
         <source>Messagerie vocale</source>
         <extracomment>&apos;Recordings&apos; : Label for the recordings menu.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainWindowOrigin</name>
+    <message>
+        <source>newVersionCheckError</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>noNewVersionAvailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newVersionInstalled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mainSearchBarPlaceholder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>smartSearchBarTooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newChatRoom</source>
+        <extracomment>&apos;Start a chat room&apos; : Tooltip to illustrate a button</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newChatRoomUriMissing</source>
+        <extracomment>&apos;Conference URI is not set. You have to change it in your account settings in order to create new group chats.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newConferenceButton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>newConferenceUriMissing</source>
+        <extracomment>&apos;Video conference URI is not set. You have to change it in your account settings in order to create new meetings.&apos; : Tooltip to warn the user to change a setting to activate an action.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>openHome</source>
+        <extracomment>&apos;Open Home&apos; : Tooltip for a button that open the home view</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>openCalls</source>
+        <extracomment>&apos;Open call history&apos; : Tooltip for a button that open the call history view</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>openChats</source>
+        <extracomment>&apos;Open chats&apos; : Tooltip for a button that open the conversations view</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>openContacts</source>
+        <extracomment>&apos;Open contacts&apos; : Tooltip for a button that open the contacts view</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>openMeetings</source>
+        <extracomment>&apos;Open meetings&apos; : Tooltip for a button that open the meetings list</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>remoteProvisioningWarnAccountOverwrite</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3792,79 +3903,6 @@
     <message>
         <source>addContact</source>
         <translation>添加联系人</translation>
-    </message>
-</context>
-<context>
-    <name>Timeline</name>
-    <message>
-        <source>timelineFilter</source>
-        <extracomment>A title for filtering mode.</extracomment>
-        <translation>筛选</translation>
-    </message>
-    <message>
-        <source>timelineFilterAll</source>
-        <extracomment>&apos;All&apos; The mode for timelines filtering.</extracomment>
-        <translation>全部</translation>
-    </message>
-    <message>
-        <source>timelineFilterCustom</source>
-        <extracomment>&apos;Custom&apos; The mode for timelines filtering.</extracomment>
-        <translation>自定义</translation>
-    </message>
-    <message>
-        <source>timelineFilterSimpleRooms</source>
-        <extracomment>&apos;Simple rooms&apos; : Filter item. Selecting it will show all secure chat groups (with more than one participant).</extracomment>
-        <translation>基础聊天室</translation>
-    </message>
-    <message>
-        <source>timelineFilterSecureRooms</source>
-        <extracomment>&apos;Secure rooms&apos; : Filter item. Selecting it will show all secure rooms.</extracomment>
-        <translation>安全室</translation>
-    </message>
-    <message>
-        <source>timelineFilterChatGroups</source>
-        <extracomment>&apos;Chat groups&apos; : Filter item. Selecting it will show all chat groups (with more than one participant).</extracomment>
-        <translation>聊天群</translation>
-    </message>
-    <message>
-        <source>timelineFilterEphemerals</source>
-        <extracomment>&apos;Ephemerals&apos; : Filter item. Selecting it will show all chat rooms where the ephemeral mode has been enabled.</extracomment>
-        <translation>阅后即焚</translation>
-    </message>
-    <message>
-        <source>timelineSearchPlaceholderText</source>
-        <extracomment>&apos;Search in the list&apos; : ths is a placeholder when searching something in the timeline list</extracomment>
-        <translation>在列表中查找</translation>
-    </message>
-    <message>
-        <source>timelineFilterAllSecureLevelRooms</source>
-        <extracomment>&apos;All security levels&apos; : Filter item. Selecting it will not do any filter on security level.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>timelineFilterStandardRooms</source>
-        <extracomment>&apos;Standard rooms&apos; : Filter item. Selecting it will show all simple rooms.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>timelineFilterAnyChatRooms</source>
-        <extracomment>&apos;Any conversations&apos; : Filter item. Selecting it will not do any filter on the type of conversations.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>timelineFilterAnyEphemerals</source>
-        <extracomment>&apos;Ephemerals on/off&apos; : Filter item. Selecting it will not do any filter on ephemerals activation.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>timelineFilterNoEphemerals</source>
-        <extracomment>&apos;No Ephemerals&apos; : Filter item. Selecting it will hide all chat rooms where the ephemeral mode has been enabled.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>timelineFilterConferences</source>
-        <extracomment>&apos;Conferences&apos; : Filter item. Selecting it will show all conferences.</extracomment>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -1,5 +1,6 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.2
 
 import Common 1.0
 import Linphone 1.0
@@ -12,6 +13,8 @@ import App.Styles 1.0
 // =============================================================================
 
 ColumnLayout {
+    property bool isBusy: true
+
     function _removeContact (contact) {
         window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
                                        descriptionText: qsTr('removeContactDescription'),
@@ -29,6 +32,7 @@ ColumnLayout {
     // ---------------------------------------------------------------------------
 
     Rectangle {
+        id:searchBarId
         Layout.fillWidth: true
         Layout.preferredHeight: ContactsStyle.bar.height
 
@@ -46,7 +50,7 @@ ColumnLayout {
                 Layout.fillWidth: true
                 icon: ContactsStyle.filter.icon
                 overwriteColor: ContactsStyle.filter.colorModel.color
-                placeholderText: qsTr('searchContactPlaceholder')
+                placeholderText: qsTr('recherche contact')
 
                 onTextChanged: contacts.setFilter(text)
             }
@@ -97,24 +101,56 @@ ColumnLayout {
     // Contacts list.
     // ---------------------------------------------------------------------------
 
+
+
+
+
+Rectangle{
+    Layout.fillWidth: true
+    Layout.fillHeight: true
+    color: "black"
+
     Rectangle {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
+        id:contactList
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        height: 500
+        width:300
         color: ContactsStyle.backgroundColor.color
 
         ScrollableListView {
+            id:scoljlkh
             anchors.fill: parent
             spacing: 0
 
             model: ContactsEnreachListProxyModel {
                 id: contacts
+                onLoadedContacts:{
+
+                    console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz loaded contacts "+lastsipcontact);
+                    isBusy=false;
+                    contactEditLoader.setSource('ContactEdit.qml', {
+                                                    sipAddress: lastsipcontact
+                                                })
+
+                console.debug("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+                }
             }
 
+            Connections {
+                target: contacts
+
+                onLoadedContacts: {
+                    console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz loaded contacts 0 "+lastsipcontact);
+                    console.debug("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+
+                }
+            }
             delegate: Borders {
                 bottomColor: ContactsStyle.contact.border.colorModel.color
                 bottomWidth: ContactsStyle.contact.border.width
                 height: ContactsStyle.contact.height
-                width: parent ? parent.width : 0
+                width: 800
 
                 // ---------------------------------------------------------------------
 
@@ -278,16 +314,18 @@ ColumnLayout {
 
                         MouseArea {
                             anchors.fill: parent
-                            visible: $modelData.contactEnreach.contactType==="personnel"
-                            onClicked: window.setView('ContactEdit', {
-                                                          sipAddress: $modelData.contactEnreach.sipAddresses[0]
-                                                      })
+                            //visible: $modelData.contactEnreach.contactType==="personnel"
+                            onClicked:
+                                contactEditLoader.setSource('ContactEdit.qml', {
+                                                                sipAddress: $modelData.contactEnreach.sipAddresses[0]
+                                                            })
+                               // window.setView('ContactEdit', )
                         }
 
                         RowLayout {
                             anchors {
                                 fill: parent
-                                leftMargin: ContactsStyle.contact.leftMargin
+                                leftMargin: 10
                                 rightMargin: ContactsStyle.contact.rightMargin
                             }
                             spacing: ContactsStyle.contact.spacing
@@ -306,7 +344,7 @@ ColumnLayout {
 
                             Text {
                                 Layout.fillHeight: true
-                                Layout.preferredWidth: ContactsStyle.contact.username.width
+                                Layout.preferredWidth: 100
 
                                 color: ContactsStyle.contact.username.colorModel.color
                                 elide: Text.ElideRight
@@ -355,6 +393,76 @@ ColumnLayout {
                     }
                 }
             }
+
+
         }
     }
+
+    Rectangle{
+     id:contactEditId
+    //Layout.fillHeight: true
+    //Layout.fillWidth: true
+    anchors.left: contactList.right
+    anchors.right: parent.right
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+    height: 100
+    width:200
+    Image {
+              source: "qrc:/assets/images/appBackground.png"
+              anchors.fill: parent
+              fillMode: Image.PreserveAspectCrop
+
+          }
+
+    Loader {
+        id: contactEditLoader
+        anchors.fill: parent
+        source:'Home.qml'
+    }
+
+
+}
+}
+
+Component.onCompleted:{
+    console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx contactList load completed")
+    console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx contactList load completed 0 "+
+                contacts.mcontacts
+                )
+    console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx contactList load completed 1 "+
+                actions.contactModel.contactEnreach.sipAddresses
+                )
+    console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx contactList load completed 2 "+
+                parent.model.contactEnreach.sipAddresses[0]
+                )
+
+    contactEditLoader.setSource('ContactEdit.qml', {
+                                    sipAddress: contacts.contactEnreach.sipAddresses[0]
+                                })
+}
+
+
+Loader{
+       id:busyIndicatorLoader
+       source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
+       visible: isBusy
+       anchors.fill: parent
+       onVisibleChanged: {
+           console.log("visibleeee ", isBusy)
+       }
+ }
+   Rectangle {
+          id: busyOverlay
+          color: "transparent"
+          anchors.fill: parent
+          visible: busyIndicatorLoader.visible
+          MouseArea {
+              anchors.fill: parent
+              onClicked: {
+                  // Prevent interaction with the main page while busy
+              }
+          }
+  }
+
 }

@@ -71,12 +71,22 @@ ContactsEnreachListProxyModel::ContactsEnreachListProxyModel (QObject *parent) :
 }
 // -----------------------------------------------------------------------------
 void ContactsEnreachListProxyModel::loadContacts() {
-	qDebug() << "contactsLoaddddddddddd" ;
+	qDebug() << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacontactsLoaddddddddddd";
+	getList();
+}
+void ContactsEnreachListProxyModel::getloadedContacts() {
+	qDebug() << "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp";
 	getList();
 }
 void ContactsEnreachListProxyModel::getList() {
-	ContactsEnreachListModel *contacts = new ContactsEnreachListModel();
+	qDebug() << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacontactsLoaddddddddddd";
+
+	qDebug() << "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcontactsLoaddddddddddd";
+
+	contacts = new ContactsEnreachListModel();
 	listApiContacts(contacts);
+	qDebug() << "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg";
+
 }
 void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListModel *contacts, QVariantList *listSips) {
 	ContactsListModel* contactsListModel = CoreManager::getInstance()->getContactsListModel();
@@ -168,6 +178,9 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 
 							setSourceModel(contacts);
 							sort(0);
+							qDebug() << "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj " << listSips->first().toString();
+
+							emit loadedContacts(listSips->first().toString());
 
 						}
 					}

@@ -63,10 +63,10 @@ public:
 	Q_INVOKABLE void unselectAll();
 	Q_INVOKABLE void setFilterFlags(const int& filterFlags);
 	Q_INVOKABLE void setFilterText(const QString& text);
+	Q_INVOKABLE TimelineModel*  getFirstChatRoom(int row);
 	
 	TimelineListSource getListSource() const;
 	void setListSource(const TimelineListSource& source);
-	
 signals:
 	void countChanged();
 	void selectedCountChanged(int selectedCount);

@@ -94,7 +94,8 @@ void SoundPlayer::pause () {
 }
 
 bool SoundPlayer::open(){
-	return mInternalPlayer->open(Utils::appStringToCoreString(mSource)) == 0;
+	auto s = Utils::appStringToCoreString(mSource);
+	return mInternalPlayer->open(s) == 0;
 }
 
 bool SoundPlayer::play () {

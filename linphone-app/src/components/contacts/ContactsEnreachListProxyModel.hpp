@@ -1,3 +1,5 @@
+
+
 /*
  * Copyright (c) 2010-2020 Belledonne Communications SARL.
  *
@@ -34,11 +36,17 @@ class ContactsEnreachListProxyModel : public QSortFilterProxyModel {
   Q_PROPERTY(bool useLocalFilter READ isLocalFilterUsed WRITE setLocalFilter);
   Q_PROPERTY(bool usePartageFilter READ isPartageFilterUsed WRITE setPartgeFilter);
   Q_PROPERTY(bool usePersonnelFilter READ isPersonnelFilterUsed WRITE setPersonnelFilter);
+  Q_PROPERTY(ContactsEnreachListModel * mcontacts MEMBER contacts NOTIFY loadedContacts)
 
 public:
   ContactsEnreachListProxyModel (QObject *parent = Q_NULLPTR);
-
+  ContactsEnreachListModel *contacts;
   Q_INVOKABLE void setFilter (const QString &pattern);
+  Q_INVOKABLE void getloadedContacts();
+  Q_SIGNAL void loadedContacts(const QString lastsipcontact);
+//signals:
+	//void loadedContacts(QVariantList *listSips);
+
 public slots:
 	void loadContacts();
 protected:
