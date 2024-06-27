@@ -44,20 +44,26 @@ class ForwardingListProxyModel : public QSortFilterProxyModel
 	friend class ForwardingModel;
 	friend class ForwardingManagement;
 	Q_OBJECT
+		Q_PROPERTY(bool isLoading READ getIsLoading WRITE setIsLoading NOTIFY isLoadingChanged)
+
 
 public:
-
 	explicit ForwardingListProxyModel(QObject *parent = nullptr);
 	void loadListForwardings();
+	bool getIsLoading();
+	void setIsLoading(const bool isLoading);
+signals:
+	void isLoadingChanged();
+public slots:
+	void handleListFowardingUpdate();
 protected:
 	bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const override;
 	bool lessThan(const QModelIndex &left, const QModelIndex &right) const override;
 
-public slots:
-	void handleListFowardingUpdate();
+
 
 private:
-     
+	bool m_isLoading;
 };
 
 

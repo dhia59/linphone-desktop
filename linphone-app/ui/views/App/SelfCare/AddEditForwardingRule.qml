@@ -32,6 +32,7 @@ ScrollView {
     }
     function resetForm(){
         showAdvancedSettings= false
+        advancedSettingsFieldValue.checked= showAdvancedSettings
         forwardingLabel.text="";
         forwardingOrigin.currentIndex=0;
         forwardType.currentIndex=0;
@@ -68,7 +69,7 @@ ScrollView {
         if(forwardingDestination.currentIndex===2){
             destinationText= currentForwardingData.destination
         }
-        if(currentForwardingData.specificCaller!==null){
+        if(currentForwardingData.specificCaller.length>0){
             specificCallerList= currentForwardingData.specificCaller.split(",");
             updateList();
         }
@@ -191,9 +192,9 @@ ScrollView {
     }
     function isValidForm(){
         if(forwardingDestination.currentIndex===2){
-            return destinationText.length>0;
+            return destinationText.length>0 && forwardingLabel.text.length>0;
         }
-        return true;
+        return forwardingLabel.text.length>0;
     }
 
     property ForwardingModel currentForwardingData: null
@@ -372,7 +373,8 @@ ScrollView {
                      CheckBox {
                         id: advancedSettingsFieldValue
                         text: "Réglages avancés"
-                        onCheckedChanged: {
+                        checked: showAdvancedSettings
+                        onClicked:  {
                             showAdvancedSettings= !showAdvancedSettings
                         }
 
@@ -737,7 +739,8 @@ ScrollView {
                                                                              specificCaller: specificCallerList,
                                                                              daysFilter: getDaysFilter(),
                                                                              startTimeFilter: fromDateField.text,
-                                                                             endTimeFilter: toDateField.text
+                                                                             endTimeFilter: toDateField.text,
+                                                                            activated: currentForwardingData.activated
 
                                                                          }))
                             {

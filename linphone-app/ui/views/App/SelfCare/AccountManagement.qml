@@ -155,7 +155,6 @@ Rectangle{
                         text:"Enregistrer"
                        onClicked:{
                            if(accountManagementModel.updatePassword(oldPassword.text, newPassword.text)){
-
                                console.log("bingooooooo")
                            }
                            else{

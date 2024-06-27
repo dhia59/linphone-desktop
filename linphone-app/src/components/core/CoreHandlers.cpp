@@ -241,7 +241,7 @@ void CoreHandlers::onMessagesReceived (
 				emit accountFirstLogin();
 				config->setBool("defaultAccount", "contactsSyncro", true);
 			}
-			emit tokenRecieved();
+ 		emit tokenRecieved();
 					
 		}
 	/*	if (!message->getCustomHeader("x-instance").empty()) {

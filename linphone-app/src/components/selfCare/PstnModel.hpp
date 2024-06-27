@@ -41,7 +41,7 @@
 class PstnModel : public QAbstractListModel
 {
 	Q_OBJECT
-		
+		Q_PROPERTY(bool isLoading READ getIsLoading WRITE setIsLoading NOTIFY isLoadingChanged)
 		
 public:
 	enum CustomRoles {
@@ -55,14 +55,17 @@ public:
 	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 	QHash<int, QByteArray> roleNames() const override;
-
+	// getters & setters
+	bool getIsLoading();
+	void setIsLoading(const bool isLoading);
+	// incavokable
 	Q_INVOKABLE  void updateCustomNumber(const int &currentIndex);
 signals:
-	
+	void isLoadingChanged();
 private:
 	QStringList m_data;
 	QStringList m_labelTexts;
-	
+	bool m_isLoading;
 };
 
 

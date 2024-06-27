@@ -74,6 +74,7 @@ void CallerManagement::loadPstnLists()
 		}
 		QNetworkReply *reply = manager->get(request);
 		QVariantList *listSips = new QVariantList();
+		setIsLoading(true);
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
 				if (reply) {
@@ -88,13 +89,13 @@ void CallerManagement::loadPstnLists()
 							setIsHideCustomNumber(hideCallerId);
 							bool dnd = jsonResponse["dnd"].toBool();
 							setDnd(dnd);
-							
+							setIsLoading(false);
 						}
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
-					
+						setIsLoading(false);
 					}
 
 					// Clean up the reply
@@ -102,6 +103,7 @@ void CallerManagement::loadPstnLists()
 				}
 				else {
 					qDebug() << "noo reply";
+					setIsLoading(false);
 				}
 
 			});
@@ -112,7 +114,9 @@ void CallerManagement::loadPstnLists()
 bool CallerManagement::getDnd() {
 	return m_dnd;
 }
-
+bool CallerManagement::getIsLoading() {
+	return m_isLoading;
+}
 
 bool CallerManagement::getIsHideCustomNumber()
 {
@@ -132,6 +136,14 @@ void CallerManagement::setDnd(const bool dnd)
 }
 
 
+void CallerManagement::setIsLoading(const bool isLoading)
+{
+	if (m_isLoading != isLoading) {
+		m_isLoading = isLoading;
+		emit isLoadingChanged();
+	}
+	
+}
 
 void CallerManagement::hideCallerIdByUsername(const bool &isHideCustomNumber) 
 {
@@ -158,6 +170,7 @@ void CallerManagement::hideCallerIdByUsername(const bool &isHideCustomNumber)
 		foreach(const QByteArray &header, headers) {
 			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
 		}
+		setIsLoading(true);
 
 		// Perform the POST request
 		QNetworkReply *reply = manager->post(request, QByteArray()); // No data for now, adjust as needed
@@ -172,19 +185,22 @@ void CallerManagement::hideCallerIdByUsername(const bool &isHideCustomNumber)
 						if (!jsonResponse.isNull()) {
 		
 							loadPstnLists();
+
 						}
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
-					
+						setIsLoading(false);
 					}
 
 					// Clean up the reply
 					reply->deleteLater();
+					
 				}
 				else {
 					qDebug() << "noo reply";
+					setIsLoading(false);
 				}
 
 			});

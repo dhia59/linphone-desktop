@@ -110,7 +110,6 @@ void CoreManager::initCoreManager(){
 	mEventCountNotifier = new EventCountNotifier(this);
 	mForwardingManagement = new ForwardingManagement(this);
 	mTimelineListModel = new TimelineListModel(this);
-	mForwardingListProxyModel = new ForwardingListProxyModel(this);
 	mEventCountNotifier->updateUnreadMessageCount();
 	QObject::connect(mEventCountNotifier, &EventCountNotifier::eventCountChanged,this, &CoreManager::eventCountChanged);
 	migrate();

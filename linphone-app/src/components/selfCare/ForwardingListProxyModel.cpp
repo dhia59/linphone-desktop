@@ -50,16 +50,11 @@ using namespace std;
 ForwardingListProxyModel::ForwardingListProxyModel(QObject *parent) : QSortFilterProxyModel(parent)
 {
 	CoreManager *coreManager = CoreManager::getInstance();
-	/*QObject::connect(
+	QObject::connect(
 		coreManager->getHandlers().get(), &CoreHandlers::forwadingListUpdated,
 		this, &ForwardingListProxyModel::handleListFowardingUpdate
 	);
-	*/
-
-	QObject::connect(
-		coreManager->getHandlers().get(), &CoreHandlers::tokenRecieved,
-		this, &ForwardingListProxyModel::handleListFowardingUpdate
-	);
+	
 	loadListForwardings();
 }
 void ForwardingListProxyModel::handleListFowardingUpdate() {
@@ -86,7 +81,7 @@ void ForwardingListProxyModel::loadListForwardings()
 		}
 		
 		QNetworkReply *reply = manager->get(request);
-		QVariantList *listSips = new QVariantList();
+		setIsLoading(true);
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
 				if (reply) {
@@ -120,22 +115,23 @@ void ForwardingListProxyModel::loadListForwardings()
 								
 								forwardingModel->setFiltersOnTargetNumber(filtersList);
 								list->addForwardingRule(forwardingModel);
-								//delete(forwardingModel);
 							}
-							
+							setIsLoading(false);
 							setSourceModel(list);
-							sort(0);
+							///sort(0);
 							endResetModel();
+							
 						}
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
-						//sort(0);
+						setIsLoading(false);
 					}
 					reply->deleteLater();
 				}
 				else {
+					setIsLoading(false);
 					qDebug() << "noo reply";
 				}
 
@@ -151,6 +147,20 @@ bool ForwardingListProxyModel::filterAcceptsRow(
 {
 	
 	return true;
+}
+
+bool ForwardingListProxyModel::getIsLoading()
+{
+	return m_isLoading;
+}
+
+void ForwardingListProxyModel::setIsLoading(const bool isLoading)
+{
+	if (isLoading != m_isLoading) {
+		m_isLoading = isLoading;
+		emit isLoadingChanged();
+	}
+	
 }
 
 bool ForwardingListProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {

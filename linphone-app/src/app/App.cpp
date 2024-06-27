@@ -1148,10 +1148,6 @@ void App::openAppAfterInit (bool mustBeIconified) {
 		coreManager->getHandlers().get(), &CoreHandlers::accountFirstLogin,
 		coreManager->getContactsEnreachListProxyModel(), &ContactsEnreachListProxyModel::loadContacts
 	);
-	QObject::connect(
-		coreManager->getHandlers().get(), &CoreHandlers::forwadingListUpdated,
-		coreManager->getForwardingListProxyModel(), &ForwardingListProxyModel::handleListFowardingUpdate
-	);
 	QQuickWindow *mainWindow = getMainWindow();
 
 	

@@ -14,7 +14,7 @@ import App.Styles 1.0
 Rectangle {
     Column {
       anchors.fill: parent
-      width: 200
+      width: parent.width
 
         // Create a custom model
       PstnModel {
@@ -92,6 +92,19 @@ Rectangle {
 
 
 
+
 }
+    Loader{
+                id:busyIndicatorLoader
+                source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
+                visible: model.isLoading || callerModel.isLoading
+                //anchors.fill: parent
+                anchors.centerIn: parent
+                /*x:500
+                y:300*/
+                onVisibleChanged: {
+                    console.log("visibleeee  caller", model.isLoading)
+                }
+          }
 }
 

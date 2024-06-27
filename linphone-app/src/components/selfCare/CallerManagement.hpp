@@ -43,6 +43,7 @@ class CallerManagement :public QObject
 	Q_OBJECT
 		Q_PROPERTY(bool isHideCustomNumber READ getIsHideCustomNumber WRITE setIsHideCustomNumber NOTIFY isHideCustomNumberChanged)
 		Q_PROPERTY(bool dnd READ getDnd WRITE setDnd NOTIFY dndChanged)
+		Q_PROPERTY(bool isLoading READ getIsLoading WRITE setIsLoading NOTIFY isLoadingChanged)
 public:
 	enum CustomRoles {
 		DisplayRole = Qt::UserRole + 1, // Custom role for display text
@@ -54,18 +55,22 @@ public:
 	// IsHideCustomNumber
 	bool getIsHideCustomNumber();
 	bool getDnd();
+	bool getIsLoading();
 	void setIsHideCustomNumber(const bool &isHideCustomNumber);
 	void setData(const QStringList &data);
 	void setDnd(const bool dnd);
+	void setIsLoading(const bool isLoading);
 
 	Q_INVOKABLE  void hideCallerIdByUsername(const bool &isHideCustomNumber);
 	Q_INVOKABLE  void setDndByUsername(const bool &dnd);
 signals:
 	void isHideCustomNumberChanged();
 	void dndChanged();
+	void isLoadingChanged();
 private:
 	bool m_isHideCustomNumber;
 	bool m_dnd;
+	bool m_isLoading;
 };
 
 

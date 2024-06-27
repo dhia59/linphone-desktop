@@ -49,7 +49,7 @@ using namespace std;
 
 ForwardingManagement::ForwardingManagement(QObject *parent) : QObject(parent)
 {	
-	
+	setIsLoading(false);
 }
 bool ForwardingManagement::deleteForwardingRule(const QString &forwardingId) {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
@@ -71,7 +71,7 @@ bool ForwardingManagement::deleteForwardingRule(const QString &forwardingId) {
 		foreach(const QByteArray &header, headers) {
 			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
 		}
-
+		setIsLoading(true);
 		QNetworkReply *reply = manager->deleteResource(request); 
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
@@ -82,12 +82,14 @@ bool ForwardingManagement::deleteForwardingRule(const QString &forwardingId) {
 
 						if (responseData.toStdString()=="true") {
 							emit CoreManager::getInstance()->getHandlers()->forwadingListUpdated();
+							setIsLoading(false);
 							return true;
 						}
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
+						setIsLoading(false);
 						return false;
 					}
 
@@ -96,6 +98,7 @@ bool ForwardingManagement::deleteForwardingRule(const QString &forwardingId) {
 				}
 				else {
 					qDebug() << "noo reply";
+					setIsLoading(false);
 					return false;
 				}
 
@@ -180,7 +183,7 @@ bool ForwardingManagement::addForwardingRule(const QVariantMap &map) {
 			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
 		}
 
-		// Perform the POST request
+		setIsLoading(true);
 		QNetworkReply *reply = manager->post(request, jsonData); // No data for now, adjust as needed
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
@@ -191,21 +194,27 @@ bool ForwardingManagement::addForwardingRule(const QVariantMap &map) {
 						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 						if (!jsonResponse.isNull()) {
 							emit CoreManager::getInstance()->getHandlers()->forwadingListUpdated();
+							setIsLoading(false);
 							return true;
 						}
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
+						setIsLoading(false);
 						return false;
+						
 					}
 
 					// Clean up the reply
 					reply->deleteLater();
+					setIsLoading(false);
 				}
 				else {
 					qDebug() << "noo reply";
+					setIsLoading(false);
 					return false;
+					
 				}
 
 			});
@@ -213,17 +222,12 @@ bool ForwardingManagement::addForwardingRule(const QVariantMap &map) {
 	}
 	else
 	{
+		setIsLoading(false);
 		return false;
 	}
 }
 Q_INVOKABLE bool ForwardingManagement::activateDesactivateForwardingRule(ForwardingModel *forwardingmodel) {
 	QJsonObject jsonObject;
-	jsonObject["label"] = forwardingmodel->getLabel();
-	jsonObject["forwardType"] = forwardingmodel->getforwardType();
-	jsonObject["filter"] = forwardingmodel->getFilter();
-	jsonObject["specificCaller"] = "";
-	jsonObject["noAnswerForwardingDelay"] = forwardingmodel->getNoAnswerForwardingDelay();
-	jsonObject["destination"] = forwardingmodel->getDestination();
 	jsonObject["activated"] = ! forwardingmodel->getActivated();
 
 	QJsonDocument jsonDocument(jsonObject);
@@ -233,7 +237,7 @@ Q_INVOKABLE bool ForwardingManagement::activateDesactivateForwardingRule(Forward
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/ExtensionUpdateForwardingRule/"+ forwardingmodel->getforwardingID());
+		QUrl url("http://10.3.3.66:8081/SelfCare/ActivateDesactivateForwardingRule/"+ forwardingmodel->getforwardingID());
 		QUrlQuery query;
 		query.addQueryItem("username", username);	
 		url.setQuery(query);
@@ -247,32 +251,47 @@ Q_INVOKABLE bool ForwardingManagement::activateDesactivateForwardingRule(Forward
 		foreach(const QByteArray &header, headers) {
 			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
 		}
-
+		setIsLoading(true);
 		QNetworkReply *reply = manager->post(request, jsonData); 
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
 				if (reply) {
+					int statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
 					if (reply->error() == QNetworkReply::NoError) {
 						QByteArray responseData = reply->readAll();
 						qDebug() << "Response:" << responseData;
 						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 						if (!jsonResponse.isNull()) {
 							emit CoreManager::getInstance()->getHandlers()->forwadingListUpdated();
+							setIsLoading(false);
 							return true;
 						}
+						
 					}
-					else {
-						qDebug() << "Error Code:" << reply->error();
-						qDebug() << "Error String:" << reply->errorString();
-						return false;
-					}
+					else 
+					{
+						int statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+						QByteArray errorData = reply->readAll();
+						if (statusCode == 400 && errorData.contains("PreconditionFailed"))
+						{
+							qDebug() << "PreconditionFailedddddddddddddddddddddd" ;
+							emit activationFailed();
 
-					// Clean up the reply
+						}
+						else {
+							qDebug() << "Error Code:" << reply->error();
+							qDebug() << "Error String:" << reply->errorString();
+							return false;
+						}
+						setIsLoading(false);
+					}
+			     	// Clean up the reply
 					reply->deleteLater();
 				}
 				else {
 					qDebug() << "noo reply";
 					return false;
+					setIsLoading(false);
 				}
 
 			});
@@ -281,6 +300,16 @@ Q_INVOKABLE bool ForwardingManagement::activateDesactivateForwardingRule(Forward
 	else
 	{
 		return false;
+		setIsLoading(false);
+	}
+}
+bool ForwardingManagement::getIsLoading() {
+	return m_isLoading;
+}
+void ForwardingManagement::setIsLoading(const bool isLoading) {
+	if (m_isLoading != isLoading) {
+		m_isLoading = isLoading;
+		emit isLoadingChanged();
 	}
 }
 Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map)
@@ -294,6 +323,7 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 	QVariantList listVariants = map["numberFilter"].toList();
 	QVariantList specificCaller = map["specificCaller"].toList();
 	QString forwardingId = map["forwardingId"].toString();
+	bool activated = map["activated"].toBool();
 	QJsonArray  filtrerTargetNumbers;
 	for (const QVariant &variant : listVariants) {
 		filtrerTargetNumbers.append(variant.toString());
@@ -305,6 +335,7 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 	jsonObject["filter"] = getOriginText(origin);
 	jsonObject["specificCaller"] = "";
 	jsonObject["filtersOnTargetNumber"] = filtrerTargetNumbers;
+	jsonObject["activated"] = activated;
 	QString startTimeFilter = map["startTimeFilter"].toString();
 	QString endTimeFilter = map["endTimeFilter"].toString();
 	QVariantList daysFilter = map["daysFilter"].toList();
@@ -345,7 +376,7 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 		foreach(const QByteArray &header, headers) {
 			qDebug() << "heloooooooooo" + header << ":" << request.rawHeader(header);
 		}
-
+		setIsLoading(true);
 		QNetworkReply *reply = manager->post(request, jsonData); 
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
@@ -356,12 +387,15 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
 						if (!jsonResponse.isNull()) {
 							emit CoreManager::getInstance()->getHandlers()->forwadingListUpdated();
+							setIsLoading(false);
 							return true;
 						}
+						
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
+						setIsLoading(false);
 						return false;
 					}
 
@@ -370,6 +404,7 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 				}
 				else {
 					qDebug() << "noo reply";
+					setIsLoading(false);
 					return false;
 				}
 
@@ -378,6 +413,7 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 	}
 	else
 	{
+		setIsLoading(false);
 		return false;
 	}
 }

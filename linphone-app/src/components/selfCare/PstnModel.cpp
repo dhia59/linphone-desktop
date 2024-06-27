@@ -48,7 +48,6 @@ using namespace std;
 
 PstnModel::PstnModel(QObject *parent) : QAbstractListModel(parent)
 {	
-	//m_data << "op1" << "op2"<<"op3";
       loadPstnLists();
 }
 
@@ -74,6 +73,7 @@ void PstnModel::loadPstnLists()
 		}
 		QNetworkReply *reply = manager->get(request);
 		QVariantList *listSips = new QVariantList();
+		setIsLoading(true);
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
 				if (reply) {
@@ -91,19 +91,25 @@ void PstnModel::loadPstnLists()
 								m_labelTexts << jsonValue["number"].toString();
 							}							
 							endResetModel();
+							
 						}
+						setIsLoading(false);
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
 						sort(0);
+						setIsLoading(false);
+						
 					}
 
 					// Clean up the reply
 					reply->deleteLater();
+					setIsLoading(false);
 				}
 				else {
 					qDebug() << "noo reply";
+					setIsLoading(false);
 				}
 
 			});
@@ -142,6 +148,19 @@ QHash<int, QByteArray> PstnModel::roleNames() const
 	roles[Qt::DisplayRole] = "display"; // Name for DisplayRole
 	roles[Qt::UserRole] = "label";      // Name for custom role
 	return roles;
+}
+
+bool PstnModel::getIsLoading()
+{
+	return m_isLoading;
+}
+
+void PstnModel::setIsLoading(const bool isLoading)
+{
+	if (isLoading != m_isLoading) {
+		m_isLoading = isLoading;
+		emit isLoadingChanged();
+	}
 }
 
 

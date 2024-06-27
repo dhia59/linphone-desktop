@@ -40,12 +40,19 @@
 class ForwardingManagement :public QObject
 {	
 	Q_OBJECT
+		Q_PROPERTY(bool isLoading READ getIsLoading WRITE setIsLoading NOTIFY isLoadingChanged)
 public:
 	explicit ForwardingManagement(QObject *parent = nullptr);
 	Q_INVOKABLE bool addForwardingRule(const QVariantMap &map);
 	Q_INVOKABLE bool editForwardingRule(const QVariantMap &map);
 	Q_INVOKABLE bool deleteForwardingRule(const QString &forwardingId);
 	Q_INVOKABLE bool activateDesactivateForwardingRule( ForwardingModel *forwardingmodel);
+	// getters && setters
+	bool getIsLoading();
+	void setIsLoading(const bool isLoading);
+signals:
+	void activationFailed();
+	void isLoadingChanged();
 
 private:
 	QString getOriginText(int origin);
@@ -54,6 +61,7 @@ private:
 	QString JoinQvariantList(QVariantList &list,QString joinString);
 	int getNoAnswerDelay(int noAnswerdelay);
 	QString getTimeFilterText(QVariantList days, QString startDate, QString endDate);
+	bool m_isLoading;
 };
 
 Q_DECLARE_METATYPE(ForwardingManagement*)
