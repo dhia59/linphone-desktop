@@ -168,7 +168,14 @@ Rectangle{
     }
 
 }
+    Loader{
+        id:busyIndicatorLoader
+        source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
+        visible: accountManagementModel.isLoading
+        //anchors.fill: parent
+        anchors.centerIn: parent
 
+    }
 
     AccountManagementModel{
         id: accountManagementModel

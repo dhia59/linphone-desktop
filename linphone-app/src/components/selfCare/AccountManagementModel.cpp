@@ -29,7 +29,8 @@ using namespace std;
 AccountManagementModel::AccountManagementModel(QObject *parent) : QObject(parent)
 
 
-{	
+{
+	m_isLoading = false;
 	m_isPasswordMatch = false;
 	m_isPasswordUpdated = false;
 	m_isRequestSent = false;
@@ -40,6 +41,7 @@ AccountManagementModel::~AccountManagementModel()
 	m_isPasswordMatch = false;
 	m_isPasswordUpdated = false;
 	m_isRequestSent = false;
+	m_isLoading = false;
 }
 
 bool AccountManagementModel::getIsPasswordUpdated()
@@ -55,6 +57,11 @@ bool AccountManagementModel::getIsPasswordMatch()
 bool AccountManagementModel::getIsRequestSent()
 {
 	return m_isRequestSent;
+}
+
+bool AccountManagementModel::getIsLoading()
+{
+	return m_isLoading;
 }
 
 void AccountManagementModel::setIsPasswordMatch(const bool isPasswordMatch)
@@ -81,6 +88,14 @@ void AccountManagementModel::setIsRequestSent(const bool isRequestSent)
 	}
 }
 
+void AccountManagementModel::setIsLoading(const bool isLoading)
+{
+	if (m_isLoading != isLoading) {
+		m_isLoading = isLoading;
+		emit isLoadingChanged();
+	}
+}
+
 
 
 Q_INVOKABLE bool AccountManagementModel::updatePassword(QString oldPassword, QString newPassword)
@@ -90,13 +105,13 @@ Q_INVOKABLE bool AccountManagementModel::updatePassword(QString oldPassword, QSt
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://127.0.0.1:5249/SelfCare/UserUpdateDevicePassword");
+		QUrl url("http://10.3.3.66:8081/SelfCare/UserUpdateDevicePassword");
 		QUrlQuery query;
 		query.addQueryItem("username", username);
 		query.addQueryItem("oldPassword", oldPassword);
 		query.addQueryItem("newPassword", newPassword);
 		url.setQuery(query);
-
+		setIsLoading(false);
 		QNetworkRequest request(url);
 		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
 		request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
@@ -111,6 +126,7 @@ Q_INVOKABLE bool AccountManagementModel::updatePassword(QString oldPassword, QSt
 		if (reply) {
 			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
 				if (reply) {
+					setIsLoading(false);
 					if (reply->error() == QNetworkReply::NoError) {
 						QByteArray responseData = reply->readAll();
 						qDebug() << "Response:" << responseData;
@@ -129,6 +145,7 @@ Q_INVOKABLE bool AccountManagementModel::updatePassword(QString oldPassword, QSt
 				}
 				else {
 					qDebug() << "noo reply";
+					setIsLoading(false);
 					return false;
 				}
 
@@ -137,6 +154,7 @@ Q_INVOKABLE bool AccountManagementModel::updatePassword(QString oldPassword, QSt
 	}
 	else
 	{
+		setIsLoading(false);
 		return false;
 	}
 }

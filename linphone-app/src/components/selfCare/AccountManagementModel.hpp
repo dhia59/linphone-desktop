@@ -25,6 +25,7 @@ class AccountManagementModel :public QObject {
 	Q_PROPERTY(bool isPasswordUpdated READ getIsPasswordUpdated WRITE setIsPasswordUpdated NOTIFY isPasswordUpdatedChanged)
 	Q_PROPERTY(bool isPasswordMatch READ getIsPasswordMatch WRITE setIsPasswordMatch NOTIFY isPasswordMatchChanged)
 	Q_PROPERTY(bool isRequestSent READ getIsRequestSent WRITE setIsRequestSent NOTIFY isRequestSentChanged)
+	Q_PROPERTY(bool isLoading READ getIsLoading WRITE setIsLoading NOTIFY isLoadingChanged)
 
 public:
 	explicit AccountManagementModel(QObject *parent = nullptr);
@@ -36,19 +37,23 @@ public:
 	bool getIsPasswordUpdated();
 	bool getIsPasswordMatch();
 	bool getIsRequestSent();
+	bool getIsLoading();
 	// setter
 	void setIsPasswordMatch(const bool isPasswordMatch);
 	void setIsPasswordUpdated(const bool isPasswordUpdated);
 	void setIsRequestSent(const bool isRequestSent);
+	void setIsLoading(const bool isLoading);
 signals:
 	void isPasswordUpdatedChanged();
 	void isPasswordMatchChanged();
 	void isRequestSentChanged();
+	void isLoadingChanged();
 
 private:
 	bool m_isPasswordMatch;
 	bool m_isPasswordUpdated;
 	bool m_isRequestSent;
+	bool m_isLoading;
 	
 };
 

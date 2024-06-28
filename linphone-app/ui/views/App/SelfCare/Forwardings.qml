@@ -85,7 +85,6 @@ Rectangle {
                 }
                 Column{
                     Switch{
-
                         indicatorStyle: SwitchStyle.aux
                         enabled:true
                         checked: modelData.activated
