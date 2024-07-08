@@ -9,7 +9,7 @@ import Konami 1.0
 import Linphone 1.0
 
 import App.Styles 1.0
-
+import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 // =============================================================================
 Rectangle{
     function validatePassword(password) {
@@ -183,8 +183,19 @@ Rectangle{
     Connections{
         target: accountManagementModel
         onIsRequestSentChanged:{
-            console.log("testtttttttttttttttt");
-          //  resetForm();
+
+        }
+        onIsPasswordUpdatedChanged:{
+            if(accountManagementModel.isPasswordUpdated){
+                window.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
+                                               descriptionText: "Vous devez vous déconnecter"
+                                           }, function (status) {
+                                               if (status) {
+                                                   App.hideSelfCareWindow();
+                                                   AccountSettingsModel.logout()
+                                               }
+                                           })
+            }
         }
     }
 

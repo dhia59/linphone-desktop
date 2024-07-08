@@ -117,6 +117,7 @@ public:
   }
   void setSelfCareWindow();
   Q_INVOKABLE void showSelfCareWindow();
+  Q_INVOKABLE void hideSelfCareWindow();
 
 
   Q_INVOKABLE QQuickWindow *getCallsWindow () const;

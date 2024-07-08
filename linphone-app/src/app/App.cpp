@@ -578,6 +578,11 @@ void App::showSelfCareWindow()
 	smartShowWindow(getSelfCareWindow());
 }
 
+Q_INVOKABLE void App::hideSelfCareWindow()
+{
+	mSelfCareWindow->hide ();
+}
+
 QQuickWindow *App::getCallsWindow () const {
 	if (CoreManager::getInstance()->getCore()->getConfig()->getInt(
 		
