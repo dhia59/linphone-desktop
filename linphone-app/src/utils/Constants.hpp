@@ -146,7 +146,7 @@ public:
 	static constexpr char QmlViewMainWindow[] = "qrc:/ui/views/App/Main/MainWindow.qml";
 	static constexpr char QmlViewCallsWindow[] = "qrc:/ui/views/App/Calls/CallsWindow.qml";
 	static constexpr char QmlViewSettingsWindow[] = "qrc:/ui/views/App/Settings/SettingsWindow.qml";
-	
+	static constexpr char QmlViewSelfCareWindow[] = "qrc:/ui/views/App/SelfCare/SelfCareWindow.qml";
 	static constexpr char MainQmlUri[] = "Linphone";
 	
 	static constexpr char AttachVirtualWindowMethodName[] = "attachVirtualWindow";

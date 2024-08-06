@@ -31,7 +31,7 @@ ScrollableListView {
 	property color headerButtonOverwriteColor
 	property var headerButtonAction
 	property bool showHeader : true
-	property bool showSubtitle : true
+    property bool showSubtitle : false
 	property bool showSwitch : false
 	property bool showSeparator : true
 	property bool isSelectable : true

@@ -50,7 +50,8 @@ class SipAddressesModel;
 class VcardModel;
 class TimelineListModel;
 class ContactsEnreachListProxyModel;
-
+class PstnModel;
+class ForwardingManagement;
 
 class CoreManager : public QObject {
 	Q_OBJECT;
@@ -126,6 +127,11 @@ public:
 		Q_CHECK_PTR(mSettingsModel);
 		return mSettingsModel;
 	}
+
+	PstnModel *getPstnModel() const {
+		Q_CHECK_PTR(mPstnModel);
+		return mPstnModel;
+	}
 	EmojisSettingsModel *getEmojisSettingsModel () const {
 		return mEmojisSettingsModel;
 	}
@@ -137,6 +143,10 @@ public:
 	ContactsEnreachListProxyModel *getContactsEnreachListProxyModel() const {
 		Q_CHECK_PTR(mContactsEnreachListProxyModel);
 		return mContactsEnreachListProxyModel;
+	}
+	ForwardingManagement *getForwardingManagement() const {
+		Q_CHECK_PTR(mForwardingManagement);
+		return mForwardingManagement;
 	}
 	LdapListModel *getLdapListModel() const{
 		return mLdapListModel;
@@ -239,15 +249,17 @@ private:
 	
 	SipAddressesModel *mSipAddressesModel = nullptr;
 	SettingsModel *mSettingsModel = nullptr;
+	PstnModel *mPstnModel = nullptr;
 	EmojisSettingsModel *mEmojisSettingsModel =nullptr;
 	AccountSettingsModel *mAccountSettingsModel = nullptr;
 	ContactsEnreachListProxyModel *mContactsEnreachListProxyModel = nullptr;
 	
 	EventCountNotifier *mEventCountNotifier = nullptr;
-
+	ForwardingManagement *mForwardingManagement = nullptr;
 	HistoryModel * mHistoryModel = nullptr;
 	LdapListModel *mLdapListModel = nullptr;
 	RecorderManager* mRecorderManager = nullptr;
+	
 	
 	QTimer *mCbsTimer = nullptr;
 	

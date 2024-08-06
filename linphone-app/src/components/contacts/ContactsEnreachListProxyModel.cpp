@@ -117,10 +117,10 @@ void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListMode
 void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *contacts) {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)
+	if (true)//defaultAddress != nullptr
 	{
-		auto authInfo = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url(QString("http://185.164.213.62:8081/Enreach/GetContactsByUsernameWithAuth?userName=" + authInfo));
+		//auto authInfo = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
+		QUrl url(QString("http://10.3.3.66:8081/Enreach/GetContactsByUsernameWithAuth?userName=mbaraketTest.PiloteNetcom" ));
 		QNetworkRequest request(url);
 		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
 		request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));

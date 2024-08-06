@@ -231,6 +231,13 @@ set(SOURCES
 	src/components/contact/ContactModel.cpp
 	src/components/contacts/ContactEnreach.cpp
 	src/components/contacts/ContactEnreachModel.cpp
+	src/components/selfCare/ForwardingModel.cpp
+	src/components/selfCare/ForwardingListModel.cpp
+	src/components/selfCare/ForwardingListProxyModel.cpp
+	src/components/selfCare/ForwardingManagement.cpp
+	src/components/selfCare/PstnModel.cpp
+	src/components/selfCare/CallerManagement.cpp
+	src/components/selfCare/AccountManagementModel.cpp
 	src/components/contacts/ContactsEnreachListModel.cpp
 	src/components/contact/VcardModel.cpp
 	src/components/contacts/ContactsImporterModel.cpp
@@ -381,6 +388,13 @@ set(HEADERS
 	src/components/contact/ContactModel.hpp
 	src/components/contacts/ContactEnreach.hpp
 	src/components/contacts/ContactEnreachModel.hpp
+	src/components/selfCare/ForwardingModel.hpp
+	src/components/selfCare/PstnModel.hpp
+	src/components/selfCare/CallerManagement.hpp
+	src/components/selfCare/AccountManagementModel.hpp
+	src/components/selfCare/ForwardingManagement.hpp
+	src/components/selfCare/ForwardingListModel.hpp
+	src/components/selfCare/ForwardingListProxyModel.hpp
 	src/components/contacts/ContactsEnreachListModel.hpp
 	src/components/contact/VcardModel.hpp
 	src/components/contacts/ContactsImporterModel.hpp

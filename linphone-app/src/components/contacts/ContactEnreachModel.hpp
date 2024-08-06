@@ -26,6 +26,7 @@ class ContactEnreachModel : public QObject {
 		Q_PROPERTY(ContactEnreach * contactEnreach READ getContactEnreach WRITE setContactEnreach NOTIFY contactUpdated)
 
 public:
+	
 	//ContactEnreachModel(std::shared_ptr<linphone::Friend> linphoneFriend, QObject * parent = nullptr);
 	ContactEnreachModel(ContactEnreach *contactEnreach, QObject * parent = nullptr);
 	virtual ~ContactEnreachModel();

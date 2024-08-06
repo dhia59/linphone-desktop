@@ -15,6 +15,7 @@ BusyIndicator           1.0 Animations/BusyIndicator.qml
 DateTimeDialog          1.0 Dialog/DateTimeDialog.qml
 DialogDescription       1.0 Dialog/DialogDescription.qml
 ConfirmDialog           1.0 Dialog/ConfirmDialog.qml
+OKDialog				1.0 Dialog/OKDialog.qml
 DialogPlus              1.0 Dialog/DialogPlus.qml
 FileViewDialog          1.0 Dialog/FileViewDialog.qml
 

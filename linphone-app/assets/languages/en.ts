@@ -47,6 +47,21 @@
     </message>
 </context>
 <context>
+    <name>AddEditForwardingRule</name>
+    <message>
+        <source>Filtrer par numéro appelé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jusqu&apos;a</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>App</name>
     <message>
         <source>commandLineOptionVerbose</source>
@@ -466,6 +481,13 @@
     <message>
         <source>callTransferDescription</source>
         <translation>Do you want to transfer this call?</translation>
+    </message>
+</context>
+<context>
+    <name>CallerId</name>
+    <message>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1045,8 +1067,11 @@
         <source>Collaborateurs</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ContactsAutoComplete</name>
     <message>
-        <source>recherche contact</source>
+        <source>Choisir</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1870,6 +1895,10 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>Enregistrements</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Aucune connexion internet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindowMenuBar</name>
@@ -2374,6 +2403,13 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
 </context>
 <context>
+    <name>OKDialog</name>
+    <message>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OnlineInstallerDialog</name>
     <message>
         <source>confirm</source>
@@ -2652,6 +2688,13 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation>Are you sure you want to delete this item?</translation>
+    </message>
+</context>
+<context>
+    <name>SelfCareWindow</name>
+    <message>
+        <source>Self care</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3342,6 +3385,22 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>webviewLoginUrlLabel</source>
         <extracomment>&apos;Login URL&apos; : Label for login URL.</extracomment>
         <translation>Login URL</translation>
+    </message>
+    <message>
+        <source>eraseAllPasswords</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>addAccount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>editHeader</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteHeader</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4096,6 +4155,13 @@ Click here: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation type="unfinished">Are you sure you want to delete this item?</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceMailManagement</name>
+    <message>
+        <source>voice</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

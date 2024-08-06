@@ -47,6 +47,21 @@
     </message>
 </context>
 <context>
+    <name>AddEditForwardingRule</name>
+    <message>
+        <source>Filtrer par numéro appelé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Jusqu&apos;a</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>App</name>
     <message>
         <source>commandLineOptionVerbose</source>
@@ -466,6 +481,13 @@
     <message>
         <source>callTransferDescription</source>
         <translation>Хотите перенаправить этот звонок?</translation>
+    </message>
+</context>
+<context>
+    <name>CallerId</name>
+    <message>
+        <source></source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1051,8 +1073,11 @@
         <source>Collaborateurs</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ContactsAutoComplete</name>
     <message>
-        <source>recherche contact</source>
+        <source>Choisir</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1880,6 +1905,10 @@
         <source>Enregistrements</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Aucune connexion internet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindowMenuBar</name>
@@ -2387,6 +2416,13 @@
     </message>
 </context>
 <context>
+    <name>OKDialog</name>
+    <message>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OnlineInstallerDialog</name>
     <message>
         <source>confirm</source>
@@ -2664,6 +2700,13 @@
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation>Вы уверены, что хотите удалить эту запись?</translation>
+    </message>
+</context>
+<context>
+    <name>SelfCareWindow</name>
+    <message>
+        <source>Self care</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3330,6 +3373,22 @@
         <source>webviewLoginUrlLabel</source>
         <extracomment>&apos;Login URL&apos; : Label for login URL.</extracomment>
         <translation>URL логина</translation>
+    </message>
+    <message>
+        <source>eraseAllPasswords</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>addAccount</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>editHeader</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteHeader</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4084,6 +4143,13 @@
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation type="unfinished">Вы уверены, что хотите удалить эту запись?</translation>
+    </message>
+</context>
+<context>
+    <name>VoiceMailManagement</name>
+    <message>
+        <source>voice</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

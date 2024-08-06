@@ -339,6 +339,7 @@ void App::processArguments(QHash<QString,QString> args){
 	}
 	if(!mParser->parse(parameters))
 		qWarning() << "Parsing error : " << mParser->errorText();
+
 }
 
 static QQuickWindow *createSubWindow (QQmlApplicationEngine *engine, const char *path) {
@@ -347,6 +348,7 @@ static QQuickWindow *createSubWindow (QQmlApplicationEngine *engine, const char 
 	
 	QQmlComponent component(engine, QUrl(path));
 	if (component.isError()) {
+
 		qWarning() << component.errors();
 		abort();
 	}
@@ -563,8 +565,27 @@ bool App::event (QEvent *event) {
 
 // -----------------------------------------------------------------------------
 
+
+void App::setSelfCareWindow()
+{
+	if(mSelfCareWindow==nullptr)
+		mSelfCareWindow = createSubWindow(mEngine, Constants::QmlViewSelfCareWindow);
+}
+
+void App::showSelfCareWindow()
+{
+	setSelfCareWindow();
+	smartShowWindow(getSelfCareWindow());
+}
+
+Q_INVOKABLE void App::hideSelfCareWindow()
+{
+	mSelfCareWindow->hide ();
+}
+
 QQuickWindow *App::getCallsWindow () const {
 	if (CoreManager::getInstance()->getCore()->getConfig()->getInt(
+		
 				SettingsModel::UiSection, "disable_calls_window", 0
 				))
 		return nullptr;
@@ -581,7 +602,10 @@ QQuickWindow *App::getMainWindow () const {
 QQuickWindow *App::getSettingsWindow () const {
 	return mSettingsWindow;
 }
-
+QQuickWindow *App::getSelfCareWindow() const {
+	
+	return mSelfCareWindow;
+}
 // -----------------------------------------------------------------------------
 
 void App::smartShowWindow (QQuickWindow *window) {
@@ -720,6 +744,7 @@ void App::registerTypes () {
 	qRegisterMetaType<QSharedPointer<ChatNoticeModel>>();
 	qRegisterMetaType<QSharedPointer<ChatCallModel>>();
 	qRegisterMetaType<QSharedPointer<ConferenceInfoModel>>();
+	//qRegisterMetaType<QSharedPointer<ForwardingModel>>();
 	//qRegisterMetaType<std::shared_ptr<ChatEvent>>();
 	LinphoneEnums::registerMetaTypes();
 	
@@ -748,7 +773,13 @@ void App::registerTypes () {
 	registerType<SearchSipAddressesProxyModel>("SearchSipAddressesProxyModel");
 	registerType<TemporaryFile>("TemporaryFile");
 	registerType<TimeZoneProxyModel>("TimeZoneProxyModel");
-	
+	registerType<PstnModel>("PstnModel");
+	registerType<CallerManagement>("CallerManagement");
+	registerType<ForwardingListModel>("ForwardingListModel");
+	registerType<ForwardingListProxyModel>("ForwardingListProxyModel");
+	registerType<ForwardingManagement>("ForwardingManagement");
+	registerType<AccountManagementModel>("AccountManagementModel");
+	//registerType<CustomCallerIdModel>("CustomCallerIdModel");
 	registerType<ColorProxyModel>("ColorProxyModel");
 	registerType<ImageColorsProxyModel>("ImageColorsProxyModel");
 	registerType<ImageProxyModel>("ImageProxyModel");
@@ -777,6 +808,7 @@ void App::registerTypes () {
 	registerUncreatableType<ConferenceModel>("ConferenceModel");
 	registerUncreatableType<ContactModel>("ContactModel");
 	registerUncreatableType<ContactEnreachModel>("ContactEnreachModel");
+	registerUncreatableType<ForwardingModel>("ForwardingModel");
 	registerUncreatableType<ContactsImporterModel>("ContactsImporterModel");
 	registerUncreatableType<ContentModel>("ContentModel");
 	registerUncreatableType<ContentListModel>("ContentListModel");
@@ -893,6 +925,8 @@ void App::setTrayIcon () {
 		accountSettingsModel->logout();
 
 		});
+	
+
 	// trayIcon: Left click actions.
 	static QMenu *menu = new QMenu();// Static : Workaround about a bug with setContextMenu where it cannot be called more than once.
 	root->connect(systemTrayIcon, &QSystemTrayIcon::activated, [root](
@@ -1107,6 +1141,7 @@ void App::openAppAfterInit (bool mustBeIconified) {
 	// Create other windows.
 	mCallsWindow = createSubWindow(mEngine, Constants::QmlViewCallsWindow);
 	mSettingsWindow = createSubWindow(mEngine, Constants::QmlViewSettingsWindow);
+	//mSelfCareWindow = createSubWindow(mEngine, Constants::QmlViewSelfCareWindow);
 	QObject::connect(mSettingsWindow, &QWindow::visibilityChanged, this, [coreManager](QWindow::Visibility visibility) {
 		if (visibility == QWindow::Hidden) {
 			qInfo() << QStringLiteral("Update nat policy.");
@@ -1118,10 +1153,9 @@ void App::openAppAfterInit (bool mustBeIconified) {
 		coreManager->getHandlers().get(), &CoreHandlers::accountFirstLogin,
 		coreManager->getContactsEnreachListProxyModel(), &ContactsEnreachListProxyModel::loadContacts
 	);
-	
 	QQuickWindow *mainWindow = getMainWindow();
 
-
+	
 	
 #ifndef __APPLE__
 	// Enable TrayIconSystem.

@@ -55,6 +55,7 @@ MessageCounter                1.0 Misc/MessageCounter.qml
 PresenceLevel                 1.0 Presence/PresenceLevel.qml
 
 SmartSearchBar                1.0 SmartSearchBar/SmartSearchBar.qml
+ContactsAutoComplete          1.0 SmartSearchBar/ContactsAutoComplete.qml
 
 AvatarSticker                 1.0 Sticker/AvatarSticker.qml
 CameraSticker                 1.0 Sticker/CameraSticker.qml
@@ -69,4 +70,5 @@ TimelineItem                  1.0 Timeline/TimelineItem.qml
 ParticipantsListView          1.0 View/ParticipantsListView.qml
 ParticipantsView              1.0 View/ParticipantsView.qml
 SipAddressesView              1.0 View/SipAddressesView.qml
+SipAddressesAutoCompleteView  1.0 View/SipAddressesAutoCompleteView.qml
 

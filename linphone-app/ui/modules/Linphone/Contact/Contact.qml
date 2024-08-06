@@ -21,7 +21,7 @@ Rectangle {
 	property alias subtitleColor: description.subtitleColor
 	property alias titleColor: description.titleColor
 	property alias statusText : description.statusText
-	property alias isDarkMode: avatar.isDarkMode
+    property alias isDarkMode:avatar.isDarkMode
 	
 	property bool displayUnreadMessageCount: false
 	property bool showSubtitle : true
@@ -37,7 +37,7 @@ Rectangle {
 										: entry.contactModel
 											? entry.contactModel.vcard.username
 											: UtilsCpp.getDisplayName(entry.sipAddress || entry.fullPeerAddress  || entry.peerAddress || '')
-									: ''
+                                    :  item.username
 	property string organizer: entry && entry.conferenceInfoModel ? UtilsCpp.getDisplayName(entry.conferenceInfoModel.organizer) : ''
 	
 	signal avatarClicked(var mouse)
@@ -52,7 +52,7 @@ Rectangle {
 			leftMargin: ContactStyle.leftMargin
 		}
 		spacing: 0
-		
+
 		Avatar {
 			id: avatar
 			
@@ -110,7 +110,7 @@ Rectangle {
 					}
 				}
 			}
-		}
+        }
 		
     ContactDescription {
 			id: description
@@ -122,7 +122,7 @@ Rectangle {
 			titleText: item.subject
 						? item.subject
 						: item.username
-            /*subtitleText: entry && item.showSubtitle
+            subtitleText: entry && item.showSubtitle
 							? UtilsCpp.toDisplayString(
 								item.subtitle
 								? item.subtitle
@@ -135,7 +135,7 @@ Rectangle {
 										: ''
 							, SettingsModel.sipDisplayMode)
 							: ''
-                            */
+
         }
 
 		ContactMessageCounter {
