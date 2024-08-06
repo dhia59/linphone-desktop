@@ -153,7 +153,7 @@ Item {
 
                     ComboBox {
                         id: transport
-                        model: [ 'UDP', 'TCP', 'TLS']
+                        model: [ 'TCP', 'TCP', 'TLS']
                     }
                 }
 

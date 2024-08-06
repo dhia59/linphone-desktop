@@ -178,7 +178,7 @@ Rectangle {
 				
 				width: chat.contentWidth	// Fill all space
 				clip: false
-				visible: loader.status == Loader.Ready
+                visible: loader.status == Loader.Ready
 				// ---------------------------------------------------------------------
 				MouseArea {
 					id: mouseArea
@@ -371,8 +371,8 @@ Rectangle {
 			Layout.fillWidth: true
 			Layout.preferredHeight: textAreaBorders.height + chatMessagePreview.height+messageBlock.height + chatEmojis.height
 			color: ChatStyle.sendArea.backgroundBorder.colorModel.color
-			visible: proxyModel.chatRoomModel && !proxyModel.chatRoomModel.isReadOnly && (!proxyModel.chatRoomModel.haveEncryption && SettingsModel.standardChatEnabled || proxyModel.chatRoomModel.haveEncryption && SettingsModel.secureChatEnabled)
-			
+            visible: proxyModel.chatRoomModel && !proxyModel.chatRoomModel.isReadOnly && (!proxyModel.chatRoomModel.haveEncryption && SettingsModel.standardChatEnabled || proxyModel.chatRoomModel.haveEncryption && SettingsModel.secureChatEnabled)
+            //visible: false
 			ColumnLayout{
 				anchors.fill: parent				
 				spacing: 0
@@ -405,6 +405,7 @@ Rectangle {
 				// -------------------------------------------------------------------------
 				
 				Borders {
+                    //visibile:false
 					id: textAreaBorders
 					Layout.fillWidth: true
 					Layout.preferredHeight: textArea.height
@@ -412,60 +413,60 @@ Rectangle {
 					borderColor: ChatStyle.sendArea.border.colorModel.color
 					topWidth: ChatStyle.sendArea.border.width
 					
-					DroppableTextArea {
-						id: textArea
-						
-						enabled:proxyModel && proxyModel.chatRoomModel ? !proxyModel.chatRoomModel.isReadOnly:false
-						isEphemeral : proxyModel && proxyModel.chatRoomModel ? proxyModel.chatRoomModel.ephemeralEnabled:false
-						
-						anchors.left: parent.left
-						anchors.right: parent.right
-						anchors.bottom: parent.bottom
-						
-						height: visible ? ChatStyle.sendArea.height + ChatStyle.sendArea.border.width : 0
-						minimumHeight:ChatStyle.sendArea.height + ChatStyle.sendArea.border.width
-						maximumHeight:container.height/2
-						
-                        //dropEnabled: SettingsModel.fileTransferUrl.length > 0
-                        //dropDisabledReason: qsTr('noFileTransferUrl')
-						placeholderText: qsTr('newMessagePlaceholder')
+                    DroppableTextArea {
+                        id: textArea
+
+                        enabled:proxyModel && proxyModel.chatRoomModel ? !proxyModel.chatRoomModel.isReadOnly:false
+                        isEphemeral : proxyModel && proxyModel.chatRoomModel ? proxyModel.chatRoomModel.ephemeralEnabled:false
+
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+
+                        height: visible ? ChatStyle.sendArea.height + ChatStyle.sendArea.border.width : 0
+                        minimumHeight:ChatStyle.sendArea.height + ChatStyle.sendArea.border.width
+                        maximumHeight:container.height/2
+
+                        dropEnabled: true
+                        dropDisabledReason: qsTr('noFileTransferUrl')
+                        placeholderText: qsTr('newMessagePlaceholder')
                         //recordAudioToggled: RecorderManager.haveVocalRecorder && RecorderManager.getVocalRecorder().state != LinphoneEnums.RecorderStateClosed
-                        emojiVisible: chatEmojis.visible
-                        //onDropped: Logic.handleFilesDropped(files)
-						property bool componentReady: false
-						onTextChanged: {// This slot can be call before the item has been completed because of Rich text. So the cache must not take it account.
-								if(componentReady) {
-									proxyModel.cachedText=text
-									Logic.handleTextChanged(textArea.getText())
-								}
-							}
-						onValidText: {
-							textArea.text = ''
-							chat.bindToEnd = true
-							if(proxyModel.chatRoomModel) {
+                        emojiVisible: true
+                        onDropped: Logic.handleFilesDropped(files)
+                        property bool componentReady: false
+                        onTextChanged: {// This slot can be call before the item has been completed because of Rich text. So the cache must not take it account.
+                                if(componentReady) {
+                                    proxyModel.cachedText=text
+                                    Logic.handleTextChanged(textArea.getText())
+                                }
+                            }
+                        onValidText: {
+                            textArea.text = ''
+                            chat.bindToEnd = true
+                            if(proxyModel.chatRoomModel) {
                                 console.log("chatttttttt", proxyModel.chatRoomModel)
                                 proxyModel.sendMessage(text)//Note : 'text' is coming from validText. It's not the text member.
-							}else{
+                            }else{
                                 console.log("chatttttttt addddr", proxyModel.chatRoomModel)
-								proxyModel.chatRoomModel = CallsListModel.createChat(proxyModel.peerAddress)
+                                proxyModel.chatRoomModel = CallsListModel.createChat(proxyModel.peerAddress)
                                 //proxyModel.sendMessage(text)
-							}
-						}
+                            }
+                        }
                         //onAudioRecordRequest: RecorderManager.resetVocalRecorder()
-						onEmojiClicked: {
+                        onEmojiClicked: {
                             console.log("smileeee")
                             //chatEmojis.height= 150
                             chatEmojis.visible = !chatEmojis.visible
-						}
-						Component.onCompleted: {text = proxyModel.cachedText; cursorPosition=text.length;componentReady=true}
-						Rectangle{
-							anchors.fill:parent
-							color:'white'
-							opacity: 0.5
-							visible:!textArea.enabled
-						}
-					}
-				}// Send Area
+                        }
+                        Component.onCompleted: {text = proxyModel.cachedText; cursorPosition=text.length;componentReady=true}
+                        Rectangle{
+                            anchors.fill:parent
+                            color:'white'
+                            opacity: 0.5
+                            visible:!textArea.enabled
+                        }
+                    }
+                }// Send Area
 			}// ColumnLayout
 		}// Bottom background
 	}
