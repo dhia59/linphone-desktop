@@ -553,6 +553,10 @@
         <extracomment>&apos;Do you want to forward this message?&apos; : text to confirm to forward a message</extracomment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>noFileTransferUrl</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChatCalendarMessage</name>

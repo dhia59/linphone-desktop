@@ -1,2 +1,0 @@
-D:/work/VoipProjects/Linphone/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-8ushsl/CMakeFiles/cmTC_c3c78.dir
-D:/work/VoipProjects/Linphone/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-8ushsl/CMakeFiles/ALL_BUILD.dir
