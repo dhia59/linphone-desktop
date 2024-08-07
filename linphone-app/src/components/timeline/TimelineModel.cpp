@@ -152,7 +152,24 @@ bool TimelineModel::isUpdating() const{
 }
 
 ChatRoomModel *TimelineModel::getChatRoomModel() const{
-	return mChatRoomModel.get();
+	try {
+		return mChatRoomModel.get();
+	}
+	catch (const std::exception& e) {
+		// Log the exception message
+		qWarning() << "Exception caught in getChatRoomModel:" << e.what();
+
+		// Handle the error, maybe return a null pointer or some other default behavior
+		return nullptr;
+	}
+	catch (...) {
+		// Catch any other exceptions
+		qWarning() << "Unknown exception caught in getChatRoomModel.";
+
+		// Handle the error, maybe return a null pointer or some other default behavior
+		return nullptr;
+	}
+	
 }
 
 void TimelineModel::setSelected(const bool& selected){
