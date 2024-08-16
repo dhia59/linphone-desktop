@@ -105,7 +105,7 @@ Q_INVOKABLE bool AccountManagementModel::updatePassword(QString oldPassword, QSt
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/UserUpdateDevicePassword");
+		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/UserUpdateDevicePassword");
 		QUrlQuery query;
 		query.addQueryItem("username", username);
 		query.addQueryItem("oldPassword", oldPassword);

@@ -1073,6 +1073,10 @@
         <source>Collaborateurs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>recherche contact</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ContactsAutoComplete</name>
@@ -1314,6 +1318,14 @@
         <source>dropYourAttachment</source>
         <translation>Zahodit přílohu</translation>
     </message>
+    <message>
+        <source>fileChooserTitle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>attachmentTooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EmojiPicker</name>
@@ -1506,6 +1518,13 @@
         <source>loadFile</source>
         <extracomment>&quot;Load&quot;: Title of a file dialog to load a file.</extracomment>
         <translation>&quot;Načíst&quot;: Název dialogového okna pro načtení souboru.</translation>
+    </message>
+</context>
+<context>
+    <name>Forwardings</name>
+    <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Opravdu chcete tento kontakt odstranit z adresáře?</translation>
     </message>
 </context>
 <context>
@@ -1906,7 +1925,7 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aucune connexion internet</source>
+        <source>selfCare</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2701,13 +2720,6 @@ Klikněte zde: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation>Opravdu chcete tuto položku odstranit?</translation>
-    </message>
-</context>
-<context>
-    <name>SelfCareWindow</name>
-    <message>
-        <source>Self care</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

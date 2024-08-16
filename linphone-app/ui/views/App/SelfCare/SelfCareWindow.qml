@@ -11,12 +11,9 @@ import 'SelfCareWindow.js' as Logic
 import App.Styles 1.0
 
 // =============================================================================
-ApplicationWindow {
+Rectangle {
     id:window
-    minimumHeight: SettingsWindowStyle.height
-    minimumWidth: SettingsWindowStyle.width
 
-    title: qsTr('Self care')
     function setView (view, props, callback) {
         Logic.setView(view, props, callback)
     }
@@ -98,3 +95,6 @@ ApplicationWindow {
 
 
 }
+
+
+

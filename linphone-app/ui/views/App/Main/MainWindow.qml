@@ -386,7 +386,7 @@ ApplicationWindow {
                             ApplicationMenuEntry {
                                 id: chatEntry
 
-                                icon: MainWindowStyle.menu.conferences.icon
+                                icon: 'qrc:/assets/images/saylo_picto_message-01.png'
                                 iconSize: MainWindowStyle.menu.conferences.iconSize
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
                                 name: qsTr('Messageries').toUpperCase()
@@ -420,7 +420,7 @@ ApplicationWindow {
                             ApplicationMenuEntry {
                                 id: contactsEntry
 
-                                icon: MainWindowStyle.menu.contacts.icon
+                                icon: 'qrc:/assets/images/saylo_picto_contacts-01.png'
                                 iconSize: MainWindowStyle.menu.contacts.iconSize
                                 overwriteColor:isSelected ? MainWindowStyle.menu.contacts.selectedColor.color : MainWindowStyle.menu.contacts.colorModel.color
                                 name: LdapListModel.count > 0
@@ -488,7 +488,7 @@ ApplicationWindow {
                             ApplicationMenuEntry {
                                 id: callsEntry
 
-                                icon: MainWindowStyle.menu.conferences.icon
+                                icon: 'qrc:/assets/images/saylo_picto_appels-01.png'
                                 iconSize: MainWindowStyle.menu.conferences.iconSize
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
                                 name: qsTr('appels').toUpperCase()
@@ -518,7 +518,7 @@ ApplicationWindow {
                             ApplicationMenuEntry {
                                 id: teamsEntry
 
-                                icon: MainWindowStyle.menu.conferences.icon
+                                icon: 'qrc:/assets/images/saylo_picto_equipes.png'
                                 iconSize: MainWindowStyle.menu.conferences.iconSize
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
                                 name: qsTr('Equipes').toUpperCase()
@@ -548,7 +548,7 @@ ApplicationWindow {
                             ApplicationMenuEntry {
                                 id: vocalmessagesEntry
 
-                                icon: MainWindowStyle.menu.conferences.icon
+                                icon: 'qrc:/assets/images/saylo_picto_messagerie_vocale.png'
                                 iconSize: MainWindowStyle.menu.conferences.iconSize
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
                                 name: qsTr('Messageries vocale').toUpperCase()
@@ -578,7 +578,7 @@ ApplicationWindow {
                             ApplicationMenuEntry {
                                 id: recordsEntry
 
-                                icon: MainWindowStyle.menu.conferences.icon
+                                icon: 'qrc:/assets/images/saylo_picto_enregistrement-01.png'
                                 iconSize: MainWindowStyle.menu.conferences.iconSize
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
                                 name: qsTr('Enregistrements').toUpperCase()
@@ -605,8 +605,38 @@ ApplicationWindow {
                                 }
                             }
 
+                            ApplicationMenuEntry {
+                                id: selfCareWindowid
+
+                                icon: 'qrc:/assets/images/saylo_picto_contacts-01.png'
+                                iconSize: MainWindowStyle.menu.conferences.iconSize
+                                overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
+                                name: qsTr('selfCare').toUpperCase()
+                                visible: true
+
+                                onSelected: {
+                                    showTimeline=false
+                                    menuWidth=250
+                                    timeline.model.unselectAll()
+                                    setView('qrc:/ui/views/App/SelfCare/SelfCareWindow')
+                                }
+                                onClicked:{
+                                    showTimeline=false
+                                    menuWidth=250
+                                    setView('qrc:/ui/views/App/SelfCare/SelfCareWindow')
+                                }
+                                Icon{
+                                    anchors.right:parent.right
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    anchors.rightMargin: 10
+                                    icon: MainWindowStyle.menu.direction.icon
+                                    overwriteColor: conferencesEntry.overwriteColor
+                                    iconSize: MainWindowStyle.menu.direction.iconSize
+                                }
+                            }
 
                         }
+
 
                         Rectangle {
                             z:10
@@ -759,10 +789,9 @@ ApplicationWindow {
                         anchors.fill: parent
 
                         source:AccountSettingsModel.registrationState===0 || noNetworkAlert?
-
                                   window.setView('Conversation', {
                                                      chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
-                                                 }) :'Login.qml'
+                                                 }) :  'Login.qml'
                     }
                     //                    TelKeypad {
                     //                        anchors.right: parent.right
@@ -833,10 +862,15 @@ ApplicationWindow {
         }
     }
 
-    Component.onCompleted:{ if(Qt.platform.os === 'osx') menuBar = customMenuBar;
+    Component.onCompleted:{
+
+        console.log("rowcount0: ")
+        console.log("rowcount: "+timeline.model.rowCount())
+        if(Qt.platform.os === 'osx') menuBar = customMenuBar;
         window.setView('Conversation', {
                            chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                        })
+        //console.log("timelinesetitem: "+timeline.model.rowCount() )
         //timeline.currentIndex = 15
 
     }

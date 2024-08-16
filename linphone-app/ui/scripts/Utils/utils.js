@@ -176,10 +176,17 @@ function openWindow (window, parent, options, fullscreen) {
 // -----------------------------------------------------------------------------
 
 function resolveImageUri (name) {
-  return name
+  const hasExtension = name.includes('.png');
+  const hasExtension2 = name.includes('saylo_');
+  if(hasExtension && hasExtension2){
+    return name
+  }else{
+
+    return name
     //? 'image://internal/' + removeScheme(Qt.resolvedUrl('/assets/images/' + name + '.svg'))
     ? 'image://internal/' + name
     : ''
+  }
 }
 
 // -----------------------------------------------------------------------------

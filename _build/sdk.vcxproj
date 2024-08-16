@@ -1,0 +1,847 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C83B382A-D663-3C7D-9AE5-03E99E9689C5}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Platform>Win32</Platform>
+    <ProjectName>sdk</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\739177ca76f30ee65ff7bf9eb1688288\sdk-mkdir.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Creating directories for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/sdk/tmp/sdk-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Debug/sdk-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Creating directories for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Release -P C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/sdk/tmp/sdk-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Release/sdk-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Creating directories for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/MinSizeRel -P C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/sdk/tmp/sdk-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/MinSizeRel/sdk-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Creating directories for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/RelWithDebInfo -P C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/sdk/tmp/sdk-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/RelWithDebInfo/sdk-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\739177ca76f30ee65ff7bf9eb1688288\sdk-download.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">No download step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Debug/sdk-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-source_dirinfo.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">No download step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Release/sdk-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-source_dirinfo.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">No download step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/MinSizeRel/sdk-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-source_dirinfo.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">No download step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/RelWithDebInfo/sdk-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-source_dirinfo.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\739177ca76f30ee65ff7bf9eb1688288\sdk-update.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">No update step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Debug/sdk-update
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-update-info.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">No update step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Release/sdk-update
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-update-info.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">No update step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/MinSizeRel/sdk-update
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-update-info.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">No update step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/RelWithDebInfo/sdk-update
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-update-info.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\739177ca76f30ee65ff7bf9eb1688288\sdk-patch.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">No patch step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Debug/sdk-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-patch-info.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">No patch step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Release/sdk-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-patch-info.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">No patch step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/MinSizeRel/sdk-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-patch-info.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">No patch step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/RelWithDebInfo/sdk-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\sdk-patch-info.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\739177ca76f30ee65ff7bf9eb1688288\sdk-configure.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Performing configure step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DENABLE_UPDATE_CHECK=ON -DENABLE_APP_LICENSE=ON -DENABLE_APP_OAUTH2=OFF -DENABLE_APP_PACKAGING=OFF -DENABLE_APP_PACKAGE_ROOTCA=ON -DENABLE_APP_PDF_VIEWER=ON -DENABLE_APP_WEBVIEW=OFF -DENABLE_BUILD_EXAMPLES=OFF -DENABLE_BUILD_VERBOSE=ON -DENABLE_CONSOLE_UI=OFF -DENABLE_DAEMON=OFF -DENABLE_FFMPEG=OFF -DENABLE_FLEXIAPI=ON -DENABLE_LDAP=ON -DENABLE_NON_FREE_CODECS=ON -DENABLE_OPENH264=ON -DENABLE_OPENH264=ON -DENABLE_QT_KEYCHAIN=ON -DENABLE_OPENSSL_EXPORT=ON -DENABLE_QRCODE=OFF -DENABLE_SANITIZER=OFF -DENABLE_STRICT=OFF -DENABLE_TESTS=OFF -DENABLE_TESTS_COMPONENTS=OFF -DENABLE_TOOLS=OFF -DENABLE_UNIT_TESTS=OFF -DENABLE_VIDEO=ON -DENABLE_RELATIVE_PREFIX=ON -DLINPHONE_OUTPUT_DIR=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop -DQTKEYCHAIN_OUTPUT_DIR=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain -DQTKEYCHAIN_TARGET_NAME=EQt5Keychain -DENABLE_QT_GL=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_BUILD_TYPE=debug -DCMAKE_RC_COMPILER_WORKS=1 -DENABLE_EXAMPLE_PLUGIN=ON "-DLINPHONESDK_DOXYGEN_PROGRAM=C:/Program Files/doxygen/bin" -DLINPHONE_BUILDER_WINDOWS_TOOLS_CHECK=ON -DCMAKE_INSTALL_PREFIX:PATH=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop -DCMAKE_PREFIX_PATH=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT/include";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT/bin";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib64/cmake";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib/cmake -DCMAKE_OSX_ARCHITECTURES= "-GVisual Studio 15 2017" -AWin32 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community" -S C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-sdk -B C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Debug/sdk-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\sdk\tmp\sdk-cfgcmd.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Performing configure step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DENABLE_UPDATE_CHECK=ON -DENABLE_APP_LICENSE=ON -DENABLE_APP_OAUTH2=OFF -DENABLE_APP_PACKAGING=OFF -DENABLE_APP_PACKAGE_ROOTCA=ON -DENABLE_APP_PDF_VIEWER=ON -DENABLE_APP_WEBVIEW=OFF -DENABLE_BUILD_EXAMPLES=OFF -DENABLE_BUILD_VERBOSE=ON -DENABLE_CONSOLE_UI=OFF -DENABLE_DAEMON=OFF -DENABLE_FFMPEG=OFF -DENABLE_FLEXIAPI=ON -DENABLE_LDAP=ON -DENABLE_NON_FREE_CODECS=ON -DENABLE_OPENH264=ON -DENABLE_OPENH264=ON -DENABLE_QT_KEYCHAIN=ON -DENABLE_OPENSSL_EXPORT=ON -DENABLE_QRCODE=OFF -DENABLE_SANITIZER=OFF -DENABLE_STRICT=OFF -DENABLE_TESTS=OFF -DENABLE_TESTS_COMPONENTS=OFF -DENABLE_TOOLS=OFF -DENABLE_UNIT_TESTS=OFF -DENABLE_VIDEO=ON -DENABLE_RELATIVE_PREFIX=ON -DLINPHONE_OUTPUT_DIR=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop -DQTKEYCHAIN_OUTPUT_DIR=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain -DQTKEYCHAIN_TARGET_NAME=EQt5Keychain -DENABLE_QT_GL=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_BUILD_TYPE=debug -DCMAKE_RC_COMPILER_WORKS=1 -DENABLE_EXAMPLE_PLUGIN=ON "-DLINPHONESDK_DOXYGEN_PROGRAM=C:/Program Files/doxygen/bin" -DLINPHONE_BUILDER_WINDOWS_TOOLS_CHECK=ON -DCMAKE_INSTALL_PREFIX:PATH=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop -DCMAKE_PREFIX_PATH=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT/include";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT/bin";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib64/cmake";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib/cmake -DCMAKE_OSX_ARCHITECTURES= "-GVisual Studio 15 2017" -AWin32 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community" -S C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-sdk -B C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Release/sdk-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\sdk\tmp\sdk-cfgcmd.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Performing configure step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DENABLE_UPDATE_CHECK=ON -DENABLE_APP_LICENSE=ON -DENABLE_APP_OAUTH2=OFF -DENABLE_APP_PACKAGING=OFF -DENABLE_APP_PACKAGE_ROOTCA=ON -DENABLE_APP_PDF_VIEWER=ON -DENABLE_APP_WEBVIEW=OFF -DENABLE_BUILD_EXAMPLES=OFF -DENABLE_BUILD_VERBOSE=ON -DENABLE_CONSOLE_UI=OFF -DENABLE_DAEMON=OFF -DENABLE_FFMPEG=OFF -DENABLE_FLEXIAPI=ON -DENABLE_LDAP=ON -DENABLE_NON_FREE_CODECS=ON -DENABLE_OPENH264=ON -DENABLE_OPENH264=ON -DENABLE_QT_KEYCHAIN=ON -DENABLE_OPENSSL_EXPORT=ON -DENABLE_QRCODE=OFF -DENABLE_SANITIZER=OFF -DENABLE_STRICT=OFF -DENABLE_TESTS=OFF -DENABLE_TESTS_COMPONENTS=OFF -DENABLE_TOOLS=OFF -DENABLE_UNIT_TESTS=OFF -DENABLE_VIDEO=ON -DENABLE_RELATIVE_PREFIX=ON -DLINPHONE_OUTPUT_DIR=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop -DQTKEYCHAIN_OUTPUT_DIR=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain -DQTKEYCHAIN_TARGET_NAME=EQt5Keychain -DENABLE_QT_GL=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_BUILD_TYPE=debug -DCMAKE_RC_COMPILER_WORKS=1 -DENABLE_EXAMPLE_PLUGIN=ON "-DLINPHONESDK_DOXYGEN_PROGRAM=C:/Program Files/doxygen/bin" -DLINPHONE_BUILDER_WINDOWS_TOOLS_CHECK=ON -DCMAKE_INSTALL_PREFIX:PATH=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop -DCMAKE_PREFIX_PATH=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT/include";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT/bin";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib64/cmake";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib/cmake -DCMAKE_OSX_ARCHITECTURES= "-GVisual Studio 15 2017" -AWin32 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community" -S C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-sdk -B C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/MinSizeRel/sdk-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\sdk\tmp\sdk-cfgcmd.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Performing configure step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DENABLE_UPDATE_CHECK=ON -DENABLE_APP_LICENSE=ON -DENABLE_APP_OAUTH2=OFF -DENABLE_APP_PACKAGING=OFF -DENABLE_APP_PACKAGE_ROOTCA=ON -DENABLE_APP_PDF_VIEWER=ON -DENABLE_APP_WEBVIEW=OFF -DENABLE_BUILD_EXAMPLES=OFF -DENABLE_BUILD_VERBOSE=ON -DENABLE_CONSOLE_UI=OFF -DENABLE_DAEMON=OFF -DENABLE_FFMPEG=OFF -DENABLE_FLEXIAPI=ON -DENABLE_LDAP=ON -DENABLE_NON_FREE_CODECS=ON -DENABLE_OPENH264=ON -DENABLE_OPENH264=ON -DENABLE_QT_KEYCHAIN=ON -DENABLE_OPENSSL_EXPORT=ON -DENABLE_QRCODE=OFF -DENABLE_SANITIZER=OFF -DENABLE_STRICT=OFF -DENABLE_TESTS=OFF -DENABLE_TESTS_COMPONENTS=OFF -DENABLE_TOOLS=OFF -DENABLE_UNIT_TESTS=OFF -DENABLE_VIDEO=ON -DENABLE_RELATIVE_PREFIX=ON -DLINPHONE_OUTPUT_DIR=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop -DQTKEYCHAIN_OUTPUT_DIR=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain -DQTKEYCHAIN_TARGET_NAME=EQt5Keychain -DENABLE_QT_GL=ON -DCMAKE_CXX_STANDARD=11 -DCMAKE_BUILD_TYPE=debug -DCMAKE_RC_COMPILER_WORKS=1 -DENABLE_EXAMPLE_PLUGIN=ON "-DLINPHONESDK_DOXYGEN_PROGRAM=C:/Program Files/doxygen/bin" -DLINPHONE_BUILDER_WINDOWS_TOOLS_CHECK=ON -DCMAKE_INSTALL_PREFIX:PATH=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop -DCMAKE_PREFIX_PATH=C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT/include";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/OUTPUT/bin";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib64/cmake";"C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib/cmake -DCMAKE_OSX_ARCHITECTURES= "-GVisual Studio 15 2017" -AWin32 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files (x86)/Microsoft Visual Studio/2017/Community" -S C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-sdk -B C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/RelWithDebInfo/sdk-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\sdk\tmp\sdk-cfgcmd.txt;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\739177ca76f30ee65ff7bf9eb1688288\sdk-force_build.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Forcing build for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-force_build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Forcing build for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-force_build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Forcing build for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-force_build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Forcing build for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-force_build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\739177ca76f30ee65ff7bf9eb1688288\sdk-build.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Performing build step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" --build C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK --config Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Debug/sdk-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-configure;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-force_build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Performing build step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" --build C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK --config Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Release/sdk-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-configure;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-force_build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Performing build step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" --build C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK --config MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/MinSizeRel/sdk-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-configure;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-force_build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Performing build step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" --build C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK --config RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/RelWithDebInfo/sdk-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-configure;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-force_build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\739177ca76f30ee65ff7bf9eb1688288\sdk-install.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Performing install step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "Install step is already done at build time."
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Debug/sdk-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Performing install step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "Install step is already done at build time."
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Release/sdk-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Performing install step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "Install step is already done at build time."
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/MinSizeRel/sdk-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Performing install step for 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+cd C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "Install step is already done at build time."
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/RelWithDebInfo/sdk-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\a6d698c874f5bffab834fdd065a1ce58\sdk-complete.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Completed 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/Debug/sdk-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Debug/sdk-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-install;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-mkdir;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-download;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-update;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-patch;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-configure;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-build;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Debug\sdk-force_build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\Debug\sdk-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Completed 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/Release/sdk-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/Release/sdk-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-install;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-mkdir;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-download;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-update;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-patch;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-configure;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-build;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\Release\sdk-force_build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\Release\sdk-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Completed 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/MinSizeRel/sdk-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/MinSizeRel/sdk-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-install;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-mkdir;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-download;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-update;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-patch;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-configure;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-build;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\MinSizeRel\sdk-force_build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\MinSizeRel\sdk-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Completed 'sdk'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/RelWithDebInfo/sdk-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/WORK/stamp/RelWithDebInfo/sdk-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-install;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-mkdir;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-download;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-update;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-patch;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-configure;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-build;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\WORK\stamp\RelWithDebInfo\sdk-force_build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\RelWithDebInfo\sdk-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\c031d37d2bc47ae2051ae76c25be7223\sdk.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\Debug\sdk-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\sdk</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\Release\sdk-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\sdk</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\MinSizeRel\sdk-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\sdk</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\RelWithDebInfo\sdk-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\sdk</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Work/VoIP/N_projects/Saylo/linphone-desktop/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Work/VoIP/N_projects/Saylo/linphone-desktop -BC:/Work/VoIP/N_projects/Saylo/linphone-desktop/build --check-stamp-file C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\PatchInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\UpdateInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5Config.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5ConfigVersion.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5ModuleLocation.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeCCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeCXXCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeRCCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeSystem.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-app\tmp\linphone-qt-only-mkdirs.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Config.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2ConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Targets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Targets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxCMakeUtils.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainLibraryDepends-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainLibraryDepends.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\tmp\app-qtkeychain-mkdirs.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\sdk\tmp\sdk-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Work/VoIP/N_projects/Saylo/linphone-desktop/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Work/VoIP/N_projects/Saylo/linphone-desktop -BC:/Work/VoIP/N_projects/Saylo/linphone-desktop/build --check-stamp-file C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\PatchInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\UpdateInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5Config.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5ConfigVersion.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5ModuleLocation.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeCCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeCXXCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeRCCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeSystem.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-app\tmp\linphone-qt-only-mkdirs.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Config.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2ConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Targets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Targets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxCMakeUtils.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainLibraryDepends-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainLibraryDepends.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\tmp\app-qtkeychain-mkdirs.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\sdk\tmp\sdk-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Work/VoIP/N_projects/Saylo/linphone-desktop/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Work/VoIP/N_projects/Saylo/linphone-desktop -BC:/Work/VoIP/N_projects/Saylo/linphone-desktop/build --check-stamp-file C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\PatchInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\UpdateInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5Config.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5ConfigVersion.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5ModuleLocation.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeCCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeCXXCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeRCCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeSystem.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-app\tmp\linphone-qt-only-mkdirs.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Config.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2ConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Targets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Targets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxCMakeUtils.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainLibraryDepends-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainLibraryDepends.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\tmp\app-qtkeychain-mkdirs.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\sdk\tmp\sdk-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Work/VoIP/N_projects/Saylo/linphone-desktop/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Work/VoIP/N_projects/Saylo/linphone-desktop -BC:/Work/VoIP/N_projects/Saylo/linphone-desktop/build --check-stamp-file C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\PatchInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\UpdateInfo.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.28\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5Config.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5ConfigVersion.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5\Qt5ModuleLocation.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;C:\Qt\Qt5.13.2\5.13.2\msvc2017\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeCCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeCXXCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeRCCompiler.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\3.28.1\CMakeSystem.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-app\tmp\linphone-qt-only-mkdirs.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\lib\cmake\ortp\ortpTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Linphone\cmake\LinphoneTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\LinphoneCxx\cmake\LinphoneCxxTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Config.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2ConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Targets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\Mediastreamer2\cmake\Mediastreamer2Targets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxCMakeUtils.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\bctoolbox\cmake\bctoolboxTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardTargets-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-sdk\desktop\share\belcard\cmake\belcardTargets.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainConfig.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainConfigVersion.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainLibraryDepends-debug.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\lib\cmake\EQt5Keychain\EQt5KeychainLibraryDepends.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\qtkeychain\tmp\app-qtkeychain-mkdirs.cmake;C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\sdk\tmp\sdk-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\sdk">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\ZERO_CHECK.vcxproj">
+      <Project>{E84F93F8-F23D-3EDA-86F2-D5C31A595DCC}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

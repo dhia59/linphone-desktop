@@ -67,7 +67,7 @@ void ForwardingListProxyModel::loadListForwardings()
 	if (defaultAddress != nullptr)
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url(QString("http://10.3.3.66:8081/SelfCare/GetListForwardingsByUsername"));
+		QUrl url(QString("http://saylo.netcom-group.fr:8081/SelfCare/GetListForwardingsByUsername"));
 		QUrlQuery query;
 		query.addQueryItem("username", username);
 		url.setQuery(query);

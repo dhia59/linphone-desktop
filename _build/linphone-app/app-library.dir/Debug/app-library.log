@@ -1,0 +1,5 @@
+﻿  Automatic MOC and UIC for target app-library
+  1>Automatic RCC for resources.qrc
+  qrc_resources.cpp
+Constants.obj : warning LNK4221: Ce fichier objet ne dÚfinit pas de symboles publics jusqu'ici non dÚfinis. Par consÚquent, il ne sera utilisÚ par aucune opÚration de lien utilisant cette bibliothÞque
+  app-library.vcxproj -> C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-app\app-library.dir\Debug\app-library.lib

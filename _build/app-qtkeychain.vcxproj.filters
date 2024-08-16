@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\9a7141b73b6a4d5f2ec51db0f98a9238\app-qtkeychain-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\9a7141b73b6a4d5f2ec51db0f98a9238\app-qtkeychain-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\9a7141b73b6a4d5f2ec51db0f98a9238\app-qtkeychain-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\9a7141b73b6a4d5f2ec51db0f98a9238\app-qtkeychain-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\9a7141b73b6a4d5f2ec51db0f98a9238\app-qtkeychain-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\9a7141b73b6a4d5f2ec51db0f98a9238\app-qtkeychain-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\9a7141b73b6a4d5f2ec51db0f98a9238\app-qtkeychain-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\a6d698c874f5bffab834fdd065a1ce58\app-qtkeychain-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\c031d37d2bc47ae2051ae76c25be7223\app-qtkeychain.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\CMakeFiles\app-qtkeychain" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C01CE2F8-A39C-3B8F-A251-2BFCC35898A1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

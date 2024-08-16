@@ -57,7 +57,7 @@ bool ForwardingManagement::deleteForwardingRule(const QString &forwardingId) {
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/ExtensionDeleteForwardingRule");
+		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/ExtensionDeleteForwardingRule");
 		QUrlQuery query;
 		query.addQueryItem("username",username);
 		query.addQueryItem("forwardingId", forwardingId);
@@ -166,7 +166,7 @@ bool ForwardingManagement::addForwardingRule(const QVariantMap &map) {
 	if (defaultAddress != nullptr)//defaultAddress != nullptr
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/ExtensionAddForwardingRule");
+		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/ExtensionAddForwardingRule");
 		QUrlQuery query;
 		query.addQueryItem("username", username);
 		url.setQuery(query);
@@ -237,7 +237,7 @@ Q_INVOKABLE bool ForwardingManagement::activateDesactivateForwardingRule(Forward
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/ActivateDesactivateForwardingRule/"+ forwardingmodel->getforwardingID());
+		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/ActivateDesactivateForwardingRule/"+ forwardingmodel->getforwardingID());
 		QUrlQuery query;
 		query.addQueryItem("username", username);	
 		url.setQuery(query);
@@ -362,7 +362,7 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/ExtensionUpdateForwardingRule/"+ forwardingId);
+		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/ExtensionUpdateForwardingRule/"+ forwardingId);
 		QUrlQuery query;
 		query.addQueryItem("username", username);
 		url.setQuery(query);

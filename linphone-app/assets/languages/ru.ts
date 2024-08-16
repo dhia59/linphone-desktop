@@ -1073,6 +1073,10 @@
         <source>Collaborateurs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>recherche contact</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ContactsAutoComplete</name>
@@ -1314,6 +1318,14 @@
         <source>dropYourAttachment</source>
         <translation>Поместите вложение</translation>
     </message>
+    <message>
+        <source>fileChooserTitle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>attachmentTooltip</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EmojiPicker</name>
@@ -1506,6 +1518,13 @@
         <source>loadFile</source>
         <extracomment>&quot;Load&quot;: Title of a file dialog to load a file.</extracomment>
         <translation>нагрузка</translation>
+    </message>
+</context>
+<context>
+    <name>Forwardings</name>
+    <message>
+        <source>removeContactDescription</source>
+        <translation type="unfinished">Вы действительно хотите удалить этот контакт из вашей адресной книги?</translation>
     </message>
 </context>
 <context>
@@ -1906,7 +1925,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aucune connexion internet</source>
+        <source>selfCare</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2700,13 +2719,6 @@
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation>Вы уверены, что хотите удалить эту запись?</translation>
-    </message>
-</context>
-<context>
-    <name>SelfCareWindow</name>
-    <message>
-        <source>Self care</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

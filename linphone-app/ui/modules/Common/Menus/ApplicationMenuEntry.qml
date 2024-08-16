@@ -70,7 +70,7 @@ Rectangle {
 		Icon {
 			id:mainIcon
 			icon: entry.icon
-			iconSize: ApplicationMenuStyle.entry.iconSize
+			iconSize: 20
 		}
 		
 		Text {

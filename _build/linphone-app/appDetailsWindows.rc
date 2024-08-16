@@ -1,0 +1,40 @@
+A ICON MOVEABLE PURE LOADONCALL DISCARDABLE "assets/icon.ico"
+
+# if defined(UNDER_CE)
+#  include <winbase.h>
+# else
+#  include <winver.h>
+# endif
+
+VS_VERSION_INFO VERSIONINFO
+    PRODUCTVERSION 5,1,3,0
+    FILEVERSION 5,1,3,0
+    FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+    FILEFLAGS VS_FF_DEBUG
+#else
+    FILEFLAGS 0x0L
+#endif
+    FILEOS VOS__WINDOWS32
+    FILETYPE VFT_APP
+    FILESUBTYPE 0x0L
+    BEGIN
+        BLOCK "StringFileInfo"
+        BEGIN
+            BLOCK "040904B0"
+            BEGIN
+                VALUE "CompanyName", "Netcom Group\0"
+                VALUE "FileDescription", "Saylo - A libre SIP client\0"
+                VALUE "FileVersion", "5.1.3-pre.20+2159b859"
+				VALUE "ProductVersion", "5.1.3\0"
+                VALUE "LegalCopyright", "Copyright (C) 2010-2024 Netcom Group https://www.netcom-group.fr/\0"
+                VALUE "OriginalFilename", "Saylo.exe\0"
+                VALUE "ProductName", "Saylo\0"
+            END
+        END
+        BLOCK "VarFileInfo"
+        BEGIN
+            VALUE "Translation", 0x409, 1200
+        END
+    END
+/* End of Version info */

@@ -59,7 +59,7 @@ void PstnModel::loadPstnLists()
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url(QString("http://10.3.3.66:8081/SelfCare/GetListPstnWithDefault"));
+		QUrl url(QString("http://saylo.netcom-group.fr:8081/SelfCare/GetListPstnWithDefault"));
 		QUrlQuery query;
 		query.addQueryItem("username", username);
 		url.setQuery(query);
@@ -171,7 +171,7 @@ Q_INVOKABLE void PstnModel::updateCustomNumber(const int & currentIndex)
 	if (defaultAddress != nullptr)
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/UpdateCustomNumber");
+		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/UpdateCustomNumber");
 		QUrlQuery query;
 		query.addQueryItem("userName", username);
 		auto number = m_data.at(currentIndex);

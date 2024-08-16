@@ -60,7 +60,7 @@ void CallerManagement::loadPstnLists()
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url(QString("http://10.3.3.66:8081/SelfCare/GetCustomCallerInfo"));
+		QUrl url(QString("http://saylo.netcom-group.fr:8081/SelfCare/GetCustomCallerInfo"));
 		QUrlQuery query;
 		query.addQueryItem("userName", username);
 		url.setQuery(query);
@@ -152,7 +152,7 @@ void CallerManagement::hideCallerIdByUsername(const bool &isHideCustomNumber)
 	if (defaultAddress != nullptr)
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/HideCallerIdByUsername");
+		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/HideCallerIdByUsername");
 		QUrlQuery query;
 		query.addQueryItem("userName",username);		
 		QString hideCallerIDString = (isHideCustomNumber ? "true" : "false");
@@ -215,7 +215,7 @@ void CallerManagement::setDndByUsername(const bool &dnd)
 	if (defaultAddress != nullptr)//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
-		QUrl url("http://10.3.3.66:8081/SelfCare/SetDndByUsername");
+		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/SetDndByUsername");
 		QUrlQuery query;
 		query.addQueryItem("username", username);
 		auto testt = QString::number(dnd);

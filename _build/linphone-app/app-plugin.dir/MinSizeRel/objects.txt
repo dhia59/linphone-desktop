@@ -1,0 +1,4 @@
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/app-plugin.dir/MinSizeRel/mocs_compilation_MinSizeRel.obj
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/app-plugin.dir/MinSizeRel/PluginDataAPI.obj
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/app-plugin.dir/MinSizeRel/PluginNetworkHelper.obj
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/app-plugin.dir/MinSizeRel/LinphonePlugin.obj

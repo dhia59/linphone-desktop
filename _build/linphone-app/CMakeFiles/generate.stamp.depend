@@ -1,0 +1,145 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCXXCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCXXSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindGit.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/InstallRequiredSystemLibraries.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckFlagCommonConfig.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5/Qt5Config.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5/Qt5ConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5/Qt5ModuleLocation.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Concurrent/Qt5ConcurrentConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Concurrent/Qt5ConcurrentConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Core/Qt5CoreConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Core/Qt5CoreMacros.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QVirtualKeyboardPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QWebGLIntegrationPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QWindowsIntegrationPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5LinguistTools/Qt5LinguistToolsConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5LinguistTools/Qt5LinguistToolsConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5LinguistTools/Qt5LinguistToolsMacros.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Multimedia/Qt5MultimediaConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Multimedia/Qt5MultimediaConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Multimedia/Qt5Multimedia_AudioCaptureServicePlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Multimedia/Qt5Multimedia_DSServicePlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Multimedia/Qt5Multimedia_QM3uPlaylistPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Multimedia/Qt5Multimedia_QWasapiPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Multimedia/Qt5Multimedia_QWindowsAudioPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Multimedia/Qt5Multimedia_WMFServicePlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Network/Qt5NetworkConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Network/Qt5Network_QGenericEnginePlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5QmlConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5QmlConfigExtras.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5QmlConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QDebugMessageServiceFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QLocalClientConnectionFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QQmlDebugServerFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QQmlDebuggerServiceFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QQmlInspectorServiceFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QQmlNativeDebugConnectorFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QQmlNativeDebugServiceFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QQmlPreviewServiceFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QQmlProfilerServiceFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QQuickProfilerAdapterFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Qml/Qt5Qml_QTcpServerConnectionFactory.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Quick/Qt5QuickConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Quick/Qt5QuickConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5QuickControls2/Qt5QuickControls2Config.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5QuickControls2/Qt5QuickControls2ConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Svg/Qt5SvgConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Svg/Qt5SvgConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Svg/Qt5Svg_QSvgIconPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Svg/Qt5Svg_QSvgPlugin.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Test/Qt5TestConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Test/Qt5TestConfigExtras.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Test/Qt5TestConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5TextToSpeech/Qt5TextToSpeechConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5TextToSpeech/Qt5TextToSpeechConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake
+C:/Qt/Qt5.13.2/5.13.2/msvc2017/lib/cmake/Qt5Widgets/Qt5Widgets_QWindowsVistaStylePlugin.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/CMakeFiles/3.28.1/CMakeCCompiler.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/CMakeFiles/3.28.1/CMakeCXXCompiler.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/CMakeFiles/3.28.1/CMakeRCCompiler.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/CMakeFiles/3.28.1/CMakeSystem.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/assets/languages/i18n.qrc
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/lib/cmake/ortp/ortpConfig.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/lib/cmake/ortp/ortpConfigVersion.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/lib/cmake/ortp/ortpTargets-debug.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/lib/cmake/ortp/ortpTargets.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/Linphone/cmake/LinphoneConfig.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/Linphone/cmake/LinphoneConfigVersion.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/Linphone/cmake/LinphoneTargets-debug.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/Linphone/cmake/LinphoneTargets.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/LinphoneCxx/cmake/LinphoneCxxConfig.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/LinphoneCxx/cmake/LinphoneCxxTargets-debug.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/LinphoneCxx/cmake/LinphoneCxxTargets.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/Mediastreamer2/cmake/Mediastreamer2Config.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/Mediastreamer2/cmake/Mediastreamer2ConfigVersion.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/Mediastreamer2/cmake/Mediastreamer2Targets-debug.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/Mediastreamer2/cmake/Mediastreamer2Targets.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/bctoolbox/cmake/bctoolboxCMakeUtils.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/bctoolbox/cmake/bctoolboxConfig.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/bctoolbox/cmake/bctoolboxConfigVersion.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/bctoolbox/cmake/bctoolboxTargets-debug.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/bctoolbox/cmake/bctoolboxTargets.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/belcard/cmake/belcardConfig.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/belcard/cmake/belcardTargets-debug.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-sdk/desktop/share/belcard/cmake/belcardTargets.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib/cmake/EQt5Keychain/EQt5KeychainConfig.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib/cmake/EQt5Keychain/EQt5KeychainConfigVersion.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib/cmake/EQt5Keychain/EQt5KeychainLibraryDepends-debug.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/qtkeychain/lib/cmake/EQt5Keychain/EQt5KeychainLibraryDepends.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-app/CMakeLists.txt
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-app/application_info.cmake
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-app/cmake_builder/linphone_package/windows/appDetailsWindows.rc.in
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-app/resources.qrc
+C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-app/src/config.h.cmake
