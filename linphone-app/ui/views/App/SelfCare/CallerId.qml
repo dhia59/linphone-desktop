@@ -9,12 +9,22 @@ import Konami 1.0
 import Linphone 1.0
 
 import App.Styles 1.0
+RowLayout {
 
+
+    Layout.fillWidth: true
+    Layout.fillHeight: true
 // =============================================================================
 Rectangle {
-    Column {
-      anchors.fill: parent
-      width: parent.width
+
+
+    Layout.fillWidth: true
+    Layout.fillHeight: true
+        //color: "red"
+
+    ColumnLayout {
+        Layout.fillWidth: true
+        Layout.fillHeight: true
 
         // Create a custom model
       PstnModel {
@@ -94,12 +104,14 @@ Rectangle {
 
 
 }
+
+
     Loader{
                 id:busyIndicatorLoader
                 source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
                 visible: model.isLoading || callerModel.isLoading
-                //anchors.fill: parent
-                anchors.centerIn: parent
+                anchors.fill: parent
+                //anchors.centerIn: parent
                 /*x:500
                 y:300*/
                 onVisibleChanged: {
@@ -107,4 +119,4 @@ Rectangle {
                 }
           }
 }
-
+}

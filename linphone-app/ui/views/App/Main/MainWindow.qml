@@ -59,8 +59,8 @@ ApplicationWindow {
     // Window properties.
     // ---------------------------------------------------------------------------
 
-    minimumHeight: 700
-    minimumWidth: 1200
+    minimumHeight: 800
+    minimumWidth: 1300
 
     title: Utils.capitalizeFirstLetter(applicationName)
 
@@ -789,9 +789,10 @@ ApplicationWindow {
                         anchors.fill: parent
 
                         source:AccountSettingsModel.registrationState===0 || noNetworkAlert?
+
                                   window.setView('Conversation', {
                                                      chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
-                                                 }) :  'Login.qml'
+                                                 }) :'Login.qml'
                     }
                     //                    TelKeypad {
                     //                        anchors.right: parent.right

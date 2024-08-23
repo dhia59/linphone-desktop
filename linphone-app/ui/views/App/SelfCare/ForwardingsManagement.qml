@@ -13,15 +13,26 @@ import App.Styles 1.0
 // =============================================================================
 
 Rectangle {
-    width: parent.width
-    height: parent.height
+
+    anchors.fill: parent
     property ForwardingModel selectedForwardingData: null
-    ColumnLayout{
-        spacing: 50
-        Row{
+
+        RowLayout{
+            id:addbuttonid
+
+            width:100
+            height: 50
+            Rectangle{
+
+                width:100
+                height: 50
+              //  color: "purple"
+
 
             TextButtonB {
+
                 width:100
+                height: 50
 
                 text: "Ajouter"
                 onClicked: {
@@ -30,15 +41,26 @@ Rectangle {
 
                 }
             }
+            }
         }
 
-        Row{
-            y:50
+        RowLayout{
+
               spacing: 10
-              Column{
-                  width:showForm ?parent.width/2 : parent.width
+              anchors.topMargin: 60
+              anchors.top: addbuttonid.bottom
+                anchors.fill: parent
+                  Layout.fillWidth: true
+                  Layout.fillHeight: true
+              ColumnLayout{
+                  width:300
+                 // Layout.fillHeight: true
+
                   Rectangle{
-                      width: parent.width
+                      width: 150
+                      anchors.fill: parent
+                      Layout.fillHeight: true
+                      //color: "gray"
                       Forwardings{
                           id: forwardings
                           onEntryClicked: {
@@ -48,12 +70,21 @@ Rectangle {
                           }
                        }
                   }
-              }
-              Column{
                   Rectangle{
-                       width: parent.width/2
-                       x: 600
-                       y: 0
+                      width: 300
+                      Layout.fillHeight: true
+
+
+                  }
+              }
+              ColumnLayout{
+                  Layout.fillWidth: true
+                  Layout.fillHeight: true
+                  Rectangle{
+
+                       width: 250
+                       anchors.fill: parent
+                     //  color: "yellow"
                       AddEditForwardingRule{
                           id:addEditForwardingRule
                           currentForwardingData: selectedForwardingData
@@ -67,7 +98,7 @@ Rectangle {
 
         }
 
-    }
+
 
 }
 

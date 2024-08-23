@@ -15,7 +15,7 @@ import UtilsCpp 1.0
 import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 ScrollView {
     width: 500 // Adjust width as needed
-    height: 700 // Adjust height as needed
+    height: 550 // Adjust height as needed
     function getForwardType(str) {
         switch (str) {
         case "AL":
@@ -49,10 +49,10 @@ ScrollView {
         updateList();
         calendarButton.checked = false;
         presenceButton.checked = false;
-        for (var j = 0; i < 7; ++j) {
+       /* for (var j = 0; i < 7; ++j) {
 
             daysRepeater.itemAt(j).checked= false
-        }
+        }*/
     }
     function populate(){
         forwardingLabel.text= currentForwardingData.label;
@@ -61,9 +61,9 @@ ScrollView {
         if(currentForwardingData.timeFilter!==null){
             calendarButton.checked= true;
             getCheckedDaysFilter(currentForwardingData.timeFilter.split("/")[0]);
-            var time= currentForwardingData.timeFilter.split("/")[1].split("-");
-            fromDateField.text= time[0];
-            toDateField.text= time[1];
+           // var time= currentForwardingData.timeFilter.split("/")[1].split("-");
+           // fromDateField.text= time[0];
+           // toDateField.text= time[1];
         }
           destinationText ="";
         if(forwardingDestination.currentIndex===2){
@@ -123,7 +123,8 @@ ScrollView {
     }
     function getNumberOrExtension(address){
         console.log("fffffffff ", address)
-        var result= address.split("@")[0].replace("<sip:", "")
+        var result= address.split("@")[0].replace("sip:", "")
+        console.log("fffffffff result", result)
         return result;
     }
 
@@ -146,10 +147,10 @@ ScrollView {
         else{
             checkedDays= days.split("+");
         }
-        console.log("dayssssssssssss ", checkedDays)
+        /*console.log("dayssssssssssss ", checkedDays)
         for(var i=0; i<checkedDays.length; i++){
             daysRepeater.itemAt(listDays.indexOf(checkedDays[i])).checked= true;
-        }
+        }*/
 
     }
 
@@ -360,7 +361,7 @@ ScrollView {
                         onEntryClicked: {
                             console.log("heyyyyyyyyyy ", entry.sipAddress)
                             var sipAddress= entry.sipAddress.split('"')
-                            destinationText = getNumberOrExtension(sipAddress[2])
+                            destinationText = getNumberOrExtension(entry.sipAddress)
                         }
                     }
 
@@ -478,8 +479,8 @@ ScrollView {
                             onEntryClicked: {
                                 console.log("heyyyyyyyyyy ", entry.sipAddress)
                                 var sipAddress= entry.sipAddress.split('"')
-                                if(specificCallerList.indexOf(getNumberOrExtension(sipAddress[2]))<0){
-                                    specificCallerList.push(getNumberOrExtension(sipAddress[2]))
+                                if(specificCallerList.indexOf(getNumberOrExtension(entry.sipAddress))<0){
+                                    specificCallerList.push(getNumberOrExtension(entry.sipAddress))
                                     updateList()
 
                                 }

@@ -8,6 +8,8 @@ import Common.Styles 1.0
 import Konami 1.0
 import Linphone 1.0
 import 'qrc:/ui/scripts/Utils/utils.js' as Utils
+import 'SelfCareWindow.js' as Logic
+
 import App.Styles 1.0
 import UtilsCpp 1.0
 // =============================================================================
@@ -45,7 +47,7 @@ Rectangle {
                 spacing: 5
                 Column{
                     Text {
-                        width: 200
+                       // width: 100
                         text: modelData.label
                     }
                 }
@@ -69,6 +71,7 @@ Rectangle {
                         colorSet: SettingsWindowStyle.buttons.deleteProxy
 
                         onClicked: {
+                            //dialog.open()
                             console.log("delete:", modelData)
                             window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
                                                            descriptionText: qsTr('removeContactDescription'),
@@ -103,12 +106,13 @@ Rectangle {
 
 
     }
+
     Loader{
         id:busyIndicatorLoader
         source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
         visible: forwardingModel.isLoading ||forwardingManagement.isLoading
-        //anchors.fill: parent
-        anchors.centerIn: parent
+        anchors.fill: parent
+        //anchors.centerIn: parent
         /*x:500
                 y:300*/
         onVisibleChanged: {

@@ -157,7 +157,8 @@ bool ForwardingManagement::addForwardingRule(const QVariantMap &map) {
 	jsonObject["allowDisableOnChildren"] = true;
 	jsonObject["forwardOnService"] = true;
 	jsonObject["specificCaller"] = JoinQvariantList(specificCaller,",");
-	jsonObject["timeFilter"] =getTimeFilterText(daysFilter, startTimeFilter, endTimeFilter);
+	//jsonObject["timeFilter"] =getTimeFilterText(daysFilter, startTimeFilter, endTimeFilter);
+	jsonObject["timeFilter"] ="0";
 
 	QJsonDocument jsonDocument(jsonObject);
 	QByteArray jsonData = jsonDocument.toJson();
@@ -353,7 +354,8 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 	else {
 		jsonObject["destination"] = getDestination(destination);
 	}
-	jsonObject["timeFilter"] = getTimeFilterText(daysFilter, startTimeFilter, endTimeFilter);
+	//jsonObject["timeFilter"] = getTimeFilterText(daysFilter, startTimeFilter, endTimeFilter);
+	jsonObject["timeFilter"] = "0";
 
 	QJsonDocument jsonDocument(jsonObject);
 	QByteArray jsonData = jsonDocument.toJson();

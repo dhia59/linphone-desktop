@@ -12,25 +12,33 @@ import App.Styles 1.0
 
 // =============================================================================
 Rectangle {
-    id:window
-
+    id:swindowid
+    //color: "gray"
+   // minimumHeight: 600
+    //minimumWidth: 400
     function setView (view, props, callback) {
         Logic.setView(view, props, callback)
     }
     property var views: ['CallerId','ForwardingsManagement','VoiceMailManagement','AccountManagement']
     // Principal conteneur
-    Row {
+    RowLayout {
         anchors.fill: parent
 
+
+
         // Menu latéral
-        Column {
+        ColumnLayout {
             Rectangle {
-                width: 200
+                width:200
+                Layout.fillHeight: true
                 color: "#f0f0f0"
+                //color: "gray"
 
                 Column {
                     spacing: 10
-                    anchors.fill: parent
+                    //anchors.fill: parent
+                    Layout.fillHeight: true
+                    width: 200
                     anchors.margins: 10
                     id: sideBar
                     property int currentIndex: 0
@@ -40,7 +48,7 @@ Rectangle {
                         model: ["Numéro personnalisé", "Redirection", "Messagerie vocale", "Compte"]
                         delegate: Rectangle {
                             id: menuItem
-                            width: parent.width
+                            width:200
                             height: 40
                             color: (sideBar.currentIndex === index) ? "#222154" : "#b0b0b0"
                             radius: 10
@@ -55,28 +63,32 @@ Rectangle {
                                 anchors.fill: parent
                                 onClicked: {
                                     sideBar.currentIndex = index;
-                                    window.setView(views[index]);
+                                    swindowid.setView(views[index]);
                                 }
                             }
                         }
                     }
+
                 }
             }
         }
 
-        Column {
-            x: 210
+        ColumnLayout {
+           // x: 210
             Rectangle {
-                color: "#ffffff"
+                //color: "yellow"
                 anchors.fill: parent
 
-                Column {
+                ColumnLayout {
                     spacing: 10
                     anchors.fill: parent
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
                     anchors.margins: 20
 
                     Loader {
                         id: mainLoader
+                        anchors.fill: parent
                         source: 'CallerId.qml'
                         onSourceChanged: {
                             // Update colors of menu items

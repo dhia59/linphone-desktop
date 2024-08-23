@@ -27,6 +27,10 @@
 .import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 
 // =============================================================================
+function attachVirtualWindow (component, properties, exitStatusHandler) {
+  return virtualWindow.setContent(component, properties, exitStatusHandler);
+}
+
 
 function handleActiveFocusItemChanged (activeFocusItem) {
   var smartSearchBar = window._smartSearchBar
