@@ -130,7 +130,7 @@ ApplicationWindow {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 Rectangle {
                     width: parent.width
-                    height: 30
+                    height: 50
                     color: "gray"
                     //anchors.centerIn: parent
                     Text {
@@ -274,11 +274,11 @@ ApplicationWindow {
                     MainWindowMenuBar {
                         id: menuBar
                         onDisplayRecordings: {
-                            timeline.model.unselectAll()
+                           // timeline.model.unselectAll()
                             setView('Recordings')
                         }
                         onDisplayVocalMessages: {
-                            timeline.model.unselectAll()
+                            //timeline.model.unselectAll()
                             setView('VocalMessages')
                         }
 
@@ -354,10 +354,10 @@ ApplicationWindow {
 
                                     window.setView('Home', {})
                                 }
-                                menu.resetSelectedEntry()
+                                //menu.resetSelectedEntry()
                             }
                             onShowHistoryRequest: {
-                                timeline.model.unselectAll()
+                               // timeline.model.unselectAll()
                                 window.setView('HistoryView')
                             }
 
@@ -378,7 +378,7 @@ ApplicationWindow {
                             id: menu
                             z:1
                             //visible:false
-                            defaultSelectedEntry: null
+                            defaultSelectedEntry: chatEntry
 
                             entryHeight: MainWindowStyle.menu.height
                             entryWidth: MainWindowStyle.menu.width
@@ -393,19 +393,25 @@ ApplicationWindow {
                                 visible: true
 
                                 onSelected: {
-                                    showTimeline=true
-                                    menuWidth=500
-                                    timeline.model.unselectAll()
-                                    window.setView('Conversation', {
+                                    if (timeline.model.rowCount()>1){
+                                        showTimeline=true
+                                        menuWidth=500
+                                       // timeline.model.unselectAll()
+                                        window.setView('Conversation', {
                                                        chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                                                    })
+
+                                    }
                                 }
                                 onClicked:{
-                                    menuWidth=500
-                                    showTimeline=true
-                                    window.setView('Conversation', {
+                                    if (timeline.model.rowCount()>1){
+                                        menuWidth=500
+                                        showTimeline=true
+                                        window.setView('Conversation', {
                                                        chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                                                    })
+
+                                    }
                                 }
                                 Icon{
                                     anchors.right:parent.right
@@ -435,7 +441,7 @@ ApplicationWindow {
                                     showTimeline=false
                                     menuWidth=250
                                     ContactsListModel.update()
-                                    timeline.model.unselectAll()
+                                  //  timeline.model.unselectAll()
                                     setView('Contacts')
                                 }
                                 onClicked:{
@@ -467,7 +473,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                 //   timeline.model.unselectAll()
                                     setView('Conferences')
                                 }
                                 onClicked:{
@@ -497,7 +503,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                 //   timeline.model.unselectAll()
                                     setView('HistoryView')
                                 }
                                 onClicked:{
@@ -527,7 +533,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                  //  timeline.model.unselectAll()
                                     setView('Conferences')
                                 }
                                 onClicked:{
@@ -557,7 +563,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                  //  timeline.model.unselectAll()
                                     setView('VocalMessages')
                                 }
                                 onClicked:{
@@ -587,7 +593,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                  //  timeline.model.unselectAll()
                                     setView('Recordings')
                                 }
                                 onClicked:{
@@ -617,7 +623,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                    //timeline.model.unselectAll()
                                     setView('qrc:/ui/views/App/SelfCare/SelfCareWindow')
                                 }
                                 onClicked:{
@@ -788,11 +794,11 @@ ApplicationWindow {
 
                         anchors.fill: parent
 
-                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert?
+                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert? timeline.model.rowCount()>1?
 
                                   window.setView('Conversation', {
                                                      chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
-                                                 }) :'Login.qml'
+                                                 }) :loadHistoryView()  :'Login.qml'
                     }
                     //                    TelKeypad {
                     //                        anchors.right: parent.right
@@ -850,6 +856,12 @@ ApplicationWindow {
     }
 
 
+    function loadHistoryView(){
+        setView('HistoryView')
+        menuWidth=250
+        showTimeline=false
+        menu.defaultSelectedEntry=callsEntry
+    }
 
     Loader{
         id: customMenuBar
