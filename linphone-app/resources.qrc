@@ -585,6 +585,7 @@
         <file>ui/views/App/Main/Login.qml</file>
         <file>ui/modules/Common/Animations/MyBusyIndicator.qml</file>
         <file>ui/views/App/SelfCare/AddEditForwardingRule.qml</file>
+         <file>ui/views/App/SelfCare/AddEditForwardingRule.js</file>
         <file>ui/views/App/SelfCare/ForwardingsManagement.qml</file>
         <file>ui/views/App/SelfCare/AccountManagement.qml</file>
         <file>ui/views/App/SelfCare/VoiceMailManagement.qml</file>
