@@ -1,0 +1,13 @@
+# Target labels
+ app-qtkeychain
+# Source files and their labels
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/app-qtkeychain
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/a5cee4ebf057da549f01d1d99d90acdb/app-qtkeychain.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5ed6fdc1f780c835f8affd9aeb643c9a/app-qtkeychain-complete.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/08278c58fecf45c908d1a70add002a38/app-qtkeychain-build.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/08278c58fecf45c908d1a70add002a38/app-qtkeychain-configure.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/08278c58fecf45c908d1a70add002a38/app-qtkeychain-download.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/08278c58fecf45c908d1a70add002a38/app-qtkeychain-install.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/08278c58fecf45c908d1a70add002a38/app-qtkeychain-mkdir.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/08278c58fecf45c908d1a70add002a38/app-qtkeychain-patch.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/08278c58fecf45c908d1a70add002a38/app-qtkeychain-update.rule

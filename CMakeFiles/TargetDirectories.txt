@@ -1,0 +1,9 @@
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/app-qtkeychain.dir
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/sdk.dir
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/sdk-build.dir
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/linphone-qt.dir
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/auto_regeneration.dir
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/linphone-qt-only.dir
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/INSTALL.dir
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/ALL_BUILD.dir
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/ZERO_CHECK.dir

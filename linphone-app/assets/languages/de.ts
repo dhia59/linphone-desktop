@@ -915,6 +915,10 @@
         <translation>Beendet</translation>
     </message>
     <message>
+        <source>conferencesAddNewChatGroup</source>
+        <translation>Bilden Sie ein Team</translation>
+    </message>
+    <message>
         <source>conferencesScheduledFilter</source>
         <extracomment>&apos;Scheduled&apos; : Filter meetings on scheduled status.</extracomment>
         <translation>Geplant</translation>

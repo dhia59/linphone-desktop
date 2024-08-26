@@ -921,6 +921,10 @@
         <translation>Оконченная</translation>
     </message>
     <message>
+    <source>conferencesAddNewChatGroup</source>
+    <translation>Создать команду</translation>
+</message>
+    <message>
         <source>conferencesScheduledFilter</source>
         <extracomment>&apos;Scheduled&apos; : Filter meetings on scheduled status.</extracomment>
         <translation>Запланированная</translation>

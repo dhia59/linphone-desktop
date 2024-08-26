@@ -45,7 +45,7 @@ Item{
 				text: qsTr('conferencesTitle')
 			}
 		}
-		Rectangle {
+		/*Rectangle {
 			Layout.fillWidth: true
 			Layout.preferredHeight: ConferencesStyle.bar.height
 			
@@ -76,8 +76,16 @@ Item{
 					}
 				}
 			}
-		}
-		
+		}*/
+
+        TextButtonB {
+                text: qsTr('Créer une équipe')
+                onClicked: {
+							window.detachVirtualWindow()
+							window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
+													   ,{})
+						}
+            }
 		// ---------------------------------------------------------------------------
 		// Conferences list.
 		// ---------------------------------------------------------------------------

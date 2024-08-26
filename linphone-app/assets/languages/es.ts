@@ -920,6 +920,10 @@
         <translation>Programado</translation>
     </message>
     <message>
+        <source>conferencesAddNewChatGroup</source>
+        <translation>crear un equipo</translation>
+    </message>
+    <message>
         <source>conferencesCopiedURL</source>
         <extracomment>&apos;The meeting URL has been copied&apos; : Message text in a banner to warn the user that the URL have been copied to the clipboard.</extracomment>
         <translation>URL de la conferencia ha sido copiada</translation>

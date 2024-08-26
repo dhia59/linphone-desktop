@@ -926,6 +926,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+    <source>conferencesAddNewChatGroup</source>
+    <translation>Crea una squadra</translation>
+</message>
+    <message>
         <source>conferencesCopiedURL</source>
         <extracomment>&apos;The meeting URL has been copied&apos; : Message text in a banner to warn the user that the URL have been copied to the clipboard.</extracomment>
         <translation type="unfinished"></translation>
