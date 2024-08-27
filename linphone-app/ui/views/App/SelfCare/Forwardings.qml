@@ -58,7 +58,8 @@ Rectangle {
                         colorSet: SettingsWindowStyle.buttons.editProxy
 
                         onClicked: {
-                            console.log("updateeeeee:", modelData.filtersOnTargetNumber)
+                            console.log("updateeeeee:", modelData.forwardType)
+                            console.log("updateeeeee2:", modelData.destination)
                             entryClicked(modelData)
                             selected = modelData
                         }

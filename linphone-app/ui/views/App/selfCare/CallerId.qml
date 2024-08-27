@@ -35,11 +35,13 @@ Rectangle {
       }
 
       Form {
-          orientation: Qt.Horizontal
+          orientation: Qt.Vertical
+          spacing:20
           width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
          // anchors.horizontalCenter: parent.horizontalCenter
 
           FormLine {
+
               FormGroup {
                   label:"Mon numéro personnalisé"
                   ComboBox  {
@@ -98,25 +100,36 @@ Rectangle {
 
       }
 
+//loader
 
-
-
+      Loader{
+                  id:busyIndicatorLoader
+                  source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
+                  visible: model.isLoading || callerModel.isLoading
+                  //anchors.fill: parent
+                  anchors.centerIn: parent
+                  /*x:500
+                  y:300*/
+                  onVisibleChanged: {
+                      console.log("visibleeee  caller", model.isLoading)
+                  }
+            }
 
 
 }
 
 
-    Loader{
-                id:busyIndicatorLoader
-                source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
-                visible: model.isLoading || callerModel.isLoading
-                anchors.fill: parent
-                //anchors.centerIn: parent
-                /*x:500
-                y:300*/
-                onVisibleChanged: {
-                    console.log("visibleeee  caller", model.isLoading)
-                }
-          }
+    // Loader{
+    //             id:busyIndicatorLoader
+    //             source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
+    //             visible: model.isLoading || callerModel.isLoading
+    //             anchors.fill: parent
+    //             //anchors.centerIn: parent
+    //             /*x:500
+    //             y:300*/
+    //             onVisibleChanged: {
+    //                 console.log("visibleeee  caller", model.isLoading)
+    //             }
+    //       }
 }
 }

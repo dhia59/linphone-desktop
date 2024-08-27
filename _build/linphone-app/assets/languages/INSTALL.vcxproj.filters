@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Work\VoIP\N_projects\Saylo\linphone-desktop\build\linphone-app\CMakeFiles\ca870e5ec167c2be720d8575a15eb9d9\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{EBA9651C-181E-3128-9D4F-06129B79EBDB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
