@@ -1,8 +1,0 @@
-# CMake generation dependency list for this directory.
-C:/Program Files/CMake/share/cmake-3.28/Modules/FindGit.cmake
-C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
-C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
-C:/Program Files/CMake/share/cmake-3.28/Modules/InstallRequiredSystemLibraries.cmake
-C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-app/application_info.cmake
-C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-app/assets/qt.conf.in
-C:/Work/VoIP/N_projects/Saylo/linphone-desktop/linphone-app/cmake_builder/linphone_package/CMakeLists.txt

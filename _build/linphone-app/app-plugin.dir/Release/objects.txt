@@ -1,4 +1,0 @@
-C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/app-plugin.dir/Release/mocs_compilation_Release.obj
-C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/app-plugin.dir/Release/PluginDataAPI.obj
-C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/app-plugin.dir/Release/PluginNetworkHelper.obj
-C:/Work/VoIP/N_projects/Saylo/linphone-desktop/build/linphone-app/app-plugin.dir/Release/LinphonePlugin.obj
