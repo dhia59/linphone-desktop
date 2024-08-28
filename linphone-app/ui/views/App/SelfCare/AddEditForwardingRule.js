@@ -111,18 +111,27 @@ function getDaysFilter() {
     return checkedItems;
 }
 function populate(){
+    console.log("timeeeee ",currentForwardingData.timeFilter )
     specificCallerList=[]
     forwardingLabel.text= currentForwardingData.label;
     forwardingOrigin.currentIndex=getOriginInt(currentForwardingData.filter);
     forwardType.currentIndex=getForwardType(currentForwardingData.forwardType);
     populateTargetNumbersFilter(currentForwardingData.filtersOnTargetNumber);
     noAnswerForwardingDelay.currentIndex= getNoAnswerDelayInt(currentForwardingData.noAnswerForwardingDelay);
-    if(currentForwardingData.timeFilter!==null){
+    if(currentForwardingData.timeFilter!==""){
         calendarButton.checked= true;
         getCheckedDaysFilter(currentForwardingData.timeFilter.split("/")[0]);
-       // var time= currentForwardingData.timeFilter.split("/")[1].split("-");
-       // fromDateField.text= time[0];
-       // toDateField.text= time[1];
+        var time= currentForwardingData.timeFilter.split("/")[1].split("-");
+        fromDateField.text= time[0];
+        toDateField.text= time[1];
+    }
+    else{
+        var listDays= ["Mon","Tue","Wed","Thu","Fri","Sat", "Sun"]
+        fromDateField.text= "00:00";
+        toDateField.text= "00:00";
+        for(var i=0; i<listDays.length; i++){
+            daysRepeater.itemAt(i).checked= false;
+        }
     }
     //destinationTextRect.visible=getDestinationInt(currentForwardingData.destination)===2
     destinationText ="";
@@ -214,10 +223,10 @@ function getCheckedDaysFilter(days){
     else{
         checkedDays= days.split("+");
     }
-    /*console.log("dayssssssssssss ", checkedDays)
+    console.log("dayssssssssssss ", checkedDays)
     for(var i=0; i<checkedDays.length; i++){
         daysRepeater.itemAt(listDays.indexOf(checkedDays[i])).checked= true;
-    }*/
+    }
 
 }
 

@@ -354,8 +354,8 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 	else {
 		jsonObject["destination"] = getDestination(destination);
 	}
-	//jsonObject["timeFilter"] = getTimeFilterText(daysFilter, startTimeFilter, endTimeFilter);
-	jsonObject["timeFilter"] = "0";
+	jsonObject["timeFilter"] = getTimeFilterText(daysFilter, startTimeFilter, endTimeFilter);
+	//jsonObject["timeFilter"] = "0";
 
 	QJsonDocument jsonDocument(jsonObject);
 	QByteArray jsonData = jsonDocument.toJson();
