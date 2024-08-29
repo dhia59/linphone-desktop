@@ -59,10 +59,13 @@ ApplicationWindow {
     // Window properties.
     // ---------------------------------------------------------------------------
 
+
+
     minimumHeight: 800
     minimumWidth: 1300
 
     title: Utils.capitalizeFirstLetter(applicationName)
+
 
     // ---------------------------------------------------------------------------
 

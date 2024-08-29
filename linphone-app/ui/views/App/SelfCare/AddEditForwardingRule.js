@@ -114,8 +114,10 @@ function populate(){
     specificCallerList=[]
     forwardingLabel.text= currentForwardingData.label;
     forwardingOrigin.currentIndex=getOriginInt(currentForwardingData.filter);
-    forwardingDestination.currentIndex=getForwardType(currentForwardingData.forwardType);
-    console.log("heloooooo  forwardType index",getForwardType(currentForwardingData.forwardType))
+    forwardType.currentIndex=getForwardType(currentForwardingData.forwardType);
+    forwardingDestination.currentIndex=getNumeroAppeleInt(currentForwardingData.destination);
+    console.log("heloooooo  forwardType data",currentForwardingData.destination)
+    console.log("heloooooo  forwardType index",forwardingDestination.currentIndex)
     populateTargetNumbersFilter(currentForwardingData.filtersOnTargetNumber);
     noAnswerForwardingDelay.currentIndex= getNoAnswerDelayInt(currentForwardingData.noAnswerForwardingDelay);
     if(currentForwardingData.timeFilter!==null){

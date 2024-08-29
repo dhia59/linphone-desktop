@@ -509,6 +509,7 @@ ScrollView {
 
                         }
                         else {
+                            console.log("editForwardingRule : ",forwardType.currentIndex)
                             if (forwardingManagement.editForwardingRule({
                                                                              forwardingId: currentForwardingData.forwardingID,
                                                                              label: forwardingLabel.text,
