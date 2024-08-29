@@ -916,20 +916,6 @@
         <translation>Schůzky</translation>
     </message>
     <message>
-        <source>conferencesEndedFilter</source>
-        <extracomment>&apos;Finished&apos; : Filter meetings on end status.</extracomment>
-        <translation>Dokončeno</translation>
-    </message>
-    <message>
-        <source>conferencesScheduledFilter</source>
-        <extracomment>&apos;Scheduled&apos; : Filter meetings on scheduled status.</extracomment>
-        <translation>Naplánováno</translation>
-    </message>
-    <message>
-        <source>conferencesAddNewChatGroup</source>
-        <translation> Vytvořte tým</translation>
-    </message>
-    <message>
         <source>conferencesCopiedURL</source>
         <extracomment>&apos;The meeting URL has been copied&apos; : Message text in a banner to warn the user that the URL have been copied to the clipboard.</extracomment>
         <translation>Adresa URL schůzky byla zkopírována</translation>
@@ -938,6 +924,10 @@
         <source>conferencesDeleted</source>
         <extracomment>&apos;The meeting has been deleted&apos; : Message text in a banner to warn the user that the meeting has been deleted.</extracomment>
         <translation>Schůzka byla smazána</translation>
+    </message>
+    <message>
+        <source>Créer une équipe</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

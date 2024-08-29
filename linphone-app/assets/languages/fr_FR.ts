@@ -910,20 +910,6 @@
         <translation>Réunions</translation>
     </message>
     <message>
-        <source>conferencesEndedFilter</source>
-        <extracomment>&apos;Finished&apos; : Filter meetings on end status.</extracomment>
-        <translation>Terminées</translation>
-    </message>
-    <message>
-        <source>conferencesScheduledFilter</source>
-        <extracomment>&apos;Scheduled&apos; : Filter meetings on scheduled status.</extracomment>
-        <translation>Programmées</translation>
-    </message>
-    <message>
-        <source>conferencesAddNewChatGroup</source>
-        <translation>Créer une équipe</translation>
-    </message>
-    <message>
         <source>conferencesCopiedURL</source>
         <extracomment>&apos;The meeting URL has been copied&apos; : Message text in a banner to warn the user that the URL have been copied to the clipboard.</extracomment>
         <translation>Le lien de la réunion à été copié</translation>
@@ -932,6 +918,10 @@
         <source>conferencesDeleted</source>
         <extracomment>&apos;The meeting has been deleted&apos; : Message text in a banner to warn the user that the meeting has been deleted.</extracomment>
         <translation>La réunion a été supprimée</translation>
+    </message>
+    <message>
+        <source>Créer une équipe</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
