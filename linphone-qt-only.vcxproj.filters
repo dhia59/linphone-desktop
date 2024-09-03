@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\04407748ef260ed62d7479e8d80d6d48\linphone-qt-only-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\04407748ef260ed62d7479e8d80d6d48\linphone-qt-only-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\04407748ef260ed62d7479e8d80d6d48\linphone-qt-only-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\04407748ef260ed62d7479e8d80d6d48\linphone-qt-only-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\04407748ef260ed62d7479e8d80d6d48\linphone-qt-only-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\04407748ef260ed62d7479e8d80d6d48\linphone-qt-only-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\04407748ef260ed62d7479e8d80d6d48\linphone-qt-only-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\5ed6fdc1f780c835f8affd9aeb643c9a\linphone-qt-only-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\a5cee4ebf057da549f01d1d99d90acdb\linphone-qt-only.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Work\V2_Netcom\linphone-desktop\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Work\V2_Netcom\linphone-desktop\CMakeFiles\linphone-qt-only" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{BFC6EACF-CB28-38BF-8983-CA73843D8E60}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

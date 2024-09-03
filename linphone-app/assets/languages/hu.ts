@@ -904,16 +904,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>conferencesEndedFilter</source>
-        <extracomment>&apos;Finished&apos; : Filter meetings on end status.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>conferencesScheduledFilter</source>
-        <extracomment>&apos;Scheduled&apos; : Filter meetings on scheduled status.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>conferencesCopiedURL</source>
         <extracomment>&apos;The meeting URL has been copied&apos; : Message text in a banner to warn the user that the URL have been copied to the clipboard.</extracomment>
         <translation type="unfinished"></translation>
@@ -921,6 +911,10 @@
     <message>
         <source>conferencesDeleted</source>
         <extracomment>&apos;The meeting has been deleted&apos; : Message text in a banner to warn the user that the meeting has been deleted.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Créer une équipe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1812,11 +1806,11 @@ Kattintson ide: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished">Szállítás</translation>
     </message>
     <message>
-        <source>Votre identifiant</source>
+        <source>Nom d&apos;utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Votre mot de passe</source>
+        <source>Mot de passe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1863,16 +1857,6 @@ Kattintson ide: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>localContactsEntry</source>
-        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>contactsEntry</source>
-        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Rechercher, se rencontrer et appeler</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1881,15 +1865,7 @@ Kattintson ide: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Messageries</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>reunions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>appels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1897,15 +1873,30 @@ Kattintson ide: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Messageries vocale</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enregistrements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>selfCare</source>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

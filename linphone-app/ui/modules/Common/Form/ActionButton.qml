@@ -56,6 +56,7 @@ Item {
 	// Custom mode  
 	
 	property alias backgroundRadius : backgroundColor.radius
+	property string staticIconB
 	
 	property alias horizontalAlignment: icon.horizontalAlignment
 	property alias verticalAlignment: icon.verticalAlignment
@@ -272,7 +273,14 @@ Item {
 			
 			anchors.centerIn: parent
 			anchors.fill: iconHeight>0 || iconWidth ? parent : undefined
+			staticIcon:staticIconB?staticIconB :''
 			icon: {
+				if(staticIconB) {
+					console.log("staticIconB set :",staticIconB);
+					return staticIconB;
+				}else{
+					console.log("staticIconB not set :",staticIconB);
+				}
 				var iconString = _getIcon()
 				if( iconString ) {
 					if(Images[iconString])

@@ -66,6 +66,8 @@ Rectangle {
                           onEntryClicked: {
                               selectedForwardingData= entry
                               addEditForwardingRule.currentForwardingData= entry
+                              console.log("updateeeeee3:", entry.forwardType)
+                              console.log("updateeeeee4:", entry.destination)
                               addEditForwardingRule.populate()
                           }
                        }

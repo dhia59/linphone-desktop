@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/sdk"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/a5cee4ebf057da549f01d1d99d90acdb/sdk.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5ed6fdc1f780c835f8affd9aeb643c9a/sdk-complete.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-build.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-configure.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-download.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-force_build.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-install.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-mkdir.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-patch.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"sdk"
+		],
+		"name" : "sdk"
+	}
+}

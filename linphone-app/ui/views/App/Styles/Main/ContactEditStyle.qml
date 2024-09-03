@@ -94,7 +94,7 @@ QtObject {
 		property int topMargin: 20
 		
 		property QtObject separator: QtObject {
-			property var colorModel: ColorsList.add(sectionName+'_separator', 'f')
+			property var colorModel: '#a3a2b8'
 			property int height: 1
 		}
 	}

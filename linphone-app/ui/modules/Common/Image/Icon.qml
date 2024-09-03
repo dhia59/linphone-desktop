@@ -17,6 +17,7 @@ Item {
 	property int iconWidth: 0	//	<-- too
 	
 	property string icon
+	property string staticIcon
 	property color overwriteColor
 	property alias horizontalAlignment: image.horizontalAlignment
 	property alias verticalAlignment: image.verticalAlignment
@@ -44,7 +45,8 @@ Item {
 // Better quality is only available from Qt5.15
 		fillMode: !qtIsNewer_5_15_0 ? Image.PreserveAspectFit : Image.Stretch // Stretch is default from Qt's doc
 		// Keep aspect ratio is done by ImagePovider that use directly SVG scalings (=no loss quality).
-		source: width != 0 && height != 0 ?  Utils.resolveImageUri(icon) : ''	// Do not load image with unknown requested size
+		//console.log("staticIcon : ",staticIcon)
+		source: staticIcon ? icon :  width != 0 && height != 0 ?  Utils.resolveImageUri(icon) : ''	// Do not load image with unknown requested size
 		sourceSize.width: qtIsNewer_5_15_0
 							? fillMode == Image.TileHorizontally
 								? height

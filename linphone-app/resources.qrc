@@ -102,6 +102,21 @@
         <file>assets/images/home_use_linphone.svg</file>
         <file>assets/images/appBackground.png</file>
         <file>assets/images/saylocallsbackground.png</file>
+        <file>assets/images/clavierdappel_0.png</file>
+        <file>assets/images/clavierdappel_1.png</file>
+        <file>assets/images/clavierdappel_2.png</file>
+        <file>assets/images/clavierdappel_3.png</file>
+        <file>assets/images/clavierdappel_4.png</file>
+        <file>assets/images/clavierdappel_5.png</file>
+        <file>assets/images/clavierdappel_6.png</file>
+        <file>assets/images/clavierdappel_7.png</file>
+        <file>assets/images/clavierdappel_8.png</file>
+        <file>assets/images/clavierdappel_9.png</file>
+        <file>assets/images/clavierdappel_plus.png</file>
+        <file>assets/images/clavierdappel_del.png</file>
+        <file>assets/images/clavierdappel_call.png</file>
+        <file>assets/images/clavierdappel_asterics.png</file>
+        <file>assets/images/clavierdappel_dias.png</file>
         <file>assets/images/ics_edit_custom.svg</file>
         <file>assets/images/incoming_call_custom.svg</file>
         <file>assets/images/led_green.svg</file>
@@ -585,6 +600,7 @@
         <file>ui/views/App/Main/Login.qml</file>
         <file>ui/modules/Common/Animations/MyBusyIndicator.qml</file>
         <file>ui/views/App/SelfCare/AddEditForwardingRule.qml</file>
+         <file>ui/views/App/SelfCare/AddEditForwardingRule.js</file>
         <file>ui/views/App/SelfCare/ForwardingsManagement.qml</file>
         <file>ui/views/App/SelfCare/AccountManagement.qml</file>
         <file>ui/views/App/SelfCare/VoiceMailManagement.qml</file>

@@ -1,45 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   width="80"
-   height="80"
-   version="1.1"
-   id="svg6"
-   sodipodi:docname="delete_custom.svg"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs10" />
-  <sodipodi:namedview
-     id="namedview8"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     showgrid="false"
-     inkscape:zoom="4.2868349"
-     inkscape:cx="31.841674"
-     inkscape:cy="34.757579"
-     inkscape:window-width="1920"
-     inkscape:window-height="1131"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg6" />
-  <g
-     stroke="#000000"
-     fill="none"
-     fill-rule="evenodd"
-     stroke-linecap="round"
-     stroke-linejoin="round"
-     id="g4"
-     transform="matrix(3.0769249,0,0,2.9411805,18.461084,13.529815)">
-    <path
-       d="m 7.022,17 h 1.11 c 2.391,0 2.818,-2.234 2.818,-2.234 L 13,3.324 H 1 l 2.05,11.442 c 0,0 0.427,2.234 2.818,2.234 z M 5.612,6.184 V 17 Z m 2.776,0 V 17 Z M 4.545,1 h 4.91 z"
-       id="path2" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 465 472.9">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #141b6c;;
+        fill-rule: evenodd;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="Groupe_26" data-name="Groupe 26">
+    <path id="Tracé_7" data-name="Tracé 7" class="cls-1" d="M303.2,67.8c-8.6-15.7-26.8-23.5-44.1-18.8l-74.4,20.1c-17.2,4.7-29.1,20.5-28.7,38.4l.4,23.9-66.4,17.9c-6.7,1.8-10.7,8.8-8.9,15.5,1.8,6.7,8.8,10.7,15.5,8.9l12.9-3.5,18.6,222.2c1.6,19.7,18.1,34.8,37.8,34.8h145.8c19.7,0,36.1-15.1,37.8-34.7l22-255.2c.6-7-4.6-13.1-11.5-13.7h-77.7l105.2-28.4c6.7-1.8,10.7-8.8,8.9-15.5-1.8-6.7-8.8-10.7-15.5-8.9l-66.3,17.9-11.5-20.8.1-.1ZM289.5,95.4l-107.9,29.1-.3-17.6c-.1-6.3,4-11.9,10.1-13.5l74.4-20.1c6-1.6,12.3,1.1,15.3,6.6l8.5,15.4-.1.1ZM200.8,193.2c7,0,12.7,5.7,12.7,12.7v139.2c0,7-5.7,12.7-12.6,12.7s-12.7-5.7-12.7-12.6h0v-139.2c0-7,5.7-12.7,12.7-12.7M289.4,205.8c0-7-5.7-12.7-12.6-12.7s-12.7,5.7-12.7,12.6h0v139.2c0,7,5.7,12.7,12.6,12.7s12.7-5.7,12.7-12.6h0v-139.2h0Z"/>
   </g>
 </svg>

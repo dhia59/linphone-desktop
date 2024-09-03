@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/linphone-qt-only"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/a5cee4ebf057da549f01d1d99d90acdb/linphone-qt-only.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5ed6fdc1f780c835f8affd9aeb643c9a/linphone-qt-only-complete.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/04407748ef260ed62d7479e8d80d6d48/linphone-qt-only-build.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/04407748ef260ed62d7479e8d80d6d48/linphone-qt-only-configure.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/04407748ef260ed62d7479e8d80d6d48/linphone-qt-only-download.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/04407748ef260ed62d7479e8d80d6d48/linphone-qt-only-install.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/04407748ef260ed62d7479e8d80d6d48/linphone-qt-only-mkdir.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/04407748ef260ed62d7479e8d80d6d48/linphone-qt-only-patch.rule"
+		},
+		{
+			"file" : "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/04407748ef260ed62d7479e8d80d6d48/linphone-qt-only-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"linphone-qt-only"
+		],
+		"name" : "linphone-qt-only"
+	}
+}

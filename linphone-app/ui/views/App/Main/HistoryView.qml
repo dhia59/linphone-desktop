@@ -17,7 +17,7 @@ ColumnLayout  {
 	property var entry
 	property string peerAddress : entry ? entry.sipAddress : ''
 	property string fullPeerAddress : entry ? entry.sipAddress : ''
-    property int  numPadButtonWidth:120
+    property int  numPadButtonWidth:100
     property int  numPadButtonheight:60
     property int  numPadButtonmarging:5
 	
@@ -259,425 +259,483 @@ ColumnLayout  {
 
         GridLayout {
             columns: 3
-            rowSpacing: 5
+            rowSpacing: 10
             columnSpacing: 5
             Layout.alignment: Qt.AlignHCenter
 
-            Button {
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadOneImage
+                    source: "qrc:/assets/images/clavierdappel_1.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                text: "1"
-                                id:numpadOneId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
+                    // Background rectangle for hover effect
+                    /*Rectangle {
+                        anchors.fill: parent
+                        color: numpadOneImage.MouseArea.containsMouse ? "#e5e5e5" : "#f9f9f9"
+                        border.color: numpadOneImage.MouseArea.containsMouse ? "#e5e5e5" : "#f9f9f9"
+                        border.width: 1
+                        radius: 5
+                        opacity: 0.5  // Adjust as needed for hover background opacity
+                    }*/
 
-                                    color: numpadOneId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadOneId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                    // State for hover effect
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        id: mouseArea
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "1";
+                        }
+
+                        onEntered: numpadOneImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadOneImage.opacity = 1.0
+                    }
+                }
+            }
+
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadTwoImage
+                    source: "qrc:/assets/images/clavierdappel_2.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+
+                    // Background rectangle for hover effect
 
 
-                                    // Transition for smooth effect
-                                    transitions: Transition {
-                                        NumberAnimation { properties: "border.color"; duration: 200 }
-                                    }
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                }
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "2";
+                        }
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadOneId.hovered = true
-                                    onExited: numpadOneId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "1"}
-                                }
-                            }
-            Button {
+                        onEntered: numpadTwoImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadTwoImage.opacity = 1.0
+                    }
+                }
+            }
 
-                                text: "2"
-                                id:numpadTwoId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadThreeImage
+                    source: "qrc:/assets/images/clavierdappel_3.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                background: Rectangle {
+                    // Background rectangle for hover effect
 
-                                    property int commonBorderWidth : 1
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadTwoId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadTwoId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadTwoId.hovered = true
-                                    onExited: numpadTwoId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "2"}
-                                }
-                            }
-            Button {
 
-                                text: "3"
-                                id:numpadThreeId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadThreeId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadThreeId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "3";
+                        }
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadThreeId.hovered = true
-                                    onExited: numpadThreeId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "3"}
-                                }
-                            }
+                        onEntered: numpadThreeImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadThreeImage.opacity = 1.0
+                    }
+                }
+            }
             ///////////////////////////////////////////////////////////////////////////
 
-            Button {
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadFourImage
+                    source: "qrc:/assets/images/clavierdappel_4.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                text: "4"
-                                id:numpadFourId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
+                    // Background rectangle for hover effect
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadFourId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadFourId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadFourId.hovered = true
-                                    onExited: numpadFourId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "4"}
-                                }
-                            }
-            Button {
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                text: "5"
-                                id:numpadFiveId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "4";
+                        }
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadFiveId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadFiveId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+                        onEntered: numpadFourImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadFourImage.opacity = 1.0
+                    }
+                }
+            }
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadFiveImage
+                    source: "qrc:/assets/images/clavierdappel_5.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadFiveId.hovered = true
-                                    onExited: numpadFiveId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "5"}
-                                }
-                            }
-            Button {
+                    // Background rectangle for hover effect
 
-                                text: "6"
-                                id:numpadSixId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadSixId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadSixId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadSixId.hovered = true
-                                    onExited: numpadSixId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "6"}
-                                }
-                            }
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "5";
+                        }
+
+                        onEntered: numpadFiveImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadFiveImage.opacity = 1.0
+                    }
+                }
+            }
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadSixImage
+                    source: "qrc:/assets/images/clavierdappel_6.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+
+                    // Background rectangle for hover effect
+
+
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "6";
+                        }
+
+                        onEntered: numpadSixImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadSixImage.opacity = 1.0
+                    }
+                }
+            }
             ///////////////////////////////////////////////////////////////////////////
 
-            Button {
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadSevenImage
+                    source: "qrc:/assets/images/clavierdappel_7.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                text: "7"
-                                id:numpadSevenId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
+                    // Background rectangle for hover effect
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadSevenId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadSevenId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadSevenId.hovered = true
-                                    onExited: numpadSevenId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "7"}
-                                }
-                            }
-            Button {
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                text: "8"
-                                id:numpadEightId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "7";
+                        }
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadEightId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadEightId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+                        onEntered: numpadSevenImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadSevenImage.opacity = 1.0
+                    }
+                }
+            }
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadEightImage
+                    source: "qrc:/assets/images/clavierdappel_8.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadEightId.hovered = true
-                                    onExited: numpadEightId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "8"}
-                                }
-                            }
-            Button {
+                    // Background rectangle for hover effect
 
-                                text: "9"
-                                id:numpadNineId
-                                font.pixelSize: 20
-                                width: numPadButtonWidth
-                                height: numPadButtonheight
-                                anchors.margins: numPadButtonmarging
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadNineId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadNineId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadNineId.hovered = true
-                                    onExited: numpadNineId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "9"}
-                                }
-                            }
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "8";
+                        }
+
+                        onEntered: numpadEightImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadEightImage.opacity = 1.0
+                    }
+                }
+            }
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadNineImage
+                    source: "qrc:/assets/images/clavierdappel_9.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+
+                    // Background rectangle for hover effect
+
+
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "9";
+                        }
+
+                        onEntered: numpadNineImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadNineImage.opacity = 1.0
+                    }
+                }
+            }
             ///////////////////////////////////////////////////////////////////////////
-            Button {
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadAsteriskImage
+                    source: "qrc:/assets/images/clavierdappel_0.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                text: "*"
-                                id:numpadstartId
-                                font.pixelSize: 20
-                                anchors.margins: numPadButtonmarging
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadstartId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadstartId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+                    // Background rectangle for hover effect
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadstartId.hovered = true
-                                    onExited: numpadstartId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "*"}
-                                }
-                            }
-            Button {
 
-                                text: "0"
-                                id:numpadzeroId
-                                font.pixelSize: 20
-                                anchors.margins: numPadButtonmarging
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadzeroId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadzeroId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadzeroId.hovered = true
-                                    onExited: numpadzeroId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "0"}
-                                }
-                            }
-            Button {
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "*";
+                        }
 
-                                text: "#"
-                                id:numpadhashId
-                                anchors.margins: numPadButtonmarging
-                                font.pixelSize: 20
-                                width: 60
-                                height: 40
+                        onEntered: numpadAsteriskImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadAsteriskImage.opacity = 1.0
+                    }
+                }
+            }
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpadZeroImage
+                    source: "qrc:/assets/images/clavierdappel_0.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadhashId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadhashId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+                    // Background rectangle for hover effect
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadhashId.hovered = true
-                                    onExited: numpadhashId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "#"}
-                                }
-                            }
+
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "0";
+                        }
+
+                        onEntered: numpadZeroImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadZeroImage.opacity = 1.0
+                    }
+                }
+            }
+            Rectangle {
+                width: numPadButtonWidth
+                height: numPadButtonheight
+                Image {
+                    id: numpaddiasImage
+                    source: "qrc:/assets/images/clavierdappel_0.png"  // Replace with your image path
+                    width: numPadButtonWidth
+                    height: numPadButtonheight
+                    anchors.margins: numPadButtonmarging
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+
+                    // Background rectangle for hover effect
+
+
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "#";
+                        }
+
+                        onEntered: numpaddiasImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpaddiasImage.opacity = 1.0
+                    }
+                }
+            }
+
+
             ///////////////////////////////////////////////////////////////////////////
-            Button {
 
-                                text: "+"
-                                id:numpadplusId
-                                font.pixelSize: 20
-                                anchors.margins: numPadButtonmarging
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    color: numpadplusId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.color: numpadplusId.hovered ? "#e5e5e5" : "#f9f9f9"
-                                    border.width: 1
-                                    radius: 5
-                                }
+            RowLayout{
+                width: 50
+                height: 50
+            Rectangle {
+                Layout.leftMargin: 50
+                //anchors.centerIn: parent
+                Image {
+                    id: numpadPlusImage
+                    source: "qrc:/assets/images/clavierdappel_plus.png"
+                    width: 40
+                    height: 40
+                    anchors.centerIn: parent
+                    anchors.rightMargin: 30
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadplusId.hovered = true
-                                    onExited: numpadplusId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text += "+"}
-                                }
-                            }
-            Button {
+                        onClicked: {
+                            // Implement your click logic here
+                            displayText.text += "+";
+                        }
 
-                                text: "\uf095"
-                                id:numpadcallId
-                                font.pointSize: 14
-                                 palette.buttonText: "#20E8E4"
-                                font.family: fontAwesome.name
-                                font.pixelSize: 20
-                                anchors.margins: 10
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    border.width: 1
-                                    color: numpadcallId.hovered ? "#222ca1" : "#141B6C"
-                                    border.color: numpadcallId.hovered ? "#222ca1" : "#141B6C"
-                                    radius: 5
+                        onEntered: numpadPlusImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadPlusImage.opacity = 1.0
+                    }
+                }
+            }
+        }
 
-                                }
+            RowLayout{
+                width: 50
+                height: 50
+            Rectangle {
+                Layout.leftMargin: 50
+                Image {
+                    id: numpadCallImage
+                    source: "qrc:/assets/images/clavierdappel_call.png"  // Replace with your image path
+                    width: 40
+                    height: 40
+                    anchors.centerIn: parent
+                    anchors.rightMargin: 30
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
 
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadcallId.hovered = true
-                                    onExited: numpadcallId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {console.log("Calling number: " + "<sip:"+displayText.text+"@cprx1p1>");CallsListModel.launchAudioCall( "<sip:"+displayText.text+"@cprx1p1>",'' )}
-                                }
+                    // Background rectangle for hover effect
 
-                            }
 
-            Button {
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
 
-                                text: "\uf55a"
-                                id:numpadremoveId
-                                font.pixelSize: 20
-                                palette.buttonText: "#20E8E4"
-                               font.family: fontAwesome.name
-                                anchors.margins: numPadButtonmarging
+                        onClicked: {console.log("Calling number: " + "<sip:"+displayText.text+"@cprx1p1>");CallsListModel.launchAudioCall( "<sip:"+displayText.text+"@cprx1p1>",'' )}
 
-                                background: Rectangle {
-                                    implicitWidth: numPadButtonWidth
-                                    implicitHeight: numPadButtonheight
-                                    opacity: enabled ? 1 : 0.3
-                                    border.width: 1
-                                    color: numpadremoveId.hovered ? "#222ca1" : "#141B6C"
-                                    border.color: numpadremoveId.hovered ? "#222ca1" : "#141B6C"
-                                    anchors.margins: 10
-                                    radius: 5
-                                }
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onEntered: numpadremoveId.hovered = true
-                                    onExited: numpadremoveId.hovered = false
-                                    cursorShape: Qt.PointingHandCursor
-                                    onClicked: {displayText.text = displayText.text.slice(0, -1)}
-                                }
 
-                            }
+                        onEntered: numpadCallImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadCallImage.opacity = 1.0
+                    }
+                }
+            }
+        }
+            RowLayout{
+                width: 50
+                height: 50
+            Rectangle {
+                Layout.leftMargin: 45
+                Image {
+                    id: numpadDellImage
+                    source: "qrc:/assets/images/clavierdappel_del.png"  // Replace with your image path
+                    width: 50
+                    height: 50
+                    anchors.centerIn: parent
+                    anchors.rightMargin: 30
+                    fillMode: Image.PreserveAspectFit
+                    smooth: true
+
+                    // Background rectangle for hover effect
+
+
+                    // MouseArea to handle clicks and hover state
+                    MouseArea {
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: {displayText.text = displayText.text.slice(0, -1)}
+                        onEntered: numpadDellImage.opacity = 0.8  // Adjust opacity or any effect on hover
+                        onExited: numpadDellImage.opacity = 1.0
+                    }
+                }
+            }
+            }
+
         }
 
 

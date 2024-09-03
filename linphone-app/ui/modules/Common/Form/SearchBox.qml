@@ -27,6 +27,7 @@ Item {
 	default property alias _content: menu._content
 	
 	property bool _isOpen: false
+	property int sbRadius
 	
 	// ---------------------------------------------------------------------------
 	
@@ -77,7 +78,7 @@ Item {
 		
 		TextField {
 			id: searchField
-			
+			cradius:20
             icon: text == '' ? SearchBoxStyle.searchIcon : SearchBoxStyle.cancelIcon
 			overwriteColor: SearchBoxStyle.iconColor.color
 			iconSize: height

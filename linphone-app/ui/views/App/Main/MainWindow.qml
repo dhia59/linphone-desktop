@@ -59,10 +59,13 @@ ApplicationWindow {
     // Window properties.
     // ---------------------------------------------------------------------------
 
+
+
     minimumHeight: 800
     minimumWidth: 1300
 
     title: Utils.capitalizeFirstLetter(applicationName)
+
 
     // ---------------------------------------------------------------------------
 
@@ -130,7 +133,7 @@ ApplicationWindow {
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 Rectangle {
                     width: parent.width
-                    height: 30
+                    height: 50
                     color: "gray"
                     //anchors.centerIn: parent
                     Text {
@@ -151,61 +154,13 @@ ApplicationWindow {
                 visible: AccountSettingsModel.registrationState===0 || noNetworkAlert
                 anchors.fill: parent
                  Layout.fillWidth: true
+                 Layout.rightMargin: 10
+                 Layout.leftMargin: 10
                 //anchors.left:
                 //width:500
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                 property alias mainSearchBar : smartSearchBar
                 Layout.preferredHeight: 60
-                Rectangle{
-                    anchors.fill: parent
-                    color:"transparent"//"#141B6C"// "transparent"//#18173c
-                }
-                ActionButton {
-                    id: telkeypadButton
-                    visible:false
-                    isCustom: true
-                    x: 270
-                    y:-15
-                    backgroundRadius: 90
-                    colorSet: MainWindowStyle.buttons.telKeyad
-                    onClicked:popup.open()//toggled ? telKeypad.close() : telKeypad.open() //telKeypad.visible = !telKeypad.visible
-                    toggled: telKeypad.visible
-
-                }
-                Popup {
-                    id: popup
-                    x:100
-                    y: 50
-                    width: 200
-                    height: 100
-                    //   modal: true
-
-
-
-                    Rectangle {
-                        width: parent.width-50
-                        height: parent.height-50
-                        color:Qt.rgba(0, 0, 0, 0)
-                        border.color: "transparent"
-                        border.width: 0
-                        radius:20
-                        TelKeypad {
-                            anchors.right: parent.right
-                            anchors.top: parent.top
-                            id: telKeypad
-                            onSendDtmf: if(dtmf !=='call') smartSearchBar.text += dtmf
-                            onSipAddressClicked: {
-                                if (dtmf === 'call') {
-                                    console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
-                                }
-                            }
-                            visible:true//SettingsModel.showTelKeypadAutomatically
-                            onVisibleChanged: isVisibleTelKeypad= visible
-
-                        }
-                    }
-                }
-
 
                 ColumnLayout {
 
@@ -232,6 +187,7 @@ ApplicationWindow {
                         width: parent.width
                     }
                 }
+
 
                 SmartSearchBar {
                     id: smartSearchBar
@@ -264,26 +220,6 @@ ApplicationWindow {
                 }
 
 
-                ActionButton {
-                    visible:false
-                    isCustom: true
-                    backgroundRadius: 4
-                    colorSet: MainWindowStyle.buttons.burgerMenu
-                    toggled: menuBar.isOpenned
-                    onClicked: toggled ? menuBar.close() : menuBar.open()// a bit useless as Menu will depopup on losing focus but this code is kept for giving idea
-                    MainWindowMenuBar {
-                        id: menuBar
-                        onDisplayRecordings: {
-                            timeline.model.unselectAll()
-                            setView('Recordings')
-                        }
-                        onDisplayVocalMessages: {
-                            timeline.model.unselectAll()
-                            setView('VocalMessages')
-                        }
-
-                    }
-                }
 
             }
 
@@ -354,10 +290,10 @@ ApplicationWindow {
 
                                     window.setView('Home', {})
                                 }
-                                menu.resetSelectedEntry()
+                                //menu.resetSelectedEntry()
                             }
                             onShowHistoryRequest: {
-                                timeline.model.unselectAll()
+                               // timeline.model.unselectAll()
                                 window.setView('HistoryView')
                             }
 
@@ -378,56 +314,60 @@ ApplicationWindow {
                             id: menu
                             z:1
                             //visible:false
-                            defaultSelectedEntry: null
+                            defaultSelectedEntry: chatEntry
 
                             entryHeight: MainWindowStyle.menu.height
                             entryWidth: MainWindowStyle.menu.width
 
+                            Rectangle{
+                            height: 20;
+                            width: parent.width
+                            color: "#141B6C"
+                            }
                             ApplicationMenuEntry {
                                 id: chatEntry
 
                                 icon: 'qrc:/assets/images/saylo_picto_message-01.png'
-                                iconSize: MainWindowStyle.menu.conferences.iconSize
+                                iconSize: 40
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-                                name: qsTr('Messageries').toUpperCase()
+                                name: qsTr('Messagerie')
                                 visible: true
 
                                 onSelected: {
-                                    showTimeline=true
-                                    menuWidth=500
-                                    timeline.model.unselectAll()
-                                    window.setView('Conversation', {
+                                    if (timeline.model.rowCount()>1){
+                                        showTimeline=true
+                                        menuWidth=500
+                                       // timeline.model.unselectAll()
+                                        window.setView('Conversation', {
                                                        chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                                                    })
+
+                                    }
                                 }
                                 onClicked:{
-                                    menuWidth=500
-                                    showTimeline=true
-                                    window.setView('Conversation', {
+                                    if (timeline.model.rowCount()>1){
+                                        menuWidth=500
+                                        showTimeline=true
+                                        window.setView('Conversation', {
                                                        chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                                                    })
+
+                                    }
                                 }
-                                Icon{
-                                    anchors.right:parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.rightMargin: 10
-                                    icon: MainWindowStyle.menu.direction.icon
-                                    overwriteColor: conferencesEntry.overwriteColor
-                                    iconSize: MainWindowStyle.menu.direction.iconSize
-                                }
+
                             }
 
                             ApplicationMenuEntry {
                                 id: contactsEntry
 
                                 icon: 'qrc:/assets/images/saylo_picto_contacts-01.png'
-                                iconSize: MainWindowStyle.menu.contacts.iconSize
+                                iconSize: 40
                                 overwriteColor:isSelected ? MainWindowStyle.menu.contacts.selectedColor.color : MainWindowStyle.menu.contacts.colorModel.color
                                 name: LdapListModel.count > 0
                                 //: 'Local contacts' : Contacts section label in main window when we have to specify that they are local to the application.
-                                      ? qsTr('localContactsEntry').toUpperCase()
+                                      ? qsTr('Contacts')
                                         //: 'Contacts' : Contacts section label in main waindow.
-                                      : qsTr('contactsEntry').toUpperCase()
+                                      : qsTr('Contacts')
 
                                 visible: SettingsModel.contactsEnabled
 
@@ -435,7 +375,7 @@ ApplicationWindow {
                                     showTimeline=false
                                     menuWidth=250
                                     ContactsListModel.update()
-                                    timeline.model.unselectAll()
+                                  //  timeline.model.unselectAll()
                                     setView('Contacts')
                                 }
                                 onClicked:{
@@ -444,22 +384,14 @@ ApplicationWindow {
                                     ContactsListModel.update()
                                     setView('Contacts')
                                 }
-                                Icon{
-                                    anchors.right:parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.rightMargin: 10
-                                    icon: MainWindowStyle.menu.direction.icon
-                                    overwriteColor:contactsEntry.overwriteColor //MainWindowStyle.menu.contacts.colorModel.color
-                                    iconSize: MainWindowStyle.menu.direction.iconSize
 
-                                }
                             }
 
                             ApplicationMenuEntry {
                                 id: conferencesEntry
 
                                 icon: MainWindowStyle.menu.conferences.icon
-                                iconSize: MainWindowStyle.menu.conferences.iconSize
+                                iconSize: 40
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
                                 name: qsTr('reunions').toUpperCase()
                                 visible: false
@@ -467,7 +399,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                 //   timeline.model.unselectAll()
                                     setView('Conferences')
                                 }
                                 onClicked:{
@@ -475,29 +407,22 @@ ApplicationWindow {
                                     menuWidth=250
                                     setView('Conferences')
                                 }
-                                Icon{
-                                    anchors.right:parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.rightMargin: 10
-                                    icon: MainWindowStyle.menu.direction.icon
-                                    overwriteColor: conferencesEntry.overwriteColor
-                                    iconSize: MainWindowStyle.menu.direction.iconSize
-                                }
+
                             }
 
                             ApplicationMenuEntry {
                                 id: callsEntry
 
                                 icon: 'qrc:/assets/images/saylo_picto_appels-01.png'
-                                iconSize: MainWindowStyle.menu.conferences.iconSize
+                                iconSize: 40
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-                                name: qsTr('appels').toUpperCase()
+                                name: qsTr('Appels')
                                 visible: true
 
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                 //   timeline.model.unselectAll()
                                     setView('HistoryView')
                                 }
                                 onClicked:{
@@ -505,29 +430,23 @@ ApplicationWindow {
                                     menuWidth=250
                                     setView('HistoryView')
                                 }
-                                Icon{
-                                    anchors.right:parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.rightMargin: 10
-                                    icon: MainWindowStyle.menu.direction.icon
-                                    overwriteColor: conferencesEntry.overwriteColor
-                                    iconSize: MainWindowStyle.menu.direction.iconSize
-                                }
+
+
                             }
 
                             ApplicationMenuEntry {
                                 id: teamsEntry
 
                                 icon: 'qrc:/assets/images/saylo_picto_equipes.png'
-                                iconSize: MainWindowStyle.menu.conferences.iconSize
+                                iconSize: 40
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-                                name: qsTr('Equipes').toUpperCase()
+                                name: qsTr('Equipes')
                                 visible: true
 
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                  //  timeline.model.unselectAll()
                                     setView('Conferences')
                                 }
                                 onClicked:{
@@ -535,29 +454,23 @@ ApplicationWindow {
                                     menuWidth=250
                                     setView('Conferences')
                                 }
-                                Icon{
-                                    anchors.right:parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.rightMargin: 10
-                                    icon: MainWindowStyle.menu.direction.icon
-                                    overwriteColor: conferencesEntry.overwriteColor
-                                    iconSize: MainWindowStyle.menu.direction.iconSize
-                                }
+
+
                             }
 
                             ApplicationMenuEntry {
                                 id: vocalmessagesEntry
 
                                 icon: 'qrc:/assets/images/saylo_picto_messagerie_vocale.png'
-                                iconSize: MainWindowStyle.menu.conferences.iconSize
+                                iconSize: 40
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-                                name: qsTr('Messageries vocale').toUpperCase()
+                                name: qsTr('Messagerie Vocale')
                                 visible: true
 
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                  //  timeline.model.unselectAll()
                                     setView('VocalMessages')
                                 }
                                 onClicked:{
@@ -565,29 +478,23 @@ ApplicationWindow {
                                     menuWidth=250
                                     setView('VocalMessages')
                                 }
-                                Icon{
-                                    anchors.right:parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.rightMargin: 10
-                                    icon: MainWindowStyle.menu.direction.icon
-                                    overwriteColor: conferencesEntry.overwriteColor
-                                    iconSize: MainWindowStyle.menu.direction.iconSize
-                                }
+
+
                             }
 
                             ApplicationMenuEntry {
                                 id: recordsEntry
 
                                 icon: 'qrc:/assets/images/saylo_picto_enregistrement-01.png'
-                                iconSize: MainWindowStyle.menu.conferences.iconSize
+                                iconSize: 40
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-                                name: qsTr('Enregistrements').toUpperCase()
+                                name: qsTr('Enregistrements')
                                 visible: true
 
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                  //  timeline.model.unselectAll()
                                     setView('Recordings')
                                 }
                                 onClicked:{
@@ -595,29 +502,23 @@ ApplicationWindow {
                                     menuWidth=250
                                     setView('Recordings')
                                 }
-                                Icon{
-                                    anchors.right:parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.rightMargin: 10
-                                    icon: MainWindowStyle.menu.direction.icon
-                                    overwriteColor: conferencesEntry.overwriteColor
-                                    iconSize: MainWindowStyle.menu.direction.iconSize
-                                }
+
+
                             }
 
                             ApplicationMenuEntry {
                                 id: selfCareWindowid
 
                                 icon: 'qrc:/assets/images/saylo_picto_contacts-01.png'
-                                iconSize: MainWindowStyle.menu.conferences.iconSize
+                                iconSize: 40
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
-                                name: qsTr('selfCare').toUpperCase()
+                                name: qsTr('SelfCare')
                                 visible: true
 
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                    timeline.model.unselectAll()
+                                    //timeline.model.unselectAll()
                                     setView('qrc:/ui/views/App/SelfCare/SelfCareWindow')
                                 }
                                 onClicked:{
@@ -625,14 +526,8 @@ ApplicationWindow {
                                     menuWidth=250
                                     setView('qrc:/ui/views/App/SelfCare/SelfCareWindow')
                                 }
-                                Icon{
-                                    anchors.right:parent.right
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    anchors.rightMargin: 10
-                                    icon: MainWindowStyle.menu.direction.icon
-                                    overwriteColor: conferencesEntry.overwriteColor
-                                    iconSize: MainWindowStyle.menu.direction.iconSize
-                                }
+
+
                             }
 
                         }
@@ -788,11 +683,11 @@ ApplicationWindow {
 
                         anchors.fill: parent
 
-                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert?
+                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert? timeline.model.rowCount()>1?
 
                                   window.setView('Conversation', {
                                                      chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
-                                                 }) :'Login.qml'
+                                                 }) :loadHistoryView()  :'Login.qml'
                     }
                     //                    TelKeypad {
                     //                        anchors.right: parent.right
@@ -850,6 +745,12 @@ ApplicationWindow {
     }
 
 
+    function loadHistoryView(){
+        setView('HistoryView')
+        menuWidth=250
+        showTimeline=false
+        menu.defaultSelectedEntry=callsEntry
+    }
 
     Loader{
         id: customMenuBar

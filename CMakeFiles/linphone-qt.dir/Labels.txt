@@ -1,0 +1,13 @@
+# Target labels
+ linphone-qt
+# Source files and their labels
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/linphone-qt
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/a5cee4ebf057da549f01d1d99d90acdb/linphone-qt.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5ed6fdc1f780c835f8affd9aeb643c9a/linphone-qt-complete.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/6e86ae782c8a704e31da54e5b42a0110/linphone-qt-build.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/6e86ae782c8a704e31da54e5b42a0110/linphone-qt-configure.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/6e86ae782c8a704e31da54e5b42a0110/linphone-qt-download.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/6e86ae782c8a704e31da54e5b42a0110/linphone-qt-install.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/6e86ae782c8a704e31da54e5b42a0110/linphone-qt-mkdir.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/6e86ae782c8a704e31da54e5b42a0110/linphone-qt-patch.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/6e86ae782c8a704e31da54e5b42a0110/linphone-qt-update.rule

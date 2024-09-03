@@ -107,13 +107,25 @@ function updateSelectedEntry (view, props) {
   var menu = item.menu
   var timeline = item.timeline
 
-  if (view === 'Home') {
+ /* if (view === 'Home') {
     menu.resetSelectedEntry()
   } else if (view === 'Contacts') {
     item.contactsEntry.select()
   } else if (view === 'Conferences') {
     item.conferencesEntry.select()
-  }
+  } else if (view === 'Conversation') {
+    item.chatEntry.select()
+  } else if (view === 'HistoryView') {
+    item.callsEntry.select()
+  } else if (view === 'Conferences') {
+    item.teamsEntry.select()
+  } else if (view === 'VocalMessages') {
+    item.vocalmessagesEntry.select()
+  } else if (view === 'Recordings') {
+    item.recordsEntry.select()
+  } else if (view === 'SelfCareWindow') {
+    item.selfCareWindowid.select()
+  } */
 }
 
 // -----------------------------------------------------------------------------

@@ -37,6 +37,6 @@ Rectangle {
     id: content
 
     width: parent.width
-    spacing: ApplicationMenuStyle.spacing
+    spacing: 0
   }
 }

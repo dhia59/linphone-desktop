@@ -58,7 +58,7 @@ Rectangle {
 	
 	RowLayout{
 		anchors.fill: parent
-		anchors.rightMargin: 5
+        anchors.rightMargin: 5
 		spacing: 0
 		Contact {
 			id: contactView
@@ -155,8 +155,7 @@ Rectangle {
 	}
 	RowLayout{
 		anchors.fill: parent
-		anchors.rightMargin: 5
-		visible: mainItem.actions.length > 0
+        anchors.rightMargin: 5
 		Item{// Spacer
 			Layout.fillHeight: true
 			Layout.fillWidth: true

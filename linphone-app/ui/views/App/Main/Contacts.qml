@@ -400,17 +400,22 @@ Rectangle{
 
     Rectangle{
      id:contactEditId
+    //color: 'red'
     //Layout.fillHeight: true
     //Layout.fillWidth: true
     anchors.left: contactList.right
     anchors.right: parent.right
     anchors.top: parent.top
     anchors.bottom: parent.bottom
-    height: 100
-    width:200
+    height: 50
+    width:50
     Image {
+            visible: false
               source: "qrc:/assets/images/appBackground.png"
               anchors.fill: parent
+              anchors.centerIn: parent
+              width: 50
+              height: 50
               fillMode: Image.PreserveAspectCrop
 
           }

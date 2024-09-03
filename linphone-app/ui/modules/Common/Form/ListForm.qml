@@ -19,6 +19,7 @@ RowLayout {
 	property int inputMethodHints
 	property var minValues
 	readonly property int count: values.count
+	property var tcolor
 	
 	// ---------------------------------------------------------------------------
 	
@@ -68,7 +69,7 @@ RowLayout {
 			id: text
 			
 			Layout.preferredWidth: ListFormStyle.titleArea.text.width
-			color: ListFormStyle.titleArea.text.colorModel.color
+			color: tcolor ? tcolor :ListFormStyle.titleArea.text.colorModel.color
 			elide: Text.ElideRight
 			
 			font {

@@ -163,7 +163,7 @@ import Common.Styles 1.0
 							
 							ComboBox {
 								id: transport
-								model: [ 'UDP', 'TCP', 'TLS']
+								model: [ 'TCP', 'UDP', 'TLS']
 							}
 						}
 					}

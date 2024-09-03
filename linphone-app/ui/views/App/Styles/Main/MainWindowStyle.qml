@@ -31,7 +31,7 @@ QtObject {
 	}
 	
 	property QtObject menu: QtObject {
-		property int height: 50
+		property int height: 60
 		property int width: 250
 		
 		property QtObject direction: QtObject {

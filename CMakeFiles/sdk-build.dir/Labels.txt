@@ -1,0 +1,12 @@
+# Target labels
+ sdk
+# Source files and their labels
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/sdk-build
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/a5cee4ebf057da549f01d1d99d90acdb/sdk-build.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-build.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-configure.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-force_build.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-patch.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-update.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-download.rule
+D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/5caece3732dd6c081166ce97206c7040/sdk-mkdir.rule

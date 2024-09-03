@@ -50,7 +50,7 @@ Rectangle {
                             id: menuItem
                             width:200
                             height: 40
-                            color: (sideBar.currentIndex === index) ? "#222154" : "#b0b0b0"
+                            color: (sideBar.currentIndex === index) ? "#141B6C" : "#b0b0b0"
                             radius: 10
 
                             Text {
@@ -95,7 +95,7 @@ Rectangle {
                             for (var i = 0; i < sideBar.children.length; ++i) {
                                 var item = sideBar.children[i];
                                 if (item instanceof Rectangle) {
-                                    item.color = (sideBar.currentIndex === i) ? "#222154" : "#b0b0b0";
+                                    item.color = (sideBar.currentIndex === i) ? "#141B6C" : "#b0b0b0";
                                 }
                             }
                         }

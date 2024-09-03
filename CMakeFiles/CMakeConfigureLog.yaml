@@ -168,3 +168,291 @@ events:
         Temps écoulé 00:00:00.55
         
       exitCode: 0
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:53 (project)"
+    message: |
+      The system is: Windows - 10.0.22631 - AMD64
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:53 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 pour .NET Framework
+      Copyright (C) Microsoft Corporation. Tous droits réservés.
+      
+      La génération a démarré 26/08/2024 11:20:18.
+      Projet "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.vcxproj" sur le noud 1 (cibles par défaut).
+      PrepareForBuild:
+        Création du répertoire "Debug\\".
+        Création du répertoire "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Création de "Debug\\CompilerIdC.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+      ClCompile:
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc141.pdb" /Gd /TC /analyze- /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\3.29.3\\CompilerIdC\\.\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\Hostx86\\x86\\cl.exe
+      FinalizeBuildStatus:
+        Suppression du fichier "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Mise à jour de l'horodatage "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Génération du projet "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.vcxproj" terminée (cibles par défaut).
+      
+      La génération a réussi.
+          0 Avertissement(s)
+          0 Erreur(s)
+      
+      Temps écoulé 00:00:00.63
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/3.29.3/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:53 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 pour .NET Framework
+      Copyright (C) Microsoft Corporation. Tous droits réservés.
+      
+      La génération a démarré 26/08/2024 11:20:19.
+      Projet "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" sur le noud 1 (cibles par défaut).
+      PrepareForBuild:
+        Création du répertoire "Debug\\".
+        Création du répertoire "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Création de "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+      ClCompile:
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /nologo /W0 /WX- /diagnostics:classic /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc141.pdb" /Gd /TP /analyze- /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\3.29.3\\CompilerIdCXX\\.\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\Hostx86\\x86\\cl.exe
+      FinalizeBuildStatus:
+        Suppression du fichier "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Mise à jour de l'horodatage "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Génération du projet "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" terminée (cibles par défaut).
+      
+      La génération a réussi.
+          0 Avertissement(s)
+          0 Erreur(s)
+      
+      Temps écoulé 00:00:00.32
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/3.29.3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:53 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-pw6z7j"
+      binary: "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-pw6z7j"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-pw6z7j'
+        
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/MSBuild/15.0/Bin/MSBuild.exe" cmTC_1a62c.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
+        Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 pour .NET Framework
+        Copyright (C) Microsoft Corporation. Tous droits réservés.
+        
+        La génération a démarré 26/08/2024 11:20:20.
+        Projet "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-pw6z7j\\cmTC_1a62c.vcxproj" sur le noud 1 (cibles par défaut).
+        PrepareForBuild:
+          Création du répertoire "cmTC_1a62c.dir\\Debug\\".
+          Création du répertoire "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-pw6z7j\\Debug\\".
+          Création du répertoire "cmTC_1a62c.dir\\Debug\\cmTC_1a62c.tlog\\".
+        InitializeBuildStatus:
+          Création de "cmTC_1a62c.dir\\Debug\\cmTC_1a62c.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+        ClCompile:
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1a62c.dir\\Debug\\\\" /Fd"cmTC_1a62c.dir\\Debug\\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
+          Compilateur d'optimisation Microsoft (R) C/C++ version 19.16.27051 pour x86
+          Copyright (C) Microsoft Corporation. Tous droits réservés.
+          
+          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1a62c.dir\\Debug\\\\" /Fd"cmTC_1a62c.dir\\Debug\\vc141.pdb" /Gd /TC /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+          
+        Link:
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-pw6z7j\\Debug\\cmTC_1a62c.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-pw6z7j/Debug/cmTC_1a62c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-pw6z7j/Debug/cmTC_1a62c.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_1a62c.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_1a62c.vcxproj -> D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-pw6z7j\\Debug\\cmTC_1a62c.exe
+        FinalizeBuildStatus:
+          Suppression du fichier "cmTC_1a62c.dir\\Debug\\cmTC_1a62c.tlog\\unsuccessfulbuild".
+          Mise à jour de l'horodatage "cmTC_1a62c.dir\\Debug\\cmTC_1a62c.tlog\\cmTC_1a62c.lastbuildstate".
+        Génération du projet "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-pw6z7j\\cmTC_1a62c.vcxproj" terminée (cibles par défaut).
+        
+        La génération a réussi.
+            0 Avertissement(s)
+            0 Erreur(s)
+        
+        Temps écoulé 00:00:00.75
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:53 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.16.27023/bin/HostX86/x86/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:53 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.16.27023/bin/HostX86/x86/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.16.27051.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:67 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:53 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-99ouat"
+      binary: "D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-99ouat"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-99ouat'
+        
+        Run Build Command(s): "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/MSBuild/15.0/Bin/MSBuild.exe" cmTC_0c690.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=15.0 /v:n
+        Microsoft (R) Build Engine version 15.9.21+g9802d43bc3 pour .NET Framework
+        Copyright (C) Microsoft Corporation. Tous droits réservés.
+        
+        La génération a démarré 26/08/2024 11:20:21.
+        Projet "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-99ouat\\cmTC_0c690.vcxproj" sur le noud 1 (cibles par défaut).
+        PrepareForBuild:
+          Création du répertoire "cmTC_0c690.dir\\Debug\\".
+          Création du répertoire "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-99ouat\\Debug\\".
+          Création du répertoire "cmTC_0c690.dir\\Debug\\cmTC_0c690.tlog\\".
+        InitializeBuildStatus:
+          Création de "cmTC_0c690.dir\\Debug\\cmTC_0c690.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+        ClCompile:
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\CL.exe /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_0c690.dir\\Debug\\\\" /Fd"cmTC_0c690.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
+          Compilateur d'optimisation Microsoft (R) C/C++ version 19.16.27051 pour x86
+          Copyright (C) Microsoft Corporation. Tous droits réservés.
+          
+          cl /c /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_0c690.dir\\Debug\\\\" /Fd"cmTC_0c690.dir\\Debug\\vc141.pdb" /Gd /TP /analyze- /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+          
+        Link:
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\VC\\Tools\\MSVC\\14.16.27023\\bin\\HostX86\\x86\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-99ouat\\Debug\\cmTC_0c690.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-99ouat/Debug/cmTC_0c690.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/Work/V2_Netcom/linphone-desktop/CMakeFiles/CMakeScratch/TryCompile-99ouat/Debug/cmTC_0c690.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_0c690.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_0c690.vcxproj -> D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-99ouat\\Debug\\cmTC_0c690.exe
+        FinalizeBuildStatus:
+          Suppression du fichier "cmTC_0c690.dir\\Debug\\cmTC_0c690.tlog\\unsuccessfulbuild".
+          Mise à jour de l'horodatage "cmTC_0c690.dir\\Debug\\cmTC_0c690.tlog\\cmTC_0c690.lastbuildstate".
+        Génération du projet "D:\\Work\\V2_Netcom\\linphone-desktop\\CMakeFiles\\CMakeScratch\\TryCompile-99ouat\\cmTC_0c690.vcxproj" terminée (cibles par défaut).
+        
+        La génération a réussi.
+            0 Avertissement(s)
+            0 Erreur(s)
+        
+        Temps écoulé 00:00:00.44
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:173 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:53 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.16.27023/bin/HostX86/x86/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:53 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files (x86)/Microsoft Visual Studio/2017/Professional/VC/Tools/MSVC/14.16.27023/bin/HostX86/x86/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.16.27051.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+...

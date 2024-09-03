@@ -92,7 +92,7 @@ ColumnLayout  {
 
 		Layout.fillWidth: true
 		Layout.preferredHeight: ContactEditStyle.bar.height
-		color: ContactEditStyle.bar.colorModel.color
+        color: '#e7e7e7'
 		
 		RowLayout {
 			anchors {
@@ -150,90 +150,71 @@ ColumnLayout  {
 				}
 			}
 			
-			Row {
-				Layout.alignment: Qt.AlignRight
-				Layout.fillHeight: true
-				
-				spacing: ContactEditStyle.bar.actions.spacing
-				visible: _contact != null
-				
-				ActionBar {
-					id: actionBar
-					anchors.verticalCenter: parent.verticalCenter
-					iconSize: ContactEditStyle.bar.actions.history.iconSize
-					
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 90
-						colorSet: ContactEditStyle.videoCall
-						
-						visible: SettingsModel.videoAvailable && SettingsModel.outgoingCallsEnabled && SettingsModel.showStartVideoCallButton
-						
-						onClicked: sipAddressesMenu.open(sipAddressesMenu.startVideoCall)
-					}
-					
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 90
-						colorSet: ContactEditStyle.call
-						
-						visible: SettingsModel.outgoingCallsEnabled 
-						
-						onClicked: sipAddressesMenu.open(sipAddressesMenu.startCall)
-					}
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 90
-						colorSet: SettingsModel.getShowStartChatButton() ? ContactEditStyle.chat : ContactEditStyle.history
-						visible: SettingsModel.standardChatEnabled
-						onClicked: sipAddressesMenu.open(sipAddressesMenu.createChatRoom)
-						tooltipText: qsTr('tooltipShowConversation')
-						tooltipIsClickable: false
-					}
-								
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 90
-						colorSet: SettingsModel.getShowStartChatButton() ? ContactEditStyle.chat : ContactEditStyle.history
-						visible: SettingsModel.secureChatEnabled
-						enabled: AccountSettingsModel.conferenceUri != ''
-						Icon{
-							icon:'secure_level_1'
-							iconSize:parent.height/2
-							anchors.top:parent.top
-							anchors.horizontalCenter: parent.right
-						}
-						onClicked: {sipAddressesMenu.open(sipAddressesMenu.createSecureChatRoom)}
-						
-						tooltipMaxWidth: actionBar.width
-						tooltipVisible: AccountSettingsModel.conferenceUri == ''
-							//: 'You need to set the conference URI in your account settings to create a conference based chat room.' : Tooltip to warn the user that a setting is missing in its configuration.
-						tooltipText: '- ' + qsTr('missingConferenceURI') + '\n'
-					}
-				}
-				
-				ActionBar {
-					anchors.verticalCenter: parent.verticalCenter
-					
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 4
-						colorSet: ContactEditStyle.bar.actions.edit.colorSet
-						
-						visible: !_edition
-						onClicked: Logic.editContact()
-					}
-					
-					ActionButton {
-						isCustom: true
-						backgroundRadius: 4
-						colorSet: ContactEditStyle.bar.actions.del.colorSet
-						
-						onClicked: Logic.removeContact()
-					}
-				}
-			}
-		}
+            Row {
+                Layout.alignment: Qt.AlignRight
+                Layout.fillHeight: true
+
+                spacing: ContactEditStyle.bar.actions.spacing
+                visible: _contact != null
+
+                ActionBar {
+                    id: actionBar
+                    anchors.verticalCenter: parent.verticalCenter
+                    iconSize: ContactEditStyle.bar.actions.history.iconSize
+
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 90
+                        colorSet: ContactEditStyle.videoCall
+
+                        visible: SettingsModel.videoAvailable && SettingsModel.outgoingCallsEnabled && SettingsModel.showStartVideoCallButton
+
+                        onClicked: sipAddressesMenu.open(sipAddressesMenu.startVideoCall)
+                    }
+
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 90
+                        colorSet: ContactEditStyle.call
+
+                        visible: SettingsModel.outgoingCallsEnabled
+
+                        onClicked: sipAddressesMenu.open(sipAddressesMenu.startCall)
+                    }
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 90
+                        colorSet: SettingsModel.getShowStartChatButton() ? ContactEditStyle.chat : ContactEditStyle.history
+                        visible: SettingsModel.standardChatEnabled
+                        onClicked: sipAddressesMenu.open(sipAddressesMenu.createChatRoom)
+                        tooltipText: qsTr('tooltipShowConversation')
+                        tooltipIsClickable: false
+                    }
+
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 90
+                        colorSet: SettingsModel.getShowStartChatButton() ? ContactEditStyle.chat : ContactEditStyle.history
+                        visible: SettingsModel.secureChatEnabled
+                        enabled: AccountSettingsModel.conferenceUri != ''
+                        Icon{
+                            icon:'secure_level_1'
+                            iconSize:parent.height/2
+                            anchors.top:parent.top
+                            anchors.horizontalCenter: parent.right
+                        }
+                        onClicked: {sipAddressesMenu.open(sipAddressesMenu.createSecureChatRoom)}
+
+                        tooltipMaxWidth: actionBar.width
+                        tooltipVisible: AccountSettingsModel.conferenceUri == ''
+                            //: 'You need to set the conference URI in your account settings to create a conference based chat room.' : Tooltip to warn the user that a setting is missing in its configuration.
+                        tooltipText: '- ' + qsTr('missingConferenceURI') + '\n'
+                    }
+                }
+
+
+            }
+        }
 	}
 	
 	// ---------------------------------------------------------------------------
@@ -281,13 +262,19 @@ ColumnLayout  {
 	
 	Rectangle {
 		Layout.fillHeight: true
-		Layout.fillWidth: true
+        Layout.fillWidth: true
+        Rectangle{
+            anchors.centerIn: parent
+
+            height: 300
+            width: 300
         Image {
                          source: "qrc:/assets/images/appBackground.png"
                          anchors.fill: parent
                          fillMode: Image.PreserveAspectCrop
 
                      }
+        }
 		color: ContactEditStyle.content.colorModel.color
 		
 		Flickable {
@@ -315,14 +302,15 @@ ColumnLayout  {
 				
 				ListForm {
 					id: addresses
+
 					
 					Layout.leftMargin: ContactEditStyle.values.leftMargin
 					Layout.rightMargin: ContactEditStyle.values.rightMargin
-					Layout.topMargin: ContactEditStyle.values.topMargin
+                    Layout.topMargin: 50
 					Layout.fillWidth: true
-					
+                    tcolor:'#20E8E4'
 					minValues: _contact ? 1 : 0
-					placeholder: qsTr('sipAccountsPlaceholder')
+                    placeholder: qsTr('sipAccountsPlaceholder')
 					readOnly: !_edition
 					title: SettingsModel.sipDisplayMode == UtilsCpp.SIP_DISPLAY_USERNAME
 					//: 'USERNAME(S)' : label for sip accounts when only username is displayed n contact
@@ -337,14 +325,16 @@ ColumnLayout  {
 				Rectangle {
 					Layout.fillWidth: true
 					Layout.preferredHeight: ContactEditStyle.values.separator.height
-					color: ContactEditStyle.values.separator.colorModel.color
+                    color: '#a3a2b8'
 				}
 				
 				ListForm {
 					id: companies
+                    tcolor:'#20E8E4'
 					
 					Layout.leftMargin: ContactEditStyle.values.leftMargin
 					Layout.rightMargin: ContactEditStyle.values.rightMargin
+                    Layout.topMargin: 30
 					
 					placeholder: qsTr('companiesPlaceholder')
 					readOnly: !_edition
@@ -357,14 +347,16 @@ ColumnLayout  {
 				Rectangle {
 					Layout.fillWidth: true
 					Layout.preferredHeight: ContactEditStyle.values.separator.height
-					color: ContactEditStyle.values.separator.colorModel.color
+                    color: '#a3a2b8'
 				}
 				
 				ListForm {
 					id: emails
+                    tcolor:'#20E8E4'
 					
 					Layout.leftMargin: ContactEditStyle.values.leftMargin
 					Layout.rightMargin: ContactEditStyle.values.rightMargin
+                    Layout.topMargin: 30
 					
 					placeholder: qsTr('emailsPlaceholder')
 					readOnly: !_edition
@@ -377,14 +369,16 @@ ColumnLayout  {
 				Rectangle {
 					Layout.fillWidth: true
 					Layout.preferredHeight: ContactEditStyle.values.separator.height
-					color: ContactEditStyle.values.separator.colorModel.color
+                    color: '#a3a2b8'
 				}
 				
 				ListForm {
 					id: urls
+                    tcolor:'#20E8E4'
 					
 					Layout.leftMargin: ContactEditStyle.values.leftMargin
 					Layout.rightMargin: ContactEditStyle.values.rightMargin
+                    Layout.topMargin: 30
 					
 					placeholder: qsTr('webSitesPlaceholder')
 					readOnly: !_edition
@@ -397,19 +391,24 @@ ColumnLayout  {
 				Rectangle {
 					Layout.fillWidth: true
 					Layout.preferredHeight: ContactEditStyle.values.separator.height
-					color: ContactEditStyle.values.separator.colorModel.color
+                    color: '#a3a2b8'
 				}
 				
 				StaticListForm {
 					Layout.leftMargin: ContactEditStyle.values.leftMargin
-					Layout.rightMargin: ContactEditStyle.values.rightMargin
-					
+                    Layout.rightMargin: ContactEditStyle.values.rightMargin
+                    Layout.topMargin: 30
+                    tcolor:'#20E8E4'
+                    isrow:true
 					fields: Logic.buildAddressFields()
 					
 					readOnly: !_edition
 					title: qsTr('address')
 					
-					onChanged: Logic.handleAddressChanged(index, value)
+                    onChanged: {
+
+                        Logic.handleAddressChanged(index, value)
+                    }
 				}
 				
 				// ---------------------------------------------------------------------
@@ -438,4 +437,55 @@ ColumnLayout  {
 			}
 		}
 	}
+
+
+    Rectangle {
+
+        Layout.fillWidth: true
+        Layout.preferredHeight: ContactEditStyle.bar.height
+
+        RowLayout {
+            anchors {
+                fill: parent
+                leftMargin: ContactEditStyle.bar.leftMargin
+                rightMargin: ContactEditStyle.bar.rightMargin
+            }
+
+            spacing: ContactEditStyle.bar.spacing
+
+                Layout.alignment: Qt.AlignJustify
+                //Layout.fillHeight: true
+
+                visible: _contact != null
+
+
+                ActionBar {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 4
+                        colorSet: ContactEditStyle.bar.actions.edit.colorSet
+                        staticIconB:'qrc:/assets/images/contact_edit_custom.svg'
+
+                        visible: !_edition
+                        onClicked: Logic.editContact()
+                    }
+                    Rectangle{
+                    width: 50
+                    height: 10
+                    }
+                    ActionButton {
+                        isCustom: true
+                        backgroundRadius: 4
+                        colorSet: ContactEditStyle.bar.actions.del.colorSet
+                        staticIconB:'qrc:/assets/images/contact_delete_custom.svg'
+                        onClicked: Logic.removeContact()
+                    }
+                }
+
+        }
+    }
+
 }
