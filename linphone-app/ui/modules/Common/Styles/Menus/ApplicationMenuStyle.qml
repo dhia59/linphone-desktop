@@ -8,7 +8,7 @@ import ColorsList 1.0
 
 QtObject {
 	property string sectionName: 'ApplicationMenu'
-	property int spacing: 1
+	property int spacing: 5
 	property var backgroundColor: ColorsList.add(sectionName+'_bg', 'n')
 	
 	property QtObject entry: QtObject {
@@ -26,7 +26,7 @@ QtObject {
 		
 		property QtObject indicator: QtObject {
 			property var colorModel: ColorsList.add(sectionName+'_entry_indicator', 'i')
-			property int width: 5
+			property int width: 10
 		}
 		
 		property QtObject text: QtObject {

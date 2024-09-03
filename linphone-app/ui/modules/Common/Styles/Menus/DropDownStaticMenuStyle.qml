@@ -8,7 +8,7 @@ import ColorsList 1.0
 
 QtObject {
 	property string sectionName: 'DropDownStaticMenu'
-	property int spacing: 1
+	property int spacing: 5
 	
 	property QtObject entry: QtObject {
 		property int leftMargin: 18

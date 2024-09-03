@@ -1806,11 +1806,11 @@
         <translation type="unfinished">トランスポート</translation>
     </message>
     <message>
-        <source>Votre identifiant</source>
+        <source>Nom d&apos;utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Votre mot de passe</source>
+        <source>Mot de passe</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1857,16 +1857,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>localContactsEntry</source>
-        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>contactsEntry</source>
-        <extracomment>&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Rechercher, se rencontrer et appeler</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1875,15 +1865,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Messageries</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>reunions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>appels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1891,15 +1873,30 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Messageries vocale</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enregistrements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>selfCare</source>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

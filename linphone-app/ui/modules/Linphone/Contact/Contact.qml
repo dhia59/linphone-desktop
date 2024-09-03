@@ -118,11 +118,12 @@ Rectangle {
 			Layout.fillHeight: true
 			Layout.fillWidth: true
 			Layout.leftMargin: ContactStyle.spacing
+
 			
 			titleText: item.subject
 						? item.subject
 						: item.username
-            subtitleText: entry && item.showSubtitle
+           /* subtitleText: entry && item.showSubtitle
 							? UtilsCpp.toDisplayString(
 								item.subtitle
 								? item.subtitle
@@ -134,7 +135,7 @@ Rectangle {
 										? entry.participants.addressesToString
 										: ''
 							, SettingsModel.sipDisplayMode)
-							: ''
+                            : ''*/
 
         }
 

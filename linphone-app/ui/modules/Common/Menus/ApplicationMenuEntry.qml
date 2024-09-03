@@ -65,17 +65,25 @@ Rectangle {
 			verticalCenter: parent.verticalCenter
 		}
 		
-		spacing: ApplicationMenuStyle.entry.spacing
+        spacing: 15
+        Rectangle {
+
+
+            height: parent.height
+            color: 'transparent'
+            width: 1
+        }
 		
-		Icon {
-			id:mainIcon
-			icon: entry.icon
-			iconSize: 20
-		}
+        Icon {
+
+            id:mainIcon
+            icon: entry.icon
+            iconSize: 20
+        }
 		
 		Text {
 			id: text
-			
+
 			Layout.fillWidth: true
 			color: entry.isSelected
 				   ? ApplicationMenuStyle.entry.text.color.selected.color
@@ -89,9 +97,12 @@ Rectangle {
 	}
 	
 	Rectangle {
+
 		anchors {
-			left: parent.left
+            left: parent.left
+
 		}
+        //anchors.rightMargin: 20
 		
 		height: parent.height
 		color: entry.isSelected

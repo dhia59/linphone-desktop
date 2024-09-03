@@ -12,7 +12,8 @@ RowLayout {
   property alias title: text.text
   property bool readOnly: false
   property var fields
-
+  property var tcolor
+  property bool isrow: false
   signal changed (int index, string value)
 
   // ---------------------------------------------------------------------------
@@ -35,7 +36,7 @@ RowLayout {
     Layout.preferredHeight: ListFormStyle.lineHeight
     Layout.preferredWidth: ListFormStyle.titleArea.text.width
 
-    color: ListFormStyle.titleArea.text.colorModel.color
+    color: tcolor ? tcolor: ListFormStyle.titleArea.text.colorModel.color
     elide: Text.ElideRight
 
     font {
@@ -47,6 +48,7 @@ RowLayout {
   }
 
   ColumnLayout {
+    visible:isrow===false
     Layout.fillWidth: true
     spacing: 0
 
@@ -64,4 +66,43 @@ RowLayout {
       }
     }
   }
+
+
+  ColumnLayout {
+    visible:isrow===true
+    Layout.fillWidth: true
+    spacing: 0
+
+
+      TransparentTextInput {
+        id:streetfieldid
+        Layout.fillWidth: true
+        Layout.preferredHeight: ListFormStyle.lineHeight
+        placeholder: form.fields[0].placeholder || ''
+        readOnly: form.readOnly
+        text: form.fields[0].text || ''
+
+        onEditingFinished: {
+          _handleEditionFinished(0, streetfieldid.text)
+
+        }
+      }
+RowLayout
+{
+    Repeater {
+      model: form.fields
+      TransparentTextInput {
+        visible: index > 0
+        Layout.fillWidth: true
+        Layout.preferredHeight: ListFormStyle.lineHeight
+        placeholder: modelData.placeholder || ''
+        readOnly: form.readOnly
+        text: modelData.text || ''
+
+        onEditingFinished: _handleEditionFinished(index, text)
+      }
+    }
+  }
+
+}
 }

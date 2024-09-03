@@ -19,6 +19,7 @@ Controls.TextField {
 	property alias overwriteColor: icon.overwriteColor
 	property string error: ''
 	property var tools
+	property int cradius
 	property QtObject textFieldStyle : TextFieldStyle.normal
 	onTextFieldStyleChanged: if( !textFieldStyle) textFieldStyle = TextFieldStyle.normal
 	
@@ -44,7 +45,7 @@ Controls.TextField {
 		implicitHeight: textFieldStyle.background.height
 		implicitWidth: textFieldStyle.background.width
 		
-		radius: textFieldStyle.background.radius
+		radius: cradius? cradius :textFieldStyle.background.radius
 		
 		MouseArea {
 			anchors.right: parent.right

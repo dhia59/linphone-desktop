@@ -28,7 +28,9 @@ using namespace std;
 
 AudioCodecsModel::AudioCodecsModel (QObject *parent) : AbstractCodecsModel(parent) {
 	for (auto &codec : CoreManager::getInstance()->getCore()->getAudioPayloadTypes()) {
-		if (codec->getMimeType() == "speex" || codec->getMimeType() == "PCMU") {
+		if (codec->getMimeType() == "PCMA" ) {
+			codec->enable(true);
+		}else{
 			codec->enable(false);
 		}
 		addCodec(codec);
