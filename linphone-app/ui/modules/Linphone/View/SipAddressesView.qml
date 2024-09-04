@@ -126,7 +126,7 @@ ScrollableListView {
 									backgroundRadius: 90
 									colorSet: modelData.colorSet
 									
-									visible: modelData.visible
+                                    visible:false //modelData.visible
 									
 									onClicked: {
 										sipAddressesView.actions[index].handler({	// Do not use modelData on functions : Qt bug
@@ -325,6 +325,9 @@ ScrollableListView {
 			visible: sipAddressesView.showSeparator
 		}
 		
+
+
+
 		// -------------------------------------------------------------------------
 		
 		states: State {

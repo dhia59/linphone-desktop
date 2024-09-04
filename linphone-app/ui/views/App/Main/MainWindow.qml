@@ -276,8 +276,10 @@ ApplicationWindow {
 
                             onEntrySelected:{
                                 if( entry ) {
+                                    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ entry", entry.selected)
+
                                     if( entry.selected){
-                                        console.debug("Load conversation from entry selected on timeline")
+                                        console.debug("Load conversation from entry selected on timeline ", entry.chatRoomModel)
                                         window.setView('Conversation', {
                                                            chatRoomModel:entry.chatRoomModel
                                                        })
@@ -287,7 +289,7 @@ ApplicationWindow {
                                         //timeline.currentIndex = 15
                                     }
                                 }else{
-
+                                   console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ else", entry.selected)
                                     window.setView('Home', {})
                                 }
                                 //menu.resetSelectedEntry()
@@ -338,9 +340,11 @@ ApplicationWindow {
                                         showTimeline=true
                                         menuWidth=500
                                        // timeline.model.unselectAll()
-                                        window.setView('Conversation', {
+                                       /* window.setView('Conversation', {
                                                        chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                                                    })
+                                                   */
+                                        timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true
 
                                     }
                                 }
@@ -348,9 +352,11 @@ ApplicationWindow {
                                     if (timeline.model.rowCount()>1){
                                         menuWidth=500
                                         showTimeline=true
-                                        window.setView('Conversation', {
+                                       /* window.setView('Conversation', {
                                                        chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                                                    })
+                                                   */
+                                        timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true
 
                                     }
                                 }
@@ -682,25 +688,12 @@ ApplicationWindow {
                         objectName: '__contentLoader'
 
                         anchors.fill: parent
+                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert? showTimeline && timeline.model.rowCount()>1?
 
-                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert? timeline.model.rowCount()>1?
+                       timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true :loadHistoryView()  :'Login.qml'
 
-                                  window.setView('Conversation', {
-                                                     chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
-                                                 }) :loadHistoryView()  :'Login.qml'
+
                     }
-                    //                    TelKeypad {
-                    //                        anchors.right: parent.right
-                    //                        anchors.top: parent.top
-                    //                        id: telKeypad
-                    //                        onSendDtmf: smartSearchBar.text += dtmf
-                    //                        visible:SettingsModel.showTelKeypadAutomatically
-                    //                        onVisibleChanged: isVisibleTelKeypad= visible
-                    //                        //onTarget: {telKeypad.containsMouse= true;console.log('testtttttttttttttttttttt', telKeypad.containsMouse)}
-                    //                    }
-
-
-
                     Connections {
                         target: AccountSettingsModel
 
@@ -727,6 +720,13 @@ ApplicationWindow {
                             }
                         }
                     }
+                    Component.onCompleted: {
+
+                        console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ",timeline.model.getFirstChatRoom(timeline.model.rowCount()))
+                     //  timeline.model.getFirstChatRoom(3).selected=true
+
+                        // timeline.entrySelected(timeline.model.getFirstChatRoom(3))
+                    }
 
 
                 }
@@ -752,6 +752,7 @@ ApplicationWindow {
         menu.defaultSelectedEntry=callsEntry
     }
 
+
     Loader{
         id: customMenuBar
         active:Qt.platform.os === 'osx'
@@ -769,9 +770,11 @@ ApplicationWindow {
         console.log("rowcount0: ")
         console.log("rowcount: "+timeline.model.rowCount())
         if(Qt.platform.os === 'osx') menuBar = customMenuBar;
-        window.setView('Conversation', {
+       /* window.setView('Conversation', {
                            chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
+
                        })
+                       */
         //console.log("timelinesetitem: "+timeline.model.rowCount() )
         //timeline.currentIndex = 15
 

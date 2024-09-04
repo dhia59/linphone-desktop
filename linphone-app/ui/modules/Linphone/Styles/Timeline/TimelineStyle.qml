@@ -32,7 +32,7 @@ QtObject {
 		property QtObject backgroundColor: QtObject {
 			property var a: ColorsList.add(sectionName+'_contact_bg_a', 'timeline_bg_1')
 			property var b: ColorsList.add(sectionName+'_contact_bg_b', 'timeline_bg_2')
-			property var selected: ColorsList.add(sectionName+'_contact_bg_c', 'i')
+            property var selected: ColorsList.add(sectionName+'_contact_bg_c', 'iii')
 		}
 		
 		property QtObject subtitle: QtObject {
@@ -53,7 +53,7 @@ QtObject {
 	property QtObject legend: QtObject {
 		property QtObject backgroundColor: QtObject {
 			property var normal: ColorsList.add(sectionName+'_legend_bg_n', 'f')
-			property var hovered: ColorsList.add(sectionName+'_legend_bg_h', 'c')
+            property var hovered: ColorsList.add(sectionName+'_legend_bg_h', 'c')
 		}
 		property var colorModel: ColorsList.add(sectionName+'_legend', 'd')
 		property int pointSize: Units.dp * 10

@@ -112,7 +112,7 @@ Item {
             //Record audio
 			ActionButton {
 				id: recordAudioButton
-				visible: droppableTextArea.enabled
+				visible: false//droppableTextArea.enabled
 				
 				Layout.alignment: Qt.AlignVCenter
 				Layout.leftMargin: 0

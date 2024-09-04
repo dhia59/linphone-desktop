@@ -695,7 +695,6 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 				std::string password = defaultAccount->findAuthInfo()->getPassword();
 				qWarning() << QStringLiteral("checking account");
 				std::string currentUserName= config->getString("defaultAccount", "username", "");
-				//std::string currentPassword = config->getString("defaultAccount", "password", "");
 				if (username != currentUserName) {				
 					logout();
 					emit networkErrorFirstLogin();

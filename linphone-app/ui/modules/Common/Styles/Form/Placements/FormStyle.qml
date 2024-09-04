@@ -15,7 +15,7 @@ QtObject {
 		property int spacing: 5
 		
 		property QtObject separator: QtObject {
-			property var colorModel: ColorsList.add(sectionName+'_header_separator', 'i')
+			property var colorModel: ColorsList.add(sectionName+'_header_separator', 'iii')
 			property int height: 2
 		}
 		

@@ -29,6 +29,7 @@ Rectangle {
     property var actions: []
     // Propriété pour accéder au premier élément du modèle
     property var firstItem: model.get(0)
+    property var currentIndex:0
     // ---------------------------------------------------------------------------
 
     signal entrySelected (TimelineModel entry)
@@ -69,8 +70,10 @@ Rectangle {
                 Connections{
                     target: $modelData
                     onSelectedChanged:{
+                        console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ timeline", selected)
                         if(selected) {
                             view.currentIndex = index;
+                            currentIndex= index
                         }
                     }
                 }

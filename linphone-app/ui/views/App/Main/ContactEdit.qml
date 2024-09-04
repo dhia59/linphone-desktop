@@ -20,7 +20,7 @@ ColumnLayout  {
 	id: contactEdit
 	
 	property string sipAddress
-	
+    property string contactType
 	readonly property alias vcard: contactEdit._vcard
 	
 	property bool _edition: false
@@ -72,6 +72,10 @@ ColumnLayout  {
 			
 			onContactUpdated: Logic.handleContactUpdated()
 		}
+        Component.onCompleted: {
+            console.log("*********************************************************** ")
+            console.log(contactType)
+        }
 	}
 	
 	FileDialog {
@@ -462,26 +466,24 @@ ColumnLayout  {
                 ActionBar {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
-
+                    spacing:50
                     ActionButton {
                         isCustom: true
                         backgroundRadius: 4
                         colorSet: ContactEditStyle.bar.actions.edit.colorSet
                         staticIconB:'qrc:/assets/images/contact_edit_custom.svg'
 
-                        visible: !_edition
+                        visible: !_edition && (contactType ==='personnel' || contactType ==='')
                         onClicked: Logic.editContact()
                     }
-                    Rectangle{
-                    width: 50
-                    height: 10
-                    }
+
                     ActionButton {
                         isCustom: true
                         backgroundRadius: 4
                         colorSet: ContactEditStyle.bar.actions.del.colorSet
                         staticIconB:'qrc:/assets/images/contact_delete_custom.svg'
                         onClicked: Logic.removeContact()
+                        visible: !_edition && (contactType ==='personnel' || contactType ==='')
                     }
                 }
 

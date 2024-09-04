@@ -126,14 +126,10 @@ Rectangle{
             model: ContactsEnreachListProxyModel {
                 id: contacts
                 onLoadedContacts:{
-
-                    console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz loaded contacts "+lastsipcontact);
                     isBusy=false;
                     contactEditLoader.setSource('ContactEdit.qml', {
                                                     sipAddress: lastsipcontact
-                                                })
-
-                console.debug("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+                                                })                
                 }
             }
 
@@ -141,8 +137,6 @@ Rectangle{
                 target: contacts
 
                 onLoadedContacts: {
-                    console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz loaded contacts 0 "+lastsipcontact);
-                    console.debug("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
 
                 }
             }
@@ -314,10 +308,11 @@ Rectangle{
 
                         MouseArea {
                             anchors.fill: parent
-                            //visible: $modelData.contactEnreach.contactType==="personnel"
+                          //  visible: $modelData.contactEnreach.contactType==="personnel"
                             onClicked:
                                 contactEditLoader.setSource('ContactEdit.qml', {
-                                                                sipAddress: $modelData.contactEnreach.sipAddresses[0]
+                                                                sipAddress: $modelData.contactEnreach.sipAddresses[0],
+                                                                 contactType: $modelData.contactEnreach.contactType
                                                             })
                                // window.setView('ContactEdit', )
                         }
@@ -355,7 +350,8 @@ Rectangle{
                                 }
                                 font.family: SettingsModel.textMessageFont.family
 
-                                text: UtilsCpp.encodeTextToQmlRichFormat($modelData.contactEnreach.fullName)
+                                text: $modelData.contactEnreach.fullName!==" "? UtilsCpp.encodeTextToQmlRichFormat($modelData.contactEnreach.fullName)
+                                                                             :$modelData.contactEnreach.ext
                                 textFormat: Text.RichText
                                 verticalAlignment: Text.AlignVCenter
                             }
@@ -443,7 +439,8 @@ Component.onCompleted:{
                 )
 
     contactEditLoader.setSource('ContactEdit.qml', {
-                                    sipAddress: contacts.contactEnreach.sipAddresses[0]
+                                    sipAddress: contacts.contactEnreach.sipAddresses[0],
+                                    contactType: contacts.contactEnreach.contactType
                                 })
 }
 

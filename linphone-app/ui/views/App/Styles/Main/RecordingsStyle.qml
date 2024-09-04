@@ -10,12 +10,12 @@ QtObject {
 	property string sectionName : 'Recordings'
 	
 	property QtObject title: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_title', 'j')
-		property int pointSize: Units.dp * 12
+        property var colorModel: ColorsList.add(sectionName+'_title', 'j')
+        property int pointSize: Units.dp * 12
 	}
 	
 	property QtObject filename: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_filename', 'j')
+        property var colorModel: ColorsList.add(sectionName+'_filename', 'j')
 		property int pointSize: Units.dp * 10
 	}
 		

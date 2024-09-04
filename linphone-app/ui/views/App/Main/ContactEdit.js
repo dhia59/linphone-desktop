@@ -67,9 +67,9 @@ function editContact () {
   contactEdit._vcard = contact.cloneVcardModel()
   contactEdit._edition = true
 
-  window.lockView({
+  /*window.lockView({
     descriptionText: qsTr('abortEditDescriptionText')
-  })
+  })*/
 }
 
 function removeContact () {
@@ -94,7 +94,7 @@ function save () {
 
   if (contact) {
     contact.vcard = vcard
-    window.unlockView()
+   // window.unlockView()
   } else {
     contactEdit._contact = Linphone.ContactsListModel.addContact(vcard)
     handleVcardChanged(vcard) // Called directly, because the vcard is not modified in the view.

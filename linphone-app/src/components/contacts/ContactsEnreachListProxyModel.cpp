@@ -164,7 +164,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 									auto fullName = jsonObject.value("firstname").toString() + " " + jsonObject.value("lastname").toString();
 									VcardModel* vcardModel = CoreManager::getInstance()->createDetachedVcardModel();
 									vcardModel->setUsername(fullName);
-									vcardModel->addSipAddress(addr);
+									vcardModel->addSipAddress(addr);								    
 									listModel.addContact(vcardModel);
 									auto test = listSips->contains(QString(addr));
 									if (!listSips->contains(QString(addr))) {
@@ -224,7 +224,7 @@ bool ContactsEnreachListProxyModel::filterAcceptsRow(
 		return contact->getContactEnreach()->getContactType() == "partager" && contact->getContactEnreach()->getFullName().toLower().contains(mFilter.toLower());
 	if(mUsePersonnelFilter)
 		return contact->getContactEnreach()->getContactType() == "personnel" && contact->getContactEnreach()->getFullName().toLower().contains(mFilter.toLower());
-	return contact->getContactEnreach()->getFullName().toLower().contains(mFilter.toLower());
+	return contact->getContactEnreach()->getFullName().toLower().contains(mFilter.toLower()) || contact->getContactEnreach()->getExt().contains(mFilter.toLower());
 	
 
 }
