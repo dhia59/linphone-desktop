@@ -33,7 +33,7 @@ Rectangle {
 		}
 	}
 	
-	function mouseClicked(){
+    function mouseClicked(){
 		var menu = parent.parent
 		if (menu._selected !== this) {
 			menu._selected = this
@@ -105,9 +105,9 @@ Rectangle {
         //anchors.rightMargin: 20
 		
 		height: parent.height
-		color: entry.isSelected
-			   ? ApplicationMenuStyle.entry.indicator.colorModel.color
-			   : 'transparent'
+        color: entry.isSelected
+               ? ApplicationMenuStyle.entry.indicator.colorModel.color
+               : 'transparent'
 		width: ApplicationMenuStyle.entry.indicator.width
 	}
 	
