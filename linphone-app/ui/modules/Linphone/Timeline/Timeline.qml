@@ -61,8 +61,9 @@ Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
             currentIndex: 0
-
+            
             delegate: TimelineItem{
+                visible:modelData.chatRoomModel.contactType ==="contact"
                 timelineModel: $modelData
                 modelIndex: index
                 optionsTogglable: timeline.optionsTogglable
@@ -70,7 +71,9 @@ Rectangle {
                 Connections{
                     target: $modelData
                     onSelectedChanged:{
-                        console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ timeline", selected)
+                        console.log("+++++++ timeline0  ", $modelData.chatRoomModel.contactType)
+                        console.log("+++++++ timeline1  ", modelData.mChatRoomModel.mSelected)
+                        console.log("+++++++ timeline2  ", modelData.chatRoomModel.contactModel.vcard.contactType)
                         if(selected) {
                             view.currentIndex = index;
                             currentIndex= index

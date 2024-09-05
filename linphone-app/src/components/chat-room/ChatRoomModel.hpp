@@ -81,6 +81,7 @@ public:
 	Q_PROPERTY(QString sipAddressUriOnly READ getPeerAddress NOTIFY fullPeerAddressChanged)
 	Q_PROPERTY(QString username READ getUsername NOTIFY usernameChanged)
 	Q_PROPERTY(QString avatar READ getAvatar NOTIFY avatarChanged)
+	Q_PROPERTY(QString contactType READ getContactType )
 	Q_PROPERTY(int presenceStatus READ getPresenceStatus NOTIFY presenceStatusChanged)
 	Q_PROPERTY(QDateTime presenceTimestamp READ getPresenceTimestamp NOTIFY presenceStatusChanged)
 	Q_PROPERTY(LinphoneEnums::ChatRoomState state READ getState NOTIFY stateChanged)
@@ -121,6 +122,7 @@ public:
 	QString getSubject () const;
 	QString getUsername () const;
 	QString getAvatar () const;
+	QString getContactType() const;
 	int getPresenceStatus() const;
 	QDateTime getPresenceTimestamp() const;
 	LinphoneEnums::ChatRoomState getState() const;

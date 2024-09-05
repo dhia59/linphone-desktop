@@ -336,7 +336,7 @@ ApplicationWindow {
                                 visible: true
 
                                 onSelected: {
-                                    if (timeline.model.rowCount()>1){
+                                    if (timeline.model.rowCount()>0){
                                         showTimeline=true
                                         menuWidth=500
                                        // timeline.model.unselectAll()
@@ -349,7 +349,7 @@ ApplicationWindow {
                                     }
                                 }
                                 onClicked:{
-                                    if (timeline.model.rowCount()>1){
+                                    if (timeline.model.rowCount()>0){
                                         menuWidth=500
                                         showTimeline=true
                                        /* window.setView('Conversation', {
@@ -688,7 +688,7 @@ ApplicationWindow {
                         objectName: '__contentLoader'
 
                         anchors.fill: parent
-                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert? showTimeline && timeline.model.rowCount()>1?
+                        source:AccountSettingsModel.registrationState===0 || noNetworkAlert? showTimeline && timeline.model.rowCount()>0?
 
                        timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true :loadHistoryView()  :'Login.qml'
 

@@ -22,6 +22,7 @@ Rectangle {
 	property int modelIndex: 0
 	property var actions: []
 	
+	visible:mainItem.timelineModel.chatRoomModel.contactType =="contact"
 	height: TimelineStyle.contact.height
 	width: parent ? parent.width : 0
 	
@@ -60,6 +61,9 @@ Rectangle {
 		anchors.fill: parent
         anchors.rightMargin: 5
 		spacing: 0
+	
+
+		
 		Contact {
 			id: contactView
 			property bool isSelected: mainItem.timelineModel != undefined && mainItem.timelineModel.selected	//view.currentIndex === index

@@ -358,16 +358,33 @@ QString ChatRoomModel::getAvatar () const {
 	if( mChatRoom && mChatRoom->getNbParticipants() == 1){
 		auto participants = getParticipants(false);	
 		auto contact = CoreManager::getInstance()->getContactsListModel()->findContactModelFromSipAddress(Utils::coreStringToAppString((*participants.begin())->getAddress()->asString()));
-		if(contact)
-			return contact->getVcardModel()->getAvatar();
+		if (contact) {
+			QString a= contact->getVcardModel()->getAvatar();
+			std::string stdStr = a.toStdString();
+			return a;
+		}
 	}
 	return "";
 }
 
+QString ChatRoomModel::getContactType () const {
+	if( mChatRoom && mChatRoom->getNbParticipants() == 1){
+		auto participants = getParticipants(false);	
+		auto contact = CoreManager::getInstance()->getContactsListModel()->findContactModelFromSipAddress(Utils::coreStringToAppString((*participants.begin())->getAddress()->asString()));
+		QString y = "fdfd";
+		if (contact) {
+			QString t = contact->getVcardModel()->getContactType();
+			std::string stdStr = t.toStdString();
+			return "contact";
+
+		}
+	}
+	return "";
+}
 int ChatRoomModel::getPresenceStatus() const {
 	if( mChatRoom && mChatRoom->getNbParticipants() == 1 && !isGroupEnabled()){
 		auto participants = getParticipants(false);
-		auto contact = CoreManager::getInstance()->getContactsListModel()->findContactModelFromSipAddress(Utils::coreStringToAppString((*participants.begin())->getAddress()->asString()));
+		auto contact = CoreManager::getInstance()->getContactsListModel()->getContactModelFromAddress(Utils::coreStringToAppString((*participants.begin())->getAddress()->asString()));
 		if(contact) {
 			return contact->getPresenceLevel();
 		}

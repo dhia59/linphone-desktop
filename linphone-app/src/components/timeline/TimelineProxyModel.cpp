@@ -92,6 +92,7 @@ void TimelineProxyModel::setListSource(const TimelineListSource& source){
 			AccountSettingsModel *accountSettingsModel = coreManager->getAccountSettingsModel();
 			model = source == Main ? CoreManager::getInstance()->getTimelineListModel() : CoreManager::getInstance()->getTimelineListModel()->clone();
 		
+			//model.
 			connect(model, SIGNAL(selectedCountChanged(int)), this, SIGNAL(selectedCountChanged(int)));
 			connect(model, &TimelineListModel::selectedChanged, this, &TimelineProxyModel::selectedChanged);
 			connect(model, &TimelineListModel::countChanged, this, &TimelineProxyModel::countChanged);
@@ -152,6 +153,9 @@ bool TimelineProxyModel::filterAcceptsRow (int sourceRow, const QModelIndex &sou
 	}
 	if(show)
 		show = timeline->getChatRoomModel()->isCurrentAccount();
+	if (timeline->getChatRoomModel()->getContactType() != "contact")
+		show = false;
+
 	return show;
 }
 
