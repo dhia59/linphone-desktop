@@ -36,7 +36,7 @@
 #include <qqmlapplicationengine.h>
 
 #include "ChatRoomListener.hpp"
-
+#include <unordered_map>
 #include "app/App.hpp"
 #include "components/calls/CallsListModel.hpp"
 #include "components/chat/ChatModel.hpp"
@@ -709,50 +709,7 @@ void ChatRoomModel::updateParticipants(const QVariantList& participants){
 
 
 // -----------------------------------------------------------------------------
-/*
-void ChatRoomModel::sendMessage(const QString &message, bool useHeader) {
-	std::list<shared_ptr<linphone::ChatMessage> > _messages;
-	bool isBasicChatRoom = isBasic();
-	if (mReplyModel && mReplyModel->getChatMessage()) {
-		_messages.push_back(mChatRoom->createReplyMessage(mReplyModel->getChatMessage()));
-	}
-	else
-		_messages.push_back(mChatRoom->createEmptyMessage());
-	auto recorder = CoreManager::getInstance()->getRecorderManager();
-	if (recorder->haveVocalRecorder()) {
-		recorder->getVocalRecorder()->stop();
-		auto content = recorder->getVocalRecorder()->getRecorder()->createContent();
-		if (content) {
-			_messages.back()->addContent(content);
-		}
-	}
-	auto fileContents = CoreManager::getInstance()->getChatModel()->getContentListModel()->getSharedList<ContentModel>();
-	for (auto content : fileContents) {
-		if (isBasicChatRoom && _messages.back()->getContents().size() > 0)	// Basic chat rooms don't support multipart
-			_messages.push_back(mChatRoom->createEmptyMessage());
-		_messages.back()->addFileContent(content->getContent());
-	}
-	if (!message.isEmpty()) {
-		if (isBasicChatRoom && _messages.back()->getContents().size() > 0)	// Basic chat rooms don't support multipart
-			_messages.push_back(mChatRoom->createEmptyMessage());
-		_messages.back()->addUtf8TextContent(message.toUtf8().toStdString());
-	}
-	bool sent = false;
-	for (auto itMessage = _messages.begin(); itMessage != _messages.end(); ++itMessage) {
-		if ((*itMessage)->getContents().size() > 0) {// Have something to send
-			(*itMessage)->addCustomHeader
-			(*itMessage)->send();
-			emit messageSent((*itMessage));
-			sent = true;
-		}
-	}
-	if (sent) {
-		setReply(nullptr);
-		if (recorder->haveVocalRecorder())
-			recorder->clearVocalRecorder();
-		CoreManager::getInstance()->getChatModel()->clear();
-	}
-}*/
+
 void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::string &timestamp) {
 	
 	std::list<shared_ptr<linphone::ChatMessage> > _messages;
@@ -778,7 +735,12 @@ void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::st
 	if(!message.isEmpty()) {
 		if(isBasicChatRoom && _messages.back()->getContents().size() > 0)	// Basic chat rooms don't support multipart
 			_messages.push_back(mChatRoom->createEmptyMessage());
-		_messages.back()->addUtf8TextContent(message.toUtf8().toStdString());
+			/*uint32_t codePoint = 0x1F642; // Unicode code point for 🙂
+			std::string emoji = codePointToUTF8(codePoint);
+			auto messageTosend = message.toUtf8().toStdString() + emoji;
+			*/
+			std::string updatedMessage = replaceEmoticonsWithUnicode(message.toUtf8().toStdString());
+		_messages.back()->addUtf8TextContent(updatedMessage);
 	}
 	bool sent = false;
 	for(auto itMessage = _messages.begin() ; itMessage != _messages.end() ; ++itMessage) {
@@ -790,11 +752,7 @@ void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::st
 			
 			if (!timestamp.empty()) {
 				(*itMessage)->addCustomHeader("sent-timestamp", timestamp);
-				/*(*itMessage)->setAppdata(timestamp);
-				auto appdata = ChatEvent::AppDataManager(QString::fromStdString((*itMessage)->getAppdata()));
-				qWarning() << QStringLiteral("testttttttttttttt: %1.").arg(appdata.mData["receivedTime"]);
-				*/
-			}
+		}
 				
 			
 			(*itMessage)->send();
@@ -953,7 +911,58 @@ void ChatRoomModel::updateNewMessageNotice(const int& count){
 		}
 	}
 }
+std::string ChatRoomModel:: codePointToUTF8(uint32_t codePoint) {
+	std::string utf8;
+	if (codePoint <= 0x7F) {
+		utf8.push_back(static_cast<char>(codePoint));
+	}
+	else if (codePoint <= 0x7FF) {
+		utf8.push_back(static_cast<char>((codePoint >> 6) | 0xC0));
+		utf8.push_back(static_cast<char>((codePoint & 0x3F) | 0x80));
+	}
+	else if (codePoint <= 0xFFFF) {
+		utf8.push_back(static_cast<char>((codePoint >> 12) | 0xE0));
+		utf8.push_back(static_cast<char>(((codePoint >> 6) & 0x3F) | 0x80));
+		utf8.push_back(static_cast<char>((codePoint & 0x3F) | 0x80));
+	}
+	else if (codePoint <= 0x10FFFF) {
+		utf8.push_back(static_cast<char>((codePoint >> 18) | 0xF0));
+		utf8.push_back(static_cast<char>(((codePoint >> 12) & 0x3F) | 0x80));
+		utf8.push_back(static_cast<char>(((codePoint >> 6) & 0x3F) | 0x80));
+		utf8.push_back(static_cast<char>((codePoint & 0x3F) | 0x80));
+	}
+	return utf8;
+}
+std::string ChatRoomModel::replaceEmoticonsWithUnicode(const std::string& message) {
+	std::unordered_map<std::string, uint32_t> emoticonToCodePoint = {
+		{ ":)", 0x1F642 },   
+		{ ":(", 0x1F641 },  
+		{ ":p", 0x1F61B },   
+		{ ";)", 0x1F609 },   
+		{ ":D", 0x1F603 },  
+		{ "xD", 0x1F606 },   
+		{ ":*", 0x1F618 },   
+		{ ";p", 0x1F61C },   
+		{ ":/", 0x1F615 },   
+		{ ";*", 0x1F618 },   
+		{ ":o", 0x1F62E },   
+		{ ":O", 0x1F62E },  
+		{ ":'(", 0x1F622 }
+	};
+	std::string updatedMessage = message;
+	for (const auto& pair : emoticonToCodePoint) {
+		const std::string& emoticon = pair.first;
+		std::string emojiUTF8 = codePointToUTF8(pair.second);
+		size_t pos = updatedMessage.find(emoticon);
 
+		while (pos != std::string::npos) {
+			updatedMessage.replace(pos, emoticon.length(), emojiUTF8);
+			pos = updatedMessage.find(emoticon, pos + emojiUTF8.length());
+		}
+	}
+
+	return updatedMessage;
+}
 int ChatRoomModel::loadTillMessage(ChatMessageModel * message){
 	if( message){
 		qDebug() << "Load history till message : " << message->getChatMessage()->getMessageId().c_str();
