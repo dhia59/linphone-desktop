@@ -1013,10 +1013,6 @@
         <translation>Vietovė</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Ar tikrai norite atšaukti kontaktų pakeitimą?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Rodyti pokalbį</translation>
     </message>

@@ -1013,10 +1013,6 @@
         <translation>Lokalita</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Opravdu chcete zrušit úpravu kontaktu?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Zobrazit konverzaci</translation>
     </message>

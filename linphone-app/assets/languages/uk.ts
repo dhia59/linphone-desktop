@@ -1013,10 +1013,6 @@
         <translation>Населений пункт</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Ви впевнені, що бажаєте скасувати зміну контакту?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Показати розмову</translation>
     </message>

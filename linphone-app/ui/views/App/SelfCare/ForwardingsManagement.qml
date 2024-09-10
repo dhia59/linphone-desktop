@@ -60,7 +60,7 @@ Rectangle {
                       width: 150
                       anchors.fill: parent
                       Layout.fillHeight: true
-                      //color: "gray"
+                      color: "gray"
                       Forwardings{
                           id: forwardings
                           onEntryClicked: {
@@ -71,12 +71,6 @@ Rectangle {
                               addEditForwardingRule.populate()
                           }
                        }
-                  }
-                  Rectangle{
-                      width: 300
-                      Layout.fillHeight: true
-
-
                   }
               }
               ColumnLayout{

@@ -1001,10 +1001,6 @@
         <translation>Helyiség</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Biztosan törli a névjegy változtatását?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Beszélgetés megjelenítése</translation>
     </message>

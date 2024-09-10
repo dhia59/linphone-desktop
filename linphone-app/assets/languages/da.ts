@@ -1007,10 +1007,6 @@
         <translation>Sted</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Er du sikker på at du vil annullere ændringen?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Vis samtale</translation>
     </message>

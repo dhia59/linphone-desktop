@@ -1007,10 +1007,6 @@
         <translation>Localidade</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Tem certeza de que deseja cancelar a modificação de contato?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Mostrar conversa</translation>
     </message>

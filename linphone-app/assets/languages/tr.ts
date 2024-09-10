@@ -1001,10 +1001,6 @@
         <translation>Semt</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Kişi düzenlemesini iptal etmek istediğinize emin misiniz?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Sohbeti göster</translation>
     </message>

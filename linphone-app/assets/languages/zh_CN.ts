@@ -1001,10 +1001,6 @@
         <translation>地区</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>你确定要取消对联系人的更改吗？</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>显示对话</translation>
     </message>

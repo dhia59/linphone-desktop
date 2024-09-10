@@ -1007,10 +1007,6 @@
         <translation>Lokalitet</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Är du säker på att du vill avbryta kontaktändringen?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Visa konversation</translation>
     </message>

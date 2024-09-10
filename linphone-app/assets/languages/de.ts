@@ -1007,10 +1007,6 @@
         <translation>Ort</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>Möchten Sie die Änderungen an diesem Kontakt verwerfen?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>Konversation anzeigen</translation>
     </message>

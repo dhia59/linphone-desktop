@@ -1001,10 +1001,6 @@
         <translation>局所性</translation>
     </message>
     <message>
-        <source>abortEditDescriptionText</source>
-        <translation>連絡先の変更をキャンセルしてもよろしいですか?</translation>
-    </message>
-    <message>
         <source>tooltipShowConversation</source>
         <translation>会話を表示</translation>
     </message>

@@ -2,7 +2,7 @@ import QtQuick 2.7
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import Qt.labs.platform 1.0
-
+import Qt.labs.settings 1.0
 import Common 1.0
 import Linphone 1.0
 import Utils 1.0
@@ -153,9 +153,9 @@ ApplicationWindow {
                 id:tToolbar
                 visible: AccountSettingsModel.registrationState===0 || noNetworkAlert
                 anchors.fill: parent
-                 Layout.fillWidth: true
-                 Layout.rightMargin: 10
-                 Layout.leftMargin: 10
+                Layout.fillWidth: true
+                Layout.rightMargin: 10
+                Layout.leftMargin: 10
                 //anchors.left:
                 //width:500
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
@@ -235,7 +235,7 @@ ApplicationWindow {
                 //anchors.bottom: Qt.bottom
                 // Main menu.
                 ColumnLayout {
-                   Layout.alignment: Qt.AlignTop
+                    Layout.alignment: Qt.AlignTop
                     Layout.fillHeight: true
                     height: parent.height
                     id:leftPanel
@@ -289,13 +289,13 @@ ApplicationWindow {
                                         //timeline.currentIndex = 15
                                     }
                                 }else{
-                                   console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ else", entry.selected)
+                                    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ else", entry.selected)
                                     window.setView('Home', {})
                                 }
                                 //menu.resetSelectedEntry()
                             }
                             onShowHistoryRequest: {
-                               // timeline.model.unselectAll()
+                                // timeline.model.unselectAll()
                                 window.setView('HistoryView')
                             }
 
@@ -322,9 +322,9 @@ ApplicationWindow {
                             entryWidth: MainWindowStyle.menu.width
 
                             Rectangle{
-                            height: 20;
-                            width: parent.width
-                            color: "#141B6C"
+                                height: 20;
+                                width: parent.width
+                                color: "#141B6C"
                             }
                             ApplicationMenuEntry {
                                 id: chatEntry
@@ -339,8 +339,8 @@ ApplicationWindow {
                                     if (timeline.model.rowCount()>0){
                                         showTimeline=true
                                         menuWidth=500
-                                       // timeline.model.unselectAll()
-                                       /* window.setView('Conversation', {
+                                        // timeline.model.unselectAll()
+                                        /* window.setView('Conversation', {
                                                        chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                                                    })
                                                    */
@@ -352,7 +352,7 @@ ApplicationWindow {
                                     if (timeline.model.rowCount()>0){
                                         menuWidth=500
                                         showTimeline=true
-                                       /* window.setView('Conversation', {
+                                        /* window.setView('Conversation', {
                                                        chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
                                                    })
                                                    */
@@ -381,7 +381,7 @@ ApplicationWindow {
                                     showTimeline=false
                                     menuWidth=250
                                     ContactsListModel.update()
-                                  //  timeline.model.unselectAll()
+                                    //  timeline.model.unselectAll()
                                     setView('Contacts')
                                 }
                                 onClicked:{
@@ -405,7 +405,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                 //   timeline.model.unselectAll()
+                                    //   timeline.model.unselectAll()
                                     setView('Conferences')
                                 }
                                 onClicked:{
@@ -428,7 +428,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                 //   timeline.model.unselectAll()
+                                    //   timeline.model.unselectAll()
                                     setView('HistoryView')
                                 }
                                 onClicked:{
@@ -452,7 +452,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                  //  timeline.model.unselectAll()
+                                    //  timeline.model.unselectAll()
                                     setView('Conferences')
                                 }
                                 onClicked:{
@@ -476,7 +476,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                  //  timeline.model.unselectAll()
+                                    //  timeline.model.unselectAll()
                                     setView('VocalMessages')
                                 }
                                 onClicked:{
@@ -500,7 +500,7 @@ ApplicationWindow {
                                 onSelected: {
                                     showTimeline=false
                                     menuWidth=250
-                                  //  timeline.model.unselectAll()
+                                    //  timeline.model.unselectAll()
                                     setView('Recordings')
                                 }
                                 onClicked:{
@@ -541,8 +541,8 @@ ApplicationWindow {
 
                         Rectangle {
                             z:10
-                             anchors.right: timeline.left
-                             anchors.top: menu.bottom
+                            anchors.right: timeline.left
+                            anchors.top: menu.bottom
                             width: 250
                             height: contentLoader.height-40
                             //Layout.fillHeight: true
@@ -556,10 +556,10 @@ ApplicationWindow {
 
 
                     Rectangle {
-                         anchors.top: menu.bottom
+                        anchors.top: menu.bottom
                         //Layout.fillHeight: true
-                       height: contentLoader.height-menu.height-200
-                       // anchors.topMargin: -80
+                        height: contentLoader.height-menu.height-200
+                        // anchors.topMargin: -80
                         width:250
                         color:"#141B6C"
                         // Fixer les marges à zéro
@@ -606,7 +606,7 @@ ApplicationWindow {
                             onClicked: {
 
                                 // Ajoutez ici votre logique de déconnexion
-                                 App.smartShowWindow(App.getSettingsWindow());
+                                App.smartShowWindow(App.getSettingsWindow());
                             }
                         }
                     }
@@ -643,7 +643,7 @@ ApplicationWindow {
                         }
 
 
-                    /*Item {
+                        /*Item {
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                         Rectangle{
@@ -658,7 +658,7 @@ ApplicationWindow {
 
 
 
-                    // Bouton de déconnexion en bas à gauche
+                        // Bouton de déconnexion en bas à gauche
 
 
                         MouseArea {
@@ -668,7 +668,7 @@ ApplicationWindow {
                             onClicked: {
 
                                 // Ajoutez ici votre logique de déconnexion
-                                 AccountSettingsModel.logout()
+                                AccountSettingsModel.logout()
                             }
                         }
                     }
@@ -690,7 +690,7 @@ ApplicationWindow {
                         anchors.fill: parent
                         source:AccountSettingsModel.registrationState===0 || noNetworkAlert? showTimeline && timeline.model.rowCount()>0?
 
-                       timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true :loadHistoryView()  :'Login.qml'
+                                                                                                 timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true :loadHistoryView()  :'Login.qml'
 
 
                     }
@@ -723,7 +723,7 @@ ApplicationWindow {
                     Component.onCompleted: {
 
                         console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ",timeline.model.getFirstChatRoom(timeline.model.rowCount()))
-                     //  timeline.model.getFirstChatRoom(3).selected=true
+                        //  timeline.model.getFirstChatRoom(3).selected=true
 
                         // timeline.entrySelected(timeline.model.getFirstChatRoom(3))
                     }
@@ -770,7 +770,7 @@ ApplicationWindow {
         console.log("rowcount0: ")
         console.log("rowcount: "+timeline.model.rowCount())
         if(Qt.platform.os === 'osx') menuBar = customMenuBar;
-       /* window.setView('Conversation', {
+        /* window.setView('Conversation', {
                            chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
 
                        })
@@ -805,4 +805,14 @@ ApplicationWindow {
                                        })
         }
     }
+
+
+    Settings{
+        category: "window"
+        property alias x : window.x
+        property alias y : window.y
+        property alias width : window.width
+        property alias height : window.height
+    }
+
 }

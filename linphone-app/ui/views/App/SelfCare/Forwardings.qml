@@ -16,6 +16,8 @@ import UtilsCpp 1.0
 Rectangle {
     property ForwardingModel selected
     signal entryClicked (var entry)
+    //color: 'red'
+    anchors.fill: parent
     Column {
         anchors.fill: parent
         //width: 200
