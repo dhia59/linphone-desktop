@@ -698,18 +698,22 @@ ColumnLayout  {
 			fullPeerAddress: conversation.fullPeerAddress
 			fullLocalAddress: conversation.fullLocalAddress
 			localAddress: conversation.localAddress// Reload is done on localAddress. Use this order
-			
+
 			onChatRoomModelChanged: updateFilter()
 			Component.onCompleted: {
 				updateFilter()
 			}
 		}
+         isEmojiVisible: true
 		onAddContactClicked: window.setView('ContactEdit', {
 													  sipAddress: contactAddress
 												  })
 		onViewContactClicked: window.setView('ContactEdit', {
 													  sipAddress: contactAddress
 												  })
+        Component.onCompleted: {
+            isEmojiVisible= false
+        }
 	}
 	
 	Connections {
