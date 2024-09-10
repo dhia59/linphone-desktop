@@ -69,9 +69,9 @@ QtObject {
 			property int height: 30
 			
 			property QtObject color: QtObject {
-                property var hovered: ColorsList.add(sectionName+'_normal_bg_h', 'qqq')
-                property var normal: ColorsList.add(sectionName+'_normal_bg_n', 'qqq')
-                property var pressed: ColorsList.add(sectionName+'_normal_bg_p', 'qqq')
+                property var hovered: ColorsList.add(sectionName+'_normal_bg_h', 'q')
+                property var normal: ColorsList.add(sectionName+'_normal_bg_n', 'q')
+                property var pressed: ColorsList.add(sectionName+'_normal_bg_p', 'q')
 			}
 		}
 		
@@ -96,7 +96,7 @@ QtObject {
 			
 			property QtObject color: QtObject {
 				property var hovered: ColorsList.add(sectionName+'_aux_bg_h', 'v')
-                property var normal: ColorsList.add(sectionName+'_aux_bg_n', 'aa')
+                property var normal: ColorsList.add(sectionName+'_aux_bg_n', 'y')
 				property var pressed: ColorsList.add(sectionName+'_aux_bg_p', 'v')
 			}
 		}

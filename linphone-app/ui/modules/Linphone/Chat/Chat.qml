@@ -18,7 +18,7 @@ import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 
 Rectangle {
 	id: container
-	
+    property bool isEmojiVisible : false
 	property alias proxyModel: chat.model	// ChatRoomProxyModel
 	property alias tryingToLoadMoreEntries : chat.tryToLoadMoreEntries
 	
@@ -399,6 +399,7 @@ Rectangle {
 					id: chatEmojis
 					onEmojiClicked: textArea.insertEmoji(emoji)
 					Layout.fillWidth: true
+                    visible: isEmojiVisible
 				}
 				// -------------------------------------------------------------------------
 				// Send area.
@@ -436,8 +437,14 @@ Rectangle {
                         property bool componentReady: false
                         onTextChanged: {// This slot can be call before the item has been completed because of Rich text. So the cache must not take it account.
                                 if(componentReady) {
-                                    proxyModel.cachedText=text
-                                    Logic.handleTextChanged(textArea.getText())
+                                    console.log("texttttttttttttttttt ",textArea.getText() )
+                                    const target = ":)";
+                                    const emoji = "😊";
+
+                                    // Replace all occurrences of target with emoji
+                                    let updatedMessage = textArea.getText().split(target).join(emoji);
+                                    proxyModel.cachedText=updatedMessage
+                                    Logic.handleTextChanged(updatedMessage)
                                 }
                             }
                         onValidText: {

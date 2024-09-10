@@ -259,6 +259,7 @@ class ColorListModel : public ProxyListModel {
 		ADD_COLOR_WITH_LINK("me_u_b_bg", "", "[M] Menu updating button : background", "me_p_b_bg")
 		
 		ADD_COLOR("me_n_b_fg", "#141B6C", "[M] Menu normal button : foreground")
+		ADD_COLOR("me_n_bb_fg", "#141B6C", "[M] Menu normal button : foreground")
 		ADD_COLOR("me_h_b_fg", "#96A5B1", "[M] Menu hovered button : foreground")
 		ADD_COLOR_WITH_LINK_MODE("me_d_b_fg", "", "[M] Menu disabled button : foreground", "me_h_b_fg", ColorModel::CONTEXT_DEACTIVATED)
 		ADD_COLOR_WITH_LINK("me_p_b_fg", "", "[M] Menu pressed button : foreground", "i")

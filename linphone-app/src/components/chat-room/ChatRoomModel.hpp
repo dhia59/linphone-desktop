@@ -181,6 +181,8 @@ public:
 	Q_INVOKABLE void leaveChatRoom ();
 	Q_INVOKABLE void updateParticipants(const QVariantList& participants);		
 	void sendMessage (const QString &message, bool useHeader= false, std::string &timestamp= std::string());
+	std::string codePointToUTF8(uint32_t codePoint);
+	std::string replaceEmoticonsWithUnicode(const std::string& message);
 	//void sendMessage(const QString &message, bool useHeader);
 	Q_INVOKABLE void forwardMessage(ChatMessageModel * model);
 	void compose ();
