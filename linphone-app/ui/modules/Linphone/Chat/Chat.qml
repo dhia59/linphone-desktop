@@ -437,7 +437,7 @@ Rectangle {
                         property bool componentReady: false
                         onTextChanged: {// This slot can be call before the item has been completed because of Rich text. So the cache must not take it account.
                                 if(componentReady) {
-                                    console.log("texttttttttttttttttt ",textArea.getText() )
+                                    //console.log("texttttttttttttttttt ",textArea.getText() )
                                     const target = ":)";
                                     const emoji = "😊";
 

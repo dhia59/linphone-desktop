@@ -1399,7 +1399,24 @@ void ChatRoomModel::onIsComposingReceived(const std::shared_ptr<linphone::ChatRo
 }
 
 void ChatRoomModel::onMessageReceived(const std::shared_ptr<linphone::ChatRoom> & chatRoom, const std::shared_ptr<linphone::ChatMessage> & message){
+
 	if(message) ChatMessageModel::initReceivedTimestamp(message, true);
+	if (!message->getCustomHeader("x-direction").empty()) {
+		qWarning() << QStringLiteral("onMessagesReceived `%1`.").arg(QString::fromStdString(message->getCustomHeader("x-direction")));
+
+		if (message->getCustomHeader("x-direction") == "from") {
+
+			qWarning() << QStringLiteral("onMessagesReceived 0 `%1`.").arg(QString::fromStdString(message->getCustomHeader("x-direction")));
+
+			std::string timestampString = message->getCustomHeader("x-timestamp");
+			long long timestamp_num = std::stoll(timestampString) * 1000;
+			std::string appData = std::to_string(timestamp_num) + ":receivedTime";
+			sendMessage(QString::fromStdString(message->getUtf8Text()), true, message->getCustomHeader("x-timestamp"));
+			chatRoom->deleteMessage(message);
+
+			///auto timestamp = message->getCustomHeader("x-timestamp");
+		}
+	}
 	setUnreadMessagesCount(chatRoom->getUnreadMessagesCount());
 	updateLastUpdateTime();
 }
@@ -1414,8 +1431,12 @@ void ChatRoomModel::onMessagesReceived(const std::shared_ptr<linphone::ChatRoom>
 		//message->sets		
 		
 		if(!message->getCustomHeader("x-direction").empty()) {
+			qWarning() << QStringLiteral("onMessagesReceived `%1`.").arg(QString::fromStdString(message->getCustomHeader("x-direction")));
+
 			if (message->getCustomHeader("x-direction") == "from") {
-					
+				
+				qWarning() << QStringLiteral("onMessagesReceived 0 `%1`.").arg(QString::fromStdString(message->getCustomHeader("x-direction")));
+
 					std::string timestampString = message->getCustomHeader("x-timestamp");
 					long long timestamp_num = std::stoll(timestampString) * 1000;
 					std::string appData = std::to_string(timestamp_num) + ":receivedTime";
@@ -1425,6 +1446,7 @@ void ChatRoomModel::onMessagesReceived(const std::shared_ptr<linphone::ChatRoom>
 					///auto timestamp = message->getCustomHeader("x-timestamp");
 				}
 				else {
+					qWarning() << QStringLiteral("onMessagesReceived 1 `%1`.").arg(QString::fromStdString(message->getCustomHeader("x-direction")));
 					std::string timestampString = message->getCustomHeader("x-timestamp");
 					long long timestamp_num = std::stoll(timestampString)*1000;
 					std::string appData = std::to_string(timestamp_num) + ":receivedTime";
@@ -1472,7 +1494,14 @@ void ChatRoomModel::onNewEvents(const std::shared_ptr<linphone::ChatRoom> & chat
 }
 
 void ChatRoomModel::onChatMessageReceived(const std::shared_ptr<linphone::ChatRoom> & chatRoom, const std::shared_ptr<const linphone::EventLog> & eventLog) {
+
 	auto message = eventLog->getChatMessage();
+	if (!message->getCustomHeader("x-direction").empty()) {
+
+		if (message->getCustomHeader("x-direction") == "from") {
+			return;
+		}
+	}
 	if(message){
 		ChatMessageModel::initReceivedTimestamp(message, true);
 		insertMessageAtEnd(message);

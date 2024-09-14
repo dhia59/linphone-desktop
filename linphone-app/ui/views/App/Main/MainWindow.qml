@@ -283,9 +283,9 @@ ApplicationWindow {
                                         window.setView('Conversation', {
                                                            chatRoomModel:entry.chatRoomModel
                                                        })
-                                        console.log("timelinesetitem0: "+entry.chatRoomModel.lastUpdateTime )
-                                        console.log("timelinesetitem: "+timeline.model.rowCount() )
-                                        console.log("timelinesetitem1: "+timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel.lastUpdateTime)
+                                        //console.log("timelinesetitem0: "+entry.chatRoomModel.lastUpdateTime )
+                                        //console.log("timelinesetitem: "+timeline.model.rowCount() )
+                                        //console.log("timelinesetitem1: "+timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel.lastUpdateTime)
                                         //timeline.currentIndex = 15
                                     }
                                 }else{
@@ -316,7 +316,7 @@ ApplicationWindow {
                             id: menu
                             z:1
                             //visible:false
-                            defaultSelectedEntry: chatEntry
+                            defaultSelectedEntry: null
 
                             entryHeight: MainWindowStyle.menu.height
                             entryWidth: MainWindowStyle.menu.width
@@ -502,11 +502,15 @@ ApplicationWindow {
                                     menuWidth=250
                                     //  timeline.model.unselectAll()
                                     setView('Recordings')
+                                    //Logic.updateSelectedEntry()
+                                    //CoreManager.forceRefreshRegisters()
                                 }
                                 onClicked:{
                                     showTimeline=false
                                     menuWidth=250
                                     setView('Recordings')
+                                    //Logic.updateSelectedEntry()
+                                    //CoreManager.forceRefreshRegisters()
                                 }
 
 
@@ -515,7 +519,7 @@ ApplicationWindow {
                             ApplicationMenuEntry {
                                 id: selfCareWindowid
 
-                                icon: 'qrc:/assets/images/saylo_picto_contacts-01.png'
+                                icon: 'qrc:/assets/images/saylo_picto_selfcare.png'
                                 iconSize: 40
                                 overwriteColor: isSelected ? MainWindowStyle.menu.conferences.selectedColor.color : MainWindowStyle.menu.conferences.colorModel.color
                                 name: qsTr('SelfCare')
@@ -535,6 +539,8 @@ ApplicationWindow {
 
 
                             }
+
+
 
                         }
 
@@ -690,7 +696,7 @@ ApplicationWindow {
                         anchors.fill: parent
                         source:AccountSettingsModel.registrationState===0 || noNetworkAlert? showTimeline && timeline.model.rowCount()>0?
 
-                                                                                                 timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true :loadHistoryView()  :'Login.qml'
+                                                                                                  loadChatView() :loadHistoryView()  :'Login.qml'
 
 
                     }
@@ -722,7 +728,7 @@ ApplicationWindow {
                     }
                     Component.onCompleted: {
 
-                        console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ",timeline.model.getFirstChatRoom(timeline.model.rowCount()))
+                        // console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ",timeline.model.getFirstChatRoom(timeline.model.rowCount()))
                         //  timeline.model.getFirstChatRoom(3).selected=true
 
                         // timeline.entrySelected(timeline.model.getFirstChatRoom(3))
@@ -740,16 +746,47 @@ ApplicationWindow {
                 }
             }
 
+            function loadChatView(){
+
+
+                if(!window._currentView || window._currentView=="Home"){
+
+                    timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true
+                    chatEntry.select()
+                }
+
+            }
+
+            function loadHistoryView(){
+
+
+                if(!window._currentView || window._currentView=="Home"){
+
+                    //menu.defaultSelectedEntry= callsEntry
+                    // menu.resetSelectedEntry()
+                    setView('HistoryView')
+                    //setView('Home', {})
+                    menuWidth=250
+                    showTimeline=false
+                    console.log("current view 5 "+ ("Home"=="Home"))
+                    callsEntry.select()
+                    menu._selected=callsEntry
+
+                    // var foundElement = testCompo.findChild("callsEntry")
+                    //console.log("current view 555 "+ foundElement)
+
+
+                    console.log("current view 6 "+ mainLoader.item.ApplicationMenu)
+                    //mainLoader.item.callsEntry.select()
+                    //Logic.updateSelectedEntry()
+                }
+
+            }
+
+
+
         }
 
-    }
-
-
-    function loadHistoryView(){
-        setView('HistoryView')
-        menuWidth=250
-        showTimeline=false
-        menu.defaultSelectedEntry=callsEntry
     }
 
 
@@ -767,8 +804,8 @@ ApplicationWindow {
 
     Component.onCompleted:{
 
-        console.log("rowcount0: ")
-        console.log("rowcount: "+timeline.model.rowCount())
+        //console.log("rowcount0: ")
+        //console.log("rowcount: "+timeline.model.rowCount())
         if(Qt.platform.os === 'osx') menuBar = customMenuBar;
         /* window.setView('Conversation', {
                            chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel

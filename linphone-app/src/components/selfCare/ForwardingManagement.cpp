@@ -54,7 +54,7 @@ ForwardingManagement::ForwardingManagement(QObject *parent) : QObject(parent)
 bool ForwardingManagement::deleteForwardingRule(const QString &forwardingId) {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)//
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/ExtensionDeleteForwardingRule");
@@ -164,7 +164,7 @@ bool ForwardingManagement::addForwardingRule(const QVariantMap &map) {
 	QByteArray jsonData = jsonDocument.toJson();
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)//defaultAddress != nullptr
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())//defaultAddress != nullptr
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/ExtensionAddForwardingRule");
@@ -235,7 +235,7 @@ Q_INVOKABLE bool ForwardingManagement::activateDesactivateForwardingRule(Forward
 	QByteArray jsonData = jsonDocument.toJson();
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)//
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/ActivateDesactivateForwardingRule/"+ forwardingmodel->getforwardingID());
@@ -361,7 +361,7 @@ Q_INVOKABLE bool ForwardingManagement::editForwardingRule(const QVariantMap &map
 	QByteArray jsonData = jsonDocument.toJson();
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)//
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/ExtensionUpdateForwardingRule/"+ forwardingId);

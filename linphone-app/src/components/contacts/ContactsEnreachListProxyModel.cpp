@@ -117,7 +117,7 @@ void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListMode
 void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *contacts) {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)//
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())//
 	{
 		auto authInfo = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 //		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());

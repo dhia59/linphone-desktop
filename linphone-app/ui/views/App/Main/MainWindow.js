@@ -106,8 +106,9 @@ function updateSelectedEntry (view, props) {
 
   var menu = item.menu
   var timeline = item.timeline
-
- /* if (view === 'Home') {
+  /*console.log("updateSelectedEntry "+item.callsEntry)
+  console.log("updateSelectedEntry "+chatEntry)
+  if (view === 'Home') {
     menu.resetSelectedEntry()
   } else if (view === 'Contacts') {
     item.contactsEntry.select()
@@ -125,7 +126,10 @@ function updateSelectedEntry (view, props) {
     item.recordsEntry.select()
   } else if (view === 'SelfCareWindow') {
     item.selfCareWindowid.select()
-  } */
+  } else{
+    item.callsEntry.select()
+
+  }*/
 }
 
 // -----------------------------------------------------------------------------

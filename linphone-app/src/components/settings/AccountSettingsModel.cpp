@@ -661,7 +661,7 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 	
 	
 	if(state== linphone::RegistrationState::Ok){	
-		if (defaultAccount != nullptr) {
+		if (defaultAccount != nullptr && defaultAccount->findAuthInfo()) {
 			shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
 			std::string username = defaultAccount->findAuthInfo()->getUsername();
 			if (config->getString("defaultAccount", "username", "") == "")

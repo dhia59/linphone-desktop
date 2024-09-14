@@ -57,7 +57,7 @@ void CallerManagement::loadPstnLists()
 {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)//
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url(QString("http://saylo.netcom-group.fr:8081/SelfCare/GetCustomCallerInfo"));
@@ -149,7 +149,7 @@ void CallerManagement::hideCallerIdByUsername(const bool &isHideCustomNumber)
 {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/HideCallerIdByUsername");
@@ -212,7 +212,7 @@ void CallerManagement::setDndByUsername(const bool &dnd)
 {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)//
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/SetDndByUsername");

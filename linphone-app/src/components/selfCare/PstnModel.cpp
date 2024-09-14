@@ -56,7 +56,7 @@ void PstnModel::loadPstnLists()
 {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)//
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())//
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url(QString("http://saylo.netcom-group.fr:8081/SelfCare/GetListPstnWithDefault"));
@@ -168,7 +168,7 @@ Q_INVOKABLE void PstnModel::updateCustomNumber(const int & currentIndex)
 {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	if (defaultAddress != nullptr)
+	if (defaultAddress != nullptr && defaultAddress->findAuthInfo())
 	{
 		auto username = QString::fromStdString(defaultAddress->findAuthInfo()->getUsername());
 		QUrl url("http://saylo.netcom-group.fr:8081/SelfCare/UpdateCustomNumber");
