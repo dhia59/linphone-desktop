@@ -151,9 +151,8 @@ bool TimelineModel::isUpdating() const{
 	return !mChatRoomModel || mChatRoomModel->isUpdating();
 }
 
-ChatRoomModel *TimelineModel::getChatRoomModel() const {
+ChatRoomModel *TimelineModel::getChatRoomModel() const{
 	try {
-		if(mChatRoomModel != nullptr)
 		return mChatRoomModel.get();
 	}
 	catch (const std::exception& e) {
@@ -170,7 +169,7 @@ ChatRoomModel *TimelineModel::getChatRoomModel() const {
 		// Handle the error, maybe return a null pointer or some other default behavior
 		return nullptr;
 	}
-
+	
 }
 
 void TimelineModel::setSelected(const bool& selected){

@@ -64,7 +64,9 @@
 #include "utils/LinphoneEnums.hpp"
 
 
-
+#include <QtNetwork>
+#include <QNetworkRequest>
+#include <QNetworkReply>
 // =============================================================================
 
 using namespace std;
@@ -727,6 +729,23 @@ void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::st
 		}
 	}
 	auto fileContents = CoreManager::getInstance()->getChatModel()->getContentListModel()->getSharedList<ContentModel>();
+	if (!fileContents.empty()) {
+		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+		QNetworkRequest request(QUrl("http://10.3.3.124:8050/api/File/upload")); // Replace with your endpoint URL
+		QNetworkReply *reply = manager->post(request, QByteArray());
+		connect(reply, &QNetworkReply::finished, [=]() {
+			if (reply->error() == QNetworkReply::NoError) {
+				qDebug() << "Empty POST request sent successfully";
+				// Handle success if needed
+			}
+			else {
+				qDebug() << "Error sending empty POST request:" << reply->errorString();
+				// Handle error if needed
+			}
+			reply->deleteLater(); // Clean up the reply object
+			manager->deleteLater(); // Clean up the manager object
+		});
+	}
 	for(auto content : fileContents){
 		if(isBasicChatRoom && _messages.back()->getContents().size() > 0)	// Basic chat rooms don't support multipart
 			_messages.push_back(mChatRoom->createEmptyMessage());
