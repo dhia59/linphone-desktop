@@ -29,7 +29,7 @@
     <entry name="protocols" overwrite="true">stun,ice</entry>
   </section>
   <section name="misc">
-    <entry name="file_transfer_server_url" overwrite="true"></entry>
+    <entry name="file_transfer_server_url" overwrite="true">http://saylo.netcom-group.fr:8081/api/File/upload</entry>
   </section>
   <section name="sip">
     <entry name="rls_uri" overwrite="true"></entry>

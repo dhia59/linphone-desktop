@@ -41,6 +41,7 @@ public:
 	static constexpr int DefaultFontPointSize = 10;
 	static constexpr char DefaultEmojiFont[] = "Noto Color Emoji";
 	static constexpr int DefaultEmojiFontPointSize = 10;
+	static QStringList getReactionsList();
 
 	static constexpr size_t MaxLogsCollectionSize = 10485760 * 5; // 50MB.
 
@@ -49,7 +50,7 @@ public:
 #endif // ifdef ENABLE_UPDATE_CHECK
 
 	static constexpr char DefaultXmlrpcUri[] = "https://subscribe.linphone.org:444/wizard.php";
-	static constexpr char DefaultUploadLogsServer[] = "http://10.3.3.124:8050/api/File/upload";
+	static constexpr char DefaultUploadLogsServer[] = "http://saylo.netcom-group.fr:8081/api/File/upload";
 	static constexpr char DefaultContactParameters[] = "message-expires=2419200";
 	static constexpr char DefaultContactParametersOnRemove[] = "message-expires=0";
 	static constexpr int DefaultExpires = 600;
@@ -89,6 +90,7 @@ public:
 		Q_PROPERTY(QString ContactUrl MEMBER ContactUrl CONSTANT)
 		Q_PROPERTY(QString TranslationUrl MEMBER TranslationUrl CONSTANT)
 		Q_PROPERTY(int maxMosaicParticipants MEMBER MaxMosaicParticipants CONSTANT)
+		Q_PROPERTY(QStringList reactionsList READ getReactionsList CONSTANT)
 
 		// For Webviews
 		static constexpr char DefaultAssistantRegistrationUrl[] = "https://subscribe.linphone.org/register";
@@ -146,7 +148,7 @@ public:
 	static constexpr char QmlViewMainWindow[] = "qrc:/ui/views/App/Main/MainWindow.qml";
 	static constexpr char QmlViewCallsWindow[] = "qrc:/ui/views/App/Calls/CallsWindow.qml";
 	static constexpr char QmlViewSettingsWindow[] = "qrc:/ui/views/App/Settings/SettingsWindow.qml";
-
+	static constexpr char QmlViewSelfCareWindow[] = "qrc:/ui/views/App/SelfCare/SelfCareWindow.qml";
 	static constexpr char MainQmlUri[] = "Linphone";
 
 	static constexpr char AttachVirtualWindowMethodName[] = "attachVirtualWindow";

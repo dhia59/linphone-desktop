@@ -1,10 +1,10 @@
 set(APPLICATION_DESCRIPTION "A libre SIP client")
 set(APPLICATION_ID "com.belledonnecommunications.linphone")
-set(APPLICATION_NAME Saylo)
+set(APPLICATION_NAME SayloV0)
 set(APPLICATION_URL "https://www.netcom-group.fr/")
 set(APPLICATION_VENDOR "Netcom Group")
 set(APPLICATION_LICENCE "GNU General Public License V3")
 set(APPLICATION_LICENCE_URL "https://www.gnu.org/licenses/gpl-3.0.html")
 set(APPLICATION_START_LICENCE "2010")
 
-set(EXECUTABLE_NAME Saylo)
+set(EXECUTABLE_NAME SayloV0)

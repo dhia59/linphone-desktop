@@ -1,5 +1,5 @@
 [misc]
-log_collection_upload_server_url=https://www.linphone.org:444/lft.php
+log_collection_upload_server_url=http://saylo.netcom-group.fr:8081/api/File/upload
 
 [sound]
 ec_filter=MSWebRTCAEC
@@ -22,6 +22,8 @@ max_conference_size=vga
 [ui]
 use_qrcode=0
 assistant_supports_phone_numbers/readonly=0
+logs_enabled=1
+full_logs_enabled=1
 
 [account_creator]
 backend=1

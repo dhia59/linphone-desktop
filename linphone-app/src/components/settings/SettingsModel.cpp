@@ -113,6 +113,8 @@ SettingsModel::SettingsModel (QObject *parent) : QObject(parent) {
 		
 	});
 #endif
+
+	setFileTransferUrl("http://saylo.netcom-group.fr:8081/api/File/upload");
 	updateRlsUri();
 }
 
@@ -1008,10 +1010,9 @@ void SettingsModel::setChatNotificationSoundPath (const QString &path) {
 
 QString SettingsModel::getFileTransferUrl () const {
 	return Utils::coreStringToAppString(
-					    CoreManager::getInstance()->getCore()->getFileTransferServer()
+		"http://saylo.netcom-group.fr:8081/api/File/upload"
 					    );
 }
-
 void SettingsModel::setFileTransferUrl (const QString &url) {
 	CoreManager::getInstance()->getCore()->setFileTransferServer(
 								     Utils::appStringToCoreString(url)
@@ -1937,11 +1938,11 @@ QString SettingsModel::getLogsFolder (const shared_ptr<linphone::Config> &config
 }
 
 bool SettingsModel::getLogsEnabled (const shared_ptr<linphone::Config> &config) {
-	return config ? config->getInt(UiSection, "logs_enabled", false) : true;
+	return config ? config->getInt(UiSection, "logs_enabled", true) : true;
 }
 
 bool SettingsModel::getFullLogsEnabled (const shared_ptr<linphone::Config> &config) {
-	return config ? config->getInt(UiSection, "full_logs_enabled", false) : false;
+	return config ? config->getInt(UiSection, "full_logs_enabled", true) : false;
 }
 // ---------------------------------------------------------------------------
 

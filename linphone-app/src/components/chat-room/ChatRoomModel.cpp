@@ -731,7 +731,7 @@ void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::st
 	auto fileContents = CoreManager::getInstance()->getChatModel()->getContentListModel()->getSharedList<ContentModel>();
 	if (!fileContents.empty()) {
 		QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-		QNetworkRequest request(QUrl("http://10.3.3.124:8050/api/File/upload")); // Replace with your endpoint URL
+		QNetworkRequest request(QUrl("http://saylo.netcom-group.fr:8081/api/File/upload")); // Replace with your endpoint URL
 		QNetworkReply *reply = manager->post(request, QByteArray());
 		connect(reply, &QNetworkReply::finished, [=]() {
 			if (reply->error() == QNetworkReply::NoError) {
