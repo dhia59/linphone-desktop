@@ -71,9 +71,10 @@ ApplicationWindow {
     Connections {
         target: CoreManager
         onCoreManagerInitialized: {
-           mainWindowLoader.source= AccountSettingsModel.isLoggedIn ?"MainContent.qml": "Login.qml"
-            mainWindowLoader.active = true
-            accountSettingsModelConnections.target= AccountSettingsModel
+
+          //  mainLoader.source= AccountSettingsModel.isLoggedIn ?"MainContent.qml": "Login.qml"
+            mainLoader.active = true
+          //  accountSettingsModelConnections.target= AccountSettingsModel
 
 
         }
@@ -92,15 +93,11 @@ ApplicationWindow {
 
     // ---------------------------------------------------------------------------
     Loader {
-        id: mainWindowLoader
-       // source: "MainContent.qml"
+        id: mainLoader
+
         active: false
         anchors.fill: parent
-       onSourceChanged:  {
-           console.log("testttttttttttttttttttttttt state ", AccountSettingsModel.registrationState===0 )
-           console.log("testttttttttttttttttttttttt source ",mainWindowLoader.source )
-       }
-
+        source: "Login.qml"
     }
 
 
@@ -117,8 +114,8 @@ ApplicationWindow {
         active:Qt.platform.os === 'osx'
         sourceComponent:MainWindowTopMenuBar{
             /*onDisplayRecordings: {
-                if(mainWindowLoader.item)
-                    mainWindowLoader.item.timeline.model.unselectAll()
+                if(mainLoader.item)
+                    mainLoader.item.timeline.model.unselectAll()
                 setView('Recordings')
             }*/
         }
@@ -166,22 +163,22 @@ ApplicationWindow {
                                        })
         }
     }
-    Connections {
+   /* Connections {
         id:accountSettingsModelConnections
        // target: AccountSettingsModel
 
         onAccountLogout: {
             console.log("logouttttttttt")
            // noNetworkAlert= false;
-            mainWindowLoader.setSource("Login.qml")
+            mainLoader.setSource("Login.qml")
         }
-        /*onFailedRegistration: {
+        onFailedRegistration: {
             console.log("Fail register main credentials");
-            mainWindowLoader.setSource("Login.qml",{"isErrorLabel": "true"})
-        }*/
+            mainLoader.setSource("Login.qml",{"isErrorLabel": "true"})
+        }
         onNetworkErrorFirstLogin:{
             console.log("Fail register main network");
-            mainWindowLoader.setSource("Login.qml",{"noNetworkAlert": "true"})
+            mainLoader.setSource("Login.qml",{"noNetworkAlert": "true"})
         }
         onNetworkErrorLoggedIn:{
             noNetworkAlert= true
@@ -190,14 +187,14 @@ ApplicationWindow {
         onRegistrationStateChanged:{
             if(AccountSettingsModel.registrationState===2){
                 console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
-                ///mainWindowLoader.setSource("MainContent.qml")
+                mainLoader.setSource("MainContent.qml")
                // noNetworkAlert= false;
             }
         }
         onIsLoggedInChanged:{
-            mainWindowLoader.source= AccountSettingsModel.isLoggedIn ?"MainContent.qml": "Login.qml"
+            console.log("Changeeeeeeeeeeeeeeeeeeeeee ",AccountSettingsModel.isLoggedIn )
         }
-    }
+    }*/
 
     Settings{
         category: "window"

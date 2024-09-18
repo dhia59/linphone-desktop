@@ -51,6 +51,7 @@ class AccountSettingsModel : public QObject {
 	Q_PROPERTY(QString defaultAccountDomain READ getDefaultAccountDomain NOTIFY defaultAccountChanged)
 	
 	Q_PROPERTY(QVariantList accounts READ getAccounts NOTIFY accountsChanged)
+    Q_PROPERTY(bool isLoggedIn READ getIsLoggedIn NOTIFY isLoggedInChanged)
 public slots:
 	void logout();
 public:
@@ -99,6 +100,7 @@ public:
 			);
 	
 	Q_INVOKABLE void eraseAllPasswords ();
+	Q_INVOKABLE bool getIsLoggedIn() const;
 	
 signals:
 	
@@ -124,7 +126,7 @@ signals:
 	void networkErrorFirstLogin();
 	void networkErrorLoggedIn();	
 	void accountLogout();
-
+	void isLoggedInChanged();
 private:
 	QString getUsername () const;
 	void setUsername (const QString &username);

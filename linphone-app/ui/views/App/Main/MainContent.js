@@ -55,11 +55,12 @@ function unlockView () {
 }
 
 function setView (view, props, callback) {
+    console.log("viewwwwwwwwwwwwwwwwwwwwwwww", window.contentLoader)
   function apply (view, props, showWindow, callback) {
 	if(showWindow)
 		Linphone.App.smartShowWindow(window)
 
-    var item = mainLoader.item
+    var item = window //mainLoader.item
 
     updateSelectedEntry(view, props)
     window._currentView = view
@@ -102,11 +103,51 @@ function manageAccounts () {
 // -----------------------------------------------------------------------------
 
 function updateSelectedEntry (view, props) {
-  var item = mainLoader.item
+ /* var item = mainLoader.item
 
   var menu = item.menu
-  var timeline = item.timeline
+<<<<<<< HEAD
+  */
+  var timeline =window.timeLine
 
+ /* if (view === 'Home') {
+=======
+  var timeline = item.timeline
+  /*console.log("updateSelectedEntry "+item.callsEntry)
+  console.log("updateSelectedEntry "+chatEntry)
+  if (view === 'Home') {
+>>>>>>> 29fc1233139fe5118844bd9ab0cafc9879e97a29
+    menu.resetSelectedEntry()
+  } else if (view === 'Contacts') {
+    item.contactsEntry.select()
+  } else if (view === 'Conferences') {
+    item.conferencesEntry.select()
+  } else if (view === 'Conversation') {
+    item.chatEntry.select()
+  } else if (view === 'HistoryView') {
+    item.callsEntry.select()
+  } else if (view === 'Conferences') {
+    item.teamsEntry.select()
+  } else if (view === 'VocalMessages') {
+    item.vocalmessagesEntry.select()
+  } else if (view === 'Recordings') {
+    item.recordsEntry.select()
+  } else if (view === 'SelfCareWindow') {
+    item.selfCareWindowid.select()
+  } else{
+    item.callsEntry.select()
+
+  }*/
 }
 
+// -----------------------------------------------------------------------------
 
+//function handleAuthenticationRequested (authInfo, realm, sipAddress, userId) {
+//  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/AuthenticationRequest.qml'), {
+//    authInfo: authInfo,
+//    realm: realm,
+//    sipAddress: 'sip:'+sipAddress,
+//    userId: userId,
+//    virtualWindowHash:Qt.md5('Dialogs/AuthenticationRequest.qml'+realm+sipAddress+userId)
+//  })
+//}

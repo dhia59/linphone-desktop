@@ -70,6 +70,7 @@ TimelineModel*  TimelineProxyModel::getFirstChatRoom(int row){
 	//return CoreManager::getInstance()->getTimelineListModel()->getAt(0)->getChatRoomModel()
 	QModelIndex index = sourceModel()->index(0, 0);
 	TimelineModel* a = sourceModel()->data(index).value<TimelineModel*>();
+	auto test = a->getChatRoomModel()->getPeerAddress();
 	auto fr = a->getChatRoomModel()->mLastUpdateTime;
 	//TimelineModel* m = NULL;
 	//if( sourceModel())
@@ -124,6 +125,8 @@ bool TimelineProxyModel::filterAcceptsRow (int sourceRow, const QModelIndex &sou
 		return false;
 	const QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
 	auto timeline = sourceModel()->data(index).value<TimelineModel*>();
+	if (timeline->getChatRoomModel()->getPeerAddress() == "sip:0@cprx1p1")
+		return false;
 	if(!timeline || !timeline->getChatRoomModel() || timeline->getChatRoomModel()->getState() == (int)linphone::ChatRoom::State::Deleted)
 		return false;
 	bool haveEncryption = timeline->getChatRoomModel()->haveEncryption();

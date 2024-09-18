@@ -326,6 +326,7 @@ set(SOURCES
 	src/utils/UriTools.cpp
 	src/utils/Utils.cpp
 	src/utils/plugins/PluginsManager.cpp
+	src/utils/InternetChecker.cpp
 	)
 set(PLUGIN_SOURCES src/utils/plugins/PluginDataAPI.cpp
 	src/utils/plugins/PluginNetworkHelper.cpp
@@ -485,6 +486,7 @@ set(HEADERS
 	src/utils/UriTools.hpp
 	src/utils/Utils.hpp
 	src/utils/plugins/PluginsManager.hpp
+	src/utils/InternetChecker.hpp
 	)
 
 set(PLUGIN_HEADERS 

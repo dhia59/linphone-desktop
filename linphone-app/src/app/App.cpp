@@ -61,7 +61,7 @@
 #include "components/participant/ParticipantModel.hpp"
 #include "components/participant/ParticipantListModel.hpp"
 #include "components/participant/ParticipantProxyModel.hpp"
-
+#include "src/utils/InternetChecker.hpp"
 // =============================================================================
 
 using namespace std;
@@ -830,7 +830,7 @@ void App::registerTypes () {
 	registerUncreatableType<ParticipantDeviceListModel>("ParticipantDeviceListModel");
 	registerUncreatableType<ParticipantImdnStateModel>("ParticipantImdnStateModel");
 	registerUncreatableType<ParticipantImdnStateListModel>("ParticipantImdnStateListModel");
-	
+	 
 	
 	
 	qmlRegisterUncreatableMetaObject(LinphoneEnums::staticMetaObject, "LinphoneEnums", 1, 0, "LinphoneEnums", "Only enums");
@@ -852,7 +852,7 @@ void App::registerSharedTypes () {
 	registerSharedSingletonType<LdapListModel, &CoreManager::getLdapListModel>("LdapListModel");
 	registerSharedSingletonType<TimelineListModel, &CoreManager::getTimelineListModel>("TimelineListModel");
 	registerSharedSingletonType<RecorderManager, &CoreManager::getRecorderManager>("RecorderManager");
-	
+	registerSharedSingletonType<InternetChecker, &CoreManager::getInternetChecker>("InternetChecker");
 	//qmlRegisterSingletonType<ColorListModel>(Constants::MainQmlUri, 1, 0, "ColorList", mColorListModel);
 	
 	//registerSharedSingletonType<ColorListModel, &App::getColorListModel>("ColorCpp");

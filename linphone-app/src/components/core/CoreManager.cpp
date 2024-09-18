@@ -47,7 +47,8 @@
 #include "components/contacts/ContactsEnreachListProxyModel.hpp"
 #include "utils/Utils.hpp"
 #include "utils/Constants.hpp"
-#include  "components/selfCare/ForwardingListProxyModel.hpp"
+#include "components/selfCare/ForwardingListProxyModel.hpp"
+#include "utils/InternetChecker.hpp"
 
 #if defined(Q_OS_MACOS)
 #include "event-count-notifier/EventCountNotifierMacOs.hpp"
@@ -80,12 +81,21 @@ CoreManager::CoreManager (QObject *parent, const QString &configPath) :
 	QObject::connect(coreHandlers, &CoreHandlers::coreStopped, this, &CoreManager::stopIterate, Qt::QueuedConnection);
 	QObject::connect(coreHandlers, &CoreHandlers::logsUploadStateChanged, this, &CoreManager::handleLogsUploadStateChanged);
 	QObject::connect(coreHandlers, &CoreHandlers::callLogUpdated, this, &CoreManager::callLogsCountChanged);
-	
+
 	QTimer::singleShot(10, [this, configPath](){// Delay the creation in order to have the CoreManager instance set before
 		createLinphoneCore(configPath);
 	});
-}
 
+
+	timer = new QTimer(this);  // Create the QTimer and set its parent
+	connect(timer, &QTimer::timeout, this, &CoreManager::checkInternetConnection);
+	timer->start(10000);  // Check every 10 seconds
+}
+void CoreManager::checkInternetConnection() {
+	if (mInternetChecker) {
+		mInternetChecker->checkConnection();  // Call checkConnection on InternetChecker instance
+	}
+}
 CoreManager::~CoreManager(){
 	mCore->removeListener(mHandlers);
 	mHandlers = nullptr;// Ordering Call destructor just to be sure (removeListener should be enough)
@@ -110,6 +120,8 @@ void CoreManager::initCoreManager(){
 	mEventCountNotifier = new EventCountNotifier(this);
 	mForwardingManagement = new ForwardingManagement(this);
 	mTimelineListModel = new TimelineListModel(this);
+	mInternetChecker = new InternetChecker(this);
+	mInternetChecker->checkConnection();
 	mEventCountNotifier->updateUnreadMessageCount();
 	QObject::connect(mEventCountNotifier, &EventCountNotifier::eventCountChanged,this, &CoreManager::eventCountChanged);
 	migrate();

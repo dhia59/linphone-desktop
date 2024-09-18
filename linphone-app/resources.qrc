@@ -527,8 +527,10 @@
         <file>ui/views/App/Main/HistoryView.js</file>
         <file>ui/views/App/Main/InviteFriends.qml</file>
         <file>ui/views/App/Main/MainWindow.js</file>
+         <file>ui/views/App/Main/MainContent.js</file>
         <file>ui/views/App/Main/MainWindowMenuBar.qml</file>
         <file>ui/views/App/Main/MainWindow.qml</file>
+         <file>ui/views/App/Main/MainContent.qml</file>
         <file>ui/views/App/Main/MainWindowTopMenuBar.qml</file>
         <file>ui/views/App/Main/Recordings.qml</file>
         <file>ui/views/App/Main/VocalMessages.qml</file>

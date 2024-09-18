@@ -52,6 +52,7 @@ class TimelineListModel;
 class ContactsEnreachListProxyModel;
 class PstnModel;
 class ForwardingManagement;
+class InternetChecker;
 
 class CoreManager : public QObject {
 	Q_OBJECT;
@@ -61,14 +62,16 @@ class CoreManager : public QObject {
 	Q_PROPERTY(int eventCount READ getEventCount NOTIFY eventCountChanged)
 	Q_PROPERTY(int callLogsCount READ getCallLogsCount NOTIFY callLogsCountChanged)
 	Q_PROPERTY(bool initialized READ isInitialized NOTIFY coreManagerInitialized)
-	
 public:
 	bool started () const {
 		return mStarted;
 	}
-	
+		
 	std::shared_ptr<linphone::Core> getCore () {
 		return mCore;
+	}
+	InternetChecker* getInternetChecker() {
+		return mInternetChecker;
 	}
 	
 	std::shared_ptr<CoreHandlers> getHandlers () {
@@ -153,10 +156,11 @@ public:
 	}
 	
 	AbstractEventCountNotifier * getEventCountNotifier();
-	
+	void checkInternetConnection();
 	ChatModel * getChatModel() const{
 		return mChatModel;
 	}
+	
 	
 	static CoreManager *getInstance ();
 	
@@ -238,8 +242,9 @@ private:
 	std::shared_ptr<CoreHandlers> mHandlers;	// It is used for handling linphone. Keep it to shared_ptr.
 	
 	bool mStarted = false;
-	linphone::ConfiguringState mLastRemoteProvisioningState;
 	
+	linphone::ConfiguringState mLastRemoteProvisioningState;
+	QTimer* timer= nullptr;
 	CallsListModel *mCallsListModel = nullptr;
 	ContactsListModel *mContactsListModel = nullptr;
 	ContactsEnreachListModel *mContactsEnreachListModel = nullptr;
@@ -259,7 +264,7 @@ private:
 	HistoryModel * mHistoryModel = nullptr;
 	LdapListModel *mLdapListModel = nullptr;
 	RecorderManager* mRecorderManager = nullptr;
-	
+	InternetChecker* mInternetChecker = nullptr;
 	
 	QTimer *mCbsTimer = nullptr;
 	

@@ -193,7 +193,7 @@ private:
 			linphone::EcCalibratorStatus status,
 			int delayMs
 			) override;
-	
+	virtual void onNetworkReachable(const std::shared_ptr<linphone::Core> & core, bool reachable) override;
 	// Conference Info
 	virtual void onConferenceInfoReceived(const std::shared_ptr<linphone::Core> & core, const std::shared_ptr<const linphone::ConferenceInfo> & conferenceInfo) override;
 };

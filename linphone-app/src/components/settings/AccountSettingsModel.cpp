@@ -28,7 +28,7 @@
 #include "components/core/CoreManager.hpp"
 #include "utils/Utils.hpp"
 #include "utils/Constants.hpp"
-
+#include "utils/InternetChecker.hpp"
 #include "AccountSettingsModel.hpp"
 #include "SettingsModel.hpp"
 
@@ -221,6 +221,12 @@ QVariantMap AccountSettingsModel::getAccountDescription(const shared_ptr<linphon
 	return map;
 }
 
+bool AccountSettingsModel::getIsLoggedIn() const
+{
+	shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+
+	return config->getString("defaultAccount", "username", "") != "";
+}
 QString AccountSettingsModel::getConferenceUri() const {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Account> account = core->getDefaultAccount();
@@ -300,6 +306,8 @@ void AccountSettingsModel::logout() {
 		config->cleanSection("defaultAccount");
 		coreManager->forceRefreshRegisters();
 		emit accountLogout();
+		emit isLoggedInChanged();
+
 
 }
 void AccountSettingsModel::removeAccount(const shared_ptr<linphone::Account> &account) {
@@ -658,8 +666,8 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 	Q_UNUSED(state)
 	auto coreManager = CoreManager::getInstance();
 	shared_ptr<linphone::Account> defaultAccount = coreManager->getCore()->getDefaultAccount();
-	
-	
+	bool isNetworkreachable = coreManager->getInternetChecker()->getIsNetworkReachable();
+	bool isLoggedIn = getIsLoggedIn();
 	if(state== linphone::RegistrationState::Ok){	
 		if (defaultAccount != nullptr && defaultAccount->findAuthInfo()) {
 			shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
@@ -667,6 +675,7 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 			if (config->getString("defaultAccount", "username", "") == "")
 				config->setBool("defaultAccount", "contactsSyncro", false);
 			config->setString("defaultAccount", "username", username);
+			emit isLoggedInChanged();
 		}	
 	}
 	if (state == linphone::RegistrationState::Cleared) {
@@ -689,7 +698,7 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 		if (state == linphone::RegistrationState::Failed) {			
 			qWarning() << QStringLiteral("Registration failed");
 			qWarning() << QString::fromStdString(message);
-			if (message == "Registration impossible (network down)" || message== "io error") {
+			if (!isNetworkreachable) {
 				shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
 				std::string username = defaultAccount->findAuthInfo()->getUsername();
 				std::string password = defaultAccount->findAuthInfo()->getPassword();
@@ -697,10 +706,6 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 				std::string currentUserName= config->getString("defaultAccount", "username", "");
 				if (username != currentUserName) {				
 					logout();
-					emit networkErrorFirstLogin();
-				}
-				else {
-				   emit networkErrorLoggedIn();
 				}
 			}			
 			else {

@@ -754,10 +754,6 @@ void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::st
 	if(!message.isEmpty()) {
 		if(isBasicChatRoom && _messages.back()->getContents().size() > 0)	// Basic chat rooms don't support multipart
 			_messages.push_back(mChatRoom->createEmptyMessage());
-			/*uint32_t codePoint = 0x1F642; // Unicode code point for 🙂
-			std::string emoji = codePointToUTF8(codePoint);
-			auto messageTosend = message.toUtf8().toStdString() + emoji;
-			*/
 			std::string updatedMessage = replaceEmoticonsWithUnicode(message.toUtf8().toStdString());
 		_messages.back()->addUtf8TextContent(updatedMessage);
 	}
@@ -954,34 +950,46 @@ std::string ChatRoomModel:: codePointToUTF8(uint32_t codePoint) {
 }
 std::string ChatRoomModel::replaceEmoticonsWithUnicode(const std::string& message) {
 	std::unordered_map<std::string, uint32_t> emoticonToCodePoint = {
-		{ ":)", 0x1F642 },   
-		{ ":(", 0x1F641 },  
-		{ ":p", 0x1F61B },   
-		{ ";)", 0x1F609 },   
-		{ ":D", 0x1F603 },  
-		{ "xD", 0x1F606 },   
-		{ ":*", 0x1F618 },   
-		{ ";p", 0x1F61C },   
-		{ ":/", 0x1F615 },   
-		{ ";*", 0x1F618 },   
-		{ ":o", 0x1F62E },   
-		{ ":O", 0x1F62E },  
+		{ ":)", 0x1F642 },
+		{ ":(", 0x1F641 },
+		{ ":p", 0x1F61B },
+		{ ";)", 0x1F609 },
+		{ ":D", 0x1F603 },
+		{ "xD", 0x1F606 },
+		{ ":*", 0x1F618 },
+		{ ";p", 0x1F61C },
+		{ ":/", 0x1F615 },
+		{ ";*", 0x1F618 },
+		{ ":o", 0x1F62E },
+		{ ":O", 0x1F62E },
 		{ ":'(", 0x1F622 }
 	};
+
 	std::string updatedMessage = message;
+
 	for (const auto& pair : emoticonToCodePoint) {
 		const std::string& emoticon = pair.first;
 		std::string emojiUTF8 = codePointToUTF8(pair.second);
-		size_t pos = updatedMessage.find(emoticon);
 
-		while (pos != std::string::npos) {
-			updatedMessage.replace(pos, emoticon.length(), emojiUTF8);
-			pos = updatedMessage.find(emoticon, pos + emojiUTF8.length());
+		size_t pos = 0;
+		while ((pos = updatedMessage.find(emoticon, pos)) != std::string::npos) {
+			// Check if the emoticon is at the start or surrounded by spaces
+			bool isValid = (pos == 0 || updatedMessage[pos - 1] == ' ') &&
+				(pos + emoticon.length() == updatedMessage.length() || updatedMessage[pos + emoticon.length()] == ' ');
+
+			if (isValid) {
+				updatedMessage.replace(pos, emoticon.length(), emojiUTF8);
+				pos += emojiUTF8.length(); // Move past the newly inserted emoji
+			}
+			else {
+				pos += emoticon.length(); // Move past the emoticon to continue searching
+			}
 		}
 	}
 
 	return updatedMessage;
 }
+
 int ChatRoomModel::loadTillMessage(ChatMessageModel * message){
 	if( message){
 		qDebug() << "Load history till message : " << message->getChatMessage()->getMessageId().c_str();
