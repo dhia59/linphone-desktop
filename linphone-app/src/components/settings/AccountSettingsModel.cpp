@@ -698,20 +698,16 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 		if (state == linphone::RegistrationState::Failed) {			
 			qWarning() << QStringLiteral("Registration failed");
 			qWarning() << QString::fromStdString(message);
-			if (!isNetworkreachable) {
+			if (isNetworkreachable && defaultAccount->findAuthInfo() != nullptr) {			
 				shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
 				std::string username = defaultAccount->findAuthInfo()->getUsername();
-				std::string password = defaultAccount->findAuthInfo()->getPassword();
 				qWarning() << QStringLiteral("checking account");
 				std::string currentUserName= config->getString("defaultAccount", "username", "");
 				if (username != currentUserName) {				
 					logout();
 				}
-			}			
-			else {
-				logout();
-				emit failedRegistration();
-			}
+			}		
+	
 		}
 	}
 	emit registrationStateChanged();
