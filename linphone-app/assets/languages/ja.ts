@@ -1842,14 +1842,9 @@
     </message>
 </context>
 <context>
-    <name>MainWindow</name>
+    <name>MainContent</name>
     <message>
         <source>autoAnswerStatus</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>confirmFetchUri</source>
-        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1857,19 +1852,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aucune connexion internet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>reunions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Equipes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enregistrements</source>
+        <source>Aucune connexion réseau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1884,7 +1867,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1892,7 +1883,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow - Copie</name>
+    <message>
+        <source>confirmFetchUri</source>
+        <extracomment>&apos;Do you want to download and apply configuration from this URL?&apos; : text to confirm to fetch a specified URL</extracomment>
         <translation type="unfinished"></translation>
     </message>
 </context>
