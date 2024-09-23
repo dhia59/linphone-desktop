@@ -453,12 +453,12 @@ ApplicationWindow {
                                     showTimeline=false
                                     menuWidth=250
                                     //  timeline.model.unselectAll()
-                                    setView('Conferences')
+                                    setView('GroupChatList')
                                 }
                                 onClicked:{
                                     showTimeline=false
                                     menuWidth=250
-                                    setView('Conferences')
+                                    setView('GroupChatList')
                                 }
 
 

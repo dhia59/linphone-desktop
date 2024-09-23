@@ -238,6 +238,8 @@
         <file>ui/modules/Common/Form/Fields/TextField.qml</file>
         <file>ui/modules/Common/Form/ListForm.js</file>
         <file>ui/modules/Common/Form/ListForm.qml</file>
+        <file>ui/modules/Common/Form/FormField.qml</file>
+        <file>ui/modules/Common/Form/FormField.js</file>
         <file>ui/modules/Common/Form/ListItemSelector.js</file>
         <file>ui/modules/Common/Form/ListItemSelector.qml</file>
         <file>ui/modules/Common/Form/Mosaic.qml</file>
@@ -507,6 +509,8 @@
         <file>ui/views/App/Main/Assistant/UseAppSipAccountWithUsername.qml</file>
         <file>ui/views/App/Main/Assistant/UseOtherSipAccount.qml</file>
         <file>ui/views/App/Main/Conferences.qml</file>
+        <file>ui/views/App/Main/GroupChatList.qml</file>
+        <file>ui/views/App/Main/GroupChatManagement.qml</file>
         <file>ui/views/App/Main/ContactEdit.js</file>
         <file>ui/views/App/Main/ContactEdit.qml</file>
         <file>ui/views/App/Main/Contacts.qml</file>

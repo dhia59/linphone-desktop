@@ -4,12 +4,12 @@ import QtQuick.Layouts 1.3
 import Common 1.0
 import Common.Styles 1.0
 
-import 'ListForm.js' as Logic
+import 'FormField.js' as Logic
 
 // =============================================================================
 
 RowLayout {
-	id: listForm
+    id: formField
 	
 	// ---------------------------------------------------------------------------
 	
@@ -18,11 +18,9 @@ RowLayout {
 	property bool readOnly: false
 	property int inputMethodHints
 	property var minValues
+    property alias value:textInput.text
 	readonly property int count: values.count
-    property var tcolor
-    property string value:""
-
-    property var maxValues: 2
+	property var tcolor
 	
 	// ---------------------------------------------------------------------------
 	
@@ -30,7 +28,10 @@ RowLayout {
 	signal removed (int index, string value)
 	
 	// ---------------------------------------------------------------------------
-	
+    function setValue(val){
+        value= val
+    }
+
 	function setData () {
 		Logic.setData.apply(this, arguments)
 	}
@@ -54,20 +55,19 @@ RowLayout {
 	RowLayout {
 		Layout.alignment: Qt.AlignTop
 		Layout.preferredHeight: ListFormStyle.lineHeight
-		spacing: ListFormStyle.titleArea.spacing
-		
-		ActionButton {
-			id: addButton
-			
-			colorSet: ListFormStyle.titleArea.add
-			isCustom: true
-			backgroundRadius: 90
-			
-            opacity: maxValues>1 && !listForm.readOnly ? 1 : 0
-			
-			onClicked: !listForm.readOnly && Logic.addValue('')
-		}
-		
+        spacing: ListFormStyle.titleArea.spacing
+
+        ActionButton {
+            id: addButton
+
+            colorSet: ListFormStyle.titleArea.add
+            isCustom: true
+            backgroundRadius: 90
+
+            opacity:  0
+
+
+        }
 		Text {
 			id: text
 			
@@ -99,7 +99,7 @@ RowLayout {
 		}
 		
 		padding: ListFormStyle.value.text.padding
-		visible: values.model.count === 0
+        visible: value.length >0
 		verticalAlignment: Text.AlignVCenter
 		
 		MouseArea {
@@ -112,35 +112,20 @@ RowLayout {
 	// Values.
 	// ---------------------------------------------------------------------------
 	
-	ListView {
-		id: values
-		
-		Layout.fillWidth: true
-		Layout.preferredHeight: count * ListFormStyle.lineHeight
-		interactive: false
-        visible: model.count > 0
-		
-		delegate: Item {
-			implicitHeight: textInput.height
-			width: values.width
-			
-			TransparentTextInput {
-				id: textInput
-				
-				inputMethodHints: listForm.inputMethodHints
-				isInvalid: $isInvalid
-				readOnly: listForm.readOnly
-				text: $value
-				
-				height: ListFormStyle.lineHeight
-				width: parent.width
-				
-				Component.onCompleted: Logic.handleItemCreation.apply(this)
-				
-				onEditingFinished: Logic.handleEditionFinished(index, text)
-			}
-		}
-		
-		model: ListModel {}
-	}
+
+    TransparentTextInput {
+        id: textInput
+
+        inputMethodHints: listForm.inputMethodHints
+        isInvalid: $isInvalid
+        readOnly: listForm.readOnly
+        text: ""
+
+        height: ListFormStyle.lineHeight
+        width: parent.width
+
+        Component.onCompleted: Logic.handleItemCreation.apply(this)
+
+        onEditingFinished: Logic.handleEditionFinished(index, text)
+    }
 }

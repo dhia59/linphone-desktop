@@ -181,8 +181,8 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 							setSourceModel(contacts);
 							sort(0);
 							qDebug() << "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj " << listSips->first().toString();
-
-							emit loadedContacts(listSips->first().toString());
+							const ContactEnreachModel* firstContact = contacts->index(0, 0).data().value<ContactEnreachModel *>();
+							emit loadedContacts( firstContact->getContactEnreach());
 
 						}
 					}
