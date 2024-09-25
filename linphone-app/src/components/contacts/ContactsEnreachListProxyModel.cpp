@@ -111,7 +111,6 @@ void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListMode
 		}
 	
 	}
-
 }
 
 void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *contacts) {
@@ -176,11 +175,9 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 								}
 							}
 							listLinphoneContacts(contacts, listSips);
-
-
+						
 							setSourceModel(contacts);
-							sort(0);
-							qDebug() << "jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj " << listSips->first().toString();
+							//sort(0);
 							const ContactEnreachModel* firstContact = contacts->index(0, 0).data().value<ContactEnreachModel *>();
 							emit loadedContacts( firstContact->getContactEnreach());
 
@@ -190,7 +187,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
 						setSourceModel(contacts);
-						sort(0);
+						//sort(0);
 					}
 
 					// Clean up the reply
@@ -232,7 +229,8 @@ bool ContactsEnreachListProxyModel::filterAcceptsRow(
 bool ContactsEnreachListProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
 	const ContactEnreachModel *contactA = sourceModel()->data(left).value<ContactEnreachModel *>();
 	const ContactEnreachModel *contactB = sourceModel()->data(right).value<ContactEnreachModel *>();
-	return false;
+	
+	return contactA->getContactEnreach()->getFullName() < contactB->getContactEnreach()->getFullName();
 	//unsigned int weightA = mWeights[contactA];
 	//unsigned int weightB = mWeights[contactB];
 
@@ -242,6 +240,31 @@ bool ContactsEnreachListProxyModel::lessThan(const QModelIndex &left, const QMod
 	//	QString::localeAwareCompare(Utils::coreStringToAppString(contactA->mLinphoneFriend->getName()), Utils::coreStringToAppString(contactB->mLinphoneFriend->getName())) <= 0
 	//	);
 }
+
+void ContactsEnreachListProxyModel::sort(int column, Qt::SortOrder order)
+{	
+	if (column == 0) { 
+		beginResetModel();
+		QAbstractItemModel* source = this->sourceModel();  // Get the source model
+
+
+		ContactsEnreachListModel* contactsModel = qobject_cast<ContactsEnreachListModel*>(source);
+
+		auto& contactList = contactsModel->getList(); 
+		if (column == 0) {
+			std::sort(contactList.begin(), contactList.end(), [order](const ContactEnreachModel* a, const ContactEnreachModel* b) {
+				return a->getContactEnreach()->getFullName() < b->getContactEnreach()->getFullName();
+			});
+		}
+		contactsModel = new ContactsEnreachListModel();
+		for each (ContactEnreachModel* item in contactList)
+		{
+			contactsModel->addContact(item);
+		}
+		setSourceModel(contactsModel);
+	}
+}
+
 
 
 // -----------------------------------------------------------------------------

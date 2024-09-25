@@ -18,7 +18,6 @@ import 'ContactEdit.js' as Logic
 
 ColumnLayout  {
 	id: contactEdit
-    property string withoutDomain: ''
 	property string sipAddress
     property string contactType
 	readonly property alias vcard: contactEdit._vcard
@@ -56,7 +55,11 @@ ColumnLayout  {
 		  contactEdit._vcard = vcard
 		  contactEdit._edition = true
 		} else {
-          contactEdit._vcard = contact.vcard
+
+            if(sipAddressesValue!==""){
+                sipAddressesValue= sipAddress.split("@")[0].replace("sip:","")
+            }
+            contactEdit._vcard = contact.vcard
 		}
 	  }
 
@@ -72,8 +75,7 @@ ColumnLayout  {
 			onContactUpdated: Logic.handleContactUpdated()
 		}
         Component.onCompleted: {
-            console.log("*********************************************************** ")
-            console.log(sipAddress)
+
         }
 	}
 	

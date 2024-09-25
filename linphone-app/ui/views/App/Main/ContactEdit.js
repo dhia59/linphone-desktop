@@ -53,11 +53,6 @@ function handleVcardChanged (vcard, sipAddress=null) {
     vcard = {}
   }
   addresses.setData([sipAddressesValue])
-  /*if(sipAddress!== null)
-      addresses.setData([sipAddress])
-  else
-      addresses.setData(vcard.sipAddresses)
-*/
   companies.setData(vcard.companies)
   emails.setData(vcard.emails)
   urls.setData(vcard.urls)
@@ -137,7 +132,7 @@ function setUsername (username) {
 // -----------------------------------------------------------------------------
 
 function handleValueChanged (fields, index, oldValue, newValue, add, update) {
-    console.log("fffffffffffffffffff ", fields)
+
   if (newValue === oldValue) {
     return
   }
@@ -153,7 +148,6 @@ function handleValueChanged (fields, index, oldValue, newValue, add, update) {
 
 function handleSipAddressChanged () {
   var args = Array.prototype.slice.call(arguments)
-    console.log("arrrrrrrrrrrrrrrrrr ", args)
   args.push('addSipAddress', 'updateSipAddress')
   handleValueChanged.apply(this, args)
 }
