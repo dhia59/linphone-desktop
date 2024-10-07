@@ -43,9 +43,9 @@ public:
   ContactsEnreachListModel *contacts;
   Q_INVOKABLE void setFilter (const QString &pattern);
   Q_INVOKABLE void getloadedContacts();
-  Q_SIGNAL void loadedContacts(const QString lastsipcontact);
-//signals:
-	//void loadedContacts(QVariantList *listSips);
+  
+signals:
+	void loadedContacts(ContactEnreach* contact);
 
 public slots:
 	void loadContacts();

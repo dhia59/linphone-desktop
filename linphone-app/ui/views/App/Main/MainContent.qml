@@ -41,12 +41,12 @@ Rectangle{
     property var timeLine: timeLine
     property SmartSearchBar mainSearchBar : (mainLoader.item ? mainLoader.item.mainSearchBar : null)
     property bool isVisibleTelKeypad: false
-   // property alias mainLoaderRef: mainLoaderRef
+    // property alias mainLoaderRef: mainLoaderRef
     ColumnLayout {
         id: mainColumn
         readonly property alias contactsEntry: contactsEntry
         readonly property alias conferencesEntry: conferencesEntry
-         width: parent.width
+        width: parent.width
         height: parent.height
         Layout.fillHeight: true
         Layout.fillWidth: true
@@ -75,7 +75,7 @@ Rectangle{
             property alias mainSearchBar : smartSearchBar
             Layout.preferredHeight: 60
 
-           ColumnLayout {
+            ColumnLayout {
 
                 Layout.preferredWidth: MainWindowStyle.autoAnswerStatus.width
                 visible: SettingsModel.autoAnswerStatus
@@ -253,7 +253,7 @@ Rectangle{
                                 if (timeline.model.rowCount()>0){
                                     showTimeline=true
                                     menuWidth=500
-                                   timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true
+                                    timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true
 
                                 }
                             }
@@ -575,27 +575,36 @@ Rectangle{
                     id: contentLoader
                     objectName: '__contentLoader'
                     anchors.fill: parent
-                    source: timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true
+                    source:""
+                    Component.onCompleted: {
+
+                        if(timeline.model.rowCount()>0)
+                            contentLoader.setSource(timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true)
+                        else
+                        {
+                            setView('HistoryView')
+                            menuWidth=250
+                            showTimeline=false
+                            menu.defaultSelectedEntry=callsEntry
+                        }
+
+                    }
 
                 }
-                Component.onCompleted: {
-                   timeline.model.getFirstChatRoom(timeline.model.rowCount()).selected=true
+
+
+
 
             }
 
-
-
-
         }
 
+        Connections{
+            target: InternetChecker
+            onIsNetworkReachableChanged:{
+
+            }
+        }
     }
-
-   Connections{
-       target: InternetChecker
-       onIsNetworkReachableChanged:{
-
-       }
-   }
-}
 }
 

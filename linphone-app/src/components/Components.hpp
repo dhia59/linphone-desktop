@@ -119,5 +119,6 @@
 #include "components/selfCare/ForwardingListModel.hpp"
 #include "components/selfCare/ForwardingListProxyModel.hpp"
 #include "components/selfCare/ForwardingManagement.hpp"
+#include "components/selfCare/GreetingManagement.hpp"
 //#include "components/selfCare/CustomCallerIdModel.hpp"
 #endif // COMPONENTS_H_

@@ -11,6 +11,8 @@ class InternetChecker : public QObject {
 public:
 	explicit InternetChecker(QObject* parent = nullptr); // Ensure this matches the definition
 	bool getIsNetworkReachable() const;
+	void pingHost(const QString &host);
+
 signals:
 	void networkUp();
 	void networkDown();

@@ -9,12 +9,13 @@ import Konami 1.0
 import Linphone 1.0
 import 'SelfCareWindow.js' as Logic
 import App.Styles 1.0
-
+import 'qrc:/ui/scripts/Utils/utils.js' as Utils
+import Units 1.0
 // =============================================================================
 Rectangle {
     id:swindowid
     //color: "gray"
-   // minimumHeight: 600
+    // minimumHeight: 600
     //minimumWidth: 400
     function setView (view, props, callback) {
         Logic.setView(view, props, callback)
@@ -29,34 +30,32 @@ Rectangle {
         // Menu latéral
         ColumnLayout {
             Rectangle {
-                width:200
+                width:250
                 Layout.fillHeight: true
-                color: "#f0f0f0"
-                //color: "gray"
-
+                anchors.verticalCenter: parent.verticalCenter
                 Column {
-                    spacing: 10
-                    //anchors.fill: parent
-                    Layout.fillHeight: true
-                    width: 200
                     anchors.margins: 10
+                    anchors.topMargin: 50
+                  //  anchors.verticalCenter: parent.verticalCenter
+                    spacing: 10
+                    Layout.fillHeight: true
+                    width: parent.width
                     id: sideBar
                     property int currentIndex: 0
-
-                    // Items du menu comme des rectangles avec des coins arrondis
                     Repeater {
                         model: ["Numéro personnalisé", "Redirection", "Messagerie vocale", "Compte"]
                         delegate: Rectangle {
                             id: menuItem
                             width:200
                             height: 40
-                            color: (sideBar.currentIndex === index) ? "#141B6C" : "#b0b0b0"
+                            color: (sideBar.currentIndex === index) ? "#141B6C" : "#f2f2f2"
                             radius: 10
 
                             Text {
                                 anchors.centerIn: parent
                                 text: modelData
-                                color: "#FFFFFF"
+                                color:(sideBar.currentIndex === index)? "#FFFFFF": "#000000"
+                                font.pointSize: Units.dp * 10
                             }
 
                             MouseArea {
@@ -74,7 +73,7 @@ Rectangle {
         }
 
         ColumnLayout {
-           // x: 210
+            // x: 210
             Rectangle {
                 //color: "yellow"
                 anchors.fill: parent
@@ -95,7 +94,7 @@ Rectangle {
                             for (var i = 0; i < sideBar.children.length; ++i) {
                                 var item = sideBar.children[i];
                                 if (item instanceof Rectangle) {
-                                    item.color = (sideBar.currentIndex === i) ? "#141B6C" : "#b0b0b0";
+                                    item.color = (sideBar.currentIndex === i) ? "#141B6C" :  "#f2f2f2";
                                 }
                             }
                         }

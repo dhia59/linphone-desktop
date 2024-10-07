@@ -49,7 +49,7 @@
 #include "utils/Constants.hpp"
 #include "components/selfCare/ForwardingListProxyModel.hpp"
 #include "utils/InternetChecker.hpp"
-
+#include "utils//SipConstant.hpp"
 #if defined(Q_OS_MACOS)
 #include "event-count-notifier/EventCountNotifierMacOs.hpp"
 #else
@@ -93,7 +93,8 @@ CoreManager::CoreManager (QObject *parent, const QString &configPath) :
 }
 void CoreManager::checkInternetConnection() {
 	if (mInternetChecker) {
-		mInternetChecker->checkConnection();  // Call checkConnection on InternetChecker instance
+		mInternetChecker->pingHost(SipConstant::server);
+		//mInternetChecker->checkConnection();  // Call checkConnection on InternetChecker instance
 	}
 }
 CoreManager::~CoreManager(){
@@ -121,12 +122,12 @@ void CoreManager::initCoreManager(){
 	mForwardingManagement = new ForwardingManagement(this);
 	mTimelineListModel = new TimelineListModel(this);
 	mInternetChecker = new InternetChecker(this);
-	mInternetChecker->checkConnection();
+	//mInternetChecker->checkConnection();
 	mEventCountNotifier->updateUnreadMessageCount();
 	QObject::connect(mEventCountNotifier, &EventCountNotifier::eventCountChanged,this, &CoreManager::eventCountChanged);
 	migrate();
 	mStarted = true;
-	
+	mCore->getConfig()->setBool("defaultAccount", "contactsSyncro", false);
 	qInfo() << QStringLiteral("CoreManager initialized");
 	emit coreManagerInitialized();
 }
