@@ -771,6 +771,7 @@ void ChatRoomModel::sendMessage (const QString &message, bool useHeader, std::st
 				
 			
 			(*itMessage)->send();
+		
 			emit messageSent((*itMessage));
 			sent = true;
 		}
