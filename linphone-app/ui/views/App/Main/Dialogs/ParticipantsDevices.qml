@@ -96,7 +96,7 @@ DialogPlus {
 									anchors.fill:contactDescription
 									onClicked: {
 										if(participantDevices.count == 0 )
-											mainHeader.window.attachVirtualWindow(Qt.resolvedUrl('InfoEncryption.qml')
+											mainHeader.mainwindow.attachVirtualWindow(Qt.resolvedUrl('InfoEncryption.qml')
 																   ,{securityLevel : mainHeader.securityLevel
 																   , addressToCall : mainHeader.addressToCall}
 																   )
@@ -176,7 +176,7 @@ DialogPlus {
 								MouseArea{
 									anchors.fill:parent
 									onClicked: {
-										mainRectangle.window.attachVirtualWindow(Qt.resolvedUrl('InfoEncryption.qml')
+										mainRectangle.mainwindow.attachVirtualWindow(Qt.resolvedUrl('InfoEncryption.qml')
 																   ,{securityLevel : mainRectangle.securityLevel
 																   , addressToCall : mainRectangle.addressToCall}
 																   )

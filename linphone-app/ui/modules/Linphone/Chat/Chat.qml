@@ -33,7 +33,7 @@ Rectangle {
 	
 	
 	// ---------------------------------------------------------------------------
-	
+    anchors.leftMargin: 5
 	color: ChatStyle.colorModel.color
 	clip: true
 	Timer{// Let some time to have a better cell sizes
@@ -284,7 +284,7 @@ Rectangle {
 								proxyModel.chatRoomModel.reply = entry.chatEntry
 							}
 							onForwardClicked:{
-								window.attachVirtualWindow(Qt.resolvedUrl('../Dialog/SipAddressDialog.qml')
+								mainwindow.attachVirtualWindow(Qt.resolvedUrl('../Dialog/SipAddressDialog.qml')
 									//: 'Choose where to forward the message' : Dialog title for choosing where to forward the current message.
 									, {title: qsTr('forwardDialogTitle'),
 										addressSelectedCallback: function (sipAddress) {
@@ -461,8 +461,7 @@ Rectangle {
                         }
                         //onAudioRecordRequest: RecorderManager.resetVocalRecorder()
                         onEmojiClicked: {
-                            console.log("smileeee")
-                            //chatEmojis.height= 150
+
                             chatEmojis.visible = !chatEmojis.visible
                         }
                         Component.onCompleted: {text = proxyModel.cachedText; cursorPosition=text.length;componentReady=true}

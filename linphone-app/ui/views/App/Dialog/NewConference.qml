@@ -301,7 +301,7 @@ DialogPlus {
 							MouseArea{
 								anchors.fill: parent
 								onClicked: {
-									window.attachVirtualWindow(Utils.buildCommonDialogUri('DateTimeDialog'), {hideOldDates:true, showDatePicker:true, selectedDate: new Date(dateField.getDate())}
+									mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('DateTimeDialog'), {hideOldDates:true, showDatePicker:true, selectedDate: new Date(dateField.getDate())}
 										, function (status) {
 											if(status){
 												dateField.setDate(status.selectedDate)
@@ -333,7 +333,7 @@ DialogPlus {
 								anchors.right: parent.right
 								width: parent.width-50
 								onClicked: {
-										window.attachVirtualWindow(Utils.buildCommonDialogUri('DateTimeDialog'), {showTimePicker:true, selectedTime: timeField.getTime()}
+										mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('DateTimeDialog'), {showTimePicker:true, selectedTime: timeField.getTime()}
 										, function (status) {
 												if(status && status.selectedTime){
 													timeField.setTime(status.selectedTime)
@@ -583,7 +583,7 @@ DialogPlus {
 			anchors.fill: parent
 			cursorShape: Qt.ArrowCursor
 			onClicked:{
-				window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+				mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 				//: 'Do you want to close this form ?' : confirmation text for exiting the creatoin form
 					descriptionText: qsTr('confirmFormExit'),
 				}, function (status) {

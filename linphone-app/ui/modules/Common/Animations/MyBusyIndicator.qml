@@ -45,7 +45,7 @@ BusyIndicator {
                     implicitWidth: 10
                     implicitHeight: 10
                     radius: 5
-                    color: "#20E8E4"
+                    color: "#0D6160"
                     transform: [
                         Translate {
                             y: -Math.min(item.width, item.height) * 0.5 + 5

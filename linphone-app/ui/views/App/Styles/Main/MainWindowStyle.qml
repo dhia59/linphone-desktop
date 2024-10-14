@@ -31,7 +31,7 @@ QtObject {
 	}
 	
 	property QtObject menu: QtObject {
-		property int height: 60
+        property int height: 50
 		property int width: 250
 		
 		property QtObject direction: QtObject {
@@ -142,5 +142,14 @@ QtObject {
 			property var foregroundHoveredColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_h', icon, 'l_h_b_fg')
 			property var foregroundPressedColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_p', icon, 'l_p_b_fg')
 		}
-	}
+       }
+    property QtObject leftMenu: QtObject {
+        property string name : 'leftMenu'
+        property var backgroundNormalColor : ColorsList.add(sectionName+'_'+name+'_bg_n','g')
+        property var backgroundHoveredColor : ColorsList.add(sectionName+'_'+name+'_bg_h', 'ee')
+        property var foregroundNormalColor : ColorsList.add(sectionName+'_'+name+'_fg_n', 'n')
+        property int itemHeigth: 50
+    }
 }
+
+

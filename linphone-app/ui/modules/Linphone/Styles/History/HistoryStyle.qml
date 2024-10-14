@@ -8,7 +8,7 @@ import ColorsList 1.0
 
 QtObject {
 	property string sectionName: 'History'
-	property var colorModel: ColorsList.add(sectionName, 'q')
+    property var colorModel: ColorsList.add(sectionName, 'q')
 	
 	property QtObject sectionHeading: QtObject {
 		property int padding: 5
@@ -21,7 +21,7 @@ QtObject {
 		
 		property QtObject text: QtObject {
 			property int pointSize: Units.dp * 10
-			property var colorModel: ColorsList.add(sectionName+'_section_text', 'g')
+            property var colorModel: ColorsList.add(sectionName+'_section_text', 'qq')
 		}
 	}
 	
@@ -33,7 +33,7 @@ QtObject {
 		property int metaWidth: 40
 		
 		property QtObject deleteAction: QtObject {
-			property int iconSize: 30
+            property int iconSize: 30
 			property string name : 'delete'
 			property string icon : 'delete_custom'
 			property var backgroundNormalColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_n', icon, 'l_n_b_bg')
@@ -45,7 +45,7 @@ QtObject {
 		}
 		
 		property QtObject event: QtObject {
-			property int iconSize: 30
+            property int iconSize: 30
 			
 			property QtObject text: QtObject {
 				property var colorModel: ColorsList.add(sectionName+'_event_text', 'd')

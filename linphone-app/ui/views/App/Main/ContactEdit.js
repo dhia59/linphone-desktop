@@ -72,7 +72,7 @@ function editContact () {
 }
 
 function removeContact () {
-  window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: qsTr('removeContactDescription'),
   }, function (status) {
     if (status) {
@@ -85,7 +85,7 @@ function removeContact () {
 
 // -----------------------------------------------------------------------------
 
-function save () {  
+function save () {
    handleSipAddressChanged(addresses, 0,"",sipAddressesValue )
   var contact = contactEdit._contact
   var vcard = contactEdit._vcard
@@ -189,7 +189,7 @@ function buildAddressFields () {
     placeholder: qsTr('country'),
     text: address.country
   }]
-  
+
 }
 
 function handleAddressChanged (index, value) {

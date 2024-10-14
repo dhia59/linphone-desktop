@@ -29,7 +29,7 @@
 // =============================================================================
 
 function removeAllEntries () {
-  window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: qsTr('removeAllEntriesDescription'),
   }, function (status) {
     if (status) {

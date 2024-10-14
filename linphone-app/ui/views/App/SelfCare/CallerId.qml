@@ -20,7 +20,8 @@ Rectangle {
 
     Layout.fillWidth: true
     Layout.fillHeight: true
-        //color: "red"
+    color: "#F4F4F4"
+
 
     ColumnLayout {
         Layout.fillWidth: true
@@ -43,14 +44,14 @@ Rectangle {
           FormLine {
 
               FormGroup {
-                  label:"Mon numéro personnalisé"
+                  label:"Mon numéro de sortie"
                   ComboBox  {
                          width: 200
                          model: model
                         textRole: "display"
                         currentIndex: 0
                         onCurrentIndexChanged: {
-                                // Execute code when an item is selected
+
                                 console.log("Selected index:", currentIndex)
                             if(currentIndex>0)
                                model.updateCustomNumber(currentIndex)
@@ -108,9 +109,7 @@ Rectangle {
                   visible: model.isLoading || callerModel.isLoading
                   //anchors.fill: parent
                   anchors.centerIn: parent
-                  /*x:500
-                  y:300*/
-                  onVisibleChanged: {
+                    onVisibleChanged: {
                       console.log("visibleeee  caller", model.isLoading)
                   }
             }
@@ -119,17 +118,5 @@ Rectangle {
 }
 
 
-    // Loader{
-    //             id:busyIndicatorLoader
-    //             source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
-    //             visible: model.isLoading || callerModel.isLoading
-    //             anchors.fill: parent
-    //             //anchors.centerIn: parent
-    //             /*x:500
-    //             y:300*/
-    //             onVisibleChanged: {
-    //                 console.log("visibleeee  caller", model.isLoading)
-    //             }
-    //       }
 }
 }

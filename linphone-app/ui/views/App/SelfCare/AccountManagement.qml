@@ -12,6 +12,7 @@ import App.Styles 1.0
 import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 // =============================================================================
 Rectangle{
+    color: "#F4F4F4"
     function validatePassword(password) {
         const regex = /^(?=.*[A-Z])(?=.*\d).+$/;
 
@@ -39,50 +40,56 @@ Rectangle{
     }
 
     ColumnLayout{
-      spacing: 10
-      Rectangle {
-          width: 500
-          radius: 10
-          height: 40
-          color: "lightblue"
+        anchors {
+            top: parent.top
+            left: parent.left
+            margins: 20
+        }
+        spacing: 10
+        Rectangle {
+            width: 550
+            radius: 10
+            height: 40
+            color: "lightblue"
 
-          Text {
-              text: "Le mot de passe doit contenir au moins une lettre majuscule et un chiffre."
-              anchors.centerIn: parent
-              font.pixelSize: 14
-              color: "black"
-          }
-      }
-      Rectangle {
-          visible: accountManagementModel.isRequestSent&& accountManagementModel.isPasswordUpdated
-          width: 500
-          radius: 10
-          height: 40
-          color: "lightgreen"
+            Text {
+                text: "Le mot de passe doit contenir au moins une lettre majuscule et un chiffre."
+                anchors.centerIn: parent
+                font.pixelSize: 14
+                color: "black"
+            }
+        }
+        Rectangle {
+            visible: accountManagementModel.isRequestSent&& accountManagementModel.isPasswordUpdated
+            width: 500
+            radius: 10
+            height: 40
+            color: "lightgreen"
 
-          Text {
-              text: "Mot de passe mis à jours avec succées"
-              anchors.centerIn: parent
-              font.pixelSize: 14
-              color: "black"
-          }
-      }
-      Rectangle {
-          visible: accountManagementModel.isRequestSent&& ! accountManagementModel.isPasswordMatch
-          width: 500
-          radius: 10
-          height: 40
-          color: "red"
+            Text {
+                text: "Mot de passe mis à jours avec succées"
+                anchors.centerIn: parent
+                font.pixelSize: 14
+                color: "black"
+            }
+        }
+        Rectangle {
+            visible: accountManagementModel.isRequestSent&& ! accountManagementModel.isPasswordMatch
+            width: 500
+            radius: 10
+            height: 40
+            color: "red"
 
-          Text {
-              text: "Le mot de passe actuel ne correspond pas à l'ancien mot de passe."
-              anchors.centerIn: parent
-              font.pixelSize: 14
-              color: "black"
-          }
-      }
+            Text {
+                text: "Le mot de passe actuel ne correspond pas à l'ancien mot de passe."
+                anchors.centerIn: parent
+                font.pixelSize: 14
+                color: "black"
+            }
+        }
         RowLayout{
             Form {
+                id: form
                 orientation: Qt.Vertical
                 width: FormHGroupStyle.content.maxWidth + FormHGroupStyle.spacing
 
@@ -108,10 +115,10 @@ Rectangle{
                             text:""
                             echoMode: TextInput.Password
                             background: Rectangle {
-                                   border.color:(newPassword.text.length===0 || validatePassword(newPassword.text)) ?"#3d7b52":"#ea0839"
-                                   color: "transparent"
-                                   radius: 5
-                               }
+                                border.color:(newPassword.text.length===0 || validatePassword(newPassword.text)) ?"#3d7b52":"#ea0839"
+                                color: "transparent"
+                                radius: 5
+                            }
                         }
                     }
                 }
@@ -126,48 +133,52 @@ Rectangle{
                             placeholderText: "Confirmer le nouveau mot de passe"
                             echoMode: TextInput.Password
                             background: Rectangle {
-                                   border.color: newPassword.text === verifyPassword.text ?"#3d7b52":"#ea0839"
-                                   color: "transparent"
-                                   radius: 5
-                               }
+                                border.color: newPassword.text === verifyPassword.text ?"#3d7b52":"#ea0839"
+                                color: "transparent"
+                                radius: 5
+                            }
 
                         }
                     }
                 }
-                Row {
-                    id: buttons
 
-                    spacing: AssistantAbstractViewStyle.buttons.spacing
+            }
+            Row {
+                anchors.bottom: parent.bottom
+                anchors.top: form.bottom
+                anchors.topMargin: 300
+                id: buttons
 
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    TextButtonA {
-                        id: resetButton
-                        enabled:true
-                        text:"Annuler"
-                       onClicked:{
-                         resetForm()
+                spacing:50
+                anchors.horizontalCenter: parent.horizontalCenter
+                TextButtonA {
+                    id: resetButton
+                    enabled:true
+                    text:"Annuler"
+                    onClicked:{
+                        resetForm()
 
-                       }
-                    }
-                    TextButtonB {
-                        id: mainActionButton
-                        enabled:isValidForm()
-                        text:"Enregistrer"
-                       onClicked:{
-                           if(accountManagementModel.updatePassword(oldPassword.text, newPassword.text)){
-                               console.log("bingooooooo")
-                           }
-                           else{
-
-                           }
-
-                       }
                     }
                 }
-        }
-    }
+                TextButtonB {
+                    id: mainActionButton
+                    enabled:isValidForm()
+                    text:"Enregistrer"
+                    onClicked:{
+                        if(accountManagementModel.updatePassword(oldPassword.text, newPassword.text)){
+                            console.log("Password updated successfully")
+                        }
+                        else{
 
-}
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+    }
     Loader{
         id:busyIndicatorLoader
         source: "qrc:/ui/modules/Common/Animations/MyBusyIndicator.qml"
@@ -187,7 +198,7 @@ Rectangle{
         }
         onIsPasswordUpdatedChanged:{
             if(accountManagementModel.isPasswordUpdated){
-                window.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
+                mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
                                                descriptionText: "Vous devez vous déconnecter"
                                            }, function (status) {
                                                if (status) {

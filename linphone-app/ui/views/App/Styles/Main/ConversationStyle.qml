@@ -10,7 +10,7 @@ import ColorsList 1.0
 QtObject {
 	property string sectionName : 'Conversation'
 	property QtObject bar: QtObject {
-		property var backgroundColor: ColorsList.add(sectionName+'_bar_bg', 'ee')
+        property var backgroundColor: ColorsList.add(sectionName+'_bar_bg', 'cb')
 		property var searchIconColor: ColorsList.add(sectionName+'_bar_search', 'c')
 		property int avatarSize: 60
 		property int groupChatSize: 80
@@ -157,7 +157,7 @@ QtObject {
 	}
 	
 	property QtObject filters: QtObject {
-		property var backgroundColor: ColorsList.add(sectionName+'_filters_bg', 'q')
+        property var backgroundColor: ColorsList.add(sectionName+'_filters_bg', 'cb')
 		property var iconColor: ColorsList.add(sectionName+'_filters_icon', 'c')
 		property int height: 51
 		property int leftMargin: 40

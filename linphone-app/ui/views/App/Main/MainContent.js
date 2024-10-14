@@ -55,7 +55,13 @@ function unlockView () {
 }
 
 function setView (view, props, callback) {
-    console.log("viewwwwwwwwwwwwwwwwwwwwwwww", window.contentLoader)
+    console.log("viewwwwwwwwwwwwwwwwwwwwwwww",view)
+  if(view==="Conversation"){
+      console.log("tttttttttttttttttttttttttttttttttttttttt")
+      showTimeline=true
+      menuWidth= 500
+  }
+
   function apply (view, props, showWindow, callback) {
 	if(showWindow)
 		Linphone.App.smartShowWindow(window)
@@ -74,7 +80,7 @@ function setView (view, props, callback) {
     apply(view, props, false, callback)
     return
   }
-  window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: lockedInfo.descriptionText,
   }, function (status) {
     if (status) {
@@ -97,7 +103,7 @@ function openConferenceManager (params) {
 }
 
 function manageAccounts () {
-  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ManageAccounts.qml'))
+  mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ManageAccounts.qml'))
 }
 
 // -----------------------------------------------------------------------------
@@ -143,7 +149,7 @@ function updateSelectedEntry (view, props) {
 // -----------------------------------------------------------------------------
 
 //function handleAuthenticationRequested (authInfo, realm, sipAddress, userId) {
-//  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/AuthenticationRequest.qml'), {
+//  mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/AuthenticationRequest.qml'), {
 //    authInfo: authInfo,
 //    realm: realm,
 //    sipAddress: 'sip:'+sipAddress,

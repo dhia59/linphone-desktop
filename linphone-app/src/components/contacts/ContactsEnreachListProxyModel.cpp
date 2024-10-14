@@ -69,24 +69,16 @@ ContactsEnreachListProxyModel::ContactsEnreachListProxyModel (QObject *parent) :
 	);
 	getList();
 }
-// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------:
 void ContactsEnreachListProxyModel::loadContacts() {
-	qDebug() << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacontactsLoaddddddddddd";
 	getList();
 }
 void ContactsEnreachListProxyModel::getloadedContacts() {
-	qDebug() << "pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp";
 	getList();
 }
 void ContactsEnreachListProxyModel::getList() {
-	qDebug() << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaacontactsLoaddddddddddd";
-
-	qDebug() << "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcontactsLoaddddddddddd";
-
 	contacts = new ContactsEnreachListModel();
 	listApiContacts(contacts);
-	qDebug() << "ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg";
-
 }
 void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListModel *contacts, QVariantList *listSips) {
 	ContactsListModel* contactsListModel = CoreManager::getInstance()->getContactsListModel();
@@ -146,46 +138,49 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 							for (const QJsonValue &jsonValue : jsonArray) {
 								if (jsonValue.isObject()) {
 									QJsonObject jsonObject = jsonValue.toObject();
-									ContactEnreach* contact = new ContactEnreach();
-
-									contact->setContactType(jsonObject.value("contact_type").toString());
-									contact->setFirstName(jsonObject.value("firstname").toString());
-									contact->setLastName(jsonObject.value("lastname").toString());
-									contact->setTel(jsonObject.value("tel").toString());
-									contact->setExt(jsonObject.value("ext").toString());
-									auto name = QString(contact->getFirstName() + " " + contact->getLastName());
-									contact->setFullName(name);
-									auto addr = QString();
-									if (contact->getContactType() == "partager")
-										addr = QString("sip:%1@%2").arg(contact->getTel()).arg(SipConstant::domain);
-									else
-										addr = QString("sip:%1@%2").arg(contact->getExt()).arg(SipConstant::domain);
-									auto fullName = jsonObject.value("firstname").toString() + " " + jsonObject.value("lastname").toString();
-									VcardModel* vcardModel = CoreManager::getInstance()->createDetachedVcardModel();
-									vcardModel->setUsername(fullName);
-									vcardModel->addSipAddress(addr);								    
-									listModel.addContact(vcardModel);
-									auto test = listSips->contains(QString(addr));
-									if (!listSips->contains(QString(addr))) {
-										contact->addSipAddress(QString(addr));
-										ContactEnreachModel* contactModel = new ContactEnreachModel(contact);
-										contacts->addContact(contactModel);
+									ContactEnreach* contact = new ContactEnreach();							
+										contact->setContactType(jsonObject.value("contact_type").toString());
+										contact->setFirstName(jsonObject.value("firstname").toString());
+										contact->setLastName(jsonObject.value("lastname").toString());
+										contact->setTel(jsonObject.value("tel").toString());
+										contact->setExt(jsonObject.value("ext").toString());
+										auto name = QString(contact->getFirstName() + " " + contact->getLastName());
+										contact->setFullName(name);
+										auto addr = QString();
+										if (contact->getContactType() == "partager")
+											addr = QString("sip:%1@%2").arg(contact->getTel()).arg(SipConstant::domain);
+										else
+											addr = QString("sip:%1@%2").arg(contact->getExt()).arg(SipConstant::domain);
+										auto fullName = jsonObject.value("firstname").toString() + " " + jsonObject.value("lastname").toString();
+										VcardModel* vcardModel = CoreManager::getInstance()->createDetachedVcardModel();
+										
+										if (fullName == "") fullName = contact->getContactType() == "partager" ? contact->getTel() : contact->getExt();
+										vcardModel->setUsername(fullName);
+										vcardModel->addSipAddress(addr);
+										listModel.addContact(vcardModel);
+										auto test = listSips->contains(QString(addr));
+										if (contact)
+											if (!listSips->contains(QString(addr))) {
+												contact->addSipAddress(QString(addr));
+												ContactEnreachModel* contactModel = new ContactEnreachModel(contact);
+												contacts->addContact(contactModel);
+											}
+										listSips->append(addr);
 									}
-									listSips->append(addr);
+									
 								}
 							}
 							listLinphoneContacts(contacts, listSips);
-						
 							setSourceModel(contacts);
-							//sort(0);
 							const ContactEnreachModel* firstContact = contacts->index(0, 0).data().value<ContactEnreachModel *>();
-							emit loadedContacts( firstContact->getContactEnreach());
+							emit loadedContacts(firstContact->getContactEnreach());
 
-						}
+							sort(0);
 					}
 					else {
 						qDebug() << "Error Code:" << reply->error();
 						qDebug() << "Error String:" << reply->errorString();
+						
 						setSourceModel(contacts);
 						//sort(0);
 					}
@@ -229,16 +224,7 @@ bool ContactsEnreachListProxyModel::filterAcceptsRow(
 bool ContactsEnreachListProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const {
 	const ContactEnreachModel *contactA = sourceModel()->data(left).value<ContactEnreachModel *>();
 	const ContactEnreachModel *contactB = sourceModel()->data(right).value<ContactEnreachModel *>();
-	
-	return contactA->getContactEnreach()->getFullName() < contactB->getContactEnreach()->getFullName();
-	//unsigned int weightA = mWeights[contactA];
-	//unsigned int weightB = mWeights[contactB];
-
-	//// Sort by weight and name.
-	//return weightA > weightB || (
-	//	weightA == weightB &&
-	//	QString::localeAwareCompare(Utils::coreStringToAppString(contactA->mLinphoneFriend->getName()), Utils::coreStringToAppString(contactB->mLinphoneFriend->getName())) <= 0
-	//	);
+	return false;	
 }
 
 void ContactsEnreachListProxyModel::sort(int column, Qt::SortOrder order)

@@ -364,7 +364,7 @@ Loader{
 								&& !mainItem.isCancelled
 						onClicked: {
 							window.detachVirtualWindow()
-							window.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
+							mainwindow.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
 													   ,{conferenceInfoModel: mainItem.conferenceInfoModel, forceSchedule: true})
 						}
 					}
@@ -375,7 +375,7 @@ Loader{
 						colorSet: ChatCalendarMessageStyle.deleteButton
 						backgroundRadius: width/2
 						onClicked: {
-							window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+							mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 								//: 'Do you really want do cancel this meeting?' : Warning message to confirm the cancellation of a meeting.
 								descriptionText: isCancellable
 									? qsTr('cancelConferenceInfo')

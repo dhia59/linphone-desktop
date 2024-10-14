@@ -153,7 +153,7 @@ ColumnLayout  {
 				ActionBar {
 					anchors.verticalCenter: parent.verticalCenter
 					
-					ActionButton {
+                    /*ActionButton {
 						isCustom: true
 						backgroundRadius: 4
 						colorSet: historyView._sipAddressObserver && historyView._sipAddressObserver.contact ? ConversationStyle.bar.actions.edit.viewContact : ConversationStyle.bar.actions.edit.addContact
@@ -162,7 +162,7 @@ ColumnLayout  {
 						
 						onClicked: window.setView('ContactEdit', { sipAddress: historyView.peerAddress })
 						tooltipText: peerAddress?Logic.getEditTooltipText():''
-					}
+                    }*/
 					
 					ActionButton {
 						isCustom: true
@@ -226,7 +226,7 @@ ColumnLayout  {
 
         TextField {
             id: displayText
-            placeholderText: qsTr("Enter un numéro")
+            placeholderText: qsTr("Entrer un numéro")
             text: ""
             font.pixelSize: 18
             leftPadding: 40
@@ -240,7 +240,7 @@ ColumnLayout  {
                 implicitWidth: 200
                 implicitHeight: 50
                 radius: implicitHeight / 2
-                border.color: displayText.focus || displayText.text.length > 0 ? "#20E8E4" : "#141B6C"
+                border.color: displayText.focus || displayText.text.length > 0 ? "#0D6160" : "#141B6C"
                 border.width: 1
                 color: "transparent"
 
@@ -553,7 +553,7 @@ ColumnLayout  {
                 height: numPadButtonheight
                 Image {
                     id: numpadAsteriskImage
-                    source: "qrc:/assets/images/clavierdappel_0.png"  // Replace with your image path
+                    source: "qrc:/assets/images/clavierdappel_asterisk.png"  // Replace with your image path
                     width: numPadButtonWidth
                     height: numPadButtonheight
                     anchors.margins: numPadButtonmarging
@@ -613,7 +613,7 @@ ColumnLayout  {
                 height: numPadButtonheight
                 Image {
                     id: numpaddiasImage
-                    source: "qrc:/assets/images/clavierdappel_0.png"  // Replace with your image path
+                    source: "qrc:/assets/images/clavierdappel_hash.png"  // Replace with your image path
                     width: numPadButtonWidth
                     height: numPadButtonheight
                     anchors.margins: numPadButtonmarging

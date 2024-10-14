@@ -73,7 +73,7 @@ function openConferenceManager (params) {
 }
 
 function manageAccounts () {
-  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ManageAccounts.qml'))
+  mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ManageAccounts.qml'))
 }
 
 // -----------------------------------------------------------------------------
@@ -96,7 +96,7 @@ function updateSelectedEntry (view, props) {
 // -----------------------------------------------------------------------------
 
 //function handleAuthenticationRequested (authInfo, realm, sipAddress, userId) {
-//  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/AuthenticationRequest.qml'), {
+//  mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/AuthenticationRequest.qml'), {
 //    authInfo: authInfo,
 //    realm: realm,
 //    sipAddress: 'sip:'+sipAddress,

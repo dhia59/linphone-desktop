@@ -44,6 +44,8 @@ public:
   Q_INVOKABLE void setFilter (const QString &pattern);
   Q_INVOKABLE void getloadedContacts();
   
+signals:
+	void loadedContacts(ContactEnreach* contact);
 
 signals:
 	//void loadedContacts(const QString lastsipcontact, const QString contactType);

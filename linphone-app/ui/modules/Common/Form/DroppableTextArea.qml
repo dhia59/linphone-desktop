@@ -66,9 +66,16 @@ Item {
 		code = UtilsCpp.encodeEmojiToQmlRichFormat(code)
 		textArea.insert(textArea.cursorPosition, code+' ')	// Add a space or next text will be entered inside <font> of emoji.
 	}
+    Rectangle{
+        width: parent.width
+        height: 1
+        color:  DroppableTextAreaStyle.separator.color
+        z:1
+    }
+
 	Rectangle{
 		anchors.fill: parent
-		color: DroppableTextAreaStyle.outsideBackgroundColor.color
+        color: DroppableTextAreaStyle.outsideBackgroundColor.color
 		// ---------------------------------------------------------------------------
 		RowLayout{
 			anchors.fill: parent
@@ -119,11 +126,21 @@ Item {
 				enabled: droppableTextArea.dropEnabled
 				isCustom: true
 				backgroundRadius: 8
-				colorSet: DroppableTextAreaStyle.chatMicro
+                colorSet: DroppableTextAreaStyle.fileChooserButton
 				
 				onClicked: droppableTextArea.audioRecordRequest()
 				
 			}
+            ActionButton{
+                //anchors.right: parent.right
+                ///anchors.rightMargin: scrollBar.visible ? scrollBar.width + 5 : 5
+                anchors.verticalCenter: parent.verticalCenter
+                isCustom: true
+                backgroundRadius: 8
+                colorSet: DroppableTextAreaStyle.emoji
+                onClicked: droppableTextArea.emojiClicked()
+                toggled: droppableTextArea.emojiVisible
+            }
 			
 			// Text area.
 			Item{
@@ -216,16 +233,7 @@ Item {
 						}
 					}
 				}
-				ActionButton{
-					anchors.right: parent.right
-					anchors.rightMargin: scrollBar.visible ? scrollBar.width + 5 : 5
-					anchors.verticalCenter: parent.verticalCenter
-					isCustom: true
-					backgroundRadius: 8
-					colorSet: DroppableTextAreaStyle.emoji
-					onClicked: droppableTextArea.emojiClicked()
-					toggled: droppableTextArea.emojiVisible
-				}
+
 			}
 			
 			

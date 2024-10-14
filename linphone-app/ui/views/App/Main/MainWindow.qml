@@ -17,14 +17,8 @@ import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 // =============================================================================
 
 ApplicationWindow {
-    id: window
-    property bool  noNetworkAlert:false
-    property bool  showTimeline:true
-    property int  menuWidth:500
-    property string _currentView
+    id: mainwindow
     property var _lockedInfo
-    property SmartSearchBar mainSearchBar : (mainLoader.item ? mainLoader.item.mainSearchBar : null)
-    property bool isVisibleTelKeypad: false
     // ---------------------------------------------------------------------------
 
 
@@ -77,7 +71,9 @@ ApplicationWindow {
     Connections {
         target: CoreManager
         onCoreManagerInitialized: {
-            mainLoader.active = true
+            mainWindowLoader.source= AccountSettingsModel.isLoggedIn ?"MainContent.qml": "Login.qml"
+            mainWindowLoader.active = true
+            accountSettingsModelConnections.target= AccountSettingsModel
 
 
         }
@@ -85,7 +81,7 @@ ApplicationWindow {
 
     Shortcut {
         sequence: StandardKey.Close
-        onActivated: window.hide()
+        onActivated: mainwindow.hide()
     }
     // ---------------------------------------------------------------------------
 
@@ -94,11 +90,15 @@ ApplicationWindow {
 
     // ---------------------------------------------------------------------------
     Loader {
-        id: mainLoader
-
+        id: mainWindowLoader
+        // source: "MainContent.qml"
         active: false
         anchors.fill: parent
-        sourceComponent: testCompo
+        onSourceChanged:  {
+            console.log("testttttttttttttttttttttttt state ", AccountSettingsModel.registrationState===0 )
+            console.log("testttttttttttttttttttttttt source ",mainWindowLoader.source )
+        }
+
     }
 
     Component{
@@ -801,21 +801,6 @@ ApplicationWindow {
             }
         }
     }
-
-    Component.onCompleted:{
-
-        //console.log("rowcount0: ")
-        //console.log("rowcount: "+timeline.model.rowCount())
-        if(Qt.platform.os === 'osx') menuBar = customMenuBar;
-        /* window.setView('Conversation', {
-                           chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
-
-                       })
-                       */
-        //console.log("timelinesetitem: "+timeline.model.rowCount() )
-        //timeline.currentIndex = 15
-
-    }
     // ---------------------------------------------------------------------------
     // Url handlers.
     // ---------------------------------------------------------------------------
@@ -830,26 +815,57 @@ ApplicationWindow {
     Connections{
         target: App
         onRequestFetchConfig: {
-            window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
-                                           flat: true,
-                                           //: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
-                                           descriptionText: '<b>'+qsTr('confirmFetchUri')
-                                                            +'</b><br/><br/>'+filePath,
-                                       }, function (status) {
-                                           if (status) {
-                                               App.setFetchConfig(filePath)
-                                           }
-                                       })
+            mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+                                                   flat: true,
+                                                   //: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
+                                                   descriptionText: '<b>'+qsTr('confirmFetchUri')
+                                                                    +'</b><br/><br/>'+filePath,
+                                               }, function (status) {
+                                                   if (status) {
+                                                       App.setFetchConfig(filePath)
+                                                   }
+                                               })
+        }
+    }
+    Connections {
+        id:accountSettingsModelConnections
+        // target: AccountSettingsModel
+
+        onAccountLogout: {
+            console.log("logouttttttttt")
+            // noNetworkAlert= false;
+            mainWindowLoader.setSource("Login.qml")
+        }
+        /*onFailedRegistration: {
+            console.log("Fail register main credentials");
+            mainWindowLoader.setSource("Login.qml",{"isErrorLabel": "true"})
+        }*/
+        onNetworkErrorFirstLogin:{
+            console.log("Fail register main network");
+            mainWindowLoader.setSource("Login.qml",{"noNetworkAlert": "true"})
+        }
+        onNetworkErrorLoggedIn:{
+            noNetworkAlert= true
+            console.log("Fail register main loggedd")
+        }
+        onRegistrationStateChanged:{
+            if(AccountSettingsModel.registrationState===2){
+                console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
+                ///mainWindowLoader.setSource("MainContent.qml")
+                // noNetworkAlert= false;
+            }
+        }
+        onIsLoggedInChanged:{
+            mainWindowLoader.source= AccountSettingsModel.isLoggedIn ?"MainContent.qml": "Login.qml"
         }
     }
 
-
     Settings{
         category: "window"
-        property alias x : window.x
-        property alias y : window.y
-        property alias width : window.width
-        property alias height : window.height
+        property alias x : mainwindow.x
+        property alias y : mainwindow.y
+        property alias width : mainwindow.width
+        property alias height : mainwindow.height
     }
 
 }

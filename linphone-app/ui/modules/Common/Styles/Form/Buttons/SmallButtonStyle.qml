@@ -17,13 +17,14 @@ QtObject {
 		
 		property QtObject color: QtObject {
 			property var hovered: ColorsList.add(sectionName+'_bg_h', 'c')
-			property var normal: ColorsList.add(sectionName+'_bg_n', 'f')
-			property var pressed: ColorsList.add(sectionName+'_bg_p', 'i')
+            property var normal: ColorsList.add(sectionName+'_bg_n', 'f')
+            property var pressed: ColorsList.add(sectionName+'_bg_p', 'ok')
 		}
 	}
 	
 	property QtObject text: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_text', 'q')
+        property var colorModelNormal: ColorsList.add(sectionName+'_text', 'ok')
+        property var colorModelSelected: ColorsList.add(sectionName+'_textSelcted', 'e')
 		property int pointSize: Units.dp * 8
 	}
 }
