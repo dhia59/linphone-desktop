@@ -19,7 +19,7 @@ Column {
 	property var contactDescriptionStyle : ContactDescriptionStyle
 	
 	property color subtitleColor: contactDescriptionStyle.subtitle.colorModel.color
-	property color titleColor: contactDescriptionStyle.title.colorModel.color
+    property color titleColor: "#000000"//contactDescriptionStyle.title.colorModel.color
 	property int horizontalTextAlignment
 	property int contentWidth : Math.max(titleImplicitWidthWorkaround.implicitWidth, subtitleImplicitWidthWorkaround.implicitWidth)
 									+10

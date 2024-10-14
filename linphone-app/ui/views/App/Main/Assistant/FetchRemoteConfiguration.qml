@@ -26,7 +26,7 @@ import App.Styles 1.0
 			onRemoteProvisioningChanged: {
 				requestBlock.stop('')
 				window.detachVirtualWindow()
-				window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+				mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 											   descriptionText: qsTr('remoteProvisioningUpdateDescription'),
 										   }, function (status) {
 											   if (status) {

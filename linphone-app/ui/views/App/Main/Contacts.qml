@@ -16,7 +16,7 @@ ColumnLayout {
     property bool isBusy: true
 
     function _removeContact (contact) {
-        window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+        mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
                                        descriptionText: qsTr('removeContactDescription'),
                                    }, function (status) {
                                        if (status) {
@@ -129,7 +129,6 @@ ColumnLayout {
                         isBusy=false;
                         var contactType= contact.contactType;
                         var sipAddressesValue= ( contactType ==='personnel' || contactType ==='')? contact.sipAddresses[0]: contactType==='local'? contact.ext: contact.tel
-                        console.log("hhhhhhhhhhhhhhhhh " )
                         contactEditLoader.setSource('ContactEdit.qml', {
                                                         sipAddress:contact.sipAddresses[0],
                                                         contactType:contactType,
@@ -290,14 +289,7 @@ ColumnLayout {
 
                         // -------------------------------------------------------------------
 
-                        Rectangle {
-                            id: indicator
 
-                            anchors.left: parent.left
-                            color: 'transparent'
-                            height: parent.height
-                            width: ContactsStyle.contact.indicator.width
-                        }
 
                         MouseArea {
                             id: mouseArea
@@ -319,7 +311,14 @@ ColumnLayout {
 
 
                             }
+                            Rectangle {
+                                id: indicator
 
+                                anchors.left: parent.left
+                                color: 'transparent'
+                                height: parent.height
+                                width: ContactsStyle.contact.indicator.width
+                            }
                             RowLayout {
                                 anchors {
                                     fill: parent
@@ -390,6 +389,7 @@ ColumnLayout {
                                 target: loader
                             }
                         }
+
                     }
                 }
 

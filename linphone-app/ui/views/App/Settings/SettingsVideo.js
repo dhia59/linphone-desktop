@@ -28,7 +28,7 @@
 // =============================================================================
 
 function showVideoPreview (account) {
-  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/SettingsVideoPreview.qml'))
+  mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/SettingsVideoPreview.qml'))
 }
 
 function updateVideoPreview () {

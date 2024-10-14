@@ -42,8 +42,7 @@ Rectangle {
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
-
-
+       // anchors.topMargin: 10
         // -------------------------------------------------------------------------
 
         Connections {
@@ -61,7 +60,7 @@ Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
             currentIndex: 0
-            
+            spacing:2
             delegate: TimelineItem{
                 visible:modelData.chatRoomModel.contactType ==="contact"
                 timelineModel: $modelData
@@ -80,6 +79,7 @@ Rectangle {
                         }
                     }
                 }
+
             }
         }
     }

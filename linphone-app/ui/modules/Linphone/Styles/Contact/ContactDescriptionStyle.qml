@@ -16,9 +16,9 @@ QtObject {
 	}
 	
 	property QtObject title: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_title', 'j')
-		property int pointSize: Units.dp * 11
-		property int weight: Font.Bold
+        property var colorModel: ColorsList.add(sectionName+'_title', "#000000")
+        property int pointSize: Units.dp * 10
+        property int weight: Font.Normal
 		property QtObject status : QtObject{
 			property var colorModel : ColorsList.add(sectionName+'_status', 'g')
 			property int pointSize : Units.dp * 9

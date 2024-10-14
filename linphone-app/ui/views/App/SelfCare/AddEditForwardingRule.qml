@@ -25,7 +25,9 @@ ScrollView {
         Logic.populate()
     }
 
-
+    function resetForm(){
+        Logic.resetForm()
+    }
 
     property ForwardingModel currentForwardingData: null
     property var specificCallerList: []
@@ -118,7 +120,7 @@ ScrollView {
                     width: 150
                     radius: 10
                     color: "transparent"
-                    border.color: "#141B6C"
+                    border.color:  "#0D6160"
                     border.width: 1
 
                     Text {
@@ -211,7 +213,7 @@ ScrollView {
                             width: 150
                             radius: 10
                             color: "transparent"
-                            border.color: "#141B6C"
+                            border.color:  "#0D6160"
                             border.width: 1
 
                             Text {
@@ -276,10 +278,8 @@ ScrollView {
                                 }
                             }
 
-                            onEntryClicked: {
-                                console.log("heyyyyyyyyyy ", entry.sipAddress)
-                                var sipAddress= entry.sipAddress.split('"')
-
+                            onEntryClicked: {                                
+                                var sipAddress= entry.sipAddress.split('"');
                                 if(specificCallerList.indexOf(Logic.getNumberOrExtension(entry.sipAddress))<0){
                                     specificCallerList.push(Logic.getNumberOrExtension( entry.sipAddress))
                                     Logic.updateList()
@@ -303,22 +303,29 @@ ScrollView {
                             id: name
                             text: qsTr("Filtrer par numéro appelé")
                         }
-                        RowLayout{
-                            spacing: 5
+                        GridLayout {
+                            columns: 2
+                            rows: 2
+                            rowSpacing: 10
+                            columnSpacing: 15
                             Repeater {
-                                id: repeater
                                 model: ["Numéro court", "Numéro fixes", "Numéro Mobiles"]
 
                                 delegate: Button {
                                     background: Rectangle {
-                                        radius: 20
-                                        color: numberFilter.checked ?"#141B6C"  : "#e0e0e0"
+                                        radius: 10
+                                        color: numberFilter.checked ? "#0D6160" : "#E9E9E9"
                                     }
                                     id: numberFilter
                                     text: modelData
                                     checkable: true
-                                    checked: currentForwardingData!==null? Logic.getIsCheckedTargetNumbersFilter(index): false
-                                    height: 40
+                                    checked: currentForwardingData !== null ? Logic.getIsCheckedTargetNumbersFilter(index) : false
+                                    height: 60
+                                    implicitWidth: 200
+                                    anchors.left: index === 2? parent.left: undefined
+                                    anchors.leftMargin: index === 2? 108 : 0
+
+
                                 }
                             }
                         }
@@ -337,7 +344,7 @@ ScrollView {
                             text: "Filtrer selon l'état de présence"
                             background: Rectangle {
                                 radius: 20
-                                color: presenceButton.checked ?"#141B6C"  : "#e0e0e0"
+                                color: presenceButton.checked ? "#0D6160"  : "#e0e0e0"
                             }
                             checkable: true
                             height: 40
@@ -356,7 +363,7 @@ ScrollView {
                             height: 40
                             background: Rectangle {
                                 radius: 20
-                                color: calendarButton.checked ?"#141B6C"  : "#e0e0e0"
+                                color: calendarButton.checked ? "#0D6160"  : "#e0e0e0"
                             }
                             onClicked: {
                                 if (calendarButton.checked) {
@@ -459,7 +466,7 @@ ScrollView {
                                 id:roundedButton
                                 background: Rectangle {
                                     radius: 20
-                                    color: roundedButton.checked ?"#141B6C"  : "#e0e0e0"
+                                    color: roundedButton.checked ? "#0D6160"  : "#e0e0e0"
                                 }
                                 text: modelData
                                 checkable: true

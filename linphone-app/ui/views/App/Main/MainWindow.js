@@ -29,7 +29,7 @@
 // =============================================================================
 
 function handleActiveFocusItemChanged (activeFocusItem) {
-  var smartSearchBar = window._smartSearchBar
+  var smartSearchBar = mainwindow._smartSearchBar
 
   if (activeFocusItem == null && smartSearchBar) {
     smartSearchBar.closeMenu()
@@ -47,40 +47,40 @@ function handleClosing (close) {
 // -----------------------------------------------------------------------------
 
 function lockView (info) {
-  window._lockedInfo = info
+  mainwindow._lockedInfo = info
 }
 
 function unlockView () {
-  window._lockedInfo = undefined
+  mainwindow._lockedInfo = undefined
 }
 
 function setView (view, props, callback) {
   function apply (view, props, showWindow, callback) {
 	if(showWindow)
-		Linphone.App.smartShowWindow(window)
+        Linphone.App.smartShowWindow(mainwindow)
 
     var item = mainLoader.item
 
     updateSelectedEntry(view, props)
-    window._currentView = view
+    mainwindow._currentView = view
     item.contentLoader.setSource(view + '.qml', props || {})
     if(callback)
 		callback()
   }
 
-  var lockedInfo = window._lockedInfo
+  var lockedInfo = mainwindow._lockedInfo
   if (!lockedInfo) {
     apply(view, props, false, callback)
     return
   }
-  window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: lockedInfo.descriptionText,
   }, function (status) {
     if (status) {
       unlockView()
       apply(view, props, true, callback)
     } else {
-      updateSelectedEntry(window._currentView, props)
+      updateSelectedEntry(mainwindow._currentView, props)
     }
   })
 }
@@ -96,7 +96,7 @@ function openConferenceManager (params) {
 }
 
 function manageAccounts () {
-  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ManageAccounts.qml'))
+  mainmainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ManageAccounts.qml'))
 }
 
 // -----------------------------------------------------------------------------

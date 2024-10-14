@@ -11,7 +11,8 @@ import Units 1.0
 import App.Styles 1.0
 import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 // =============================================================================
-Rectangle{
+/*Rectangle{
+    visible: false
     height: contentHeight
     width: parent.width
     property string loaderSource: "";
@@ -320,4 +321,9 @@ Rectangle{
        }
     }
 
+}
+*/
+Rectangle{
+    anchors.fill: parent
+    color:"#F4F4F4"
 }

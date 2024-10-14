@@ -942,11 +942,6 @@
         <translation>Voulez-vous vraiment supprimer ce contact de votre carnet d&apos;adresses ?</translation>
     </message>
     <message>
-        <source>sipAccounts</source>
-        <extracomment>&apos;SIP ACCOUNT(S)&apos; : label for sip accounts in contact</extracomment>
-        <translation>COMPTE(S) SIP</translation>
-    </message>
-    <message>
         <source>address</source>
         <translation>ADRESSE</translation>
     </message>
@@ -973,10 +968,6 @@
     <message>
         <source>cancel</source>
         <translation>ANNULER</translation>
-    </message>
-    <message>
-        <source>sipAccountsPlaceholder</source>
-        <translation>Compte SIP</translation>
     </message>
     <message>
         <source>companiesPlaceholder</source>
@@ -1016,14 +1007,13 @@
         <translation>Vous devez définir l&apos;URI de la réunion dans les paramètres de votre compte pour créer une conférence.</translation>
     </message>
     <message>
-        <source>usernames</source>
-        <extracomment>&apos;USERNAME(S)&apos; : label for sip accounts when only username is displayed n contact</extracomment>
-        <translation>Nom(s) d&apos;utilisateur</translation>
-    </message>
-    <message>
         <source>displayName</source>
         <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
         <translation>Nom d&apos;affichage</translation>
+    </message>
+    <message>
+        <source>Numéro de contact </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1134,16 +1124,6 @@
         <source>conversationMenuDelete</source>
         <extracomment>&apos;Delete history&apos; : Item menu to delete the chat&apos;s history</extracomment>
         <translation>Supprimer l&apos;historique</translation>
-    </message>
-    <message>
-        <source>conversationMenuViewContact</source>
-        <extracomment>&apos;View contact&apos; : Item menu to view the contact in address book</extracomment>
-        <translation>Voir le contact</translation>
-    </message>
-    <message>
-        <source>conversationMenuAddContact</source>
-        <extracomment>&apos;Add contact&apos; : Item menu to add the contact to address book</extracomment>
-        <translation>Ajouter un contact</translation>
     </message>
     <message>
         <source>conversationMenuScheduleMeeting</source>
@@ -1503,8 +1483,8 @@
 <context>
     <name>Forwardings</name>
     <message>
-        <source>removeContactDescription</source>
-        <translation type="unfinished">Voulez-vous vraiment supprimer ce contact de votre carnet d&apos;adresses ?</translation>
+        <source>Voulez-vous vraiment supprimer cette règle ?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1526,7 +1506,7 @@
         <translation>Supprimer l&apos;historique</translation>
     </message>
     <message>
-        <source>Enter un numéro</source>
+        <source>Entrer un numéro</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1854,6 +1834,56 @@ Cliquez ici : &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainContent</name>
     <message>
+        <source>Rechercher, se rencontrer et appeler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucune connexion réseau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainContent - Copie</name>
+    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1898,6 +1928,56 @@ Cliquez ici : &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainContent-09-10</name>
+    <message>
+        <source>Rechercher, se rencontrer et appeler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucune connexion réseau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4005,6 +4085,19 @@ Cliquez ici : &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
 </context>
 <context>
+    <name>TimelineItem - Copie</name>
+    <message>
+        <source>deleteTimeline</source>
+        <extracomment>&apos;Are you sure you want to delete and leave this timeline?&apos;</extracomment>
+        <translation type="unfinished">Êtes-vous certain de vouloir tout effacer et de quitter cette conversation&#x202f;?</translation>
+    </message>
+    <message>
+        <source>deleteTimelineTooltip</source>
+        <extracomment>&apos;After confirmation, it will erase all history, leave the chat room if it is a group chat and delete it in database.&apos;</extracomment>
+        <translation type="unfinished">Après la confirmation, cela effacera tout l&apos;historique, quittera la conversation si c&apos;est une conversation de groupe et l&apos;effacera de la base de donnée.</translation>
+    </message>
+</context>
+<context>
     <name>UseAppSipAccount</name>
     <message>
         <source>confirmAction</source>
@@ -4140,13 +4233,6 @@ Cliquez ici : &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation type="unfinished">Souhaitez-vous supprimer cet élément ?</translation>
-    </message>
-</context>
-<context>
-    <name>VoiceMailManagement</name>
-    <message>
-        <source>voice</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

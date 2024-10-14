@@ -72,7 +72,7 @@ function editContact () {
 }
 
 function removeContact () {
-  window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: qsTr('removeContactDescription'),
   }, function (status) {
     if (status) {

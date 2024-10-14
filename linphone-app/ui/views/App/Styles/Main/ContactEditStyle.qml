@@ -14,7 +14,7 @@ QtObject {
 	}
 	
 	property QtObject bar: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_bar', 'e')
+        property var colorModel: ColorsList.add(sectionName+'_bar', 'cb')
 		property int avatarSize: 60
 		property int height: 80
 		property int leftMargin: 40
@@ -84,7 +84,7 @@ QtObject {
 	}
 	
 	property QtObject content: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_content', 'k')
+        property var colorModel: ColorsList.add(sectionName+'_content', 'cb')
 	}
 	
 	property QtObject values: QtObject {

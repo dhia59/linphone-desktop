@@ -12,7 +12,7 @@ QtObject {
 	property var backgroundColor: ColorsList.add(sectionName+'_bg', 'k')
 	
 	property int height: 60
-	property var colorModel: ColorsList.add(sectionName+'_fg', 'j')
+    property var colorModel: ColorsList.add(sectionName+'_fg', 'ac')
 	property int weight: Font.Normal
 	property int selectedWeight: Font.Bold
 	property int pointSize: Units.dp * 12

@@ -942,11 +942,6 @@
         <translation>Vill du verkligen ta bort denna kontakt från din adressbok?</translation>
     </message>
     <message>
-        <source>sipAccounts</source>
-        <extracomment>&apos;SIP ACCOUNT(S)&apos; : label for sip accounts in contact</extracomment>
-        <translation>SIP-KONTO(N)</translation>
-    </message>
-    <message>
         <source>address</source>
         <translation>ADRESS</translation>
     </message>
@@ -973,10 +968,6 @@
     <message>
         <source>cancel</source>
         <translation>AVBRYT</translation>
-    </message>
-    <message>
-        <source>sipAccountsPlaceholder</source>
-        <translation>SIP-konto</translation>
     </message>
     <message>
         <source>companiesPlaceholder</source>
@@ -1016,13 +1007,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>usernames</source>
-        <extracomment>&apos;USERNAME(S)&apos; : label for sip accounts when only username is displayed n contact</extracomment>
+        <source>displayName</source>
+        <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>displayName</source>
-        <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
+        <source>Numéro de contact </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1133,16 +1123,6 @@
     <message>
         <source>conversationMenuDelete</source>
         <extracomment>&apos;Delete history&apos; : Item menu to delete the chat&apos;s history</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>conversationMenuViewContact</source>
-        <extracomment>&apos;View contact&apos; : Item menu to view the contact in address book</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>conversationMenuAddContact</source>
-        <extracomment>&apos;Add contact&apos; : Item menu to add the contact to address book</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1503,8 +1483,8 @@
 <context>
     <name>Forwardings</name>
     <message>
-        <source>removeContactDescription</source>
-        <translation type="unfinished">Vill du verkligen ta bort denna kontakt från din adressbok?</translation>
+        <source>Voulez-vous vraiment supprimer cette règle ?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1526,7 +1506,7 @@
         <translation type="unfinished">Radera historik</translation>
     </message>
     <message>
-        <source>Enter un numéro</source>
+        <source>Entrer un numéro</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1854,6 +1834,56 @@ Klicka här: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainContent</name>
     <message>
+        <source>Rechercher, se rencontrer et appeler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucune connexion réseau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainContent - Copie</name>
+    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1898,6 +1928,56 @@ Klicka här: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainContent-09-10</name>
+    <message>
+        <source>Rechercher, se rencontrer et appeler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucune connexion réseau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4005,6 +4085,19 @@ Klicka här: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
 </context>
 <context>
+    <name>TimelineItem - Copie</name>
+    <message>
+        <source>deleteTimeline</source>
+        <extracomment>&apos;Are you sure you want to delete and leave this timeline?&apos;</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteTimelineTooltip</source>
+        <extracomment>&apos;After confirmation, it will erase all history, leave the chat room if it is a group chat and delete it in database.&apos;</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UseAppSipAccount</name>
     <message>
         <source>confirmAction</source>
@@ -4139,13 +4232,6 @@ Klicka här: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     <message>
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>VoiceMailManagement</name>
-    <message>
-        <source>voice</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

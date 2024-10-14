@@ -16,7 +16,7 @@ Rectangle {
 	
 	readonly property bool isSelected: parent.parent._selected === this
 	property alias iconSize : mainIcon.iconSize
-	property alias overwriteColor: mainIcon.overwriteColor
+    //property alias overwriteColor: mainIcon.overwriteColor
 	
 	// ---------------------------------------------------------------------------
 	
@@ -79,6 +79,9 @@ Rectangle {
             id:mainIcon
             icon: entry.icon
             iconSize: 20
+            overwriteColor: entry.isSelected
+                   ? ApplicationMenuStyle.entry.text.color.selected.color
+                   : ApplicationMenuStyle.entry.text.color.normal.color
         }
 		
 		Text {
@@ -96,21 +99,7 @@ Rectangle {
 		}
 	}
 	
-	Rectangle {
 
-		anchors {
-            left: parent.left
-
-		}
-        //anchors.rightMargin: 20
-		
-		height: parent.height
-        color: entry.isSelected
-               ? ApplicationMenuStyle.entry.indicator.colorModel.color
-               : 'transparent'
-		width: ApplicationMenuStyle.entry.indicator.width
-	}
-	
 	MouseArea {
 		id: mouseArea
 		

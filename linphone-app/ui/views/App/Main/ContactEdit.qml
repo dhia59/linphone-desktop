@@ -26,12 +26,6 @@ ColumnLayout  {
     property var _contact
     property var _vcard
 
-    /*Image {
-                 source: "qrc:/assets/images/appBackground.png"
-                 anchors.fill: parent
-                 fillMode: Image.PreserveAspectCrop
-
-             }*/
 
     // ---------------------------------------------------------------------------
 
@@ -97,7 +91,7 @@ ColumnLayout  {
 
         Layout.fillWidth: true
         Layout.preferredHeight: ContactEditStyle.bar.height
-        color: '#e7e7e7'
+        color: ContactEditStyle.content.colorModel.color
 
         RowLayout {
             anchors {
@@ -235,6 +229,7 @@ ColumnLayout  {
 
         function viewConversation(chatRoomModel){
             if( chatRoomModel && !chatRoomModel.updating){
+                console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
                 window.setView('Conversation', {
                                    chatRoomModel:chatRoomModel
                                }, function(){
@@ -268,7 +263,8 @@ ColumnLayout  {
     Rectangle {
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Rectangle{
+        //color: "#F4F4F4"
+        /* Rectangle{
             anchors.centerIn: parent
 
             height: 300
@@ -279,7 +275,7 @@ ColumnLayout  {
                 fillMode: Image.PreserveAspectCrop
 
             }
-        }
+        }*/
         color: ContactEditStyle.content.colorModel.color
 
         Flickable {
@@ -312,7 +308,7 @@ ColumnLayout  {
                     Layout.rightMargin: ContactEditStyle.values.rightMargin
                     Layout.topMargin: 50
                     Layout.fillWidth: true
-                    tcolor:'#20E8E4'
+                    tcolor:'#0D6160'
                     minValues: _contact ? 1 : 0
                     placeholder: qsTr('Numéro de contact ')
                     readOnly: !_edition
@@ -335,7 +331,7 @@ ColumnLayout  {
 
                 ListForm {
                     id: companies
-                    tcolor:'#20E8E4'
+                    tcolor:'#0D6160'
 
                     Layout.leftMargin: ContactEditStyle.values.leftMargin
                     Layout.rightMargin: ContactEditStyle.values.rightMargin
@@ -357,7 +353,7 @@ ColumnLayout  {
 
                 ListForm {
                     id: emails
-                    tcolor:'#20E8E4'
+                    tcolor:'#0D6160'
 
                     Layout.leftMargin: ContactEditStyle.values.leftMargin
                     Layout.rightMargin: ContactEditStyle.values.rightMargin
@@ -379,7 +375,7 @@ ColumnLayout  {
 
                 ListForm {
                     id: urls
-                    tcolor:'#20E8E4'
+                    tcolor:'#0D6160'
 
                     Layout.leftMargin: ContactEditStyle.values.leftMargin
                     Layout.rightMargin: ContactEditStyle.values.rightMargin
@@ -403,7 +399,7 @@ ColumnLayout  {
                     Layout.leftMargin: ContactEditStyle.values.leftMargin
                     Layout.rightMargin: ContactEditStyle.values.rightMargin
                     Layout.topMargin: 30
-                    tcolor:'#20E8E4'
+                    tcolor:'#0D6160'
                     isrow:true
                     fields: Logic.buildAddressFields()
 
@@ -445,7 +441,7 @@ ColumnLayout  {
 
 
     Rectangle {
-
+        color:  ContactEditStyle.content.colorModel.color
         Layout.fillWidth: true
         Layout.preferredHeight: ContactEditStyle.bar.height
 
@@ -471,8 +467,8 @@ ColumnLayout  {
                 ActionButton {
                     isCustom: true
                     backgroundRadius: 4
-                    colorSet: ContactEditStyle.bar.actions.edit.colorSet
-                    staticIconB:'qrc:/assets/images/contact_edit_custom.svg'
+                    defaultBackgroundColor:ContactEditStyle.content.colorModel.color
+                    staticIconB:'qrc:/assets/images/saylo_edit.png'
 
                     visible: !_edition && (contactType ==='personnel' || contactType ==='')
                     onClicked: Logic.editContact()
@@ -481,12 +477,15 @@ ColumnLayout  {
                 ActionButton {
                     isCustom: true
                     backgroundRadius: 4
-                    colorSet: ContactEditStyle.bar.actions.del.colorSet
-                    staticIconB:'qrc:/assets/images/contact_delete_custom.svg'
+                    defaultBackgroundColor:ContactEditStyle.content.colorModel.color
+                    staticIconB :'qrc:/assets/images/saylo_corbeille.png'
                     onClicked: Logic.removeContact()
                     visible: !_edition && (contactType ==='personnel' || contactType ==='')
                 }
             }
+
+
+
 
         }
     }

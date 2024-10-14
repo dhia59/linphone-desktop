@@ -15,22 +15,21 @@ Button {
   property int capitalization
   property alias pointSize: textItem.font.pointSize
   property alias textFormat: textItem.textFormat
-
+  property bool isSelected: false
+  width: 90
   background: Rectangle {
     id: background
-
-    color: button.down
-      ? SmallButtonStyle.background.color.pressed.color
-      : (button.hovered
-         ? SmallButtonStyle.background.color.hovered.color
-         : SmallButtonStyle.background.color.normal.color
-        )
+    border.width: 1
+    border.color: SmallButtonStyle.text.colorModelNormal.color
+    color: isSelected ? SmallButtonStyle.background.color.pressed.color : SmallButtonStyle.background.color.normal.color
     implicitHeight: SmallButtonStyle.background.height
     radius: SmallButtonStyle.background.radius
+
+
   }
   contentItem: Text {
     id: textItem
-    color: SmallButtonStyle.text.colorModel.color
+    color: isSelected ?SmallButtonStyle.text.colorModelSelected.color:  SmallButtonStyle.text.colorModelNormal.color
     font.pointSize: SmallButtonStyle.text.pointSize
     font.weight: Font.Bold
     font.capitalization: button.capitalization

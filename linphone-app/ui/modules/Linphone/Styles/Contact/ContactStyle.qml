@@ -6,7 +6,7 @@ import ColorsList 1.0
 
 QtObject {
 	property string sectionName: 'Contact'
-	property int contentHeight: 32
+    property int contentHeight: 30
 	property int height: 50
 	property int leftMargin: 14
 	property int rightMargin: 14

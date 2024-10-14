@@ -46,7 +46,8 @@ Row {
 		SmallButton {
 			capitalization: item.capitalization
 			anchors.verticalCenter: parent.verticalCenter
-			backgroundColor: item.style
+            isSelected: selectedButton === index
+            /*backgroundColor: item.style
 								? selectedButton === index
 									? item.style.button.color.selected.color
 									: (down
@@ -57,6 +58,7 @@ Row {
 										)
 									)
 								: ''
+                                */
 			text: modelData
 			radius: height/2
 			

@@ -28,13 +28,13 @@
 // =============================================================================
 
 function editAccount (account) {
-  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/SettingsSipAccountsEdit.qml'), {
+  mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/SettingsSipAccountsEdit.qml'), {
     account: account
   })
 }
 
 function deleteAccount (account) {
-  window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: qsTr('deleteAccountDescription'),
   }, function (status) {
       if (status) {
@@ -45,7 +45,7 @@ function deleteAccount (account) {
 }
 
 function eraseAllPasswords () {
-  window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: qsTr('eraseAllPasswordsDescription'),
   }, function (status) {
     if (status) {

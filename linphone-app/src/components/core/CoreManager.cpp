@@ -93,8 +93,8 @@ CoreManager::CoreManager (QObject *parent, const QString &configPath) :
 }
 void CoreManager::checkInternetConnection() {
 	if (mInternetChecker) {
-		mInternetChecker->pingHost(SipConstant::server);
-		//mInternetChecker->checkConnection();  // Call checkConnection on InternetChecker instance
+		//mInternetChecker->pingHost(SipConstant::server);
+		mInternetChecker->checkConnection();  // Call checkConnection on InternetChecker instance
 	}
 }
 CoreManager::~CoreManager(){

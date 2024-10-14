@@ -17,8 +17,8 @@ import 'qrc:/ui/scripts/Utils/utils.js' as Utils
 // =============================================================================
 
 ApplicationWindow {
-    id: window
-
+    id: mainwindow
+    property var _lockedInfo
     // ---------------------------------------------------------------------------
 
 
@@ -71,7 +71,7 @@ ApplicationWindow {
     Connections {
         target: CoreManager
         onCoreManagerInitialized: {
-           mainWindowLoader.source= AccountSettingsModel.isLoggedIn ?"MainContent.qml": "Login.qml"
+            mainWindowLoader.source= AccountSettingsModel.isLoggedIn ?"MainContent.qml": "Login.qml"
             mainWindowLoader.active = true
             accountSettingsModelConnections.target= AccountSettingsModel
 
@@ -83,7 +83,7 @@ ApplicationWindow {
 
     Shortcut {
         sequence: StandardKey.Close
-        onActivated: window.hide()
+        onActivated: mainwindow.hide()
     }
     // ---------------------------------------------------------------------------
 
@@ -93,13 +93,13 @@ ApplicationWindow {
     // ---------------------------------------------------------------------------
     Loader {
         id: mainWindowLoader
-       // source: "MainContent.qml"
+        // source: "MainContent.qml"
         active: false
         anchors.fill: parent
-       onSourceChanged:  {
-           console.log("testttttttttttttttttttttttt state ", AccountSettingsModel.registrationState===0 )
-           console.log("testttttttttttttttttttttttt source ",mainWindowLoader.source )
-       }
+        onSourceChanged:  {
+            console.log("testttttttttttttttttttttttt state ", AccountSettingsModel.registrationState===0 )
+            console.log("testttttttttttttttttttttttt source ",mainWindowLoader.source )
+        }
 
     }
 
@@ -124,21 +124,6 @@ ApplicationWindow {
         }
 
     }
-
-    /*Component.onCompleted:{
-
-        console.log("rowcount0: ")
-        console.log("rowcount: "+timeline.model.rowCount())
-        if(Qt.platform.os === 'osx') menuBar = customMenuBar;
-        /* window.setView('Conversation', {
-                           chatRoomModel:timeline.model.getFirstChatRoom(timeline.model.rowCount()).chatRoomModel
-
-                       })
-
-        //console.log("timelinesetitem: "+timeline.model.rowCount() )
-        //timeline.currentIndex = 15
-
-    }*/
     // ---------------------------------------------------------------------------
     // Url handlers.
     // ---------------------------------------------------------------------------
@@ -154,25 +139,25 @@ ApplicationWindow {
     Connections{
         target: App
         onRequestFetchConfig: {
-            window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
-                                           flat: true,
-                                           //: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
-                                           descriptionText: '<b>'+qsTr('confirmFetchUri')
-                                                            +'</b><br/><br/>'+filePath,
-                                       }, function (status) {
-                                           if (status) {
-                                               App.setFetchConfig(filePath)
-                                           }
-                                       })
+            mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+                                                   flat: true,
+                                                   //: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
+                                                   descriptionText: '<b>'+qsTr('confirmFetchUri')
+                                                                    +'</b><br/><br/>'+filePath,
+                                               }, function (status) {
+                                                   if (status) {
+                                                       App.setFetchConfig(filePath)
+                                                   }
+                                               })
         }
     }
     Connections {
         id:accountSettingsModelConnections
-       // target: AccountSettingsModel
+        // target: AccountSettingsModel
 
         onAccountLogout: {
             console.log("logouttttttttt")
-           // noNetworkAlert= false;
+            // noNetworkAlert= false;
             mainWindowLoader.setSource("Login.qml")
         }
         /*onFailedRegistration: {
@@ -191,7 +176,7 @@ ApplicationWindow {
             if(AccountSettingsModel.registrationState===2){
                 console.log("okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
                 ///mainWindowLoader.setSource("MainContent.qml")
-               // noNetworkAlert= false;
+                // noNetworkAlert= false;
             }
         }
         onIsLoggedInChanged:{
@@ -201,10 +186,10 @@ ApplicationWindow {
 
     Settings{
         category: "window"
-        property alias x : window.x
-        property alias y : window.y
-        property alias width : window.width
-        property alias height : window.height
+        property alias x : mainwindow.x
+        property alias y : mainwindow.y
+        property alias width : mainwindow.width
+        property alias height : mainwindow.height
     }
 
 }

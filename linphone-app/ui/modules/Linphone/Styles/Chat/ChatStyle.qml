@@ -8,7 +8,7 @@ import ColorsList 1.0
 
 QtObject {
 	property string sectionName : 'Chat'
-	property var colorModel: ColorsList.add(sectionName, 'q')
+    property var colorModel: ColorsList.add(sectionName, 'cb')
 	property string copyTextIcon : 'menu_copy_text_custom'
 	property int rightButtonMargin: 15
 	property int rightButtonSize: 30
@@ -43,7 +43,7 @@ QtObject {
 	}
 	
 	property QtObject sendArea: QtObject {
-		property int height: 80
+        property int height: 70
 		
 		property QtObject border: QtObject {
 			property var colorModel: ColorsList.add(sectionName+'_send_border', 'f')
@@ -56,7 +56,7 @@ QtObject {
 	}
 	
 	property QtObject composingText: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_composing_text', 'd')
+        property var colorModel: ColorsList.add(sectionName+'_composing_text', 'n')
 		property int height: 25
 		property int leftPadding: 20
 		property int pointSize: Units.dp * 9
@@ -263,7 +263,7 @@ QtObject {
 				property int avatarSize: 30
 				
 				property QtObject text: QtObject {
-					property var colorModel: ColorsList.add(sectionName+'_incoming_text', 'd')
+                    property var colorModel: ColorsList.add(sectionName+'_incoming_text', 'q')
 					property int pointSize: Units.dp * 10
 				}
 			}
@@ -275,7 +275,7 @@ QtObject {
 				property int sendIconSize: 12
 				
 				property QtObject text: QtObject {
-					property var colorModel: ColorsList.add(sectionName+'_outgoing_text', 'd')
+                    property var colorModel: ColorsList.add(sectionName+'_outgoing_text', 'q')
 					property int pointSize: Units.dp * 10
 				}
 			}
