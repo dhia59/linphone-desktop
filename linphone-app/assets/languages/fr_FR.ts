@@ -942,11 +942,6 @@
         <translation>Voulez-vous vraiment supprimer ce contact de votre carnet d&apos;adresses ?</translation>
     </message>
     <message>
-        <source>sipAccounts</source>
-        <extracomment>&apos;SIP ACCOUNT(S)&apos; : label for sip accounts in contact</extracomment>
-        <translation>COMPTE(S) SIP</translation>
-    </message>
-    <message>
         <source>address</source>
         <translation>ADRESSE</translation>
     </message>
@@ -973,10 +968,6 @@
     <message>
         <source>cancel</source>
         <translation>ANNULER</translation>
-    </message>
-    <message>
-        <source>sipAccountsPlaceholder</source>
-        <translation>Compte SIP</translation>
     </message>
     <message>
         <source>companiesPlaceholder</source>
@@ -1016,14 +1007,13 @@
         <translation>Vous devez définir l&apos;URI de la réunion dans les paramètres de votre compte pour créer une conférence.</translation>
     </message>
     <message>
-        <source>usernames</source>
-        <extracomment>&apos;USERNAME(S)&apos; : label for sip accounts when only username is displayed n contact</extracomment>
-        <translation>Nom(s) d&apos;utilisateur</translation>
-    </message>
-    <message>
         <source>displayName</source>
         <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
         <translation>Nom d&apos;affichage</translation>
+    </message>
+    <message>
+        <source>Numéro de contact </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1505,6 +1495,46 @@
     <message>
         <source>removeContactDescription</source>
         <translation type="unfinished">Voulez-vous vraiment supprimer ce contact de votre carnet d&apos;adresses ?</translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatList</name>
+    <message>
+        <source>Equipes</source>
+        <extracomment>&apos;Meetings&apos; : Conference list title.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Créer une équipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatManagement</name>
+    <message>
+        <source>addParticipantPlaceholder</source>
+        <extracomment>&apos;Add Participants&apos; : Placeholder in a search bar for adding participant to the chat room</extracomment>
+        <translation type="unfinished">Ajouter des participants</translation>
+    </message>
+    <message>
+        <source>addParticipantTooltip</source>
+        <extracomment>&apos;Search participants in your contact list in order to invite them into the chat room.&apos;</extracomment>
+        <translation type="unfinished">Cherchez des participants parmi vos contacts afin de les inviter dans la conversation de groupe.</translation>
+        <extra-Tooltip>Explanation for inviting the selected participants into chat room</extra-Tooltip>
+    </message>
+    <message>
+        <source>participantList</source>
+        <extracomment>&apos;Participant list&apos;</extracomment>
+        <translation type="unfinished">Liste des participants</translation>
+    </message>
+    <message>
+        <source>adminStatus</source>
+        <translation type="unfinished">Admin</translation>
+    </message>
+    <message>
+        <source>quitGroupButton</source>
+        <extracomment>&apos;Exit group&apos; : Button label</extracomment>
+        <translation type="unfinished">Quitter le groupe</translation>
     </message>
 </context>
 <context>

@@ -36,22 +36,24 @@ class ContactsEnreachListProxyModel : public QSortFilterProxyModel {
   Q_PROPERTY(bool useLocalFilter READ isLocalFilterUsed WRITE setLocalFilter);
   Q_PROPERTY(bool usePartageFilter READ isPartageFilterUsed WRITE setPartgeFilter);
   Q_PROPERTY(bool usePersonnelFilter READ isPersonnelFilterUsed WRITE setPersonnelFilter);
-  Q_PROPERTY(ContactsEnreachListModel * mcontacts MEMBER contacts NOTIFY loadedContacts)
+  Q_PROPERTY(ContactsEnreachListModel * mcontacts MEMBER  contacts NOTIFY loadedContacts)
 
 public:
   ContactsEnreachListProxyModel (QObject *parent = Q_NULLPTR);
   ContactsEnreachListModel *contacts;
   Q_INVOKABLE void setFilter (const QString &pattern);
   Q_INVOKABLE void getloadedContacts();
-  Q_SIGNAL void loadedContacts(const QString lastsipcontact);
-//signals:
-	//void loadedContacts(QVariantList *listSips);
+  
 
+signals:
+	//void loadedContacts(const QString lastsipcontact, const QString contactType);
+	void loadedContacts(ContactEnreach* contact);
 public slots:
 	void loadContacts();
 protected:
   bool filterAcceptsRow (int sourceRow, const QModelIndex &sourceParent) const override;
   bool lessThan (const QModelIndex &left, const QModelIndex &right) const override;
+  void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 
 private:
   float computeStringWeight (const QString &string, float percentage) const;

@@ -18,11 +18,10 @@ import 'ContactEdit.js' as Logic
 
 ColumnLayout  {
 	id: contactEdit
-	
 	property string sipAddress
     property string contactType
 	readonly property alias vcard: contactEdit._vcard
-	
+    property string sipAddressesValue: ""
 	property bool _edition: false
 	property var _contact
 	property var _vcard
@@ -33,7 +32,7 @@ ColumnLayout  {
                  fillMode: Image.PreserveAspectCrop
 
              }*/
-	
+
 	// ---------------------------------------------------------------------------
 	
 	spacing: 0
@@ -56,12 +55,15 @@ ColumnLayout  {
 		  contactEdit._vcard = vcard
 		  contactEdit._edition = true
 		} else {
-		  // See or edit a contact.
-		  contactEdit._vcard = contact.vcard
+
+            if(sipAddressesValue!==""){
+                sipAddressesValue= sipAddress.split("@")[0].replace("sip:","")
+            }
+            contactEdit._vcard = contact.vcard
 		}
 	  }
-	
-	onVcardChanged: Logic.handleVcardChanged(vcard)
+
+    onVcardChanged:Logic.handleVcardChanged(vcard)
 	
 	// ---------------------------------------------------------------------------
 	
@@ -73,8 +75,7 @@ ColumnLayout  {
 			onContactUpdated: Logic.handleContactUpdated()
 		}
         Component.onCompleted: {
-            console.log("*********************************************************** ")
-            console.log(contactType)
+
         }
 	}
 	
@@ -304,29 +305,29 @@ ColumnLayout  {
 				
 				width: flick.contentWidth
 				
-				ListForm {
-					id: addresses
+                ListForm {
+                    id: addresses
 
-					
-					Layout.leftMargin: ContactEditStyle.values.leftMargin
-					Layout.rightMargin: ContactEditStyle.values.rightMargin
+                    Layout.leftMargin: ContactEditStyle.values.leftMargin
+                    Layout.rightMargin: ContactEditStyle.values.rightMargin
                     Layout.topMargin: 50
-					Layout.fillWidth: true
+                    Layout.fillWidth: true
                     tcolor:'#20E8E4'
-					minValues: _contact ? 1 : 0
-                    placeholder: qsTr('sipAccountsPlaceholder')
-					readOnly: !_edition
-					title: SettingsModel.sipDisplayMode == UtilsCpp.SIP_DISPLAY_USERNAME
-					//: 'USERNAME(S)' : label for sip accounts when only username is displayed n contact
-						? qsTr('usernames')
-					//: 'SIP ACCOUNT(S)' : label for sip accounts in contact
-						: qsTr('sipAccounts')
-					
-					onChanged: Logic.handleSipAddressChanged(addresses, index, oldValue, newValue)
-					onRemoved: _vcard.removeSipAddress(value)
-				}
-				
-				Rectangle {
+                    minValues: _contact ? 1 : 0
+                    placeholder: qsTr('Numéro de contact ')
+                    readOnly: !_edition
+                    title: "Numéro"
+                    maxValues:1
+                    onChanged: {
+                        sipAddressesValue= newValue
+                      /* console.log("ollllllllllllllld ", addresses.value)
+                        console.log("newwwwwwwwwwwww ", newValue)
+                        Logic.handleSipAddressChanged(addresses, index, oldValue, newValue)*/
+                    }
+                    //onRemoved: _vcard.removeSipAddress(value)
+                }
+
+                Rectangle {
 					Layout.fillWidth: true
 					Layout.preferredHeight: ContactEditStyle.values.separator.height
                     color: '#a3a2b8'
@@ -433,7 +434,7 @@ ColumnLayout  {
 					}
 					
 					TextButtonB {
-						enabled: usernameInput.text.length > 0 && _vcard && _vcard.sipAddresses.length > 0
+                        enabled: usernameInput.text.length > 0 && _vcard && addresses.count > 0
 						text: qsTr('save')
 						onClicked: Logic.save()
 					}

@@ -125,21 +125,20 @@ Rectangle{
 
             model: ContactsEnreachListProxyModel {
                 id: contacts
-                onLoadedContacts:{
+                onLoadedContacts:function(contact){
                     isBusy=false;
+                    var contactType= contact.contactType;
+                    var sipAddressesValue= ( contactType ==='personnel' || contactType ==='')? contact.sipAddresses[0]: contactType==='local'? contact.ext: contact.tel
+
                     contactEditLoader.setSource('ContactEdit.qml', {
-                                                    sipAddress: lastsipcontact
+                                                    sipAddress:contact.sipAddresses[0],
+                                                    contactType:contactType,
+                                                    sipAddressesValue: sipAddressesValue
                                                 })                
                 }
             }
 
-            Connections {
-                target: contacts
 
-                onLoadedContacts: {
-
-                }
-            }
             delegate: Borders {
                 bottomColor: ContactsStyle.contact.border.colorModel.color
                 bottomWidth: ContactsStyle.contact.border.width
@@ -308,13 +307,17 @@ Rectangle{
 
                         MouseArea {
                             anchors.fill: parent
-                          //  visible: $modelData.contactEnreach.contactType==="personnel"
-                            onClicked:
+                           onClicked:{
+                               var contactType= $modelData.contactEnreach.contactType;
+                               var withoutDomain= ( contactType ==='personnel' || contactType ==='')? $modelData.contactEnreach.sipAddresses[0]: contactType==='local'? $modelData.contactEnreach.ext: $modelData.contactEnreach.tel
                                 contactEditLoader.setSource('ContactEdit.qml', {
                                                                 sipAddress: $modelData.contactEnreach.sipAddresses[0],
-                                                                 contactType: $modelData.contactEnreach.contactType
+                                                                 contactType: contactType,
+                                                                 sipAddressesValue: withoutDomain
                                                             })
-                               // window.setView('ContactEdit', )
+                            }
+
+
                         }
 
                         RowLayout {

@@ -227,7 +227,7 @@ Rectangle {
 					color: IncallStyle.title.colorModel.color
 					font.pointSize: IncallStyle.title.pointSize
 				}
-				Text{
+                /*Text{
 					id: address
 					Layout.fillWidth: true
 					horizontalAlignment: Qt.AlignHCenter
@@ -237,7 +237,7 @@ Rectangle {
 								: ''
 					color: IncallStyle.title.colorModel.color
 					font.pointSize: IncallStyle.title.addressPointSize
-				}
+                }*/
 				
 			}
 			MessageBanner{
