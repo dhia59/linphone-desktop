@@ -36,7 +36,7 @@ function handleClosing (close) {
 		return
 	}
 	
-	window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+	mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 								   descriptionText: qsTr('acceptClosingDescription')
 							   }, function (status) {
 								   if (status) {
@@ -50,11 +50,11 @@ function handleClosing (close) {
 // -----------------------------------------------------------------------------
 
 function openCallSipAddress () {
-	window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/CallSipAddress.qml'))
+	mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/CallSipAddress.qml'))
 }
 
 function openConferenceManager (params, exitHandler) {
-	window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ConferenceManager.qml'), params, exitHandler)
+	mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ConferenceManager.qml'), params, exitHandler)
 }
 
 function openWaitingRoom(model){
@@ -121,7 +121,7 @@ function handleCallTransferAsked (call) {
 	}
 	
 	window.detachVirtualWindow()
-	window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/CallTransfer.qml'), {
+	mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/CallTransfer.qml'), {
 								   call: call,
 								   attended: false
 							   })
@@ -137,7 +137,7 @@ function handleCallAttendedTransferAsked (call) {
 		return
 	}
 	window.detachVirtualWindow()
-	window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/CallTransfer.qml'), {
+	mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/CallTransfer.qml'), {
 									call: call,
 									attended: true
 							   })

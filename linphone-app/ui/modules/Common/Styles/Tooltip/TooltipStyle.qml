@@ -9,7 +9,7 @@ import ColorsList 1.0
 QtObject {
 	property string sectionName: 'Tooltip'
 	property var backgroundColor: ColorsList.add(sectionName+'_bg', 'g')
-	property var colorModel: ColorsList.add(sectionName, 'q')
+	property var colorModel: ColorsList.add(sectionName, 'ac')
 	property int arrowSize: 8
 	property int delay: 1000
 	property int pointSize: Units.dp * 9

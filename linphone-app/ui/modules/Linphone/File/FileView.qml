@@ -56,7 +56,7 @@ Item {
 					mainItem.contentModel.downloadFile()
 				}else if (Utils.pointIsInItem(this, thumbnailProvider, mouse)) {
 					if(SettingsModel.isVfsEncrypted){
-						window.attachVirtualWindow(Utils.buildCommonDialogUri('FileViewDialog'), {
+						mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('FileViewDialog'), {
 													contentModel: mainItem.contentModel,
 												}, function (status) {
 												})
@@ -114,7 +114,7 @@ Item {
 				backgroundRadius: width
 				colorSet:  FileViewStyle.thumbnailVideoIcon
 				onClicked:{
-					window.attachVirtualWindow(Utils.buildCommonDialogUri('FileViewDialog'), {
+					mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('FileViewDialog'), {
 											contentModel: mainItem.contentModel,
 										}, function (status) {
 										})

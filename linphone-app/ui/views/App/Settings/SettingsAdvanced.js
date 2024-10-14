@@ -28,13 +28,13 @@
 // =============================================================================
 
 function editLdap (ldap) {
-  window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/SettingsLdapEdit.qml'), {
+  mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/SettingsLdapEdit.qml'), {
     ldapData: ldap
   })
 }
 
 function cleanLogs () {
-  window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: qsTr('cleanLogsDescription'),
   }, function (status) {
     if (status) {

@@ -778,6 +778,7 @@ void App::registerTypes () {
 	registerType<ForwardingListModel>("ForwardingListModel");
 	registerType<ForwardingListProxyModel>("ForwardingListProxyModel");
 	registerType<ForwardingManagement>("ForwardingManagement");
+	registerType<GreetingManagement>("GreetingManagement");
 	registerType<AccountManagementModel>("AccountManagementModel");
 	//registerType<CustomCallerIdModel>("CustomCallerIdModel");
 	registerType<ColorProxyModel>("ColorProxyModel");

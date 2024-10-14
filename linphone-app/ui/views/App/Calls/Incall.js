@@ -87,7 +87,7 @@ function handleVideoRequested (call) {
 	}
 	call.statusChanged.connect(endedHandler)
 	// Ask video to user.
-	window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+	mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 								   descriptionText: qsTr('acceptVideoDescription'),
 							   }, function (status) {
 								   //Utils.clearTimeout(timeout)	
@@ -114,7 +114,7 @@ function openCallStatistics () {
 }
 
 function openMediaParameters (window, incall) {
-	window.attachVirtualWindow(Utils.buildLinphoneDialogUri('MultimediaParametersDialog'), {
+	mainwindow.attachVirtualWindow(Utils.buildLinphoneDialogUri('MultimediaParametersDialog'), {
 								   call: incall.call
 							   })
 }

@@ -27,14 +27,20 @@ QtObject {
 	}
 	
 	property QtObject contact: QtObject {
-		property int height: 60
-		
+        property int height: 50
+        property QtObject hovered:QtObject {
+            property var color: ColorsList.add(sectionName+'hovredColor', 'timeline_hovred_color')
+        }
+
 		property QtObject backgroundColor: QtObject {
-			property var a: ColorsList.add(sectionName+'_contact_bg_a', 'timeline_bg_1')
+            property var a: ColorsList.add(sectionName+'_contact_bg_a', 'timeline_bg_1')
 			property var b: ColorsList.add(sectionName+'_contact_bg_b', 'timeline_bg_2')
 			property var selected: ColorsList.add(sectionName+'_contact_bg_c', 'i')
 		}
-		
+        property QtObject indicator: QtObject {
+            property int width:5
+
+        }
 		property QtObject subtitle: QtObject {
 			property QtObject color: QtObject {
 				property var normal: ColorsList.add(sectionName+'_contact_subtitle_n', 'n')
@@ -44,7 +50,7 @@ QtObject {
 		
 		property QtObject title: QtObject {
 			property QtObject color: QtObject {
-				property var normal: ColorsList.add(sectionName+'_contact_title_n', 'j')
+                property var normal: ColorsList.add(sectionName+'_contact_title_n', 'jj')
 				property var selected: ColorsList.add(sectionName+'_contact_title_c', 'q')
 			}
 		}

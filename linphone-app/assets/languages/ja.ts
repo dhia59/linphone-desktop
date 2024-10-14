@@ -936,11 +936,6 @@
         <translation>あなたのアドレス帳からこの連絡先を削除してもよろしいですか？</translation>
     </message>
     <message>
-        <source>sipAccounts</source>
-        <extracomment>&apos;SIP ACCOUNT(S)&apos; : label for sip accounts in contact</extracomment>
-        <translation>SIPアカウント</translation>
-    </message>
-    <message>
         <source>address</source>
         <translation>アドレス</translation>
     </message>
@@ -967,10 +962,6 @@
     <message>
         <source>cancel</source>
         <translation>キャンセル</translation>
-    </message>
-    <message>
-        <source>sipAccountsPlaceholder</source>
-        <translation>SIPアカウント</translation>
     </message>
     <message>
         <source>companiesPlaceholder</source>
@@ -1010,13 +1001,12 @@
         <translation type="unfinished">会議ベースのチャットルームを作成するには、アカウント設定で会議URIを設定する必要があります。</translation>
     </message>
     <message>
-        <source>usernames</source>
-        <extracomment>&apos;USERNAME(S)&apos; : label for sip accounts when only username is displayed n contact</extracomment>
-        <translation>ユーザー名</translation>
-    </message>
-    <message>
         <source>displayName</source>
         <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numéro de contact </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1128,16 +1118,6 @@
         <source>conversationMenuDelete</source>
         <extracomment>&apos;Delete history&apos; : Item menu to delete the chat&apos;s history</extracomment>
         <translation>履歴を削除</translation>
-    </message>
-    <message>
-        <source>conversationMenuViewContact</source>
-        <extracomment>&apos;View contact&apos; : Item menu to view the contact in address book</extracomment>
-        <translation>連絡先を表示</translation>
-    </message>
-    <message>
-        <source>conversationMenuAddContact</source>
-        <extracomment>&apos;Add contact&apos; : Item menu to add the contact to address book</extracomment>
-        <translation>連絡先の追加</translation>
     </message>
     <message>
         <source>conversationMenuScheduleMeeting</source>
@@ -1493,8 +1473,8 @@
 <context>
     <name>Forwardings</name>
     <message>
-        <source>removeContactDescription</source>
-        <translation type="unfinished">あなたのアドレス帳からこの連絡先を削除してもよろしいですか？</translation>
+        <source>Voulez-vous vraiment supprimer cette règle ?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1516,7 +1496,7 @@
         <translation>履歴の削除</translation>
     </message>
     <message>
-        <source>Enter un numéro</source>
+        <source>Entrer un numéro</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1844,6 +1824,56 @@
 <context>
     <name>MainContent</name>
     <message>
+        <source>Rechercher, se rencontrer et appeler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucune connexion réseau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainContent - Copie</name>
+    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1888,6 +1918,56 @@
     </message>
     <message>
         <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainContent-09-10</name>
+    <message>
+        <source>Rechercher, se rencontrer et appeler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucune connexion réseau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3992,6 +4072,19 @@
     </message>
 </context>
 <context>
+    <name>TimelineItem - Copie</name>
+    <message>
+        <source>deleteTimeline</source>
+        <extracomment>&apos;Are you sure you want to delete and leave this timeline?&apos;</extracomment>
+        <translation type="unfinished">本当にこのタイムラインを削除して離脱してもよろしいですか？</translation>
+    </message>
+    <message>
+        <source>deleteTimelineTooltip</source>
+        <extracomment>&apos;After confirmation, it will erase all history, leave the chat room if it is a group chat and delete it in database.&apos;</extracomment>
+        <translation type="unfinished">確認後、すべての履歴を消去し、グループチャットの場合はチャットルームを離れ、データベースで削除します。</translation>
+    </message>
+</context>
+<context>
     <name>UseAppSipAccount</name>
     <message>
         <source>confirmAction</source>
@@ -4127,13 +4220,6 @@
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
         <translation type="unfinished">このアイテムを削除してもよろしいですか？</translation>
-    </message>
-</context>
-<context>
-    <name>VoiceMailManagement</name>
-    <message>
-        <source>voice</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

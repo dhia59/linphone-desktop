@@ -8,12 +8,13 @@ import ColorsList 1.0
 
 QtObject {
 	property string sectionName: 'DroppableTextArea'
-	property var backgroundColor: ColorsList.add(sectionName+'_Chat_bg', 'e')
+    property var backgroundColor: ColorsList.add(sectionName+'_Chat_bg', 'aa')
 	property var outsideBackgroundColor: ColorsList.add(sectionName+'_Chat_outsideBackground', 'aa')
+    property var separator: ColorsList.add(sectionName+'_Chat_separator', 'j')
 	
 	property QtObject ephemeralTimer: QtObject{
 		property string icon: 'timer_custom'
-		property int iconSize : 30
+        property int iconSize : 30
 		property var timerColor: ColorsList.addImageColor(sectionName+'_ephemeralTimer', icon, 'ad')
 	}
 	
@@ -51,29 +52,29 @@ QtObject {
 		
 	}
 	property QtObject send: QtObject {
-		property int margins: 5
-		property int iconSize: 30
+        property int margins: 10
+        property int iconSize: 30
 		property string name : 'send'
 		property string icon : 'send_custom'
-		property var backgroundNormalColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_n', icon, 'me_n_b_bg')
-		property var backgroundHoveredColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_h', icon, 'me_h_b_bg')
-		property var backgroundPressedColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_p', icon, 'me_p_b_bg')
-		property var foregroundNormalColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_n', icon, 'me_n_b_fg')
-		property var foregroundHoveredColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_h', icon, 'me_h_b_fg')
-		property var foregroundPressedColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_p', icon, 'me_p_b_fg')
+        property var backgroundNormalColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_n', icon, 'me_n_b_bg_s')
+        property var backgroundHoveredColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_h', icon, 'me_h_b_bg_s')
+        property var backgroundPressedColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_p', icon, 'me_p_b_bg_s')
+        property var foregroundNormalColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_n', icon, 'q')
+        property var foregroundHoveredColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_h', icon, 'q')
+        property var foregroundPressedColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_p', icon, 'q')
 		
 	}
 	
 	property QtObject emoji: QtObject {
 		property int margins: 5
-		property int iconSize: 40
+        property int iconSize: 30
 		property string name : 'emoji'
 		property string icon : 'emoji_custom'
 		property var backgroundNormalColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_n', icon, 'me_n_b_bg')
 		property var backgroundHoveredColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_h', icon, 'me_h_b_bg')
 		property var backgroundUpdatingColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_u', icon, 'me_p_b_bg')
 		property var backgroundPressedColor : ColorsList.addImageColor(sectionName+'_'+name+'_bg_p', icon, 'me_p_b_bg')
-        property var foregroundNormalColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_n', icon, 'me_n_bb_fg')
+        property var foregroundNormalColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_nn', icon, 'me_n_bb_fg')
 		property var foregroundHoveredColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_h', icon, 'me_h_b_fg')
 		property var foregroundUpdatingColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_u', icon, 'me_p_b_fg')
 		property var foregroundPressedColor : ColorsList.addImageColor(sectionName+'_'+name+'_fg_p', icon, 'me_p_b_fg')	

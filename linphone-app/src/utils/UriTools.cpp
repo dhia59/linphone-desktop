@@ -41,29 +41,46 @@ QVector<QPair<bool, QString> > UriTools::parseUri(const QString& text){
 }
 
 // Parse a text and return all lines where regex is matched or not
-QVector<QPair<bool, QString> > UriTools::parse(const QString& text, const QRegularExpression regex){
-	QVector<QPair<bool, QString> > results;
+QVector<QPair<bool, QString>> UriTools::parse(const QString& text, const QRegularExpression regex) {
+	QVector<QPair<bool, QString>> results;
 	int currentIndex = 0;
 	auto match = regex.match(text);
-	
+
 	for (int i = 0; i <= match.lastCapturedIndex(); ++i) {
 		int startIndex = match.capturedStart(i);
-		if(currentIndex != startIndex){
-			results.push_back({false, text.mid(currentIndex, startIndex - currentIndex)});
+
+		// Add non-matching text before the current match
+		if (currentIndex != startIndex) {
+			results.push_back({ false, text.mid(currentIndex, startIndex - currentIndex) });
 		}
-		results.push_back({true, match.captured(i)});
+
+		QString capturedMatch = match.captured(i);
+
+		if (capturedMatch.startsWith("http://") || capturedMatch.startsWith("https://") ||
+			capturedMatch.startsWith("ftp://") || capturedMatch.startsWith("www.")) {		
+			results.push_back({ true, capturedMatch }); 
+		}
+		else {
+			results.push_back({ false, capturedMatch }); 
+		}
+
 		currentIndex = startIndex;
 	}
-	
-	if(results.size() == 0)
-		results.push_back({false, text});
-	else{
-		currentIndex += results.back().second.length();
-		if( currentIndex < text.size())
-			results.append(parse(text.mid(currentIndex), regex));
+
+	if (results.isEmpty()) {
+		results.push_back({ false, text });
 	}
+	else {
+		currentIndex += results.back().second.length();
+		if (currentIndex < text.size()) {
+			results.append(parse(text.mid(currentIndex), regex)); 
+		}
+	}
+
 	return results;
 }
+
+
 
 void UriTools::initRegularExpressions() {
 	// Level 0. --------------------------------------------------------------------

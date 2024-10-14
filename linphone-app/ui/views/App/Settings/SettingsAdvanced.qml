@@ -356,7 +356,7 @@ TabContainer {
 						checked: SettingsModel.isVfsEncrypted
 						
 						onClicked: {
-								window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+								mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 													descriptionText: (checked
 													//: 'Are you sure to deactivate the encryption? The application will exit and all your data will be lost. You must delete them before using the application.' : Explanation to deactivate the VFS encryption.
 																			? qsTr('vfsDeactivation')
@@ -371,7 +371,7 @@ TabContainer {
 												}, function (status) {
 													if(status > 0){
 														if (status == 1 && checked){// Test on 1 in case if we want more options (aka more buttons)
-															window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+															mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 															//: 'The application will delete your application data files. Do you confirm ?'
 																descriptionText: qsTr('vfsDeletion')
 																, height: 320

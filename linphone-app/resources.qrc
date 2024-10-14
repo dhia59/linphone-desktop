@@ -67,7 +67,12 @@
         <file>assets/images/contact_add_custom.svg</file>
         <file>assets/images/contact_card_photo_custom.svg</file>
         <file>assets/images/contact_custom.svg</file>
+        <file>assets/images/saylo_contact_custom.png</file>
+        <file>assets/images/saylo_corbeille.png</file>
+        <file>assets/images/saylo_edit.png</file>
         <file>assets/images/contact_delete_custom.svg</file>
+        <file>assets/images/saylo_message_square.png</file>
+        <file>assets/images/saylo_list.png</file>
         <file>assets/images/contact_edit_custom.svg</file>
         <file>assets/images/contact_view_custom.svg</file>
         <file>assets/images/current_account_status_online.svg</file>
@@ -127,7 +132,11 @@
         <file>assets/images/led_white.svg</file>
         <file>assets/images/meetings_custom.svg</file>
         <file>assets/images/saylo_picto_message-01.png</file>
+        <file>assets/images/messagerie_vocale.png</file>
+        <file>assets/images/messages.png</file>
         <file>assets/images/saylo_picto_contacts-01.png</file>
+        <file>assets/images/clavierdappel_asterisk.png</file>
+        <file>assets/images/clavierdappel_hash.png</file>
         <file>assets/images/saylo_picto_appels-01.png</file>
         <file>assets/images/saylo_picto_equipes.png</file>
         <file>assets/images/saylo_picto_messagerie_vocale.png</file>
@@ -137,6 +146,8 @@
         <file>assets/images/menu_forward_custom.svg</file>
         <file>assets/images/menu_imdn_info_custom.svg</file>
         <file>assets/images/menu_vdots_custom.svg</file>
+        <file>assets/images/menu_vdots_custom_incall.svg</file>
+        <file>assets/images/chat_square.svg</file>
         <file>assets/images/menu_info_custom.svg</file>
         <file>assets/images/menu_devices_custom.svg</file>
         <file>assets/images/menu_ephemeral_custom.svg</file>
@@ -527,7 +538,8 @@
         <file>ui/views/App/Main/HistoryView.js</file>
         <file>ui/views/App/Main/InviteFriends.qml</file>
         <file>ui/views/App/Main/MainWindow.js</file>
-         <file>ui/views/App/Main/MainContent.js</file>
+        <file>ui/views/App/Main/MainContent.js</file>
+        <file>ui/views/App/Main/MessagerieView.qml</file>
         <file>ui/views/App/Main/MainWindowMenuBar.qml</file>
         <file>ui/views/App/Main/MainWindow.qml</file>
          <file>ui/views/App/Main/MainContent.qml</file>
@@ -599,6 +611,7 @@
         <file>ui/views/App/Styles/Settings/SettingsUiStyle.qml</file>
         <file>ui/views/App/Styles/Settings/SettingsWindowStyle.qml</file>
         <file>assets/images/linphone_logo.svg</file>
+        <file>assets/images/linphone_logo.png</file>
         <file>ui/dev-modules/Units/Units.qml</file>
         <file>assets/icon.ico</file>
         <file>ui/views/App/Main/Login.qml</file>

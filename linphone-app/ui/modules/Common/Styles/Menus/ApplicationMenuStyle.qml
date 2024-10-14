@@ -19,8 +19,8 @@ QtObject {
 		
 		property QtObject color: QtObject {
 			property var hovered: ColorsList.add(sectionName+'_entry_h', 'h')
-			property var normal: ColorsList.add(sectionName+'_entry_n', 'g')
-			property var pressed: ColorsList.add(sectionName+'_entry_p', 'i')
+            property var normal: ColorsList.add(sectionName+'_entry_n', 'g')
+            property var pressed: ColorsList.add(sectionName+'_entry_p', 'h')
 			property var selected: ColorsList.add(sectionName+'_entry_selected', 'j')
 		}
 		
@@ -33,7 +33,7 @@ QtObject {
 			property int pointSize: Units.dp * 10
 			
 			property QtObject color: QtObject {
-				property var normal: ColorsList.add(sectionName+'_entry_text_n', 'q')
+                property var normal: ColorsList.add(sectionName+'_entry_text_n', 'n')
 				property var selected: ColorsList.add(sectionName+'_entry_text_c', 'q')
 			}
 		}

@@ -236,7 +236,7 @@ function isValidForm(){
 }
 
 function showAlert(text){
-    window.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
+    mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
                                    descriptionText: text
                                }, function (status) {
                                    if (status) {

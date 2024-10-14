@@ -16,16 +16,18 @@ import UtilsCpp 1.0
 Rectangle {
     property ForwardingModel selected
     signal entryClicked (var entry)
-    //color: 'red'
+    color: "#F4F4F4"
     anchors.fill: parent
+    anchors.margins: 20
     Column {
         anchors.fill: parent
-        //width: 200
+        anchors.leftMargin: 20
+
 
         ForwardingManagement{
             id: forwardingManagement
             onActivationFailed:{
-                window.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
+                mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
                                                descriptionText: "Cette règle de redirection ne peut-être créée, car elle chevauche une autre règle existante. "
                                            }, function (status) {
                                                if (status) {
@@ -48,9 +50,9 @@ Rectangle {
                 y: index * 50
                 spacing: 5
                 Column{
+                    width:150
                     Text {
-                       // width: 100
-                        text: modelData.label
+                       text: modelData.label
                     }
                 }
                 Column{
@@ -60,8 +62,6 @@ Rectangle {
                         colorSet: SettingsWindowStyle.buttons.editProxy
 
                         onClicked: {
-                            console.log("updateeeeee:", modelData.forwardType)
-                            console.log("updateeeeee2:", modelData.destination)
                             entryClicked(modelData)
                             selected = modelData
                         }
@@ -76,8 +76,8 @@ Rectangle {
                         onClicked: {
                             //dialog.open()
                             console.log("delete:", modelData)
-                            window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
-                                                           descriptionText: qsTr('removeContactDescription'),
+                            mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+                                                           descriptionText: qsTr('Voulez-vous vraiment supprimer cette règle ?'),
                                                        }, function (status) {
                                                            if (status) {
                                                                if (forwardingManagement.deleteForwardingRule(modelData.forwardingID)) {

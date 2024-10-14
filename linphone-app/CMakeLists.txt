@@ -233,6 +233,7 @@ set(SOURCES
 	src/components/contacts/ContactEnreachModel.cpp
 	src/components/selfCare/ForwardingModel.cpp
 	src/components/selfCare/ForwardingListModel.cpp
+	src/components/selfCare/GreetingManagement.cpp
 	src/components/selfCare/ForwardingListProxyModel.cpp
 	src/components/selfCare/ForwardingManagement.cpp
 	src/components/selfCare/PstnModel.cpp
@@ -395,6 +396,7 @@ set(HEADERS
 	src/components/selfCare/AccountManagementModel.hpp
 	src/components/selfCare/ForwardingManagement.hpp
 	src/components/selfCare/ForwardingListModel.hpp
+	src/components/selfCare/GreetingManagement.hpp
 	src/components/selfCare/ForwardingListProxyModel.hpp
 	src/components/contacts/ContactsEnreachListModel.hpp
 	src/components/contact/VcardModel.hpp

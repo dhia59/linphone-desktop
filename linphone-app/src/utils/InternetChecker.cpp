@@ -2,7 +2,7 @@
 #include <QNetworkRequest>
 #include <QUrl>
 #include <QDebug>
-
+#include <QProcess>
 InternetChecker::InternetChecker(QObject* parent) : QObject(parent) {
 	// Constructor implementation
 }
@@ -39,9 +39,30 @@ bool InternetChecker::getIsNetworkReachable() const
 
 void InternetChecker::setIsNetworkReachable(const bool &isNetworkReachable)
 {
-
 	if (mIsNetworkReachable != isNetworkReachable) {
 		mIsNetworkReachable = isNetworkReachable;
 		emit isNetworkReachableChanged();
+	}
+}
+void InternetChecker::pingHost(const QString &host) {
+	QProcess pingProcess;
+
+#ifdef Q_OS_WIN
+	pingProcess.start("ping", QStringList() << "/n" << "1" << host); 
+#else
+	pingProcess.start("ping", QStringList() << "-c" << "1" << host);
+#endif
+
+	pingProcess.waitForFinished();
+	int exitCode = pingProcess.exitCode();
+	qDebug() << "ping exit Code = "<< exitCode;
+
+	if (exitCode==0) {
+		setIsNetworkReachable(true);
+		emit networkUp();
+	}
+	else {
+		setIsNetworkReachable(false);
+		emit networkDown();
 	}
 }
