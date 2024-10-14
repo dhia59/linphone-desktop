@@ -1890,6 +1890,10 @@
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Êtes-vous sûr de vouloir vous déconnecter ?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainContent - Copie</name>

@@ -1870,6 +1870,10 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Êtes-vous sûr de vouloir vous déconnecter ?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainContent - Copie</name>
