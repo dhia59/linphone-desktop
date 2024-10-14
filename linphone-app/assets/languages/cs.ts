@@ -948,11 +948,6 @@
         <translation>Opravdu chcete tento kontakt odstranit z adresáře?</translation>
     </message>
     <message>
-        <source>sipAccounts</source>
-        <extracomment>&apos;SIP ACCOUNT(S)&apos; : label for sip accounts in contact</extracomment>
-        <translation>SIP ÚČTY</translation>
-    </message>
-    <message>
         <source>address</source>
         <translation>ADRESA</translation>
     </message>
@@ -979,10 +974,6 @@
     <message>
         <source>cancel</source>
         <translation>ZRUŠIT</translation>
-    </message>
-    <message>
-        <source>sipAccountsPlaceholder</source>
-        <translation>SIP účet</translation>
     </message>
     <message>
         <source>companiesPlaceholder</source>
@@ -1022,13 +1013,12 @@
         <translation>Chcete-li vytvořit chatovací místnost založenou na konferenci, musíte v nastavení účtu nastavit URI konference.</translation>
     </message>
     <message>
-        <source>usernames</source>
-        <extracomment>&apos;USERNAME(S)&apos; : label for sip accounts when only username is displayed n contact</extracomment>
-        <translation>UŽIVATEL(Ů)</translation>
-    </message>
-    <message>
         <source>displayName</source>
         <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numéro de contact </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1515,6 +1505,46 @@
     <message>
         <source>removeContactDescription</source>
         <translation type="unfinished">Opravdu chcete tento kontakt odstranit z adresáře?</translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatList</name>
+    <message>
+        <source>Equipes</source>
+        <extracomment>&apos;Meetings&apos; : Conference list title.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Créer une équipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatManagement</name>
+    <message>
+        <source>addParticipantPlaceholder</source>
+        <extracomment>&apos;Add Participants&apos; : Placeholder in a search bar for adding participant to the chat room</extracomment>
+        <translation type="unfinished">Přidat účastníky</translation>
+    </message>
+    <message>
+        <source>addParticipantTooltip</source>
+        <extracomment>&apos;Search participants in your contact list in order to invite them into the chat room.&apos;</extracomment>
+        <translation type="unfinished">Vyhledejte účastníky v seznamu kontaktů a pozvěte je do chatovací místnosti.</translation>
+        <extra-Tooltip>Explanation for inviting the selected participants into chat room</extra-Tooltip>
+    </message>
+    <message>
+        <source>participantList</source>
+        <extracomment>&apos;Participant list&apos;</extracomment>
+        <translation type="unfinished">Seznam účastníků</translation>
+    </message>
+    <message>
+        <source>adminStatus</source>
+        <translation type="unfinished">Admin</translation>
+    </message>
+    <message>
+        <source>quitGroupButton</source>
+        <extracomment>&apos;Exit group&apos; : Button label</extracomment>
+        <translation type="unfinished">Opustit skupinu</translation>
     </message>
 </context>
 <context>

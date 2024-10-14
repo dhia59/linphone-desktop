@@ -936,11 +936,6 @@
         <translation>你真的要从地址簿中移除该联系人吗？</translation>
     </message>
     <message>
-        <source>sipAccounts</source>
-        <extracomment>&apos;SIP ACCOUNT(S)&apos; : label for sip accounts in contact</extracomment>
-        <translation>SIP 账户（可有多个）</translation>
-    </message>
-    <message>
         <source>address</source>
         <translation>地址</translation>
     </message>
@@ -967,10 +962,6 @@
     <message>
         <source>cancel</source>
         <translation>取消</translation>
-    </message>
-    <message>
-        <source>sipAccountsPlaceholder</source>
-        <translation>SIP 账户</translation>
     </message>
     <message>
         <source>companiesPlaceholder</source>
@@ -1010,13 +1001,12 @@
         <translation type="unfinished">您需要在帐户设置中设置会议 URI 以创建基于会议的聊天室。</translation>
     </message>
     <message>
-        <source>usernames</source>
-        <extracomment>&apos;USERNAME(S)&apos; : label for sip accounts when only username is displayed n contact</extracomment>
+        <source>displayName</source>
+        <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>displayName</source>
-        <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
+        <source>Numéro de contact </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1495,6 +1485,46 @@
     <message>
         <source>removeContactDescription</source>
         <translation type="unfinished">你真的要从地址簿中移除该联系人吗？</translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatList</name>
+    <message>
+        <source>Equipes</source>
+        <extracomment>&apos;Meetings&apos; : Conference list title.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Créer une équipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatManagement</name>
+    <message>
+        <source>addParticipantPlaceholder</source>
+        <extracomment>&apos;Add Participants&apos; : Placeholder in a search bar for adding participant to the chat room</extracomment>
+        <translation type="unfinished">添加成员</translation>
+    </message>
+    <message>
+        <source>addParticipantTooltip</source>
+        <extracomment>&apos;Search participants in your contact list in order to invite them into the chat room.&apos;</extracomment>
+        <translation type="unfinished">在您的联系人列表中搜索成员来邀请他们进入聊天室。</translation>
+        <extra-Tooltip>Explanation for inviting the selected participants into chat room</extra-Tooltip>
+    </message>
+    <message>
+        <source>participantList</source>
+        <extracomment>&apos;Participant list&apos;</extracomment>
+        <translation type="unfinished">成员列表</translation>
+    </message>
+    <message>
+        <source>adminStatus</source>
+        <translation type="unfinished">管理员</translation>
+    </message>
+    <message>
+        <source>quitGroupButton</source>
+        <extracomment>&apos;Exit group&apos; : Button label</extracomment>
+        <translation type="unfinished">退出群组</translation>
     </message>
 </context>
 <context>

@@ -340,7 +340,10 @@ QVariantMap CallsListModel::createChatRoom(const QString& subject, const int& se
 					chatRoom = nullptr;
 		}else
 			params->setSubject(subject != ""?Utils::appStringToCoreString(subject):"Dummy Subject");
+		//auto b =params->getBackend();
+		//params->setBackend(linphone::ChatRoomBackend::Basic);
 		if( !chatRoom) {
+			//311 core-chat-room.ccp linphone const shared_ptr<ChatRoomParams> &params
 			chatRoom = core->createChatRoom(params, localAddress, chatRoomParticipants);
 			if(chatRoom != nullptr && admins.size() > 0){
 				auto initializer = ChatRoomInitializer::create(chatRoom);
