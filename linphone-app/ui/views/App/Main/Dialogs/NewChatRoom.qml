@@ -171,7 +171,7 @@ DialogPlus {
 							textFormat: Text.RichText
 							//: 'Subject' : Label of a text field about the subject of the chat room
 							text :qsTr('subjectLabel') +'<span style="color:red">*</span>'
-							color: NewChatRoomStyle.subjectTitleColor.color
+                            color: "black"
 							font.pointSize: Units.dp * 11
 							font.weight: Font.DemiBold
 						}
@@ -203,7 +203,7 @@ DialogPlus {
 					Text{
 						//: 'Last contacts' : Header for showing last contacts
 						text : qsTr('LastContactsTitle')
-						color: NewChatRoomStyle.recentContactTitleColor.color
+                        color: "black"
 						font.pointSize: Units.dp * 11
 						font.weight: Font.DemiBold
 					}
@@ -354,7 +354,7 @@ DialogPlus {
 						//~ one word for admin status
 						text : qsTr('adminStatus')
 						
-						color: NewChatRoomStyle.addressesAdminColor.color
+                        color: NewChatRoomStyle.addressesAdminColor.color
 						font.pointSize: Units.dp * 11
 						font.weight: Font.Light
 						visible: participantView.count > 0
@@ -416,7 +416,7 @@ DialogPlus {
 					textFormat: Text.RichText
 					//: 'Required' : Word relative to a star to explain that it is a requirement (Field form)
 					text : '<span style="color:red">*</span> '+qsTr('requiredField')
-					color: NewChatRoomStyle.requiredColor.color
+                    color: "black"
 					font.pointSize: Units.dp * 8
 				}
 			}

@@ -22,7 +22,7 @@ Rectangle {
     property int modelIndex: 0
     property var actions: []
     property bool isSelected: mainItem.timelineModel != undefined && mainItem.timelineModel.selected
-    visible:mainItem.timelineModel.chatRoomModel.contactType =="contact"
+    //visible:mainItem.timelineModel.chatRoomModel.contactType =="contact"
     height: TimelineStyle.contact.height
     width: parent ? parent.width : 0
     Component.onCompleted: {

@@ -158,6 +158,8 @@ bool TimelineProxyModel::filterAcceptsRow (int sourceRow, const QModelIndex &sou
 		show = timeline->getChatRoomModel()->isCurrentAccount();
 	if (timeline->getChatRoomModel()->getContactType() != "contact")
 		show = false;
+	if(isGroup)
+		show = true;
 
 	return show;
 }

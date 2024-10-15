@@ -488,19 +488,20 @@ Rectangle{
                         Layout.alignment: Qt.AlignBottom | Qt.AlignLeft
                         anchors.bottomMargin: 10
                         width: 250
-
+                        height: 30
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
                         background: Rectangle {
                             color:logoutMousearea.containsMouse? MainWindowStyle.leftMenu.backgroundHoveredColor.color: MainWindowStyle.leftMenu.backgroundNormalColor.color
                             width:MainWindowStyle.menu.width
-                            height: 90
+                            height: 120
                         }
 
                         contentItem: Row {
                             spacing: 10
                             anchors.centerIn: parent
                             Text {
+                                id:decid
                                 text: "\uf2f5"
                                 font.family: fontAwesome.name
                                 font.pointSize:Units.dp * 11
@@ -511,6 +512,16 @@ Rectangle{
                                 text: "Déconnexion"
                                 font.pointSize:Units.dp * 11
                                 color: MainWindowStyle.leftMenu.foregroundNormalColor.color
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.left: decid.right
+                                anchors.leftMargin: 10
+                            }
+                            Text {
+                                text: "V 0.1.0"
+                                font.pointSize:Units.dp * 6
+                                color: MainWindowStyle.leftMenu.foregroundNormalColor.color
+                                anchors.right:parent.right
+                                anchors.verticalCenter: parent.verticalCenter
                             }
                         }
                         MouseArea {
