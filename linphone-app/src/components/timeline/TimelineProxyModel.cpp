@@ -139,13 +139,15 @@ bool TimelineProxyModel::filterAcceptsRow (int sourceRow, const QModelIndex &sou
 	bool isGroup = timeline->getChatRoomModel()->isGroupEnabled();
 	bool isEphemeral = timeline->getChatRoomModel()->isEphemeralEnabled();
 
-	if( mFilterFlags > 0) {
-		show = !(( ( (mFilterFlags & TimelineFilter::SimpleChatRoom) == TimelineFilter::SimpleChatRoom) && isGroup)
-				|| ( ( (mFilterFlags & TimelineFilter::SecureChatRoom) == TimelineFilter::SecureChatRoom) && !haveEncryption)
-				|| ( ( (mFilterFlags & TimelineFilter::GroupChatRoom) == TimelineFilter::GroupChatRoom) && !isGroup)
-				|| ( ( (mFilterFlags & TimelineFilter::StandardChatRoom) == TimelineFilter::StandardChatRoom) && haveEncryption)
-				|| ( ( (mFilterFlags & TimelineFilter::EphemeralChatRoom) == TimelineFilter::EphemeralChatRoom) && !isEphemeral)
-				|| ( ( (mFilterFlags & TimelineFilter::NoEphemeralChatRoom) == TimelineFilter::NoEphemeralChatRoom) && isEphemeral));
+	if (mFilterFlags > 0) {
+		show = !(((mFilterFlags & TimelineFilter::GroupChatRoom) == TimelineFilter::GroupChatRoom) && !isGroup);
+			
+			
+			/*(
+			(((mFilterFlags & TimelineFilter::SecureChatRoom) == TimelineFilter::SecureChatRoom) && !haveEncryption)
+			|| 
+			);
+			*/
 	}
 		
 	if(show && mFilterText != ""){

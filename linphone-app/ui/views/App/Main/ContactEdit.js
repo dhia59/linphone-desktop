@@ -48,12 +48,11 @@ function handleContactUpdated () {
   }
 }
 
-function handleVcardChanged (vcard) {
+function handleVcardChanged (vcard, sipAddress=null) {
   if (!vcard) {
     vcard = {}
   }
-
-  addresses.setData(vcard.sipAddresses)
+  addresses.setData([sipAddressesValue])
   companies.setData(vcard.companies)
   emails.setData(vcard.emails)
   urls.setData(vcard.urls)
@@ -86,10 +85,10 @@ function removeContact () {
 
 // -----------------------------------------------------------------------------
 
-function save () {
+function save () {  
+   handleSipAddressChanged(addresses, 0,"",sipAddressesValue )
   var contact = contactEdit._contact
   var vcard = contactEdit._vcard
-
   contactEdit._edition = false
 
   if (contact) {
@@ -97,7 +96,8 @@ function save () {
    // window.unlockView()
   } else {
     contactEdit._contact = Linphone.ContactsListModel.addContact(vcard)
-    handleVcardChanged(vcard) // Called directly, because the vcard is not modified in the view.
+
+    handleVcardChanged(vcard)
   }
 }
 
@@ -132,6 +132,7 @@ function setUsername (username) {
 // -----------------------------------------------------------------------------
 
 function handleValueChanged (fields, index, oldValue, newValue, add, update) {
+
   if (newValue === oldValue) {
     return
   }

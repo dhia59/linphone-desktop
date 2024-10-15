@@ -936,11 +936,6 @@
         <translation>あなたのアドレス帳からこの連絡先を削除してもよろしいですか？</translation>
     </message>
     <message>
-        <source>sipAccounts</source>
-        <extracomment>&apos;SIP ACCOUNT(S)&apos; : label for sip accounts in contact</extracomment>
-        <translation>SIPアカウント</translation>
-    </message>
-    <message>
         <source>address</source>
         <translation>アドレス</translation>
     </message>
@@ -967,10 +962,6 @@
     <message>
         <source>cancel</source>
         <translation>キャンセル</translation>
-    </message>
-    <message>
-        <source>sipAccountsPlaceholder</source>
-        <translation>SIPアカウント</translation>
     </message>
     <message>
         <source>companiesPlaceholder</source>
@@ -1010,13 +1001,12 @@
         <translation type="unfinished">会議ベースのチャットルームを作成するには、アカウント設定で会議URIを設定する必要があります。</translation>
     </message>
     <message>
-        <source>usernames</source>
-        <extracomment>&apos;USERNAME(S)&apos; : label for sip accounts when only username is displayed n contact</extracomment>
-        <translation>ユーザー名</translation>
-    </message>
-    <message>
         <source>displayName</source>
         <extracomment>&apos;Display Name&apos; : placeholder for setting display name on a contact</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numéro de contact </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1495,6 +1485,46 @@
     <message>
         <source>removeContactDescription</source>
         <translation type="unfinished">あなたのアドレス帳からこの連絡先を削除してもよろしいですか？</translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatList</name>
+    <message>
+        <source>Equipes</source>
+        <extracomment>&apos;Meetings&apos; : Conference list title.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Créer une équipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatManagement</name>
+    <message>
+        <source>addParticipantPlaceholder</source>
+        <extracomment>&apos;Add Participants&apos; : Placeholder in a search bar for adding participant to the chat room</extracomment>
+        <translation type="unfinished">参加者を追加</translation>
+    </message>
+    <message>
+        <source>addParticipantTooltip</source>
+        <extracomment>&apos;Search participants in your contact list in order to invite them into the chat room.&apos;</extracomment>
+        <translation type="unfinished">チャットルームに招待するため、連絡先リストから参加者を検索します。</translation>
+        <extra-Tooltip>Explanation for inviting the selected participants into chat room</extra-Tooltip>
+    </message>
+    <message>
+        <source>participantList</source>
+        <extracomment>&apos;Participant list&apos;</extracomment>
+        <translation type="unfinished">参加者リスト</translation>
+    </message>
+    <message>
+        <source>adminStatus</source>
+        <translation type="unfinished">管理者</translation>
+    </message>
+    <message>
+        <source>quitGroupButton</source>
+        <extracomment>&apos;Exit group&apos; : Button label</extracomment>
+        <translation type="unfinished">グループを閉じる</translation>
     </message>
 </context>
 <context>
