@@ -247,6 +247,7 @@ ApplicationWindow {
 
                         onLaunchCall: CallsListModel.launchAudioCall(sipAddress, '')
                         onLaunchChat: {
+						 console.log('launchhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
                             var model = CallsListModel.launchChat( sipAddress,0 )
                             if(model && model.chatRoomModel) {
                                 window.setView('Conversations')
@@ -286,7 +287,7 @@ ApplicationWindow {
                         enabled: SettingsModel.groupChatEnabled
                         onClicked: {
                             window.detachVirtualWindow()
-                            window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
+                            mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
                                                        ,{})
                         }
                         TooltipArea{
@@ -308,7 +309,7 @@ ApplicationWindow {
                         tooltipText:qsTr('newConferenceButton')
                         onClicked: {
                             window.detachVirtualWindow()
-                            window.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
+                            mainwindow.attachVirtualWindow(Utils.buildAppDialogUri('NewConference')
                                                        ,{}, function (status) {
                                                         if( status){
                                                             setView('Conferences')
@@ -500,7 +501,7 @@ ApplicationWindow {
         target: App
         onRequestFetchConfig: {
             if (AccountSettingsModel.accounts.length <= ((SettingsModel.showLocalSipAccount ? 1 : 0))) {
-                        window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+                        mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
                                         flat: true,
                                         //: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
                                         descriptionText: '<b>'+qsTr('confirmFetchUri')
@@ -511,11 +512,11 @@ ApplicationWindow {
                                             }
                                         })
             } else {
-                            window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+                            mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
                                                descriptionText: qsTr('remoteProvisioningWarnAccountOverwrite'),
                                            }, function (confirm) {
                                                if (confirm) {
-                                                    window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+                                                    mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
                                                             flat: true,
                                                             //: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
                                                             descriptionText: '<b>'+qsTr('confirmFetchUri')

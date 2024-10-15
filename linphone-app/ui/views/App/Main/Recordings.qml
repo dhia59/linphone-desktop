@@ -186,7 +186,7 @@ Item {
 							colorSet: RecordingsStyle.buttons.remove
 							onClicked: {
 								window.detachVirtualWindow()
-								window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+								mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 															//: 'Are you sure you want to delete this item?' : Confirmation message for removing a record.
 															   descriptionText: qsTr('recordingsDelete'),
 														   }, function (status) {
@@ -238,7 +238,7 @@ Item {
 							colorSet: RecordingsStyle.buttons.remove
 							onClicked: {
 								window.detachVirtualWindow()
-								window.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+								mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
 															//: 'Are you sure you want to delete this item?' : Confirmation message for removing a record.
 															   descriptionText: qsTr('recordingsDelete'),
 														   }, function (status) {

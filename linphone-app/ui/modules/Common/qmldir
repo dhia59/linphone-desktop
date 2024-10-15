@@ -28,7 +28,6 @@ ComboBox                1.0 Form/ComboBox.qml
 CommonItemDelegate      1.0 Form/CommonItemDelegate.qml
 DroppableTextArea       1.0 Form/DroppableTextArea.qml
 ListForm                1.0 Form/ListForm.qml
-FormField               1.0 Form/FormField.qml
 ListItemSelector        1.0 Form/ListItemSelector.qml
 Mosaic                  1.0 Form/Mosaic.qml
 MouseArea               1.0 Form/MouseArea.qml

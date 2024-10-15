@@ -12,25 +12,25 @@ QtObject {
 	property var menuColor: ColorsList.add(sectionName+'_menu', 'r')
 	
 	property QtObject title: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_title', 'q')
+        property var colorModel: ColorsList.add(sectionName+'_title', 'n')
 		property int pointSize: Units.dp * 10
 	}
 	property QtObject elapsedTime: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_elapsed_time', 'q')
+        property var colorModel: ColorsList.add(sectionName+'_elapsed_time', 'n')
 		property int pointSize: Units.dp * 10
 	}
 	property QtObject callee: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_callee', 'q')
+        property var colorModel: ColorsList.add(sectionName+'_callee', 'n')
 		property int displayNamePointSize: Units.dp * 10
 		property int addressPointSize: Units.dp * 8
 	}
 	property QtObject callError: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_action_error', 'q')
+        property var colorModel: ColorsList.add(sectionName+'_action_error', 'n')
 		property int pointSize: Units.dp * 12
 	}
 	property QtObject header: QtObject {
 		property QtObject busyIndicator: QtObject {
-			property var colorModel: ColorsList.add(sectionName+'_header_busy', 'q')
+            property var colorModel: ColorsList.add(sectionName+'_header_busy', 'n')
 			property int height: 20
 			property int width: 20
 		}

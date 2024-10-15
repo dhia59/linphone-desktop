@@ -49,7 +49,7 @@ RowLayout {
 
 			TooltipArea{
 				delay:0
-				text:avatar.username+'\n'+$chatEntry.fromSipAddress
+				text:avatar.username
 				maxWidth: mainRow.width
 				isClickable: true
 				onClicked: {

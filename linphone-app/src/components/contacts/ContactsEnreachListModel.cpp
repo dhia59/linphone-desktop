@@ -91,7 +91,6 @@ bool ContactsEnreachListModel::removeRows (int row, int count, const QModelIndex
 // -----------------------------------------------------------------------------
 
 QSharedPointer<ContactEnreachModel> ContactsEnreachListModel::findContactEnreachModelFromSipAddress (const QString &sipAddress) const {
-	
 	auto result = mOptimizedSearch.find(sipAddress);
 	if(result != mOptimizedSearch.end())
 		return result.value();
@@ -126,8 +125,6 @@ void ContactsEnreachListModel::addContact(QSharedPointer<ContactEnreachModel> co
 		emit sipAddressRemoved(contact, sipAddress);
 	});
 	add<ContactEnreachModel>(contact);
-
-	
 	/*for (auto address : contact->getVcardModel()->getSipAddresses()) {
 		auto addressStr = address.toString();
 		mOptimizedSearch[addressStr] = contact;
@@ -176,17 +173,6 @@ ContactEnreachModel *ContactsEnreachListModel::addContact (ContactEnreachModel* 
 
 void ContactsEnreachListModel::removeContact (ContactEnreachModel *contact){
 	remove(contact);
-}
-
-QList<ContactEnreachModel*> ContactsEnreachListModel::getList()
-{
-	QList<ContactEnreachModel*> contactsList;
-	for each (QSharedPointer<QObject> item in mList)
-	{
-		contactsList.append(item.objectCast<ContactEnreachModel>().data());
-	}
-	return contactsList;
-	
 }
 
 // -----------------------------------------------------------------------------

@@ -15,8 +15,8 @@ QtObject {
 	}
 	
 	property QtObject legend: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_legend', 'j')
-		property int pointSize: Units.dp * 10
+        property var colorModel: ColorsList.add(sectionName+'_legend', 'ac')
+        property int pointSize: Units.dp(14)
 		property int height: 36
 		property int width: 200
 	}

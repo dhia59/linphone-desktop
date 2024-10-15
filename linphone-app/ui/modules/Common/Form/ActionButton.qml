@@ -15,10 +15,11 @@ Item {
 	
 	property color defaultBackgroundColor: 'white'
 	property color defaultForegroundColor: 'black'
-	
+
 	// ---------------------------------------------------------------------------
 	readonly property QtObject defaultColorSet : QtObject {
-		property int iconSize: 30
+
+        property int iconSize: 50
 		property string icon : ''
 		property var backgroundNormalColor : {'color' : defaultBackgroundColor}
 		property var backgroundDisabledColor : {'color' : defaultBackgroundColor}
@@ -32,9 +33,12 @@ Item {
 		property var foregroundUpdatingColor : {'color' : defaultForegroundColor}
 		property var foregroundPressedColor : {'color' : defaultForegroundColor}
 	}
+
+
 	property QtObject colorSet: defaultColorSet
 	onColorSetChanged: if(!colorSet) colorSet = defaultColorSet
 	property bool isCustom : false
+    property int buttonWidth: 0
 	property bool iconIsCustom: isCustom
 	property bool enabled: true
 	property bool updating: false
@@ -197,7 +201,7 @@ Item {
 	property int fitHeight: iconHeight || iconSize || parent.iconSize || parent.height
 	property int fitWidth: iconWidth || iconSize || parent.iconSize || parent.width
 	height: fitHeight
-	width: fitWidth
+    width: fitWidth + buttonWidth
 	
 	
 	Button {
@@ -210,13 +214,14 @@ Item {
 				anchors.fill: parent
 				Rectangle {
 					height: parent.height
-					width:parent.width  * wrappedButton.percentageDisplayed / 100
+                    width:parent.width  * wrappedButton.percentageDisplayed / 100
 					id: backgroundColor
 					color: getBackgroundColor()
+                    radius: 0
 				}
 				Rectangle {
 					height: parent.height
-					width: parent.width  * ( 1 - wrappedButton.percentageDisplayed / 100 )
+                    width: parent.width  * ( 1 - wrappedButton.percentageDisplayed / 100 )
 					id: backgroundHiddenPartColor
 					color: width > 0 ? getBackgroundHiddenPartColor() : 'transparent'
 				}
@@ -279,7 +284,7 @@ Item {
 					console.log("staticIconB set :",staticIconB);
 					return staticIconB;
 				}else{
-					console.log("staticIconB not set :",staticIconB);
+					//console.log("staticIconB not set :",staticIconB);
 				}
 				var iconString = _getIcon()
 				if( iconString ) {

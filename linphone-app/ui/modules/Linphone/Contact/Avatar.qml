@@ -49,7 +49,7 @@ Item {
 		source: avatar.image || ''
 		Icon{
 			anchors.fill: parent
-			icon: AvatarStyle.personImage
+            icon: 'qrc:/assets/images/saylo_contact_custom.png'//AvatarStyle.personImage
 			visible: parent.source == '' && avatar.isPhoneNumber
 			overwriteColor: AvatarStyle.initials.colorModel.color
 		}
@@ -78,7 +78,7 @@ Item {
 		anchors.fill: parent
 		icon: ContactStyle.groupChat.icon
 		overwriteColor: isDarkMode ? ContactStyle.groupChat.avatarDarkModeColor.color : ContactStyle.groupChat.avatarColor.color
-		iconSize: avatar.width
+        iconSize: avatar.width-10
 		//visible: entry!=undefined && entry.isOneToOne!=undefined && !entry.isOneToOne
 		visible: !avatar.isOneToOne
 	}

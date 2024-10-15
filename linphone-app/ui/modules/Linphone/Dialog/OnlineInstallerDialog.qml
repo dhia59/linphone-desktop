@@ -40,7 +40,7 @@ DialogPlus {
   // ---------------------------------------------------------------------------
 
   // TODO: Improve one day. Do not launch download directly.
-  // Provide a download function (window.attachVirtualWindow cannot call
+  // Provide a download function (mainwindow.attachVirtualWindow cannot call
   // function after creation at this moment).
   Component.onCompleted: dialog.install()
 

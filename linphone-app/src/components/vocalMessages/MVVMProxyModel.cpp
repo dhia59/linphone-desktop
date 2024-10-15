@@ -76,86 +76,89 @@ MVVMProxyModel::MVVMProxyModel (QObject *parent) : SortFilterProxyModel(parent) 
 void MVVMProxyModel::ListMVVM() {
 	QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 	std::shared_ptr<linphone::Account> defaultAddress = CoreManager::getInstance()->getCore()->getDefaultAccount();
-	auto username = defaultAddress->findAuthInfo()->getUsername();
-	shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
-	auto lastCheck =config->getString(username, "mvvm-lastcheck", "");
-	auto baseUrl = "http://185.164.213.62:8081/Enreach/listVoiceMessages?userName=" + username;
-	if (lastCheck != "") 
-	{
-		baseUrl += "&AddedSince=" + lastCheck;
-	}	
-	QUrl url(QString::fromStdString(baseUrl));
-	QNetworkRequest request(url);	
-	
-	request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
-	request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
-	QList<QByteArray> headers = request.rawHeaderList();
-	
-	QNetworkReply *reply = manager->get(request);
-	MVVMProxyModel::setIsLoading(true);
-	if (reply) {
-		
-		QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
-			if (reply) {
-				if (reply->error() == QNetworkReply::NoError) {
+	if (defaultAddress != nullptr) {
+		auto username = defaultAddress->findAuthInfo()->getUsername();
+		shared_ptr<linphone::Config> config(CoreManager::getInstance()->getCore()->getConfig());
+		auto lastCheck = config->getString(username, "mvvm-lastcheck", "");
+		auto baseUrl = "http://185.164.213.62:8081/Enreach/listVoiceMessages?userName=" + username;
+		if (lastCheck != "")
+		{
+			baseUrl += "&AddedSince=" + lastCheck;
+		}
+		QUrl url(QString::fromStdString(baseUrl));
+		QNetworkRequest request(url);
 
-					QByteArray responseData = reply->readAll();
-					
-					QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
-					if (!jsonResponse.isNull()) {
-						
-						QJsonArray jsonArray = jsonResponse.array();
-						QString folder = CoreManager::getInstance()->getSettingsModel()->getMVVMFolder()+ "/" +QString::fromStdString(username)+ "/";
-						QDir dir(folder);
-						if (!dir.exists()) {
-							dir.mkdir(folder);
-						}
-						
-						for (const QJsonValue &jsonValue : jsonArray) {						
+		request.setRawHeader("instance", QByteArray::fromStdString(config->getString("apiAuth", "x-instance", "")));
+		request.setRawHeader("token", QByteArray::fromStdString(config->getString("apiAuth", "x-token", "")));
+		QList<QByteArray> headers = request.rawHeaderList();
 
-							if (jsonValue.isObject()) {
-								QJsonObject jsonObject = jsonValue.toObject();
-							
-								QString fileContentBase64 = jsonObject.value("fileContent").toString();
-								QByteArray fileContent = QByteArray::fromBase64(fileContentBase64.toUtf8());
-								qInfo() << "fileeeee " << folder+ jsonObject.value("fileName").toString();
-								QFile file(folder+jsonObject.value("fileName").toString()); 	
-								if (!file.exists()) {
-									QString dateTimeString = jsonObject.value("fileDate").toString();
-									QDateTime fileTime = QDateTime::fromString(dateTimeString, Qt::ISODate);									
-									if (file.open(QIODevice::WriteOnly)) {
-										qint64 bytesWritten = file.write(fileContent);
-										file.close();
-										setFileCreationTime(folder + jsonObject.value("fileName").toString(), fileTime);
+		QNetworkReply *reply = manager->get(request);
+		MVVMProxyModel::setIsLoading(true);
+		if (reply) {
 
-									}
-								}							
+			QObject::connect(reply, &QNetworkReply::finished, this, [=]() {
+				if (reply) {
+					if (reply->error() == QNetworkReply::NoError) {
 
+						QByteArray responseData = reply->readAll();
+
+						QJsonDocument jsonResponse = QJsonDocument::fromJson(responseData);
+						if (!jsonResponse.isNull()) {
+
+							QJsonArray jsonArray = jsonResponse.array();
+							QString folder = CoreManager::getInstance()->getSettingsModel()->getMVVMFolder() + "/" + QString::fromStdString(username) + "/";
+							QDir dir(folder);
+							if (!dir.exists()) {
+								dir.mkdir(folder);
 							}
+
+							for (const QJsonValue &jsonValue : jsonArray) {
+
+								if (jsonValue.isObject()) {
+									QJsonObject jsonObject = jsonValue.toObject();
+
+									QString fileContentBase64 = jsonObject.value("fileContent").toString();
+									QByteArray fileContent = QByteArray::fromBase64(fileContentBase64.toUtf8());
+									qInfo() << "fileeeee " << folder + jsonObject.value("fileName").toString();
+									QFile file(folder + jsonObject.value("fileName").toString());
+									if (!file.exists()) {
+										QString dateTimeString = jsonObject.value("fileDate").toString();
+										QDateTime fileTime = QDateTime::fromString(dateTimeString, Qt::ISODate);
+										if (file.open(QIODevice::WriteOnly)) {
+											qint64 bytesWritten = file.write(fileContent);
+											file.close();
+											setFileCreationTime(folder + jsonObject.value("fileName").toString(), fileTime);
+
+										}
+									}
+
+								}
+							}
+							auto currentTime = QDateTime::currentDateTime().toString("yyyyMMddhhmmsszzz");
+							config->setString(username, "mvvm-lastcheck", currentTime.toStdString());
+							auto list = new MVVMListModel(this);
+							setSourceModel(list);
+							sort(0);
+
 						}
-						auto currentTime = QDateTime::currentDateTime().toString("yyyyMMddhhmmsszzz");
-						config->setString(username, "mvvm-lastcheck",currentTime.toStdString());
-						auto list = new MVVMListModel(this);
-						setSourceModel(list);
-						sort(0);
-					
 					}
+					else {
+						qDebug() << "Error Code:" << reply->error();
+						qDebug() << "Error String:" << reply->errorString();
+
+					}
+					MVVMProxyModel::setIsLoading(false);
+					// Clean up the reply
+					reply->deleteLater();
 				}
 				else {
-					qDebug() << "Error Code:" << reply->error();
-					qDebug() << "Error String:" << reply->errorString();
-					
+					qDebug() << "noo reply";
 				}
-				MVVMProxyModel::setIsLoading(false);
-				// Clean up the reply
-				reply->deleteLater();
-			}
-			else {
-				qDebug() << "noo reply";
-			}
 
-		});
+			});
+		}
 	}
+
 
 }
 bool MVVMProxyModel::setFileCreationTime(const QString& filePath, const QDateTime& creationTime) {

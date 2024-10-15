@@ -58,6 +58,22 @@ Item {
         function getTransport(){
             return transport.model[transport.currentIndex]
         }
+
+
+        Rectangle{
+            Layout.fillWidth: true
+            width: 250
+            height: 70
+            z:2
+            id:logoImage
+            color: "transparent"
+            Image {
+                width: 40
+                height: 50
+                source: "qrc:/assets/images/linphone_logo.png"
+                anchors.centerIn: parent
+            }
+        }
         Row {
             id: errorBlockNetwork
             anchors.horizontalCenter: parent.horizontalCenter

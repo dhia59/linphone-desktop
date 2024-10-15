@@ -1120,16 +1120,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>conversationMenuViewContact</source>
-        <extracomment>&apos;View contact&apos; : Item menu to view the contact in address book</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>conversationMenuAddContact</source>
-        <extracomment>&apos;Add contact&apos; : Item menu to add the contact to address book</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>conversationMenuScheduleMeeting</source>
         <extracomment>&apos;Schedule a meeting&apos; : Item menu to schedule a meeting with the chat participants.</extracomment>
         <translation type="unfinished"></translation>
@@ -1483,48 +1473,8 @@
 <context>
     <name>Forwardings</name>
     <message>
-        <source>removeContactDescription</source>
-        <translation type="unfinished">Bu kişiyi adres defterinizden silmek istediğinize emin misiniz?</translation>
-    </message>
-</context>
-<context>
-    <name>GroupChatList</name>
-    <message>
-        <source>Equipes</source>
-        <extracomment>&apos;Meetings&apos; : Conference list title.</extracomment>
+        <source>Voulez-vous vraiment supprimer cette règle ?</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Créer une équipe</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>GroupChatManagement</name>
-    <message>
-        <source>addParticipantPlaceholder</source>
-        <extracomment>&apos;Add Participants&apos; : Placeholder in a search bar for adding participant to the chat room</extracomment>
-        <translation type="unfinished">Katılımcı ekle</translation>
-    </message>
-    <message>
-        <source>addParticipantTooltip</source>
-        <extracomment>&apos;Search participants in your contact list in order to invite them into the chat room.&apos;</extracomment>
-        <translation type="unfinished">Konuşma odasına davet etmek için kişi listenizde katılımcı arayın.</translation>
-        <extra-Tooltip>Explanation for inviting the selected participants into chat room</extra-Tooltip>
-    </message>
-    <message>
-        <source>participantList</source>
-        <extracomment>&apos;Participant list&apos;</extracomment>
-        <translation type="unfinished">Katılımcı listesi</translation>
-    </message>
-    <message>
-        <source>adminStatus</source>
-        <translation type="unfinished">Yönetici</translation>
-    </message>
-    <message>
-        <source>quitGroupButton</source>
-        <extracomment>&apos;Exit group&apos; : Button label</extracomment>
-        <translation type="unfinished">Kümeden çık</translation>
     </message>
 </context>
 <context>
@@ -1546,7 +1496,7 @@
         <translation>Geçmişi sil</translation>
     </message>
     <message>
-        <source>Enter un numéro</source>
+        <source>Entrer un numéro</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1874,6 +1824,60 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
 <context>
     <name>MainContent</name>
     <message>
+        <source>Rechercher, se rencontrer et appeler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucune connexion réseau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Êtes-vous sûr de vouloir vous déconnecter ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainContent - Copie</name>
+    <message>
         <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1918,6 +1922,56 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MainContent-09-10</name>
+    <message>
+        <source>Rechercher, se rencontrer et appeler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucune connexion réseau</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacts</source>
+        <extracomment>&apos;Local contacts&apos; : Contacts section label in main window when we have to specify that they are local to the application.
+----------
+&apos;Contacts&apos; : Contacts section label in main waindow.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reunions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Equipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Messagerie Vocale</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrements</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SelfCare</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>autoAnswerStatus</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4022,6 +4076,19 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
 </context>
 <context>
+    <name>TimelineItem - Copie</name>
+    <message>
+        <source>deleteTimeline</source>
+        <extracomment>&apos;Are you sure you want to delete and leave this timeline?&apos;</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>deleteTimelineTooltip</source>
+        <extracomment>&apos;After confirmation, it will erase all history, leave the chat room if it is a group chat and delete it in database.&apos;</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>UseAppSipAccount</name>
     <message>
         <source>confirmAction</source>
@@ -4156,13 +4223,6 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     <message>
         <source>recordingsDelete</source>
         <extracomment>&apos;Are you sure you want to delete this item?&apos; : Confirmation message for removing a record.</extracomment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>VoiceMailManagement</name>
-    <message>
-        <source>voice</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

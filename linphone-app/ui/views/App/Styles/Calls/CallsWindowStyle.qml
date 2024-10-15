@@ -14,13 +14,13 @@ QtObject {
 	}
 	
 	property QtObject callsList: QtObject {
-		property var colorModel: ColorsList.add(sectionName+'_list_bg', 'q')
+        property var colorModel: ColorsList.add(sectionName+'_list_bg', 'n')
 		property int defaultWidth: 250
 		property int maximumWidth: 300
 		property int minimumWidth: 200
 		
 		property QtObject header: QtObject {
-			property var color1: ColorsList.add(sectionName+'_list_header_a', 'q')
+            property var color1: ColorsList.add(sectionName+'_list_header_a', 'n')
 			property var color2: ColorsList.add(sectionName+'_list_header_b', 'f')
 			property int height: 60
 			property int iconSize: 40

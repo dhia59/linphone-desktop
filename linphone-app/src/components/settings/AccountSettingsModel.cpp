@@ -703,10 +703,15 @@ void AccountSettingsModel::handleRegistrationStateChanged(
 				std::string username = defaultAccount->findAuthInfo()->getUsername();
 				qWarning() << QStringLiteral("checking account");
 				std::string currentUserName= config->getString("defaultAccount", "username", "");
-				if (username != currentUserName) {				
+				if (message == "Forbidden" || message == "Unauthorized") {
+					logout();
+					emit failedRegistration();
+				}
+				else if (username != currentUserName) {				
 					logout();
 				}
-			}		
+			}
+		
 	
 		}
 	}

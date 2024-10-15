@@ -9,13 +9,14 @@ import Konami 1.0
 import Linphone 1.0
 import 'SelfCareWindow.js' as Logic
 import App.Styles 1.0
-
+import 'qrc:/ui/scripts/Utils/utils.js' as Utils
+import Units 1.0
 // =============================================================================
 Rectangle {
     id:swindowid
-    //color: "gray"
-   // minimumHeight: 600
-    //minimumWidth: 400
+    color: "#F4F4F4"
+    anchors.fill: parent
+
     function setView (view, props, callback) {
         Logic.setView(view, props, callback)
     }
@@ -23,60 +24,64 @@ Rectangle {
     // Principal conteneur
     RowLayout {
         anchors.fill: parent
-
+        spacing: 20
 
 
         // Menu latéral
-        ColumnLayout {
-            Rectangle {
-                width:200
-                Layout.fillHeight: true
-                color: "#f0f0f0"
-                //color: "gray"
 
-                Column {
-                    spacing: 10
-                    //anchors.fill: parent
-                    Layout.fillHeight: true
-                    width: 200
-                    anchors.margins: 10
-                    id: sideBar
-                    property int currentIndex: 0
+        Rectangle {
+            id:menu
+            anchors.topMargin: 20
+            anchors.left: parent.left
+            anchors.leftMargin:   20
 
-                    // Items du menu comme des rectangles avec des coins arrondis
-                    Repeater {
-                        model: ["Numéro personnalisé", "Redirection", "Messagerie vocale", "Compte"]
-                        delegate: Rectangle {
-                            id: menuItem
-                            width:200
-                            height: 40
-                            color: (sideBar.currentIndex === index) ? "#141B6C" : "#b0b0b0"
-                            radius: 10
+            width:192
+            height: 164
+            anchors.top: parent.top
+            color: "transparent"
+            radius: 5
+            border.color: "#1E1E1E"
+            border.width: 2
+            z:1
 
-                            Text {
-                                anchors.centerIn: parent
-                                text: modelData
-                                color: "#FFFFFF"
+            Column {
+                anchors.centerIn: parent
+                spacing: 0
+                id: sideBar
+                property int currentIndex: 0
+                Repeater {
+                    model: ["Numéro de sortie", "Redirection", "Messagerie vocale", "Compte"]
+                    delegate: Rectangle {
+                        id: menuItem
+                        width:190
+                        height: 40
+                        color: (sideBar.currentIndex === index) ? "#0D6160": "#E9E9E9"
+                        Text {
+                            anchors.centerIn: parent
+                            text: modelData
+                            color:(sideBar.currentIndex === index)? "#FFFFFF": "#000000"
+                            font.pointSize: Units.dp * 10
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                sideBar.currentIndex = index;
+                                swindowid.setView(views[index]);
                             }
 
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: {
-                                    sideBar.currentIndex = index;
-                                    swindowid.setView(views[index]);
-                                }
-                            }
                         }
                     }
-
                 }
+
             }
         }
 
+
         ColumnLayout {
-           // x: 210
+            // x: 210
             Rectangle {
-                //color: "yellow"
+                color: "#F4F4F4"
                 anchors.fill: parent
 
                 ColumnLayout {
@@ -95,7 +100,7 @@ Rectangle {
                             for (var i = 0; i < sideBar.children.length; ++i) {
                                 var item = sideBar.children[i];
                                 if (item instanceof Rectangle) {
-                                    item.color = (sideBar.currentIndex === i) ? "#141B6C" : "#b0b0b0";
+                                    item.color = (sideBar.currentIndex === i) ? "#0D6160" :  "#E9E9E9";
                                 }
                             }
                         }

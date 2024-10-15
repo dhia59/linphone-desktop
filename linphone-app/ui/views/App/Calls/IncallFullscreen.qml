@@ -90,7 +90,7 @@ Window {
 			onStatusChanged: Logic.handleStatusChanged (status, conference._fullscreen)
 			onVideoRequested: Logic.handleVideoRequested(callModel)
 			onEncryptionChanged: if(!conference.isSecured && callModel.encryption === CallModel.CallEncryptionZrtp){
-							window.attachVirtualWindow(Utils.buildLinphoneDialogUri('ZrtpTokenAuthenticationDialog'), {call:callModel})
+							mainwindow.attachVirtualWindow(Utils.buildLinphoneDialogUri('ZrtpTokenAuthenticationDialog'), {call:callModel})
 						}
 		}
 
@@ -410,7 +410,7 @@ Window {
 						: IncallStyle.buttons.secure
 						
 			onClicked: if(callModel.encryption === CallModel.CallEncryptionZrtp){
-				window.attachVirtualWindow(Utils.buildLinphoneDialogUri('ZrtpTokenAuthenticationDialog'), {call:callModel})
+				mainwindow.attachVirtualWindow(Utils.buildLinphoneDialogUri('ZrtpTokenAuthenticationDialog'), {call:callModel})
 			}
 						
 			tooltipText: callModel ? Logic.makeReadableSecuredString(callModel.encryption !== CallModel.CallEncryptionNone, callModel.securedString) : ''

@@ -691,13 +691,13 @@ function computeAvatarSize (container, maxSize, ratio) {
 
 function openCodecOnlineInstallerDialog (window, codecInfo, cb) {
   var VideoCodecsModel = Linphone.VideoCodecsModel
-  window.attachVirtualWindow(buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: qsTr('downloadCodecDescription')
       .replace('%1', codecInfo.mime)
       .replace('%2', codecInfo.encoderDescription)
   }, function (status) {
     if (status) {
-      window.attachVirtualWindow(buildLinphoneDialogUri('OnlineInstallerDialog'), {
+      mainwindow.attachVirtualWindow(buildLinphoneDialogUri('OnlineInstallerDialog'), {
         downloadUrl: codecInfo.downloadUrl,
         extract: true,
         installFolder: VideoCodecsModel.codecsFolder,
