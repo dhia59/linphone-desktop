@@ -1478,6 +1478,46 @@
     </message>
 </context>
 <context>
+    <name>GroupChatList</name>
+    <message>
+        <source>Equipes</source>
+        <extracomment>&apos;Meetings&apos; : Conference list title.</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Créer une équipe</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GroupChatManagement</name>
+    <message>
+        <source>addParticipantPlaceholder</source>
+        <extracomment>&apos;Add Participants&apos; : Placeholder in a search bar for adding participant to the chat room</extracomment>
+        <translation type="unfinished">Katılımcı ekle</translation>
+    </message>
+    <message>
+        <source>addParticipantTooltip</source>
+        <extracomment>&apos;Search participants in your contact list in order to invite them into the chat room.&apos;</extracomment>
+        <translation type="unfinished">Konuşma odasına davet etmek için kişi listenizde katılımcı arayın.</translation>
+        <extra-Tooltip>Explanation for inviting the selected participants into chat room</extra-Tooltip>
+    </message>
+    <message>
+        <source>participantList</source>
+        <extracomment>&apos;Participant list&apos;</extracomment>
+        <translation type="unfinished">Katılımcı listesi</translation>
+    </message>
+    <message>
+        <source>adminStatus</source>
+        <translation type="unfinished">Yönetici</translation>
+    </message>
+    <message>
+        <source>quitGroupButton</source>
+        <extracomment>&apos;Exit group&apos; : Button label</extracomment>
+        <translation type="unfinished">Kümeden çık</translation>
+    </message>
+</context>
+<context>
     <name>HistoryView</name>
     <message>
         <source>removeAllEntriesDescription</source>
@@ -1843,10 +1883,6 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>reunions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Appels</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1868,6 +1904,10 @@ Buraya tıklayın: &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;
     </message>
     <message>
         <source>autoAnswerStatus</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Êtes-vous sûr de vouloir vous déconnecter ?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

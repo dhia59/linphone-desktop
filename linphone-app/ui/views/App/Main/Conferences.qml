@@ -81,8 +81,8 @@ Item{
         TextButtonB {
                 text: qsTr('Créer une équipe')
                 onClicked: {
-                            window.detachVirtualWindow()
-                            window.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
+                            mainwindow.detachVirtualWindow()
+                            mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/NewChatRoom.qml')
                                                        ,{})
                         }
             }

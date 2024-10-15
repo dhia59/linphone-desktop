@@ -306,19 +306,19 @@ Rectangle{
 
                             icon: MainWindowStyle.menu.conferences.icon
                             iconSize: 40
-                            name: qsTr('reunions').toUpperCase()
+                            name: qsTr('Equipes').toUpperCase()
                             visible: false
 
                             onSelected: {
                                 showTimeline=false
                                 menuWidth=250
                                 //   timeline.model.unselectAll()
-                                setView('Conferences')
+                                setView('GroupChatList')
                             }
                             onClicked:{
                                 showTimeline=false
                                 menuWidth=250
-                                setView('Conferences')
+                                setView('GroupChatList')
                             }
 
                         }
@@ -358,16 +358,17 @@ Rectangle{
                                 showTimeline=false
                                 menuWidth=250
                                 //  timeline.model.unselectAll()
-                                setView('Conferences')
+                                setView('GroupChatList')
                             }
                             onClicked:{
                                 showTimeline=false
                                 menuWidth=250
-                                setView('Conferences')
+                                setView('GroupChatList')
                             }
 
 
                         }
+
 
                         ApplicationMenuEntry {
                             id: vocalmessagesEntry

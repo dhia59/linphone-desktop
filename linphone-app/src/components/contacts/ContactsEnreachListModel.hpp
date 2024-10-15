@@ -52,7 +52,7 @@ public:
 	Q_INVOKABLE ContactEnreachModel *getContactEnreachModelFromAddress (const QString& address) const;
 	Q_INVOKABLE ContactEnreachModel *addContact (ContactEnreachModel* contact);
 	Q_INVOKABLE void removeContact (ContactEnreachModel *contact);
-	
+	QList<ContactEnreachModel*> getList();
 	Q_INVOKABLE void cleanAvatars ();
 	Q_INVOKABLE void update ();
 	//Q_INVOKABLE ContactEnreachModel*  getFirstEnreachContact(int row);

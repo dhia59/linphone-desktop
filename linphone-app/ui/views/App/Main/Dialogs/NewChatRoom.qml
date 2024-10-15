@@ -95,7 +95,7 @@ DialogPlus {
 						Layout.fillWidth: true
 						//: 'Would you like to encrypt your chat?' : Ask about setting the chat room as secured.
 						text:qsTr('askEncryption')
-						color: NewChatRoomStyle.askEncryptionColor.color
+                        color: "black"
 						font.pointSize: Units.dp * 11
 						font.weight: Font.DemiBold
 					}
@@ -251,7 +251,7 @@ DialogPlus {
 										
 										font.weight: Font.DemiBold
 										lineHeight: 0.8
-										color: NewChatRoomStyle.recentContactUsernameColor.color
+                                        color: "black"
 										font.pointSize: Units.dp * 9
 										clip:false
 									}
@@ -354,7 +354,7 @@ DialogPlus {
 						//~ one word for admin status
 						text : qsTr('adminStatus')
 						
-                        color: NewChatRoomStyle.addressesAdminColor.color
+                        color: "black"
 						font.pointSize: Units.dp * 11
 						font.weight: Font.Light
 						visible: participantView.count > 0

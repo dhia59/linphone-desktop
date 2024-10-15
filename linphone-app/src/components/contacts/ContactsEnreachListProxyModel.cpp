@@ -103,7 +103,6 @@ void ContactsEnreachListProxyModel::listLinphoneContacts(ContactsEnreachListMode
 		}
 	
 	}
-
 }
 
 void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *contacts) {
@@ -183,7 +182,7 @@ void ContactsEnreachListProxyModel::listApiContacts(ContactsEnreachListModel *co
 						qDebug() << "Error String:" << reply->errorString();
 						
 						setSourceModel(contacts);
-						sort(0);
+						//sort(0);
 					}
 
 					// Clean up the reply
@@ -227,6 +226,31 @@ bool ContactsEnreachListProxyModel::lessThan(const QModelIndex &left, const QMod
 	const ContactEnreachModel *contactB = sourceModel()->data(right).value<ContactEnreachModel *>();
 	return false;	
 }
+
+void ContactsEnreachListProxyModel::sort(int column, Qt::SortOrder order)
+{	
+	if (column == 0) { 
+		beginResetModel();
+		QAbstractItemModel* source = this->sourceModel();  // Get the source model
+
+
+		ContactsEnreachListModel* contactsModel = qobject_cast<ContactsEnreachListModel*>(source);
+
+		auto& contactList = contactsModel->getList(); 
+		if (column == 0) {
+			std::sort(contactList.begin(), contactList.end(), [order](const ContactEnreachModel* a, const ContactEnreachModel* b) {
+				return a->getContactEnreach()->getFullName() < b->getContactEnreach()->getFullName();
+			});
+		}
+		contactsModel = new ContactsEnreachListModel();
+		for each (ContactEnreachModel* item in contactList)
+		{
+			contactsModel->addContact(item);
+		}
+		setSourceModel(contactsModel);
+	}
+}
+
 
 
 // -----------------------------------------------------------------------------
