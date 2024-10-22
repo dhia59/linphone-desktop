@@ -73,7 +73,7 @@ function setView (view, props, callback) {
     apply(view, props, false, callback)
     return
   }
-  mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+  mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
     descriptionText: lockedInfo.descriptionText,
   }, function (status) {
     if (status) {
@@ -96,7 +96,7 @@ function openConferenceManager (params) {
 }
 
 function manageAccounts () {
-  mainmainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ManageAccounts.qml'))
+  mainwindow.attachVirtualWindow(Qt.resolvedUrl('Dialogs/ManageAccounts.qml'))
 }
 
 // -----------------------------------------------------------------------------

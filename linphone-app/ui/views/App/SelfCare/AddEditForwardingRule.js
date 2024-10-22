@@ -51,7 +51,6 @@ function resetForm(){
     destinationText ="";
     noAnswerForwardingDelay.currentIndex=0;
     specificCallerList=[];
-
     fromDateField.text="00:00";
     toDateField.text="00:00";
     for (var i = 0; i < 3; ++i) {
@@ -60,6 +59,7 @@ function resetForm(){
     updateList();
     calendarButton.checked = false;
     presenceButton.checked = false;
+
    /* for (var j = 0; i < 7; ++j) {
 
         daysRepeater.itemAt(j).checked= false
@@ -116,8 +116,8 @@ function populate(){
     forwardingOrigin.currentIndex=getOriginInt(currentForwardingData.filter);
     forwardType.currentIndex=getForwardType(currentForwardingData.forwardType);
     forwardingDestination.currentIndex=getNumeroAppeleInt(currentForwardingData.destination);
-    console.log("heloooooo  forwardType data",currentForwardingData.destination)
-    console.log("heloooooo  forwardType index",forwardingDestination.currentIndex)
+    console.log("forwardType data",currentForwardingData.destination)
+    console.log("forwardType index",forwardingDestination.currentIndex)
     populateTargetNumbersFilter(currentForwardingData.filtersOnTargetNumber);
     noAnswerForwardingDelay.currentIndex= getNoAnswerDelayInt(currentForwardingData.noAnswerForwardingDelay);
     if(currentForwardingData.timeFilter!==null){
@@ -136,6 +136,7 @@ function populate(){
         destinationTextRect.visible= true
     }
     if(currentForwardingData.specificCaller.length>0){
+        console.log("specific caller list :", currentForwardingData.specificCaller.split(","))
         specificCallerList= currentForwardingData.specificCaller.split(",");
         updateList();
     }
@@ -236,7 +237,7 @@ function isValidForm(){
 }
 
 function showAlert(text){
-    mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
+    mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
                                    descriptionText: text
                                }, function (status) {
                                    if (status) {

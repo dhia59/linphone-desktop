@@ -18,7 +18,7 @@ import 'AddEditForwardingRule.js' as Logic
 ScrollView {
 
     width: 500
-    height: 550
+    height: 540
     x:50
 
     function populate(){
@@ -105,7 +105,6 @@ ScrollView {
                         model: ["Réceptioniste de l'entreprise", "Boite vocale par défaut de la communité","Autre" ]
                         currentIndex: currentForwardingData!==null?Logic.getDestinationInt(currentForwardingData.destination):0
                         onCurrentIndexChanged: {
-                            console.log("visssssssss ",currentIndex===2 )
                             distinationText.visible= (currentIndex===2)
                             destinationTextRect.visible= currentIndex===2 && destinationText!==""
                         }
@@ -170,12 +169,12 @@ ScrollView {
                                 destinationText = Logic.getNumberOrExtension(sipAddress)
                             }
                             else{
-                              Logic.showInvalideNumberAlert("Le numéro n'est pas valide. Le numéro doit commencer par +33 suivi de 9 chiffres ou par 0 suivi de 9 chiffres.")
+                                Logic.showInvalideNumberAlert("Le numéro n'est pas valide. Le numéro doit commencer par +33 suivi de 9 chiffres ou par 0 suivi de 9 chiffres.")
                             }
                         }
 
                         onEntryClicked: {
-                           destinationTextRect.visible= true
+                            destinationTextRect.visible= true
                             destinationText =Logic.getNumberOrExtension(entry.sipAddress)
                         }
                     }
@@ -186,7 +185,7 @@ ScrollView {
             FormLine{
                 FormGroup {
                     id: advancedSettingsField
-                     CheckBox {
+                    CheckBox {
                         id: advancedSettingsFieldValue
                         text: "Réglages avancés"
                         checked: showAdvancedSettings
@@ -269,16 +268,16 @@ ScrollView {
 
                                     }
                                     else{
-                                      Logic.showAlert("Ce contact existe déja !")
+                                        Logic.showAlert("Ce contact existe déja !")
                                     }
 
                                 }
                                 else{
-                                 Logic.showAlert("Le numéro n'est pas valide. Le numéro doit commencer par +33 suivi de 9 chiffres ou par 0 suivi de 9 chiffres.")
+                                    Logic.showAlert("Le numéro n'est pas valide. Le numéro doit commencer par +33 suivi de 9 chiffres ou par 0 suivi de 9 chiffres.")
                                 }
                             }
 
-                            onEntryClicked: {                                
+                            onEntryClicked: {
                                 var sipAddress= entry.sipAddress.split('"');
                                 if(specificCallerList.indexOf(Logic.getNumberOrExtension(entry.sipAddress))<0){
                                     specificCallerList.push(Logic.getNumberOrExtension( entry.sipAddress))
@@ -286,7 +285,7 @@ ScrollView {
 
                                 }
                                 else{
-                                   Logic.showAlert("Ce contact existe déja !")
+                                    Logic.showAlert("Ce contact existe déja !")
                                 }
 
 
@@ -310,7 +309,7 @@ ScrollView {
                             columnSpacing: 15
                             Repeater {
                                 model: ["Numéro court", "Numéro fixes", "Numéro Mobiles"]
-
+                                id: repeater
                                 delegate: Button {
                                     background: Rectangle {
                                         radius: 10
@@ -401,14 +400,14 @@ ScrollView {
                                     onClicked: {
                                         window.attachVirtualWindow(Utils.buildCommonDialogUri('DateTimeDialog'), {showTimePicker:true,selectedTime : fromDateField.text}
                                                                    , function (status) {
-                                                                        if(status){
+                                                                       if(status){
                                                                            if(toDateField.text!=="00:00" && status.selectedTime >toDateField.text ){
                                                                                Logic.showAlert( "L'heure de début ne doit pas dépasser l'heure de fin.")
                                                                            }
                                                                            else{
                                                                                fromDateField.text= status.selectedTime
                                                                            }
-                                                                         }
+                                                                       }
                                                                    }
                                                                    )
                                     }
@@ -441,7 +440,7 @@ ScrollView {
                                                                        if(status){
                                                                            if(fromDateField.text!=="00:00" && status.selectedTime <fromDateField.text ){
                                                                                Logic.showAlert("L'heure de début ne doit pas dépasser l'heure de fin.")
-                                                                          }
+                                                                           }
                                                                            else{
                                                                                toDateField.text= status.selectedTime
                                                                            }
@@ -497,6 +496,28 @@ ScrollView {
                     onClicked:{
                         if(currentForwardingData===null){
                             if (forwardingManagement.addForwardingRule({
+                                                                           label: forwardingLabel.text,
+                                                                           origin: forwardingOrigin.currentIndex,
+                                                                           forwardType: forwardType.currentIndex,
+                                                                           destination: forwardingDestination.currentIndex,
+                                                                           destinationText: destinationText,
+                                                                           noAnswerForwardingDelay : noAnswerForwardingDelay.currentIndex,
+                                                                           numberFilter: Logic.getTargetNumbersFilter(),
+                                                                           specificCaller: specificCallerList,
+                                                                           daysFilter: Logic.getDaysFilter(),
+                                                                           startTimeFilter: fromDateField.text,
+                                                                           endTimeFilter: toDateField.text
+
+                                                                       }))
+                            {
+                                Logic.resetForm()
+                            }
+
+                        }
+                        else {
+                            console.log("editForwardingRule : ",forwardType.currentIndex)
+                            if (forwardingManagement.editForwardingRule({
+                                                                            forwardingId: currentForwardingData.forwardingID,
                                                                             label: forwardingLabel.text,
                                                                             origin: forwardingOrigin.currentIndex,
                                                                             forwardType: forwardType.currentIndex,
@@ -507,32 +528,10 @@ ScrollView {
                                                                             specificCaller: specificCallerList,
                                                                             daysFilter: Logic.getDaysFilter(),
                                                                             startTimeFilter: fromDateField.text,
-                                                                            endTimeFilter: toDateField.text
+                                                                            endTimeFilter: toDateField.text,
+                                                                            activated: currentForwardingData.activated
 
                                                                         }))
-                            {
-                                Logic.resetForm()
-                            }
-
-                        }
-                        else {
-                            console.log("editForwardingRule : ",forwardType.currentIndex)
-                            if (forwardingManagement.editForwardingRule({
-                                                                             forwardingId: currentForwardingData.forwardingID,
-                                                                             label: forwardingLabel.text,
-                                                                             origin: forwardingOrigin.currentIndex,
-                                                                             forwardType: forwardType.currentIndex,
-                                                                             destination: forwardingDestination.currentIndex,
-                                                                             destinationText: destinationText,
-                                                                             noAnswerForwardingDelay : noAnswerForwardingDelay.currentIndex,
-                                                                             numberFilter: Logic.getTargetNumbersFilter(),
-                                                                             specificCaller: specificCallerList,
-                                                                             daysFilter: Logic.getDaysFilter(),
-                                                                             startTimeFilter: fromDateField.text,
-                                                                             endTimeFilter: toDateField.text,
-                                                                             activated: currentForwardingData.activated
-
-                                                                         }))
                             {
                                 Logic.resetForm()
                             }

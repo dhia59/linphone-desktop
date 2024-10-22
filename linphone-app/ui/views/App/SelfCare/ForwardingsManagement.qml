@@ -88,6 +88,7 @@ Rectangle {
         ColumnLayout{
             Layout.fillWidth: true
             Layout.fillHeight: true
+            clip: true
             Rectangle{
                 border.color: "#1E1E1E"
                 border.width: 1

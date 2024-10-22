@@ -301,6 +301,8 @@ QVariantMap CallsListModel::createChatRoom(const QString& subject, const int& se
 	std::list <shared_ptr<linphone::Address> > chatRoomParticipants;
 	for(auto p : participants){
 		ParticipantModel* participant = p.value<ParticipantModel*>();
+		//if (participants.size()>1)
+		//	participant->setSipAddress("sip:s"+participant->getSipAddress().split(":")[1].split("@")[0].split(".")[0]);
 		std::shared_ptr<linphone::Address> address;
 		if(participant) {
 			address = Utils::interpretUrl(participant->getSipAddress());

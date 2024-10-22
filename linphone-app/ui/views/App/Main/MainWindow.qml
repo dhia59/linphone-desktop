@@ -139,7 +139,7 @@ ApplicationWindow {
     Connections{
         target: App
         onRequestFetchConfig: {
-            mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+            mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
                                                    flat: true,
                                                    //: 'Do you want to download and apply configuration from this URL?' : text to confirm to fetch a specified URL
                                                    descriptionText: '<b>'+qsTr('confirmFetchUri')

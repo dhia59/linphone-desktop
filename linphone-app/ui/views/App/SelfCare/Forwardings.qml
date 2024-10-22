@@ -27,7 +27,7 @@ Rectangle {
         ForwardingManagement{
             id: forwardingManagement
             onActivationFailed:{
-                mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
+                mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('OKDialog'), {
                                                descriptionText: "Cette règle de redirection ne peut-être créée, car elle chevauche une autre règle existante. "
                                            }, function (status) {
                                                if (status) {
@@ -76,7 +76,7 @@ Rectangle {
                         onClicked: {
                             //dialog.open()
                             console.log("delete:", modelData)
-                            mainmainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
+                            mainwindow.attachVirtualWindow(Utils.buildCommonDialogUri('ConfirmDialog'), {
                                                            descriptionText: qsTr('Voulez-vous vraiment supprimer cette règle ?'),
                                                        }, function (status) {
                                                            if (status) {
