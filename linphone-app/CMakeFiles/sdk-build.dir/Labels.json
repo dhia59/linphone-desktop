@@ -1,0 +1,40 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/sdk-build"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/4ecb00aa7dbaed9595df9c44fdfb155b/sdk-build.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d2e78cd05496108efa09bdda3418f384/sdk-build.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d2e78cd05496108efa09bdda3418f384/sdk-configure.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d2e78cd05496108efa09bdda3418f384/sdk-force_build.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d2e78cd05496108efa09bdda3418f384/sdk-patch.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d2e78cd05496108efa09bdda3418f384/sdk-update.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d2e78cd05496108efa09bdda3418f384/sdk-download.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d2e78cd05496108efa09bdda3418f384/sdk-mkdir.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"sdk"
+		],
+		"name" : "sdk-build"
+	}
+}

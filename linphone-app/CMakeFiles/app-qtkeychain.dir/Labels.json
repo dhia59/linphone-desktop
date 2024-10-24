@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/app-qtkeychain"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/4ecb00aa7dbaed9595df9c44fdfb155b/app-qtkeychain.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d1b359bb52625526c7f2c414ec880e84/app-qtkeychain-complete.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d0e08cbba968ae7fbc7727c17de9c4f8/app-qtkeychain-build.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d0e08cbba968ae7fbc7727c17de9c4f8/app-qtkeychain-configure.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d0e08cbba968ae7fbc7727c17de9c4f8/app-qtkeychain-download.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d0e08cbba968ae7fbc7727c17de9c4f8/app-qtkeychain-install.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d0e08cbba968ae7fbc7727c17de9c4f8/app-qtkeychain-mkdir.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d0e08cbba968ae7fbc7727c17de9c4f8/app-qtkeychain-patch.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d0e08cbba968ae7fbc7727c17de9c4f8/app-qtkeychain-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"app-qtkeychain"
+		],
+		"name" : "app-qtkeychain"
+	}
+}

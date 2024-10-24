@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/linphone-qt"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/4ecb00aa7dbaed9595df9c44fdfb155b/linphone-qt.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/d1b359bb52625526c7f2c414ec880e84/linphone-qt-complete.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/118a712032c260b683e029bf56678c5f/linphone-qt-build.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/118a712032c260b683e029bf56678c5f/linphone-qt-configure.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/118a712032c260b683e029bf56678c5f/linphone-qt-download.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/118a712032c260b683e029bf56678c5f/linphone-qt-install.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/118a712032c260b683e029bf56678c5f/linphone-qt-mkdir.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/118a712032c260b683e029bf56678c5f/linphone-qt-patch.rule"
+		},
+		{
+			"file" : "D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/118a712032c260b683e029bf56678c5f/linphone-qt-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"linphone-qt"
+		],
+		"name" : "linphone-qt"
+	}
+}

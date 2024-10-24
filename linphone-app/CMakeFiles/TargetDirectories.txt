@@ -1,0 +1,9 @@
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/app-qtkeychain.dir
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/sdk.dir
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/sdk-build.dir
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/linphone-qt.dir
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/auto_regeneration.dir
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/linphone-qt-only.dir
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/INSTALL.dir
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/ALL_BUILD.dir
+D:/work/VoipProjects/Linphone/Saylo/linphone-desktop/linphone-app/CMakeFiles/ZERO_CHECK.dir
