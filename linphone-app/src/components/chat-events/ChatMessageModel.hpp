@@ -33,6 +33,8 @@
 
 class ChatMessageModel;
 class ChatMessageListener;
+class ChatReactionModel;
+class ChatReactionListModel;
 class ParticipantImdnStateProxyModel;
 class ParticipantImdnStateListModel;
 class ContentModel;
@@ -110,7 +112,7 @@ public:
 	//----------------------------------------------------------------------------
 	
 	Q_INVOKABLE void resendMessage ();
-	
+	Q_INVOKABLE void sendChatReaction(const QString& reaction);
 	virtual void deleteEvent() override;
 	void updateFileTransferInformation();
 	static QDateTime initReceivedTimestamp(const std::shared_ptr<linphone::ChatMessage> &message, bool isNew, bool force = false); // return received timestamp
@@ -140,6 +142,10 @@ signals:
 	void isOutgoingChanged();
 	void fileContentChanged();
 	void remove(ChatMessageModel* model);
+	void myReactionChanged();
+
+	void newMessageReaction(const std::shared_ptr<linphone::ChatMessage> & message, const std::shared_ptr<const linphone::ChatMessageReaction> & reaction);
+	void reactionRemoved(const std::shared_ptr<linphone::ChatMessage> & message, const std::shared_ptr<const linphone::Address> & address);
 	
 	
 private:

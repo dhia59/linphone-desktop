@@ -83,12 +83,13 @@ int main (int argc, char *argv[]) {
 	App *app = controller.getApp();
 	if(vfsEncrypted)
 		qInfo() << "Activation of VFS encryption.";
+	/*
 	if (app->isSecondary())
 	{
 		qInfo() << QStringLiteral("Running secondary app success. Kill it now.");
 		cleanStream();
 		return EXIT_SUCCESS;
-	}
+	}*/
 	
 	qInfo() << QStringLiteral("Running app...");
 

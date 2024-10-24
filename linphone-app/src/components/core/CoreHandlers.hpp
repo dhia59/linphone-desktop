@@ -58,7 +58,7 @@ signals:
 	void presenceStatusReceived(std::shared_ptr<linphone::Friend> contact);
 	void registrationStateChanged(const std::shared_ptr<linphone::Account> &account, linphone::RegistrationState state, const std::string &message);
 	void ecCalibrationResult(linphone::EcCalibratorStatus status, int delayMs);
-	void setLastRemoteProvisioningState(const linphone::ConfiguringState &state);
+	void setLastRemoteProvisioningState(const linphone::Config::ConfiguringState &state);
 	void conferenceInfoReceived(const std::shared_ptr<const linphone::ConferenceInfo> & conferenceInfo);
 	void foundQRCode(const std::string & result);
 	void accountFirstLogin();
@@ -118,7 +118,7 @@ private:
 	
 	void onConfiguringStatus(
 			const std::shared_ptr<linphone::Core> & core,
-			linphone::ConfiguringState status,
+			linphone::Config::ConfiguringState status,
 			const std::string & message) override;
 	
 	void onDtmfReceived(

@@ -74,7 +74,7 @@ Item {
                        // radius: messageMenu.radius
                        // down: chatMessageModel && modelData && modelData == chatMessageModel.myReaction
                         onTriggered: {
-                                    //chatMessageModel.sendChatReaction(modelData)
+                                    chatMessageModel.sendChatReaction(modelData)
                                     messageMenu.close()
                                 }
                         Text {

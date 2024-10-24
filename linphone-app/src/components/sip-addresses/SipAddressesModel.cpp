@@ -585,8 +585,8 @@ void SipAddressesModel::addOrUpdateSipAddress (SipAddressEntry &sipAddressEntry,
 	shared_ptr<linphone::ChatRoom> chatRoom(message->getChatRoom());
 	auto settingsModel = CoreManager::getInstance()->getSettingsModel();
 	int count = 0;
-	if (chatRoom->getCurrentParams()->getEncryptionBackend() == linphone::ChatRoomEncryptionBackend::None && !settingsModel->getStandardChatEnabled()
-			|| chatRoom->getCurrentParams()->getEncryptionBackend() != linphone::ChatRoomEncryptionBackend::None && !settingsModel->getSecureChatEnabled())	
+	if (chatRoom->getCurrentParams()->getEncryptionBackend() == linphone::ChatRoom::EncryptionBackend::None && !settingsModel->getStandardChatEnabled()
+			|| chatRoom->getCurrentParams()->getEncryptionBackend() != linphone::ChatRoom::EncryptionBackend::None && !settingsModel->getSecureChatEnabled())	
 		count = chatRoom->getUnreadMessagesCount();
 	auto lPeerAddress = chatRoom->getPeerAddress();
 	QString localAddress(Utils::cleanSipAddress(Utils::coreStringToAppString(chatRoom->getLocalAddress()->asStringUriOnly())));

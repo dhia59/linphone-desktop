@@ -103,14 +103,14 @@ std::shared_ptr<linphone::Account> AccountSettingsModel::findAccount(shared_ptr<
 void AccountSettingsModel::setUsedSipAddress(const shared_ptr<const linphone::Address> &address) {
 	shared_ptr<linphone::Core> core = CoreManager::getInstance()->getCore();
 	shared_ptr<linphone::Account> account = core->getDefaultAccount();
-	if (account) {
+	/*if (account) {
 		auto params = account->getParams()->clone();
 		if (!params->setIdentityAddress(address)) {
 			account->setParams(params);
 			emit sipAddressChanged();
 		}
 		return;
-	}
+	}*/
 	core->setPrimaryContact(address->asString());
 	emit sipAddressChanged();
 }

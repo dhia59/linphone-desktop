@@ -228,7 +228,7 @@ ChatRoomModel* CallsListModel::createChat (const QString &participantAddress) co
 	std::shared_ptr<const linphone::Address> localAddress;
 	participants.push_back(address);
 	
-	params->setBackend(linphone::ChatRoomBackend::Basic);
+	params->setBackend(linphone::ChatRoom::Backend::Basic);
 	
 	qInfo() << "Create ChatRoom with " <<participantAddress;
 	std::shared_ptr<linphone::ChatRoom> chatRoom = core->createChatRoom(params, localAddress, participants);
@@ -319,7 +319,7 @@ QVariantMap CallsListModel::createChatRoom(const QString& subject, const int& se
 	params->enableEncryption(securityLevel>0);
 	
 	if( securityLevel<=0)
-		params->setBackend(linphone::ChatRoomBackend::Basic);
+		params->setBackend(linphone::ChatRoom::Backend::Basic);
 	params->enableGroup( subject!="" );
 	
 	

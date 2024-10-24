@@ -42,7 +42,7 @@ void LinphoneEnums::registerMetaTypes(){
 	qRegisterMetaType<std::shared_ptr<linphone::Call>>();
 	qRegisterMetaType<linphone::Call::State>();
 	qRegisterMetaType<std::shared_ptr<linphone::Core>>();
-	qRegisterMetaType<linphone::ConfiguringState>();
+	qRegisterMetaType<linphone::Config::ConfiguringState>();
 	qRegisterMetaType<std::string>();
 	qRegisterMetaType<linphone::GlobalState>();
 	qRegisterMetaType<std::shared_ptr<linphone::ChatRoom>>();
@@ -55,6 +55,7 @@ void LinphoneEnums::registerMetaTypes(){
 	qRegisterMetaType<std::shared_ptr<linphone::ChatMessage>>();
 }
 
+
 linphone::MediaEncryption LinphoneEnums::toLinphone(const LinphoneEnums::MediaEncryption& data){
 	return static_cast<linphone::MediaEncryption>(data);
 }
@@ -62,10 +63,10 @@ LinphoneEnums::MediaEncryption LinphoneEnums::fromLinphone(const linphone::Media
 	return static_cast<LinphoneEnums::MediaEncryption>(data); 
 }
 
-linphone::FriendCapability LinphoneEnums::toLinphone(const LinphoneEnums::FriendCapability& data){
-	return static_cast<linphone::FriendCapability>(data);
+linphone::Friend::Capability LinphoneEnums::toLinphone(const LinphoneEnums::FriendCapability& data){
+	return static_cast<linphone::Friend::Capability>(data);
 }
-LinphoneEnums::FriendCapability LinphoneEnums::fromLinphone(const linphone::FriendCapability& data){
+LinphoneEnums::FriendCapability LinphoneEnums::fromLinphone(const linphone::Friend::Capability& data){
 	return static_cast<LinphoneEnums::FriendCapability>(data); 
 }
 
@@ -98,14 +99,14 @@ LinphoneEnums::CallStatus LinphoneEnums::fromLinphone(const linphone::Call::Stat
 	return static_cast<LinphoneEnums::CallStatus>(data); 
 }
 
-linphone::ConferenceLayout LinphoneEnums::toLinphone(const LinphoneEnums::ConferenceLayout& layout){
+linphone::Conference::Layout LinphoneEnums::toLinphone(const LinphoneEnums::ConferenceLayout& layout){
 	if( layout != LinphoneEnums::ConferenceLayoutAudioOnly)
-		return static_cast<linphone::ConferenceLayout>(layout);
+		return static_cast<linphone::Conference::Layout>(layout);
 	else
-		return linphone::ConferenceLayout::Grid;// Audio Only mode
+		return linphone::Conference::Layout::Grid;// Audio Only mode
 }
 
-LinphoneEnums::ConferenceLayout LinphoneEnums::fromLinphone(const linphone::ConferenceLayout& layout){
+LinphoneEnums::ConferenceLayout LinphoneEnums::fromLinphone(const linphone::Conference::Layout& layout){
 	return static_cast<LinphoneEnums::ConferenceLayout>(layout); 
 }
 
@@ -125,11 +126,11 @@ LinphoneEnums::ConferenceSchedulerState LinphoneEnums::fromLinphone(const linpho
 	return static_cast<LinphoneEnums::ConferenceSchedulerState>(state); 
 }
 
-linphone::ParticipantDeviceState LinphoneEnums::toLinphone(const LinphoneEnums::ParticipantDeviceState& state){
-	return static_cast<linphone::ParticipantDeviceState>(state);
+linphone::ParticipantDevice::State LinphoneEnums::toLinphone(const LinphoneEnums::ParticipantDeviceState& state){
+	return static_cast<linphone::ParticipantDevice::State>(state);
 }
 
-LinphoneEnums::ParticipantDeviceState LinphoneEnums::fromLinphone(const linphone::ParticipantDeviceState& state){
+LinphoneEnums::ParticipantDeviceState LinphoneEnums::fromLinphone(const linphone::ParticipantDevice::State& state){
 	return static_cast<LinphoneEnums::ParticipantDeviceState>(state); 
 }
 
@@ -140,10 +141,10 @@ LinphoneEnums::TunnelMode LinphoneEnums::fromLinphone(const linphone::Tunnel::Mo
 	return static_cast<LinphoneEnums::TunnelMode>(data);
 }
 
-linphone::RecorderState LinphoneEnums::toLinphone(const LinphoneEnums::RecorderState& data){
-	return static_cast<linphone::RecorderState>(data);
+linphone::Recorder::State LinphoneEnums::toLinphone(const LinphoneEnums::RecorderState& data){
+	return static_cast<linphone::Recorder::State>(data);
 }
-LinphoneEnums::RecorderState LinphoneEnums::fromLinphone(const linphone::RecorderState& data){
+LinphoneEnums::RecorderState LinphoneEnums::fromLinphone(const linphone::Recorder::State& data){
 	return static_cast<LinphoneEnums::RecorderState>(data);
 }
 

@@ -62,6 +62,7 @@
 #include "components/participant/ParticipantListModel.hpp"
 #include "components/participant/ParticipantProxyModel.hpp"
 #include "src/utils/InternetChecker.hpp"
+#include "single-application/SingleApplication.hpp"
 // =============================================================================
 
 using namespace std;

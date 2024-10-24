@@ -99,7 +99,7 @@ void TimelineListModel::selectAll(const bool& selected){
 TimelineModel*  TimelineListModel::getAt(const int& index){
 	auto timeline = mList.takeAt(index);
 	//emit selectedChanged(timeline.objectCast<TimelineModel>().data());
-	//auto timeline = mList[index].data(); // Obtenez le pointeur brut à partir du QSharedPointer<TimelineModel> à l'index spécifié
+	//auto timeline = mList[index].data(); // Obtenez le pointeur brut ï¿½ partir du QSharedPointer<TimelineModel> ï¿½ l'index spï¿½cifiï¿½
 	return timeline.objectCast<TimelineModel>().data();
 	}
 // -----------------------------------------------------------------------------
@@ -259,7 +259,7 @@ void TimelineListModel::updateTimelines () {
 			chatRoom->markAsRead();
 		if(chatRoom->getState() == linphone::ChatRoom::State::Deleted)
 			return true;
-		if(!chatRoom->hasCapability((int)linphone::ChatRoomCapabilities::Basic)){
+		if(!chatRoom->hasCapability((int)linphone::ChatRoom::Capabilities::Basic)){
 			auto conferenceAddress = chatRoom->getConferenceAddress();
 			if( conferenceAddress && conferenceAddress->getDomain() == Constants::LinphoneDomain) {
 				QString conferenceAddressStr = Utils::coreStringToAppString(conferenceAddress->asStringUriOnly());
@@ -402,7 +402,7 @@ void TimelineListModel::onChatRoomRead(const std::shared_ptr<linphone::ChatRoom>
 void TimelineListModel::onChatRoomStateChanged(const std::shared_ptr<linphone::ChatRoom> &chatRoom,linphone::ChatRoom::State state){
 	if( state == linphone::ChatRoom::State::Created
 			&& !getTimeline(chatRoom, false)){// Create a new Timeline if needed
-		if( chatRoom->hasCapability((int)linphone::ChatRoomCapabilities::Conference) && !chatRoom->ephemeralEnabled()) {
+		if( chatRoom->hasCapability((int)linphone::ChatRoom::Capabilities::Conference) && !chatRoom->ephemeralEnabled()) {
 			int ephemeralTime = CoreManager::getInstance()->getSettingsModel()->getCreateEphemeralChatRooms();
 			if( ephemeralTime>0){
 				chatRoom->setEphemeralLifetime(ephemeralTime);

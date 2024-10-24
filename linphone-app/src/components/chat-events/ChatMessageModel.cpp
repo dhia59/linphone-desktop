@@ -251,6 +251,23 @@ void ChatMessageModel::resendMessage (){
 	}
 }
 
+Q_INVOKABLE void ChatMessageModel::sendChatReaction(const QString & reaction)
+{
+	auto myReaction = mChatMessage->getOwnReaction();
+	if (myReaction && Utils::coreStringToAppString(myReaction->getBody()) == reaction) {
+		auto chatReaction = mChatMessage->createReaction("");
+		chatReaction->send();
+		// emit reactionRemoved(mChatMessage, chatReaction->getFromAddress());	// Do not emit because we want to
+		// display what the server got
+	}
+	else {
+		auto chatReaction = mChatMessage->createReaction(Utils::appStringToCoreString(reaction));
+		chatReaction->send();
+		 emit newMessageReaction(mChatMessage, chatReaction);// Do not emit because we want to display what the server
+		// got
+	}
+}
+
 void ChatMessageModel::deleteEvent(){
 	if (mChatMessage && mChatMessage->getFileTransferInformation()) {
 		mChatMessage->cancelFileTransfer();
